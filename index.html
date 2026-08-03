@@ -495,6 +495,33 @@
       </div>
     </section>
 
+    <!-- BATCH 7 UPGRADES (UPGRADES 19, 20, 21): BITCRUSHER DISTORTION, PING-PONG DELAY & KEY SCALE LOCK -->
+    <section id="beats-batch7-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 19: BEATS BITCRUSHER DISTORTION -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">👾 BITCRUSHER (16-BIT)</b>
+        <input type="range" min="1" max="16" value="16" style="width:100%; accent-color:#ff0033;" title="Bitcrusher Depth" />
+      </div>
+
+      <!-- UPGRADE 20: BEATS PING-PONG DELAY ECHO ENGINE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🏓 PING-PONG ECHO DELAY</b>
+        <input type="range" min="0" max="100" value="35" style="width:100%; accent-color:#ffb800;" title="Ping-Pong Echo Feedback" />
+      </div>
+
+      <!-- UPGRADE 21: BEATS KEY SCALE LOCK SNAP -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🔒 KEY SCALE LOCK SNAP</b>
+        <select class="theme-select" style="width:100%; height:28px; font-size:8px;" title="Scale Lock Snap">
+          <option value="pentatonic">MINOR PENTATONIC</option>
+          <option value="minor" selected>NATURAL MINOR</option>
+          <option value="major">MAJOR SCALE</option>
+          <option value="dorian">DORIAN MODE</option>
+          <option value="chromatic">CHROMATIC (OFF)</option>
+        </select>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
