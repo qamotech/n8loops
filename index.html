@@ -589,6 +589,27 @@
       </div>
     </section>
 
+    <!-- BATCH 11 UPGRADES (UPGRADES 31, 32, 33): TRANSIENT SHAPER, VIBRATO MODULATION & PEAK LIMITER GAUGE -->
+    <section id="beats-batch11-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 31: BEATS TRANSIENT SHAPER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">⚡ TRANSIENT ATTACK SNAP</b>
+        <input type="range" min="0" max="100" value="45" style="width:100%; accent-color:#00ff88;" title="Transient Attack Punch" />
+      </div>
+
+      <!-- UPGRADE 32: BEATS VIBRATO MODULATION -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">〰️ SYNTH VIBRATO DEPTH</b>
+        <input type="range" min="0" max="100" value="20" style="width:100%; accent-color:#ffb800;" title="Vibrato Modulation Depth" />
+      </div>
+
+      <!-- UPGRADE 33: BEATS PEAK LIMITER GAUGE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🛡️ PEAK LIMITER GAUGE</b>
+        <button class="btn tiny primary" onclick="this.classList.toggle('active');" style="width:100%;">LIMITER: SAFE (-0.5dB)</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
