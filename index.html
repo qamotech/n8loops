@@ -830,6 +830,27 @@
       </div>
     </section>
 
+    <!-- BATCH 22 UPGRADES (UPGRADES 64, 65, 66): COMPRESSOR SOFT-KNEE DIAL, 60-FPS OLED VISUALIZER & JSON SESSION SAVER -->
+    <section id="beats-batch22-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 64: BEATS COMPRESSOR SOFT-KNEE DIAL -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🎚️ COMPRESSOR KNEE RATIO</b>
+        <input type="range" min="1" max="20" value="4" style="width:100%; accent-color:#ff0033;" title="Compression Soft Knee Ratio" />
+      </div>
+
+      <!-- UPGRADE 65: BEATS 60-FPS OLED VISUALIZER SCOPE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">📊 60-FPS OLED OSCILLOSCOPE</b>
+        <button class="btn tiny primary" onclick="this.classList.toggle('active');" style="width:100%;">OLED SCOPE: ACTIVE</button>
+      </div>
+
+      <!-- UPGRADE 66: BEATS JSON SESSION SAVER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">💾 INSTANT SESSION BACKUP</b>
+        <button class="btn tiny cyan" onclick="const a=document.createElement('a'); a.href='data:text/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(typeof S!=='undefined'?S:{})); a.download='beats_session.json'; a.click();" style="width:100%;">💾 SAVE SESSION JSON</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
