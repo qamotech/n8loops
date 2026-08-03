@@ -24,7 +24,7 @@
     body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:
       linear-gradient(var(--grid) 1px,transparent 1px),
       linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;
-      mask-image:linear-gradient(#000,transparent 90%)}
+      -webkit-mask-image:linear-gradient(#000,transparent 90%);mask-image:linear-gradient(#000,transparent 90%)}
     body::after{content:"";position:fixed;inset:-30%;z-index:0;pointer-events:none;opacity:.22;mix-blend-mode:screen}
     body[data-theme="ryobi"]::after{background:repeating-linear-gradient(112deg,transparent 0 90px,rgba(147,210,61,.14) 92px,transparent 94px 160px);animation:power-grid var(--theme-speed) linear infinite}
     body[data-theme="miami"]::after{background:linear-gradient(180deg,transparent 42%,rgba(255,60,180,.16) 43%,transparent 44%),repeating-linear-gradient(0deg,transparent 0 18px,rgba(66,245,255,.07) 19px 20px);animation:scan-drift 8s linear infinite}
@@ -43,7 +43,7 @@
     /* BEATS BY DRE PRO EMBLEM & MOBILE BAR STYLES */
     .beats-logo{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#ff0033,#80001a);display:grid;place-items:center;color:#fff;font:900 22px var(--font);box-shadow:0 0 20px rgba(255,0,51,.6),inset 0 0 8px #fff;border:2px solid #fff}
     .beats-hud-bar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(15,15,20,.9);border-radius:14px;border:1px solid var(--line);margin-bottom:10px;flex-wrap:wrap}
-    .mobile-bottom-nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:rgba(7,7,10,.95);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:none;justify-content:space-around;align-items:center;z-index:999}
+    .mobile-bottom-nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:rgba(7,7,10,.95);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:none;justify-content:space-around;align-items:center;z-index:999}
     .mobile-bottom-nav button{background:none;border:none;color:var(--muted);font:700 10px var(--mono);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
     .mobile-bottom-nav button.active{color:var(--pink)}
     @media(max-width:768px){.mobile-bottom-nav{display:flex}#app{padding-bottom:60px}}
@@ -188,17 +188,17 @@
 
     dialog{color:var(--text);width:min(620px,calc(100vw - 30px));max-height:calc(100vh - 30px);padding:0;border:1px solid rgba(255,255,255,.15);border-radius:18px;
       background:linear-gradient(145deg,rgba(29,31,44,.98),rgba(12,13,20,.98));box-shadow:0 35px 100px #000;overflow:hidden}
-    dialog::backdrop{background:rgba(4,4,8,.75);backdrop-filter:blur(7px)}.dialog-head{height:50px;padding:0 13px 0 17px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+    dialog::backdrop{background:rgba(4,4,8,.75);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}.dialog-head{height:50px;padding:0 13px 0 17px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
     .dialog-head h2{margin:0;font-size:13px;letter-spacing:.06em}.dialog-head button{margin-left:auto}.dialog-body{padding:16px;max-height:calc(100vh - 115px);overflow:auto}
     .dialog-actions{padding:10px 16px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:7px}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .help-card{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025)}.help-card b{font-size:10px}.help-card p{color:var(--muted);font:9px/1.5 var(--mono);margin:5px 0 0}
     .project-list{display:grid;gap:7px}.project-row{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:10px}.project-row time{color:var(--muted);font:8px var(--mono);margin-left:auto}
     #toast-stack{position:fixed;z-index:1200;right:14px;bottom:14px;width:min(340px,calc(100vw - 28px));display:grid;gap:7px;pointer-events:none}
-    .toast{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:rgba(20,22,32,.95);box-shadow:0 18px 50px #000;backdrop-filter:blur(18px);font:9px/1.45 var(--mono);animation:toast-in .2s ease}
+    .toast{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:rgba(20,22,32,.95);box-shadow:0 18px 50px #000;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);font:9px/1.45 var(--mono);animation:toast-in .2s ease}
     .toast.good{border-color:rgba(101,242,163,.4)}.toast.warn{border-color:rgba(255,196,94,.42)}.toast.error{border-color:rgba(255,102,124,.5)}
     @keyframes toast-in{from{opacity:0;transform:translateX(10px)}}
 
-    #screen-pet{position:fixed;left:22px;bottom:40px;z-index:900;width:108px;height:126px;display:none;cursor:grab;filter:drop-shadow(0 14px 16px rgba(0,0,0,.44));user-select:none;touch-action:none;--pet:#93d23d;--pet-scale:1}
+    #screen-pet{position:fixed;left:22px;bottom:40px;z-index:900;width:108px;height:126px;display:none;cursor:grab;filter:drop-shadow(0 14px 16px rgba(0,0,0,.44));-webkit-user-select:none;user-select:none;touch-action:none;--pet:#93d23d;--pet-scale:1}
     #screen-pet.visible{display:block;transform:scale(var(--pet-scale));transform-origin:bottom left}#screen-pet:active{cursor:grabbing}
     .pet-shadow{position:absolute;left:19px;right:19px;bottom:2px;height:14px;border-radius:50%;background:rgba(0,0,0,.45);filter:blur(5px)}
     .pet-body{position:absolute;left:18px;top:28px;width:72px;height:76px;border:3px solid color-mix(in srgb,var(--pet) 60%,white 30%);border-radius:27px 27px 23px 23px;background:linear-gradient(145deg,color-mix(in srgb,var(--pet) 70%,white 10%),color-mix(in srgb,var(--pet) 55%,#07101c 45%));box-shadow:inset 0 4px 10px rgba(255,255,255,.2),0 0 22px color-mix(in srgb,var(--pet) 27%,transparent)}
@@ -322,23 +322,23 @@
         <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; text-align:center;">
           <div>
             <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">60Hz</label>
-            <input type="range" min="-12" max="12" value="4" style="width:100%; accent-color:#ff0033;" />
+            <input type="range" min="-12" max="12" value="4" style="width:100%; accent-color:#ff0033;" title="60Hz Sub Gain" aria-label="60Hz Sub Gain" />
           </div>
           <div>
             <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">250Hz</label>
-            <input type="range" min="-12" max="12" value="2" style="width:100%; accent-color:#ff0033;" />
+            <input type="range" min="-12" max="12" value="2" style="width:100%; accent-color:#ff0033;" title="250Hz Bass Gain" aria-label="250Hz Bass Gain" />
           </div>
           <div>
             <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">1kHz</label>
-            <input type="range" min="-12" max="12" value="0" style="width:100%; accent-color:#00f0ff;" />
+            <input type="range" min="-12" max="12" value="0" style="width:100%; accent-color:#00f0ff;" title="1kHz Mid Gain" aria-label="1kHz Mid Gain" />
           </div>
           <div>
             <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">4kHz</label>
-            <input type="range" min="-12" max="12" value="3" style="width:100%; accent-color:#00f0ff;" />
+            <input type="range" min="-12" max="12" value="3" style="width:100%; accent-color:#00f0ff;" title="4kHz High-Mid Gain" aria-label="4kHz High-Mid Gain" />
           </div>
           <div>
             <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">12kHz</label>
-            <input type="range" min="-12" max="12" value="5" style="width:100%; accent-color:#ffb800;" />
+            <input type="range" min="-12" max="12" value="5" style="width:100%; accent-color:#ffb800;" title="12kHz Treble Gain" aria-label="12kHz Treble Gain" />
           </div>
         </div>
       </div>
@@ -367,10 +367,10 @@
       <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
         <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">📈 ADSR ENVELOPE SHAPER</b>
         <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:4px; text-align:center;">
-          <div><label style="font:7px var(--mono); color:var(--muted);">ATTACK</label><input type="range" min="0.01" max="1" value="0.05" style="width:100%; accent-color:#00ff88;"></div>
-          <div><label style="font:7px var(--mono); color:var(--muted);">DECAY</label><input type="range" min="0.05" max="2" value="0.3" style="width:100%; accent-color:#00ff88;"></div>
-          <div><label style="font:7px var(--mono); color:var(--muted);">SUSTAIN</label><input type="range" min="0" max="1" value="0.7" style="width:100%; accent-color:#00ff88;"></div>
-          <div><label style="font:7px var(--mono); color:var(--muted);">RELEASE</label><input type="range" min="0.05" max="4" value="0.8" style="width:100%; accent-color:#00ff88;"></div>
+          <div><label style="font:7px var(--mono); color:var(--muted);">ATTACK</label><input type="range" min="0.01" max="1" value="0.05" style="width:100%; accent-color:#00ff88;" title="ADSR Attack Time" aria-label="ADSR Attack Time"></div>
+          <div><label style="font:7px var(--mono); color:var(--muted);">DECAY</label><input type="range" min="0.05" max="2" value="0.3" style="width:100%; accent-color:#00ff88;" title="ADSR Decay Time" aria-label="ADSR Decay Time"></div>
+          <div><label style="font:7px var(--mono); color:var(--muted);">SUSTAIN</label><input type="range" min="0" max="1" value="0.7" style="width:100%; accent-color:#00ff88;" title="ADSR Sustain Level" aria-label="ADSR Sustain Level"></div>
+          <div><label style="font:7px var(--mono); color:var(--muted);">RELEASE</label><input type="range" min="0.05" max="4" value="0.8" style="width:100%; accent-color:#00ff88;" title="ADSR Release Time" aria-label="ADSR Release Time"></div>
         </div>
       </div>
 
@@ -409,7 +409,7 @@
       <!-- UPGRADE 8: BEATS TUBE SATURATOR KNOB -->
       <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
         <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🔥 TUBE SATURATOR WARMTH</b>
-        <input type="range" min="0" max="100" value="45" style="width:100%; accent-color:#ffb800;" />
+        <input type="range" min="0" max="100" value="45" style="width:100%; accent-color:#ffb800;" title="Tube Saturator Warmth" aria-label="Tube Saturator Warmth" />
       </div>
 
       <!-- UPGRADE 9: BEATS OVERDUB RECORDER -->
@@ -1141,7 +1141,7 @@
           <label class="control" style="width:92px"><span style="font:8px var(--mono);color:var(--muted)">STEPS</span>
             <select id="step-count" class="compact-select"><option value="16">16</option><option value="32">32</option></select></label>
           <label class="control" style="width:100px"><span style="font:8px var(--mono);color:var(--muted)">SWING</span>
-            <input id="swing" type="range" min="0" max=".42" value=".08" step=".01"></label>
+            <input id="swing" type="range" min="0" max=".42" value=".08" step=".01" title="Swing Amount" aria-label="Swing Amount"></label>
           <div class="step-page"><button id="step-page-prev" class="btn tiny icon" title="Previous 16 steps">‹</button><span id="step-page-label">1–16</span><button id="step-page-next" class="btn tiny icon" title="Next 16 steps">›</button></div>
           <button id="follow-page" class="btn tiny active" title="Automatically follow the active 16-step page">FOLLOW</button>
           <button class="btn icon tiny module-collapse" data-collapse="sequencer-module" title="Collapse sequencer">⌃</button>
@@ -1183,12 +1183,12 @@
         <div class="module-title">Mixer & master effects<small>Every track is routed independently before the final mix</small></div>
         <span class="module-spacer"></span>
         <select id="bass-profile" class="compact-select" aria-label="Bass processing preset"><option value="">BASS PROFILE…</option><option value="clean">CLEAN SUB</option><option value="headphone">HEADPHONE THUMP</option><option value="trunk">TRUNK RATTLE</option><option value="drill">DRILL PRESSURE</option></select>
-        <div class="control" style="width:90px"><label>Master <output id="master-out">82%</output></label><input id="master" type="range" min="0" max="1" value=".82" step=".01"></div>
-        <div class="control" style="width:90px"><label>Delay <output id="delay-out">20%</output></label><input id="delay" type="range" min="0" max=".7" value=".2" step=".01"></div>
-        <div class="control" style="width:90px"><label>Reverb <output id="reverb-out">18%</output></label><input id="reverb" type="range" min="0" max=".7" value=".18" step=".01"></div>
-        <div class="control" style="width:90px"><label>Drive <output id="drive-out">8%</output></label><input id="drive" type="range" min="0" max=".8" value=".08" step=".01"></div>
-        <div class="control" style="width:90px"><label>Thump <output id="thump-out">72%</output></label><input id="thump" type="range" min="0" max="1" value=".72" step=".01"></div>
-        <div class="control" style="width:90px"><label>Punch <output id="punch-out">48%</output></label><input id="punch" type="range" min="0" max="1" value=".48" step=".01"></div>
+        <div class="control" style="width:90px"><label>Master <output id="master-out">82%</output></label><input id="master" type="range" min="0" max="1" value=".82" step=".01" title="Master Volume" aria-label="Master Volume"></div>
+        <div class="control" style="width:90px"><label>Delay <output id="delay-out">20%</output></label><input id="delay" type="range" min="0" max=".7" value=".2" step=".01" title="Delay Mix" aria-label="Delay Mix"></div>
+        <div class="control" style="width:90px"><label>Reverb <output id="reverb-out">18%</output></label><input id="reverb" type="range" min="0" max=".7" value=".18" step=".01" title="Reverb Mix" aria-label="Reverb Mix"></div>
+        <div class="control" style="width:90px"><label>Drive <output id="drive-out">8%</output></label><input id="drive" type="range" min="0" max=".8" value=".08" step=".01" title="Drive Amount" aria-label="Drive Amount"></div>
+        <div class="control" style="width:90px"><label>Thump <output id="thump-out">72%</output></label><input id="thump" type="range" min="0" max="1" value=".72" step=".01" title="Thump Level" aria-label="Thump Level"></div>
+        <div class="control" style="width:90px"><label>Punch <output id="punch-out">48%</output></label><input id="punch" type="range" min="0" max="1" value=".48" step=".01" title="Punch Level" aria-label="Punch Level"></div>
         <button class="btn icon tiny module-collapse" data-collapse="mixer-module" title="Collapse mixer">⌃</button>
       </header>
       <div id="mixer"></div>
@@ -2174,5 +2174,235 @@
     <!-- 16. Beats Victory Crown -->
     <svg id="svg-beats-crown" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="15,75 25,25 42,50 50,20 58,50 75,25 85,75" fill="#ffb800" stroke="#fff" stroke-width="3"/></svg>
   </div>
+<!-- =====================================================
+     N8LOOPS BATCH 34 — UPGRADES 100 · 101 · 102
+     Spectral Resonator | Chord Memory | Comb Filter Bank
+     ===================================================== -->
+<style id="n8l-batch34-css">
+  /* ── Batch 34 shared panel chrome ── */
+  .n8l-b34-panel{background:linear-gradient(145deg,rgba(22,12,40,.97),rgba(8,20,38,.95));
+    border:1px solid rgba(255,79,163,.18);border-radius:16px;padding:14px;
+    box-shadow:0 16px 44px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.06)}
+  .n8l-b34-title{font:700 10px/1 var(--mono);color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .n8l-b34-led{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;
+    background:var(--pink);box-shadow:0 0 8px var(--pink);animation:ledPulse34 1.8s ease-in-out infinite}
+  @keyframes ledPulse34{0%,100%{opacity:1}50%{opacity:.35}}
+  /* ── Upgrade 100: Spectral Resonator ── */
+  #n8l-spectral-viz{width:100%;height:56px;border-radius:10px;background:#06091a;
+    border:1px solid rgba(0,240,255,.15);display:block;image-rendering:pixelated}
+  .n8l-spectral-knob-row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .n8l-spectral-knob{flex:1;min-width:60px;display:grid;gap:3px;text-align:center}
+  .n8l-spectral-knob label{font:8px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .n8l-spectral-knob input[type=range]{width:100%;accent-color:var(--cyan)}
+  /* ── Upgrade 101: Chord Memory Engine ── */
+  .n8l-chord-keys{display:flex;gap:3px;margin:8px 0}
+  .n8l-chord-key{flex:1;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);cursor:pointer;font:700 9px var(--mono);color:var(--muted);
+    transition:.14s ease;display:grid;place-items:center}
+  .n8l-chord-key:hover{border-color:rgba(255,79,163,.6);background:rgba(255,79,163,.12);color:var(--pink)}
+  .n8l-chord-key.active{border-color:var(--pink);background:rgba(255,79,163,.22);color:var(--pink);
+    box-shadow:0 0 14px rgba(255,79,163,.24)}
+  .n8l-chord-presets{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+  .n8l-chord-preset{padding:3px 8px;border:1px solid rgba(255,255,255,.1);border-radius:6px;
+    background:rgba(255,255,255,.05);font:700 8px var(--mono);color:var(--muted);cursor:pointer;
+    letter-spacing:.06em;transition:.14s ease}
+  .n8l-chord-preset:hover,.n8l-chord-preset.active{border-color:rgba(168,124,255,.6);
+    background:rgba(168,124,255,.15);color:var(--purple)}
+  /* ── Upgrade 102: Comb Filter Bank ── */
+  .n8l-comb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+  .n8l-comb-band{display:grid;gap:4px;text-align:center}
+  .n8l-comb-band label{font:7px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+  .n8l-comb-band input[type=range]{width:100%;accent-color:var(--amber)}
+  .n8l-comb-band .n8l-comb-val{font:700 9px var(--mono);color:var(--amber)}
+  .n8l-comb-toggle{display:flex;align-items:center;gap:7px;margin-top:8px;font:700 9px var(--mono);color:var(--muted)}
+  .n8l-comb-switch{appearance:none;-webkit-appearance:none;width:32px;height:17px;border-radius:99px;
+    border:1px solid rgba(255,183,56,.3);background:rgba(255,255,255,.08);cursor:pointer;
+    position:relative;transition:.2s}
+  .n8l-comb-switch:checked{background:var(--amber);border-color:var(--amber)}
+</style>
+
+<section id="n8l-batch34-section" style="padding:0 12px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" aria-label="N8Loops Batch 34 Upgrades">
+
+  <!-- UPGRADE 100: SPECTRAL RESONATOR -->
+  <div class="n8l-b34-panel" id="n8l-spectral-module">
+    <div class="n8l-b34-title"><span class="n8l-b34-led"></span>SPECTRAL RESONATOR</div>
+    <canvas id="n8l-spectral-viz" width="300" height="56" aria-label="Spectral resonator visualization"></canvas>
+    <div class="n8l-spectral-knob-row">
+      <div class="n8l-spectral-knob">
+        <label>FREQ</label>
+        <input type="range" id="spectral-freq" min="80" max="8000" value="1200" step="10" title="Resonant Frequency" aria-label="Resonant Frequency">
+      </div>
+      <div class="n8l-spectral-knob">
+        <label>Q</label>
+        <input type="range" id="spectral-q" min="0.5" max="30" value="8" step="0.5" title="Resonance Q Factor" aria-label="Resonance Q Factor">
+      </div>
+      <div class="n8l-spectral-knob">
+        <label>GAIN</label>
+        <input type="range" id="spectral-gain" min="-18" max="18" value="6" step="0.5" title="Resonator Gain dB" aria-label="Resonator Gain dB">
+      </div>
+      <div class="n8l-spectral-knob">
+        <label>WET</label>
+        <input type="range" id="spectral-wet" min="0" max="100" value="55" title="Resonator Wet Mix" aria-label="Resonator Wet Mix">
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 101: CHORD MEMORY ENGINE -->
+  <div class="n8l-b34-panel" id="n8l-chord-module">
+    <div class="n8l-b34-title"><span class="n8l-b34-led" style="--pink:var(--purple);background:var(--purple);box-shadow:0 0 8px var(--purple)"></span>CHORD MEMORY ENGINE</div>
+    <div class="n8l-chord-presets">
+      <button class="n8l-chord-preset active" data-chord="maj" title="Major chord">MAJ</button>
+      <button class="n8l-chord-preset" data-chord="min" title="Minor chord">MIN</button>
+      <button class="n8l-chord-preset" data-chord="dom7" title="Dominant 7th chord">DOM7</button>
+      <button class="n8l-chord-preset" data-chord="maj7" title="Major 7th chord">MAJ7</button>
+      <button class="n8l-chord-preset" data-chord="dim" title="Diminished chord">DIM</button>
+      <button class="n8l-chord-preset" data-chord="sus4" title="Suspended 4th chord">SUS4</button>
+    </div>
+    <div class="n8l-chord-keys" aria-label="Chord root note selector">
+      <button class="n8l-chord-key active" data-note="C" title="Root: C">C</button>
+      <button class="n8l-chord-key" data-note="D" title="Root: D">D</button>
+      <button class="n8l-chord-key" data-note="E" title="Root: E">E</button>
+      <button class="n8l-chord-key" data-note="F" title="Root: F">F</button>
+      <button class="n8l-chord-key" data-note="G" title="Root: G">G</button>
+      <button class="n8l-chord-key" data-note="A" title="Root: A">A</button>
+      <button class="n8l-chord-key" data-note="B" title="Root: B">B</button>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:6px">
+      <button class="btn tiny primary" id="chord-trigger" title="Trigger selected chord" style="flex:1">▶ TRIGGER</button>
+      <button class="btn tiny" id="chord-latch" title="Latch chord on/off">LATCH</button>
+      <select class="compact-select" id="chord-voicing" aria-label="Chord voicing style" title="Chord voicing style">
+        <option value="root">ROOT</option>
+        <option value="1st">1ST INV</option>
+        <option value="2nd">2ND INV</option>
+        <option value="spread">SPREAD</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- UPGRADE 102: COMB FILTER BANK -->
+  <div class="n8l-b34-panel" id="n8l-comb-module">
+    <div class="n8l-b34-title"><span class="n8l-b34-led" style="--pink:var(--amber);background:var(--amber);box-shadow:0 0 8px var(--amber)"></span>COMB FILTER BANK</div>
+    <div class="n8l-comb-grid">
+      <div class="n8l-comb-band">
+        <label>DELAY 1</label>
+        <input type="range" id="comb-d1" min="1" max="50" value="12" title="Comb Delay 1 ms" aria-label="Comb Delay 1 ms">
+        <span class="n8l-comb-val" id="comb-d1-val">12ms</span>
+      </div>
+      <div class="n8l-comb-band">
+        <label>DELAY 2</label>
+        <input type="range" id="comb-d2" min="1" max="50" value="24" title="Comb Delay 2 ms" aria-label="Comb Delay 2 ms">
+        <span class="n8l-comb-val" id="comb-d2-val">24ms</span>
+      </div>
+      <div class="n8l-comb-band">
+        <label>FEEDBACK</label>
+        <input type="range" id="comb-fb" min="0" max="95" value="60" title="Comb Feedback %" aria-label="Comb Feedback %">
+        <span class="n8l-comb-val" id="comb-fb-val">60%</span>
+      </div>
+      <div class="n8l-comb-band">
+        <label>BLEND</label>
+        <input type="range" id="comb-blend" min="0" max="100" value="40" title="Comb Blend Wet/Dry" aria-label="Comb Blend Wet/Dry">
+        <span class="n8l-comb-val" id="comb-blend-val">40%</span>
+      </div>
+    </div>
+    <div class="n8l-comb-toggle">
+      <input type="checkbox" class="n8l-comb-switch" id="comb-invert" title="Invert comb phase" aria-label="Invert comb phase">
+      <label for="comb-invert">PHASE INVERT</label>
+      <input type="checkbox" class="n8l-comb-switch" id="comb-sync" title="Sync comb to BPM" aria-label="Sync comb to BPM" style="margin-left:10px" checked>
+      <label for="comb-sync">BPM SYNC</label>
+    </div>
+  </div>
+
+</section>
+
+<script id="n8l-batch34-js">
+(()=>{
+  "use strict";
+  if(window.__n8lBatch34)return;
+  window.__n8lBatch34=true;
+
+  /* ── UPGRADE 100: Spectral Resonator Canvas Visualizer ── */
+  const spectralCanvas=document.getElementById("n8l-spectral-viz");
+  if(spectralCanvas){
+    const ctx=spectralCanvas.getContext("2d");
+    let phase=0;
+    const freqEl=document.getElementById("spectral-freq");
+    const qEl=document.getElementById("spectral-q");
+    function drawSpectral(){
+      const W=spectralCanvas.width,H=spectralCanvas.height;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle="#06091a";ctx.fillRect(0,0,W,H);
+      const freq=parseFloat(freqEl?.value||1200);
+      const q=parseFloat(qEl?.value||8);
+      const normF=Math.log10(freq/80)/Math.log10(100);
+      const peakX=Math.round(normF*W);
+      const grd=ctx.createLinearGradient(0,0,W,0);
+      grd.addColorStop(0,"rgba(0,240,255,0)");
+      grd.addColorStop(Math.max(0,normF-.12),"rgba(0,240,255,.05)");
+      grd.addColorStop(normF,"rgba(0,240,255,.9)");
+      grd.addColorStop(Math.min(1,normF+.12),"rgba(255,79,163,.15)");
+      grd.addColorStop(1,"rgba(255,79,163,0)");
+      ctx.beginPath();
+      ctx.moveTo(0,H);
+      for(let x=0;x<W;x++){
+        const distNorm=(x-peakX)/Math.max(1,W/q/10);
+        const y=H-Math.max(0,H*.82*Math.exp(-distNorm*distNorm*.5)+Math.sin(x*.04+phase)*2);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.lineTo(W,H);ctx.closePath();
+      ctx.fillStyle=grd;ctx.fill();
+      ctx.strokeStyle="rgba(0,240,255,.7)";ctx.lineWidth=1.5;
+      ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const distNorm=(x-peakX)/Math.max(1,W/q/10);
+        const y=H-Math.max(0,H*.82*Math.exp(-distNorm*distNorm*.5)+Math.sin(x*.04+phase)*2);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }ctx.stroke();
+      phase+=.025;
+      requestAnimationFrame(drawSpectral);
+    }
+    drawSpectral();
+  }
+
+  /* ── UPGRADE 101: Chord Memory Engine ── */
+  const chordKeys=document.querySelectorAll(".n8l-chord-key");
+  const chordPresets=document.querySelectorAll(".n8l-chord-preset");
+  const CHORD_INTERVALS={maj:[0,4,7],min:[0,3,7],dom7:[0,4,7,10],maj7:[0,4,7,11],dim:[0,3,6],sus4:[0,5,7]};
+  let activeChord="maj",activeRoot="C";
+  chordKeys.forEach(k=>k.addEventListener("click",()=>{
+    chordKeys.forEach(x=>x.classList.remove("active"));
+    k.classList.add("active");activeRoot=k.dataset.note;
+  }));
+  chordPresets.forEach(p=>p.addEventListener("click",()=>{
+    chordPresets.forEach(x=>x.classList.remove("active"));
+    p.classList.add("active");activeChord=p.dataset.chord;
+  }));
+  document.getElementById("chord-trigger")?.addEventListener("click",()=>{
+    if(!window.__n8lAudioCtx){try{window.__n8lAudioCtx=new AudioContext()}catch(e){return}}
+    const ctx=window.__n8lAudioCtx;
+    const NOTES={C:261.63,D:293.66,E:329.63,F:349.23,G:392,A:440,B:493.88};
+    const root=NOTES[activeRoot]||261.63;
+    const intervals=CHORD_INTERVALS[activeChord]||[0,4,7];
+    const now=ctx.currentTime;
+    intervals.forEach(semitones=>{
+      const freq=root*Math.pow(2,semitones/12);
+      const osc=ctx.createOscillator();
+      const gain=ctx.createGain();
+      osc.type="triangle";osc.frequency.value=freq;
+      gain.gain.setValueAtTime(.18,now);
+      gain.gain.exponentialRampToValueAtTime(.001,now+1.2);
+      osc.connect(gain);gain.connect(ctx.destination);
+      osc.start(now);osc.stop(now+1.2);
+    });
+  });
+
+  /* ── UPGRADE 102: Comb Filter Bank live value display ── */
+  [["comb-d1","comb-d1-val","ms"],["comb-d2","comb-d2-val","ms"],
+   ["comb-fb","comb-fb-val","%"],["comb-blend","comb-blend-val","%"]].forEach(([id,valId,unit])=>{
+    const inp=document.getElementById(id);
+    const val=document.getElementById(valId);
+    if(inp&&val)inp.addEventListener("input",()=>val.textContent=inp.value+unit);
+  });
+})();
+</script>
 </body>
 </html>
