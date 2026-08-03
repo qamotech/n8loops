@@ -4126,5 +4126,334 @@
   peRange?.addEventListener("input",()=>{if(peRangeOut)peRangeOut.value="+"+peRange.value+"st"});
 })();
 </script>
+<!-- ════════════════════════════════════════════
+     N8LOOPS BATCH 44 — UPGRADES 124 · 125 · 126
+     ✦ Noise Generator
+     ✦ Frequency Shifter
+     ✦ Convolution Reverb Simulator
+     ════════════════════════════════════════════ -->
+<style id="n8l-b44-css">
+.n8l-b44-panel{
+  background:linear-gradient(148deg,rgba(5,11,26,.97),rgba(13,5,26,.95));
+  border:1px solid rgba(110,248,255,.10);border-radius:14px;padding:12px;
+  box-shadow:0 10px 32px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.04);
+  margin:0 12px 9px;
+}
+.n8l-b44-title{font:700 9px/1 var(--mono);color:var(--muted);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.n8l-b44-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  animation:b44Dot 2s ease-in-out infinite}
+@keyframes b44Dot{0%,100%{opacity:1}50%{opacity:.2}}
+.n8l-b44-row{display:flex;gap:6px;align-items:flex-end;flex-wrap:wrap;margin-top:5px}
+.n8l-b44-knob{flex:1;min-width:46px;display:grid;gap:2px;text-align:center}
+.n8l-b44-knob label{font:6px var(--mono);color:var(--muted);text-transform:uppercase}
+.n8l-b44-knob input[type=range]{width:100%}
+.n8l-b44-knob output{font:700 8px var(--mono)}
+.n8l-b44-canvas{width:100%;border-radius:8px;display:block;margin-bottom:6px}
+.n8l-b44-btn-row{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:5px}
+.n8l-b44-btn{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.09);border-radius:6px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 7px var(--mono);
+  cursor:pointer;transition:.12s}
+.n8l-b44-btn:hover{border-color:rgba(110,248,255,.35);color:var(--cyan)}
+.n8l-b44-btn.on{border-color:rgba(110,248,255,.65);background:rgba(110,248,255,.12);color:var(--cyan)}
+
+/* Noise type chips */
+.n8l-ng-chip{flex:1;padding:4px 0;border:1px solid rgba(255,255,255,.09);border-radius:7px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 8px var(--mono);
+  cursor:pointer;transition:.12s;text-align:center}
+.n8l-ng-chip.on{background:rgba(255,226,107,.14);border-color:rgba(255,226,107,.55);color:var(--amber)}
+
+/* Convolution room chips */
+.n8l-rv-room{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.09);border-radius:6px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 7px var(--mono);
+  cursor:pointer;transition:.12s;text-align:center}
+.n8l-rv-room.on{background:rgba(0,255,136,.14);border-color:rgba(0,255,136,.5);color:var(--green)}
+</style>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:0">
+
+  <!-- ── UPGRADE 124: NOISE GENERATOR ── -->
+  <div class="n8l-b44-panel">
+    <div class="n8l-b44-title">
+      <span class="n8l-b44-dot" style="background:var(--amber)"></span>NOISE GENERATOR
+    </div>
+    <div class="n8l-b44-btn-row" role="group" aria-label="Noise type selection">
+      <div class="n8l-ng-chip on" data-noise="white">WHITE</div>
+      <div class="n8l-ng-chip" data-noise="pink">PINK</div>
+      <div class="n8l-ng-chip" data-noise="brown">BROWN</div>
+      <div class="n8l-ng-chip" data-noise="crackle">CRACKLE</div>
+    </div>
+    <canvas id="ng-canvas" class="n8l-b44-canvas" width="300" height="52"
+      aria-label="Noise generator spectrum visualization"></canvas>
+    <div class="n8l-b44-row">
+      <div class="n8l-b44-knob">
+        <label>LEVEL</label>
+        <input type="range" id="ng-level" min="0" max="100" value="55"
+          style="accent-color:var(--amber)" title="Noise level" aria-label="Noise level">
+        <output style="color:var(--amber)" id="ng-level-out">55%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>FILTER</label>
+        <input type="range" id="ng-filter" min="20" max="20000" value="8000"
+          style="accent-color:var(--amber)" title="Noise filter cutoff Hz" aria-label="Noise filter cutoff Hz">
+        <output style="color:var(--amber)" id="ng-filter-out">8kHz</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>STEREO</label>
+        <input type="range" id="ng-stereo" min="0" max="100" value="70"
+          style="accent-color:var(--amber)" title="Noise stereo width" aria-label="Noise stereo width">
+        <output style="color:var(--amber)" id="ng-stereo-out">70%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>DENSITY</label>
+        <input type="range" id="ng-density" min="1" max="100" value="50"
+          style="accent-color:var(--amber)" title="Crackle density" aria-label="Crackle density">
+        <output style="color:var(--amber)" id="ng-density-out">50</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UPGRADE 125: FREQUENCY SHIFTER ── -->
+  <div class="n8l-b44-panel">
+    <div class="n8l-b44-title">
+      <span class="n8l-b44-dot" style="background:var(--purple)"></span>FREQUENCY SHIFTER
+    </div>
+    <canvas id="fs-canvas" class="n8l-b44-canvas" width="300" height="52"
+      aria-label="Frequency shifter sideband visualization"></canvas>
+    <div class="n8l-b44-row">
+      <div class="n8l-b44-knob">
+        <label>SHIFT</label>
+        <input type="range" id="fs-shift" min="-2000" max="2000" value="0" step="5"
+          style="accent-color:var(--purple)" title="Frequency shift Hz" aria-label="Frequency shift Hz">
+        <output style="color:var(--purple)" id="fs-shift-out">0Hz</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>MIX</label>
+        <input type="range" id="fs-mix" min="0" max="100" value="60"
+          style="accent-color:var(--purple)" title="Frequency shifter wet mix" aria-label="Frequency shifter wet mix">
+        <output style="color:var(--purple)" id="fs-mix-out">60%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>FEEDBACK</label>
+        <input type="range" id="fs-fb" min="0" max="90" value="20"
+          style="accent-color:var(--purple)" title="Frequency shifter feedback" aria-label="Frequency shifter feedback">
+        <output style="color:var(--purple)" id="fs-fb-out">20%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>MODE</label>
+        <select id="fs-mode" style="width:100%;background:#060a1a;
+          border:1px solid rgba(160,108,255,.3);border-radius:6px;
+          color:var(--purple);font:700 7px var(--mono);padding:2px"
+          aria-label="Frequency shift mode" title="Frequency shift mode">
+          <option>UP</option><option>DOWN</option><option>BOTH</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UPGRADE 126: CONVOLUTION REVERB SIMULATOR ── -->
+  <div class="n8l-b44-panel">
+    <div class="n8l-b44-title">
+      <span class="n8l-b44-dot" style="background:var(--green)"></span>CONVOLUTION REVERB
+    </div>
+    <div class="n8l-b44-btn-row" role="group" aria-label="Reverb room presets">
+      <div class="n8l-rv-room on" data-room="hall">HALL</div>
+      <div class="n8l-rv-room" data-room="room">ROOM</div>
+      <div class="n8l-rv-room" data-room="plate">PLATE</div>
+      <div class="n8l-rv-room" data-room="cave">CAVE</div>
+      <div class="n8l-rv-room" data-room="spring">SPRING</div>
+    </div>
+    <canvas id="rv-canvas" class="n8l-b44-canvas" width="300" height="52"
+      aria-label="Impulse response decay visualization"></canvas>
+    <div class="n8l-b44-row">
+      <div class="n8l-b44-knob">
+        <label>SIZE</label>
+        <input type="range" id="rv-size" min="0" max="100" value="72"
+          style="accent-color:var(--green)" title="Reverb room size" aria-label="Reverb room size">
+        <output style="color:var(--green)" id="rv-size-out">72%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>DAMP</label>
+        <input type="range" id="rv-damp" min="0" max="100" value="45"
+          style="accent-color:var(--green)" title="Reverb damping" aria-label="Reverb damping">
+        <output style="color:var(--green)" id="rv-damp-out">45%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>PRE-DLY</label>
+        <input type="range" id="rv-pre" min="0" max="100" value="20"
+          style="accent-color:var(--green)" title="Reverb pre-delay ms" aria-label="Reverb pre-delay ms">
+        <output style="color:var(--green)" id="rv-pre-out">20ms</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>DIFF</label>
+        <input type="range" id="rv-diff" min="0" max="100" value="60"
+          style="accent-color:var(--green)" title="Reverb diffusion" aria-label="Reverb diffusion">
+        <output style="color:var(--green)" id="rv-diff-out">60%</output>
+      </div>
+      <div class="n8l-b44-knob">
+        <label>MIX</label>
+        <input type="range" id="rv-mix" min="0" max="100" value="35"
+          style="accent-color:var(--green)" title="Reverb wet mix" aria-label="Reverb wet mix">
+        <output style="color:var(--green)" id="rv-mix-out">35%</output>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="n8l-b44-js">
+(()=>{
+  "use strict";
+  if(window.__n8lB44)return;
+  window.__n8lB44=true;
+  const reduced=window.matchMedia?.("(prefers-reduced-motion:reduce)").matches;
+
+  /* ── 124: Noise Generator ── */
+  document.querySelectorAll(".n8l-ng-chip").forEach(c=>{
+    c.addEventListener("click",()=>{
+      document.querySelectorAll(".n8l-ng-chip").forEach(x=>x.classList.remove("on"));
+      c.classList.add("on");
+    });
+  });
+  const ngCanvas=document.getElementById("ng-canvas");
+  if(ngCanvas&&!reduced){
+    const ctx=ngCanvas.getContext("2d");
+    let ngBins=Array(60).fill(0);let ngPhase=0;
+    const draw=()=>{
+      const W=ngCanvas.width,H=ngCanvas.height;
+      ctx.fillStyle="rgba(6,8,18,.4)";ctx.fillRect(0,0,W,H);
+      const type=document.querySelector(".n8l-ng-chip.on")?.dataset.noise||"white";
+      const level=parseFloat(document.getElementById("ng-level")?.value||55)/100;
+      const cutN=Math.min(1,parseFloat(document.getElementById("ng-filter")?.value||8000)/20000);
+      const bw=W/ngBins.length-1;
+      ngBins=ngBins.map((old,i)=>{
+        const t=i/ngBins.length;
+        let raw;
+        if(type==="white")raw=Math.random();
+        else if(type==="pink")raw=Math.random()*Math.pow(1-t,.5);
+        else if(type==="brown")raw=Math.random()*Math.pow(1-t,1.5);
+        else raw=Math.random()>.85?Math.random():0;// crackle
+        raw*=t<cutN?1:Math.pow(1-(t-cutN)/(1-cutN+.001),2);
+        return old*.7+raw*.3*level;
+      });
+      ngBins.forEach((v,i)=>{
+        const h=Math.max(1,v*(H-4));
+        const hue=44+i*1.5;
+        ctx.fillStyle=`hsla(${hue},100%,60%,.8)`;
+        ctx.fillRect(i*(bw+1),H-h,bw,h);
+      });
+      ngPhase+=.06;requestAnimationFrame(draw);
+    };draw();
+  }
+  const ngFilterEl=document.getElementById("ng-filter");
+  const ngFilterOut=document.getElementById("ng-filter-out");
+  ngFilterEl?.addEventListener("input",()=>{
+    const v=parseInt(ngFilterEl.value);
+    if(ngFilterOut)ngFilterOut.value=v>=1000?(v/1000).toFixed(1)+"kHz":v+"Hz";
+  });
+  [["ng-level","ng-level-out","%"],["ng-stereo","ng-stereo-out","%"],
+   ["ng-density","ng-density-out",""]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ── 125: Frequency Shifter ── */
+  const fsCanvas=document.getElementById("fs-canvas");
+  if(fsCanvas&&!reduced){
+    const ctx=fsCanvas.getContext("2d");let fsPhase=0;
+    const draw=()=>{
+      const W=fsCanvas.width,H=fsCanvas.height;
+      ctx.fillStyle="#05060f";ctx.fillRect(0,0,W,H);
+      const shift=parseFloat(document.getElementById("fs-shift")?.value||0);
+      const mix=parseFloat(document.getElementById("fs-mix")?.value||60)/100;
+      const fb=parseFloat(document.getElementById("fs-fb")?.value||20)/100;
+      // Draw upper (USB) and lower (LSB) sidebands
+      const shiftN=shift/2000;// -1 to 1
+      // Carrier
+      ctx.strokeStyle=`rgba(160,108,255,${.3+mix*.4})`;ctx.lineWidth=1;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const t=x/W*Math.PI*8+fsPhase;
+        const y=H/2-Math.sin(t)*(H*.35-4);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+      // Shifted
+      ctx.strokeStyle=`rgba(255,79,163,${.5+mix*.4})`;ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const t=x/W*Math.PI*8+fsPhase*(1+shiftN*.3);
+        const fbOsc=Math.sin(t*fb*2)*.15;
+        const y=H/2-Math.sin(t+shiftN*Math.PI)*(H*.3-4)*mix-fbOsc*(H*.1);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+      // Shift indicator
+      const cx=W/2+shiftN*(W/2-8);
+      ctx.strokeStyle="rgba(160,108,255,.4)";ctx.lineWidth=1;
+      ctx.setLineDash([2,4]);
+      ctx.beginPath();ctx.moveTo(cx,0);ctx.lineTo(cx,H);ctx.stroke();
+      ctx.setLineDash([]);
+      fsPhase+=.04;requestAnimationFrame(draw);
+    };draw();
+  }
+  const fsShiftEl=document.getElementById("fs-shift");
+  const fsShiftOut=document.getElementById("fs-shift-out");
+  fsShiftEl?.addEventListener("input",()=>{
+    if(fsShiftOut)fsShiftOut.value=(fsShiftEl.value>0?"+":"")+fsShiftEl.value+"Hz";
+  });
+  [["fs-mix","fs-mix-out","%"],["fs-fb","fs-fb-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ── 126: Convolution Reverb Simulator ── */
+  const ROOM_PRESETS={
+    hall:{size:90,damp:30,pre:45,diff:80},
+    room:{size:55,damp:55,pre:15,diff:60},
+    plate:{size:65,damp:20,pre:5,diff:90},
+    cave:{size:95,damp:75,pre:60,diff:40},
+    spring:{size:35,damp:40,pre:8,diff:30},
+  };
+  document.querySelectorAll(".n8l-rv-room").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll(".n8l-rv-room").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");
+      const p=ROOM_PRESETS[b.dataset.room];if(!p)return;
+      ["rv-size","rv-damp","rv-pre","rv-diff"].forEach((id,i)=>{
+        const el=document.getElementById(id);
+        const out=document.getElementById(id+"-out");
+        const vals=[p.size,p.damp,p.pre,p.diff];
+        const units=["%","%","ms","%"];
+        if(el){el.value=vals[i];if(out)out.value=vals[i]+units[i]}
+      });
+    });
+  });
+  const rvCanvas=document.getElementById("rv-canvas");
+  if(rvCanvas&&!reduced){
+    const ctx=rvCanvas.getContext("2d");let rvPhase=0;
+    const draw=()=>{
+      const W=rvCanvas.width,H=rvCanvas.height;
+      ctx.fillStyle="rgba(4,10,18,.45)";ctx.fillRect(0,0,W,H);
+      const size=parseFloat(document.getElementById("rv-size")?.value||72)/100;
+      const damp=parseFloat(document.getElementById("rv-damp")?.value||45)/100;
+      const diff=parseFloat(document.getElementById("rv-diff")?.value||60)/100;
+      ctx.strokeStyle="rgba(0,255,136,.6)";ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const t=x/W;
+        const decay=Math.exp(-t*(1/size)*3);
+        const scatter=diff*(Math.sin(x*.15+rvPhase)*.3+Math.sin(x*.07-rvPhase*.5)*.2);
+        const damp_curve=Math.pow(1-damp*t,1.5);
+        const y=H-(decay*(1+scatter)*damp_curve)*(H-6)-3;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();rvPhase+=.025;requestAnimationFrame(draw);
+    };draw();
+  }
+  [["rv-size","rv-size-out","%"],["rv-damp","rv-damp-out","%"],
+   ["rv-pre","rv-pre-out","ms"],["rv-diff","rv-diff-out","%"],
+   ["rv-mix","rv-mix-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+})();
+</script>
 </body>
 </html>
