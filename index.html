@@ -2664,5 +2664,350 @@
   }
 })();
 </script>
+<!-- =========================================================
+     N8LOOPS BATCH 36 — UPGRADES 106 · 107 · 108
+     Transient Shaper | Tap Tempo Metronome | Harmonic Exciter
+     ========================================================= -->
+<style id="n8l-batch36-css">
+  .n8l-b36-panel{background:linear-gradient(148deg,rgba(8,22,44,.97),rgba(18,6,36,.95));
+    border:1px solid rgba(255,183,56,.14);border-radius:16px;padding:14px;
+    box-shadow:0 14px 40px rgba(0,0,0,.36),inset 0 1px rgba(255,255,255,.05)}
+  .n8l-b36-title{font:700 10px/1 var(--mono);color:var(--muted);letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .n8l-b36-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+  /* ── 106: Transient Shaper ── */
+  .n8l-trans-bands{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px}
+  .n8l-trans-band{display:grid;gap:4px;text-align:center;
+    border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:8px 6px}
+  .n8l-trans-band h4{font:700 8px var(--mono);color:var(--muted);text-transform:uppercase;
+    letter-spacing:.06em;margin:0 0 4px}
+  .n8l-trans-row{display:flex;flex-direction:column;gap:3px}
+  .n8l-trans-row label{font:6px var(--mono);color:var(--muted);text-align:left}
+  .n8l-trans-row input[type=range]{width:100%;accent-color:var(--amber)}
+  .n8l-trans-row output{font:700 8px var(--mono);color:var(--amber);text-align:right}
+  .n8l-trans-link{display:flex;align-items:center;gap:6px;margin-top:6px;
+    font:700 8px var(--mono);color:var(--muted)}
+  .n8l-trans-link input[type=checkbox]{accent-color:var(--amber);width:13px;height:13px}
+
+  /* ── 107: Tap Tempo Metronome ── */
+  #n8l-tap-btn{width:100%;min-height:54px;border:2px solid rgba(0,255,136,.3);border-radius:14px;
+    background:linear-gradient(135deg,rgba(0,255,136,.07),rgba(0,160,80,.05));
+    color:var(--green);font:900 13px var(--mono);letter-spacing:.12em;cursor:pointer;
+    transition:.12s ease;display:flex;align-items:center;justify-content:center;gap:8px}
+  #n8l-tap-btn:hover{background:linear-gradient(135deg,rgba(0,255,136,.16),rgba(0,160,80,.12));
+    box-shadow:0 0 24px rgba(0,255,136,.2)}
+  #n8l-tap-btn.beat{background:linear-gradient(135deg,rgba(0,255,136,.38),rgba(0,200,100,.28));
+    border-color:var(--green);box-shadow:0 0 36px rgba(0,255,136,.4)}
+  .n8l-metro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:8px 0}
+  .n8l-metro-beat{height:22px;border-radius:6px;border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.04);transition:background .08s,box-shadow .08s}
+  .n8l-metro-beat.active{background:rgba(0,255,136,.45);
+    box-shadow:0 0 18px rgba(0,255,136,.5);border-color:var(--green)}
+  .n8l-metro-beat.accent{background:rgba(0,255,136,.14);border-color:rgba(0,255,136,.3)}
+  .n8l-tap-info{display:flex;justify-content:space-between;align-items:center;
+    font:700 10px var(--mono)}
+  #n8l-tap-bpm{color:var(--green);font-size:13px}
+  #n8l-tap-groove{color:var(--muted);font-size:8px}
+  .n8l-metro-controls{display:flex;gap:5px;margin-top:6px}
+  .n8l-metro-controls select{flex:1;background:#04100a;border:1px solid rgba(0,255,136,.2);
+    border-radius:8px;color:var(--green);font:700 8px var(--mono);padding:4px 6px}
+
+  /* ── 108: Harmonic Exciter ── */
+  #n8l-exciter-canvas{width:100%;height:54px;border-radius:10px;background:#060a18;
+    border:1px solid rgba(255,79,163,.15);display:block}
+  .n8l-exciter-knobs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:7px}
+  .n8l-exciter-knob{display:grid;gap:3px;text-align:center}
+  .n8l-exciter-knob label{font:7px var(--mono);color:var(--muted);text-transform:uppercase;
+    letter-spacing:.06em}
+  .n8l-exciter-knob input[type=range]{width:100%;accent-color:var(--pink)}
+  .n8l-exciter-knob output{font:700 8px var(--mono);color:var(--pink)}
+  .n8l-exciter-mode{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+  .n8l-exciter-mode button{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.1);
+    border-radius:6px;background:rgba(255,255,255,.05);color:var(--muted);
+    font:700 7px var(--mono);letter-spacing:.05em;cursor:pointer;transition:.14s}
+  .n8l-exciter-mode button.active{border-color:rgba(255,79,163,.6);
+    background:rgba(255,79,163,.16);color:var(--pink)}
+</style>
+
+<section id="n8l-batch36-section"
+  style="padding:0 12px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;"
+  aria-label="N8Loops Batch 36 Upgrades">
+
+  <!-- UPGRADE 106: MULTI-BAND TRANSIENT SHAPER -->
+  <div class="n8l-b36-panel" id="n8l-trans-module">
+    <div class="n8l-b36-title">
+      <span class="n8l-b36-dot" style="background:var(--amber);box-shadow:0 0 8px var(--amber)"></span>
+      TRANSIENT SHAPER
+    </div>
+    <div class="n8l-trans-bands">
+      <div class="n8l-trans-band">
+        <h4>LOW</h4>
+        <div class="n8l-trans-row">
+          <label>ATTACK</label>
+          <input type="range" id="trans-lo-atk" min="-12" max="12" value="4" step="0.5"
+            title="Low band transient attack" aria-label="Low band transient attack">
+          <output id="trans-lo-atk-out">+4</output>
+        </div>
+        <div class="n8l-trans-row">
+          <label>SUSTAIN</label>
+          <input type="range" id="trans-lo-sus" min="-12" max="12" value="-2" step="0.5"
+            title="Low band sustain" aria-label="Low band sustain">
+          <output id="trans-lo-sus-out">-2</output>
+        </div>
+      </div>
+      <div class="n8l-trans-band">
+        <h4>MID</h4>
+        <div class="n8l-trans-row">
+          <label>ATTACK</label>
+          <input type="range" id="trans-mid-atk" min="-12" max="12" value="2" step="0.5"
+            title="Mid band transient attack" aria-label="Mid band transient attack">
+          <output id="trans-mid-atk-out">+2</output>
+        </div>
+        <div class="n8l-trans-row">
+          <label>SUSTAIN</label>
+          <input type="range" id="trans-mid-sus" min="-12" max="12" value="0" step="0.5"
+            title="Mid band sustain" aria-label="Mid band sustain">
+          <output id="trans-mid-sus-out">0</output>
+        </div>
+      </div>
+      <div class="n8l-trans-band">
+        <h4>HIGH</h4>
+        <div class="n8l-trans-row">
+          <label>ATTACK</label>
+          <input type="range" id="trans-hi-atk" min="-12" max="12" value="6" step="0.5"
+            title="High band transient attack" aria-label="High band transient attack">
+          <output id="trans-hi-atk-out">+6</output>
+        </div>
+        <div class="n8l-trans-row">
+          <label>SUSTAIN</label>
+          <input type="range" id="trans-hi-sus" min="-12" max="12" value="-4" step="0.5"
+            title="High band sustain" aria-label="High band sustain">
+          <output id="trans-hi-sus-out">-4</output>
+        </div>
+      </div>
+    </div>
+    <div class="n8l-trans-link">
+      <input type="checkbox" id="trans-link-bands" title="Link all bands" aria-label="Link all bands">
+      <label for="trans-link-bands">LINK ALL BANDS</label>
+    </div>
+  </div>
+
+  <!-- UPGRADE 107: TAP TEMPO VISUAL METRONOME -->
+  <div class="n8l-b36-panel" id="n8l-metro-module">
+    <div class="n8l-b36-title">
+      <span class="n8l-b36-dot" style="background:var(--green);box-shadow:0 0 8px var(--green)"></span>
+      TAP TEMPO METRONOME
+    </div>
+    <button id="n8l-tap-btn" title="Tap to set tempo" aria-label="Tap to set tempo">
+      🥁 TAP TEMPO
+    </button>
+    <div class="n8l-metro-grid" id="n8l-metro-grid" aria-label="Beat visualization grid">
+      <div class="n8l-metro-beat accent"></div>
+      <div class="n8l-metro-beat"></div>
+      <div class="n8l-metro-beat"></div>
+      <div class="n8l-metro-beat"></div>
+    </div>
+    <div class="n8l-tap-info">
+      <span id="n8l-tap-bpm">— BPM</span>
+      <span id="n8l-tap-groove">STRAIGHT</span>
+    </div>
+    <div class="n8l-metro-controls">
+      <select id="n8l-metro-time-sig" aria-label="Time signature" title="Time signature">
+        <option value="4">4/4</option>
+        <option value="3">3/4</option>
+        <option value="6">6/8</option>
+        <option value="5">5/4</option>
+        <option value="7">7/8</option>
+      </select>
+      <select id="n8l-metro-groove" aria-label="Groove feel" title="Groove feel">
+        <option value="straight">STRAIGHT</option>
+        <option value="swing">SWING</option>
+        <option value="shuffle">SHUFFLE</option>
+        <option value="half">HALF-TIME</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- UPGRADE 108: HARMONIC EXCITER -->
+  <div class="n8l-b36-panel" id="n8l-exciter-module">
+    <div class="n8l-b36-title">
+      <span class="n8l-b36-dot" style="background:var(--pink);box-shadow:0 0 8px var(--pink)"></span>
+      HARMONIC EXCITER
+    </div>
+    <canvas id="n8l-exciter-canvas" width="300" height="54"
+      aria-label="Harmonic exciter spectrum visualization"></canvas>
+    <div class="n8l-exciter-knobs">
+      <div class="n8l-exciter-knob">
+        <label>DRIVE</label>
+        <input type="range" id="exciter-drive" min="0" max="100" value="35"
+          title="Exciter drive amount" aria-label="Exciter drive amount">
+        <output id="exciter-drive-out">35%</output>
+      </div>
+      <div class="n8l-exciter-knob">
+        <label>PRESENCE</label>
+        <input type="range" id="exciter-presence" min="0" max="100" value="55"
+          title="Presence boost" aria-label="Presence boost">
+        <output id="exciter-presence-out">55%</output>
+      </div>
+      <div class="n8l-exciter-knob">
+        <label>AIR</label>
+        <input type="range" id="exciter-air" min="0" max="100" value="40"
+          title="Air shelf boost" aria-label="Air shelf boost">
+        <output id="exciter-air-out">40%</output>
+      </div>
+      <div class="n8l-exciter-knob">
+        <label>MIX</label>
+        <input type="range" id="exciter-mix" min="0" max="100" value="60"
+          title="Exciter wet/dry mix" aria-label="Exciter wet/dry mix">
+        <output id="exciter-mix-out">60%</output>
+      </div>
+    </div>
+    <div class="n8l-exciter-mode">
+      <button class="active" data-mode="tube" title="Tube harmonic mode">TUBE</button>
+      <button data-mode="tape" title="Tape saturation mode">TAPE</button>
+      <button data-mode="airy" title="Airy high-freq mode">AIRY</button>
+      <button data-mode="vintage" title="Vintage warmth mode">VINTAGE</button>
+    </div>
+  </div>
+
+</section>
+
+<script id="n8l-batch36-js">
+(()=>{
+  "use strict";
+  if(window.__n8lBatch36)return;
+  window.__n8lBatch36=true;
+
+  /* ── UPGRADE 106: Multi-Band Transient Shaper ── */
+  const transPairs=[
+    ["trans-lo-atk","trans-lo-atk-out"],["trans-lo-sus","trans-lo-sus-out"],
+    ["trans-mid-atk","trans-mid-atk-out"],["trans-mid-sus","trans-mid-sus-out"],
+    ["trans-hi-atk","trans-hi-atk-out"],["trans-hi-sus","trans-hi-sus-out"],
+  ];
+  const linkEl=document.getElementById("trans-link-bands");
+  transPairs.forEach(([id,outId])=>{
+    const inp=document.getElementById(id);
+    const out=document.getElementById(outId);
+    if(!inp||!out)return;
+    inp.addEventListener("input",()=>{
+      const v=parseFloat(inp.value);
+      out.value=(v>=0?"+":"")+v;
+      if(linkEl?.checked&&id.includes("atk")){
+        ["trans-lo-atk","trans-mid-atk","trans-hi-atk"].forEach(otherId=>{
+          if(otherId!==id){
+            const o=document.getElementById(otherId);
+            const oo=document.getElementById(otherId+"-out");
+            if(o&&oo){o.value=inp.value;oo.value=(v>=0?"+":"")+v}
+          }
+        });
+      }
+    });
+  });
+
+  /* ── UPGRADE 107: Tap Tempo Visual Metronome ── */
+  const tapBtn=document.getElementById("n8l-tap-btn");
+  const tapBpm=document.getElementById("n8l-tap-bpm");
+  const tapGroove=document.getElementById("n8l-tap-groove");
+  const metroGrid=document.getElementById("n8l-metro-grid");
+  const timeSigEl=document.getElementById("n8l-metro-time-sig");
+  const grooveEl=document.getElementById("n8l-metro-groove");
+  let tapTimes=[],metroBeat=0,metroTimer=null;
+
+  function buildMetroGrid(){
+    if(!metroGrid||!timeSigEl)return;
+    const sig=parseInt(timeSigEl.value||4);
+    metroGrid.style.gridTemplateColumns=`repeat(${sig},1fr)`;
+    metroGrid.innerHTML="";
+    for(let i=0;i<sig;i++){
+      const b=document.createElement("div");
+      b.className="n8l-metro-beat"+(i===0?" accent":"");
+      metroGrid.appendChild(b);
+    }
+  }
+  buildMetroGrid();
+  timeSigEl?.addEventListener("change",buildMetroGrid);
+  grooveEl?.addEventListener("change",()=>{
+    if(tapGroove)tapGroove.textContent=grooveEl.options[grooveEl.selectedIndex]?.text||"STRAIGHT";
+  });
+
+  if(tapBtn){
+    tapBtn.addEventListener("click",()=>{
+      const now=performance.now();
+      tapTimes.push(now);
+      if(tapTimes.length>8)tapTimes.shift();
+      tapBtn.classList.add("beat");
+      setTimeout(()=>tapBtn.classList.remove("beat"),120);
+      if(tapTimes.length>=2){
+        const intervals=tapTimes.slice(1).map((t,i)=>t-tapTimes[i]);
+        const avg=intervals.reduce((a,b)=>a+b,0)/intervals.length;
+        const bpm=Math.round(60000/avg);
+        if(tapBpm)tapBpm.textContent=`${bpm} BPM`;
+        if(metroTimer)clearInterval(metroTimer);
+        const beats=metroGrid?.children;
+        if(beats&&beats.length){
+          metroBeat=0;
+          metroTimer=setInterval(()=>{
+            Array.from(beats).forEach((b,i)=>{
+              b.classList.toggle("active",i===metroBeat);
+            });
+            metroBeat=(metroBeat+1)%beats.length;
+          },avg);
+        }
+      }
+    });
+  }
+
+  /* ── UPGRADE 108: Harmonic Exciter Canvas ── */
+  const excCanvas=document.getElementById("n8l-exciter-canvas");
+  if(excCanvas){
+    const ctx=excCanvas.getContext("2d");
+    let excPhase=0;
+    const driveEl=document.getElementById("exciter-drive");
+    const presEl=document.getElementById("exciter-presence");
+    const airEl=document.getElementById("exciter-air");
+    function drawExciter(){
+      const W=excCanvas.width,H=excCanvas.height;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle="#060a18";ctx.fillRect(0,0,W,H);
+      const drive=(parseFloat(driveEl?.value||35)/100);
+      const pres=(parseFloat(presEl?.value||55)/100);
+      const air=(parseFloat(airEl?.value||40)/100);
+      const bars=24;
+      const bw=W/bars-2;
+      for(let i=0;i<bars;i++){
+        const t=i/bars;
+        const harmonicBoost=t>0.55?air*(t-0.55)*2.5:0;
+        const presBoost=t>0.3&&t<0.75?pres*(1-Math.abs(t-0.52)*3.2)*0.8:0;
+        const h=Math.max(4,(drive*0.6+harmonicBoost+presBoost)*H*
+          (0.4+0.6*Math.abs(Math.sin(i*0.42+excPhase))));
+        const alpha=0.5+0.5*Math.abs(Math.sin(i*0.55+excPhase*0.7));
+        const r=Math.round(255*(0.6+0.4*t));
+        const g=Math.round(79*(1-t));
+        const b=Math.round(163*(0.5+0.5*(1-t)));
+        ctx.fillStyle=`rgba(${r},${g},${b},${alpha.toFixed(2)})`;
+        ctx.fillRect(i*(bw+2),H-h,bw,h);
+      }
+      excPhase+=0.04;
+      requestAnimationFrame(drawExciter);
+    }
+    drawExciter();
+    [["exciter-drive","exciter-drive-out","%"],
+     ["exciter-presence","exciter-presence-out","%"],
+     ["exciter-air","exciter-air-out","%"],
+     ["exciter-mix","exciter-mix-out","%"]].forEach(([id,outId,unit])=>{
+      const inp=document.getElementById(id);
+      const out=document.getElementById(outId);
+      if(inp&&out)inp.addEventListener("input",()=>out.value=inp.value+unit);
+    });
+    document.querySelectorAll(".n8l-exciter-mode button").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        document.querySelectorAll(".n8l-exciter-mode button").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  }
+})();
+</script>
 </body>
 </html>
