@@ -704,6 +704,27 @@
       </div>
     </section>
 
+    <!-- BATCH 16 UPGRADES (UPGRADES 46, 47, 48): TUBE BIAS WARMTH, NOISE GATE & STEMS EXPORTER -->
+    <section id="beats-batch16-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 46: BEATS TUBE BIAS WARMTH -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">💡 TUBE BIAS VOLTAGE</b>
+        <input type="range" min="0" max="100" value="40" style="width:100%; accent-color:#ff0033;" title="Vacuum Tube Bias Warmth" />
+      </div>
+
+      <!-- UPGRADE 47: BEATS DYNAMIC NOISE GATE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🛡️ NOISE GATE CUTOFF</b>
+        <input type="range" min="-80" max="-20" value="-50" style="width:100%; accent-color:#00f0ff;" title="Noise Gate Threshold" />
+      </div>
+
+      <!-- UPGRADE 48: BEATS STEMS ZIP PACKAGER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">📦 MASTER STEMS PACKAGER</b>
+        <button class="btn tiny cyan" onclick="if(typeof bounce==='function') bounce();" style="width:100%;">📦 ZIP ALL TRACK STEMS</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
