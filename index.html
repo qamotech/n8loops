@@ -469,6 +469,32 @@
       </div>
     </section>
 
+    <!-- BATCH 6 UPGRADES (UPGRADES 16, 17, 18): VOCAL FORMANT SHIFTER, REVERB SPACE & STEREO WIDTH -->
+    <section id="beats-batch6-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 16: BEATS VOCAL FORMANT SHIFTER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🗣️ FORMANT PITCH SHIFT</b>
+        <input type="range" min="-12" max="12" value="0" style="width:100%; accent-color:#ff0033;" title="Formant Pitch Shift" />
+      </div>
+
+      <!-- UPGRADE 17: BEATS REVERB SPACE SELECTOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#a87cff; display:block; margin-bottom:6px;">🏰 REVERB ACOUSTIC SPACE</b>
+        <select class="theme-select" style="width:100%; height:28px; font-size:8px;" title="Reverb Preset">
+          <option value="studio">STUDIO BOOTH</option>
+          <option value="hall" selected>CONCERT HALL</option>
+          <option value="plate">METALLIC PLATE</option>
+          <option value="void">COSMIC VOID</option>
+        </select>
+      </div>
+
+      <!-- UPGRADE 18: BEATS STEREO WIDTH EXPANDER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">↔️ STEREO EXPANDER (200%)</b>
+        <input type="range" min="0" max="200" value="135" style="width:100%; accent-color:#00f0ff;" title="Stereo Width Expander" />
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
