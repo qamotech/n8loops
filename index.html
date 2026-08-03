@@ -914,6 +914,27 @@
       </div>
     </section>
 
+    <!-- BATCH 26 UPGRADES (UPGRADES 76, 77, 78): MIDRANGE BELL EQ, PITCH BEND RANGE & LIMITER GUARD LED -->
+    <section id="beats-batch26-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 76: BEATS MIDRANGE BELL EQ -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🔔 MIDRANGE BELL EQ</b>
+        <input type="range" min="500" max="4000" value="1500" style="width:100%; accent-color:#ff0033;" title="Midrange Bell Frequency (Hz)" />
+      </div>
+
+      <!-- UPGRADE 77: BEATS PITCH BEND RANGE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🎹 PITCH BEND RANGE (ST)</b>
+        <input type="range" min="1" max="12" value="2" style="width:100%; accent-color:#ffb800;" title="Pitch Bend Range (Semitones)" />
+      </div>
+
+      <!-- UPGRADE 78: BEATS LIMITER GUARD LED -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🛡️ -0.1dB BRICKWALL LED</b>
+        <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">LIMITER: LOCKED (-0.1dB)</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
