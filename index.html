@@ -978,6 +978,27 @@
       </div>
     </section>
 
+    <!-- BATCH 29 UPGRADES (UPGRADES 85, 86, 87): HIGH-PASS SUB CUTOFF, SYNTH ENVELOPE ATTACK & LIMITER RELEASE SELECTOR -->
+    <section id="beats-batch29-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 85: BEATS HIGH-PASS SUB CUTOFF -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🔊 SUB HIGH-PASS CUTOFF (Hz)</b>
+        <input type="range" min="10" max="80" value="25" style="width:100%; accent-color:#ff0033;" title="Sub High-Pass Cutoff (Hz)" />
+      </div>
+
+      <!-- UPGRADE 86: BEATS SYNTH ENVELOPE ATTACK -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">📈 SYNTH ENVELOPE ATTACK</b>
+        <input type="range" min="0" max="500" value="12" style="width:100%; accent-color:#ffb800;" title="Attack Time (ms)" />
+      </div>
+
+      <!-- UPGRADE 87: BEATS LIMITER RELEASE SELECTOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🛡️ LIMITER RELEASE PROFILE</b>
+        <button class="btn tiny primary" onclick="this.textContent = this.textContent.includes('FAST') ? 'RELEASE: SMOOTH' : 'RELEASE: FAST';" style="width:100%;">RELEASE: FAST</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
