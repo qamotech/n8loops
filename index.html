@@ -1041,6 +1041,27 @@
       </div>
     </section>
 
+    <!-- BATCH 32 UPGRADES (UPGRADES 94, 95, 96): LOW-CUT NOTCH FILTER, SYNTH LEGATO MODE & BRICKWALL KNEE ANGLE -->
+    <section id="beats-batch32-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 94: BEATS LOW-CUT NOTCH FILTER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🔊 LOW-CUT NOTCH FILTER (Hz)</b>
+        <input type="range" min="20" max="250" value="80" style="width:100%; accent-color:#ff0033;" title="Low-Cut Notch Filter (Hz)" />
+      </div>
+
+      <!-- UPGRADE 95: BEATS SYNTH LEGATO MODE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🎹 LEGATO GLIDE MODE</b>
+        <button class="btn tiny primary" onclick="this.textContent = this.textContent.includes('LEGATO') ? 'SYNTH: POLY' : 'SYNTH: LEGATO';" style="width:100%;">SYNTH: LEGATO</button>
+      </div>
+
+      <!-- UPGRADE 96: BEATS BRICKWALL KNEE ANGLE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🧱 BRICKWALL KNEE ANGLE</b>
+        <input type="range" min="0" max="45" value="15" style="width:100%; accent-color:#00ff88;" title="Limiter Knee Angle (deg)" />
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
