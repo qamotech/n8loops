@@ -1062,6 +1062,27 @@
       </div>
     </section>
 
+    <!-- BATCH 33 UPGRADES (UPGRADES 97, 98, 99): MID-PEAK EQ BANDWIDTH Q, SYNTH PORTAMENTO TIME & SOFT SATURATION LED -->
+    <section id="beats-batch33-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 97: BEATS MID-PEAK EQ BANDWIDTH Q -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🔊 MID-PEAK EQ BANDWIDTH Q</b>
+        <input type="range" min="5" max="80" value="20" style="width:100%; accent-color:#ff0033;" title="Mid-Peak EQ Q Factor (x10)" />
+      </div>
+
+      <!-- UPGRADE 98: BEATS SYNTH PORTAMENTO TIME -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">📈 PORTAMENTO GLIDE TIME</b>
+        <input type="range" min="0" max="1000" value="45" style="width:100%; accent-color:#ffb800;" title="Portamento Glide Time (ms)" />
+      </div>
+
+      <!-- UPGRADE 99: BEATS SOFT SATURATION LED -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🔥 SOFT SATURATION STAGE</b>
+        <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">SATURATION: ACTIVE</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
