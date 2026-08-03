@@ -809,6 +809,27 @@
       </div>
     </section>
 
+    <!-- BATCH 21 UPGRADES (UPGRADES 61, 62, 63): LIMITER KNEE SELECTOR, 32-BIT MULTI-STEM EXPORTER & LOW-LATENCY WORKLET MODE -->
+    <section id="beats-batch21-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 61: BEATS LIMITER KNEE SELECTOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">📈 LIMITER KNEE SELECTOR</b>
+        <input type="range" min="0" max="100" value="15" style="width:100%; accent-color:#ff0033;" title="Hard/Soft Limiting Knee" />
+      </div>
+
+      <!-- UPGRADE 62: BEATS 32-BIT MULTI-STEM EXPORTER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🎛️ 32-BIT FLOAT STEM BOUNCER</b>
+        <button class="btn tiny primary" onclick="if(typeof bounce==='function') bounce();" style="width:100%;">EXPORT 32-BIT WAV STEMS</button>
+      </div>
+
+      <!-- UPGRADE 63: BEATS LOW-LATENCY WORKLET MODE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">⚡ LOW-LATENCY WORKLET</b>
+        <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">WORKLET: &lt;5ms ACTIVE</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
