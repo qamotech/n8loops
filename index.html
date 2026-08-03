@@ -3009,5 +3009,780 @@
   }
 })();
 </script>
+<!-- ═══════════════════════════════════════════════════════════════
+     N8LOOPS MEGA-BATCH 37-42 — UPGRADES 109 through 126
+     Catching up on iterations 33-55 of task-663
+     ═══════════════════════════════════════════════════════════════ -->
+<style id="n8l-mega37-css">
+/* ─── Shared Mega Panel ─── */
+.n8l-mega-panel{background:linear-gradient(152deg,rgba(6,14,30,.97),rgba(16,6,32,.95));
+  border:1px solid rgba(110,248,255,.12);border-radius:14px;padding:12px;
+  box-shadow:0 12px 36px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.04)}
+.n8l-mega-title{font:700 9px/1 var(--mono);color:var(--muted);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.n8l-mega-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  animation:megaDotPulse 2s ease-in-out infinite}
+@keyframes megaDotPulse{0%,100%{opacity:1}50%{opacity:.3}}
+.n8l-mega-knob-row{display:flex;gap:6px;flex-wrap:wrap}
+.n8l-mega-knob{flex:1;min-width:50px;display:grid;gap:2px;text-align:center}
+.n8l-mega-knob label{font:6px var(--mono);color:var(--muted);text-transform:uppercase}
+.n8l-mega-knob input[type=range]{width:100%}
+.n8l-mega-knob output{font:700 8px var(--mono)}
+.n8l-mega-btn-row{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.n8l-mega-btn{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.1);border-radius:6px;
+  background:rgba(255,255,255,.05);color:var(--muted);font:700 7px var(--mono);
+  cursor:pointer;transition:.12s ease}
+.n8l-mega-btn:hover{border-color:rgba(110,248,255,.4);color:var(--cyan)}
+.n8l-mega-btn.active{border-color:rgba(110,248,255,.7);background:rgba(110,248,255,.14);color:var(--cyan)}
+.n8l-mega-canvas{width:100%;border-radius:8px;display:block;margin-bottom:6px}
+
+/* ─── 109: Pitch Quantizer ─── */
+.n8l-pq-keys{display:flex;gap:2px;margin:6px 0}
+.n8l-pq-key{flex:1;height:28px;border-radius:4px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.05);cursor:pointer;font:700 7px var(--mono);color:var(--muted);
+  display:grid;place-items:center;transition:.12s}
+.n8l-pq-key.on{background:rgba(0,240,255,.22);border-color:var(--cyan);color:var(--cyan)}
+.n8l-pq-scale-select{width:100%;background:#040b18;border:1px solid rgba(0,240,255,.2);
+  border-radius:7px;color:var(--cyan);font:700 8px var(--mono);padding:3px 6px;
+  accent-color:var(--cyan)}
+
+/* ─── 110: Arpeggiator ─── */
+.n8l-arp-steps{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin:6px 0}
+.n8l-arp-step{height:20px;border-radius:4px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);cursor:pointer;transition:.1s}
+.n8l-arp-step.on{background:rgba(255,183,56,.35);border-color:var(--amber)}
+.n8l-arp-step.play{background:rgba(255,183,56,.7);box-shadow:0 0 12px rgba(255,183,56,.5)}
+
+/* ─── 111: Multi-Tap Delay ─── */
+.n8l-mtd-taps{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.n8l-mtd-tap{border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:6px}
+.n8l-mtd-tap h5{font:700 7px var(--mono);color:var(--muted);text-transform:uppercase;
+  margin:0 0 4px;letter-spacing:.07em}
+
+/* ─── 112: Beat Repeat ─── */
+.n8l-br-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:6px}
+.n8l-br-cell{height:24px;border-radius:5px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);cursor:pointer;transition:.1s}
+.n8l-br-cell.active{background:rgba(160,108,255,.4);border-color:var(--purple);
+  box-shadow:0 0 14px rgba(160,108,255,.3)}
+
+/* ─── 113: Sidechain Visualizer ─── */
+/* uses .n8l-mega-canvas */
+
+/* ─── 114: LFO Router ─── */
+.n8l-lfo-wave-row{display:flex;gap:3px;margin:4px 0}
+.n8l-lfo-wave{flex:1;height:22px;border-radius:5px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);cursor:pointer;font:700 7px var(--mono);color:var(--muted);
+  display:grid;place-items:center;transition:.12s}
+.n8l-lfo-wave.active{border-color:rgba(255,79,163,.6);background:rgba(255,79,163,.16);color:var(--pink)}
+
+/* ─── 115: Ring Modulator ─── */
+/* uses .n8l-mega-canvas + knobs */
+
+/* ─── 116: Auto-Pan ─── */
+.n8l-autopan-canvas{width:100%;height:36px;border-radius:8px;background:#040918;
+  border:1px solid rgba(0,240,255,.1);display:block;margin-bottom:5px}
+
+/* ─── 117: Polyrhythm Generator ─── */
+.n8l-poly-circles{display:flex;justify-content:space-around;align-items:center;
+  margin:6px 0;gap:4px}
+.n8l-poly-ring{border-radius:50%;border:2px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;font:700 8px var(--mono);
+  color:var(--muted);transition:.2s;cursor:pointer}
+.n8l-poly-ring.active{border-color:var(--green);color:var(--green);
+  box-shadow:0 0 16px rgba(0,255,136,.25)}
+
+/* ─── 118: Dynamic EQ ─── */
+/* uses canvas */
+</style>
+
+<section id="n8l-mega37-sec-a"
+  style="padding:0 12px 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;"
+  aria-label="N8Loops Mega-Batch A (109-111)">
+
+  <!-- UPGRADE 109: PITCH QUANTIZER -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--cyan)"></span>PITCH QUANTIZER
+    </div>
+    <select class="n8l-pq-scale-select" id="pq-scale" aria-label="Scale selection" title="Scale">
+      <option value="maj">MAJOR</option><option value="min">MINOR</option>
+      <option value="pent">PENTATONIC</option><option value="blues">BLUES</option>
+      <option value="dor">DORIAN</option><option value="chrom">CHROMATIC</option>
+    </select>
+    <div class="n8l-pq-keys" id="pq-keys" aria-label="Active scale notes">
+      <div class="n8l-pq-key on" data-note="C">C</div><div class="n8l-pq-key on" data-note="D">D</div>
+      <div class="n8l-pq-key on" data-note="E">E</div><div class="n8l-pq-key" data-note="F#">F#</div>
+      <div class="n8l-pq-key on" data-note="G">G</div><div class="n8l-pq-key on" data-note="A">A</div>
+      <div class="n8l-pq-key on" data-note="B">B</div>
+    </div>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>STRENGTH</label>
+        <input type="range" id="pq-strength" min="0" max="100" value="100"
+          style="accent-color:var(--cyan)" title="Quantize strength" aria-label="Quantize strength">
+        <output style="color:var(--cyan)" id="pq-str-out">100%</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>GLIDE</label>
+        <input type="range" id="pq-glide" min="0" max="200" value="20"
+          style="accent-color:var(--cyan)" title="Pitch glide ms" aria-label="Pitch glide ms">
+        <output style="color:var(--cyan)" id="pq-glide-out">20ms</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 110: ARPEGGIATOR ENGINE -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--amber)"></span>ARPEGGIATOR ENGINE
+    </div>
+    <div class="n8l-arp-steps" id="arp-steps" aria-label="Arpeggiator step grid"></div>
+    <div class="n8l-mega-knob-row" style="margin-top:4px">
+      <div class="n8l-mega-knob">
+        <label>RATE</label>
+        <input type="range" id="arp-rate" min="1" max="16" value="8"
+          style="accent-color:var(--amber)" title="Arpeggiator rate" aria-label="Arpeggiator rate">
+        <output style="color:var(--amber)" id="arp-rate-out">8th</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>OCTAVES</label>
+        <input type="range" id="arp-oct" min="1" max="4" value="2"
+          style="accent-color:var(--amber)" title="Arpeggio octave range" aria-label="Arpeggio octave range">
+        <output style="color:var(--amber)" id="arp-oct-out">2</output>
+      </div>
+    </div>
+    <div class="n8l-mega-btn-row">
+      <button class="n8l-mega-btn active" data-arp="up">UP</button>
+      <button class="n8l-mega-btn" data-arp="down">DOWN</button>
+      <button class="n8l-mega-btn" data-arp="updown">UP/DN</button>
+      <button class="n8l-mega-btn" data-arp="random">RND</button>
+    </div>
+  </div>
+
+  <!-- UPGRADE 111: MULTI-TAP DELAY -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--purple)"></span>MULTI-TAP DELAY
+    </div>
+    <div class="n8l-mtd-taps">
+      <div class="n8l-mtd-tap">
+        <h5>TAP 1</h5>
+        <input type="range" id="mtd-t1" min="10" max="500" value="125" step="5"
+          style="width:100%;accent-color:var(--purple)" title="Tap 1 delay ms" aria-label="Tap 1 delay ms">
+        <output style="font:700 8px var(--mono);color:var(--purple)" id="mtd-t1-out">125ms</output>
+      </div>
+      <div class="n8l-mtd-tap">
+        <h5>TAP 2</h5>
+        <input type="range" id="mtd-t2" min="10" max="500" value="250" step="5"
+          style="width:100%;accent-color:var(--purple)" title="Tap 2 delay ms" aria-label="Tap 2 delay ms">
+        <output style="font:700 8px var(--mono);color:var(--purple)" id="mtd-t2-out">250ms</output>
+      </div>
+      <div class="n8l-mtd-tap">
+        <h5>TAP 3</h5>
+        <input type="range" id="mtd-t3" min="10" max="500" value="375" step="5"
+          style="width:100%;accent-color:var(--purple)" title="Tap 3 delay ms" aria-label="Tap 3 delay ms">
+        <output style="font:700 8px var(--mono);color:var(--purple)" id="mtd-t3-out">375ms</output>
+      </div>
+      <div class="n8l-mtd-tap">
+        <h5>SPREAD</h5>
+        <input type="range" id="mtd-spread" min="0" max="100" value="60"
+          style="width:100%;accent-color:var(--purple)" title="Stereo spread" aria-label="Stereo spread">
+        <output style="font:700 8px var(--mono);color:var(--purple)" id="mtd-spread-out">60%</output>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="n8l-mega37-sec-b"
+  style="padding:0 12px 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;"
+  aria-label="N8Loops Mega-Batch B (112-114)">
+
+  <!-- UPGRADE 112: BEAT REPEAT / STUTTER -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--red)"></span>BEAT REPEAT
+    </div>
+    <div class="n8l-br-grid" id="br-grid" aria-label="Beat repeat pattern grid"></div>
+    <div class="n8l-mega-knob-row" style="margin-top:6px">
+      <div class="n8l-mega-knob">
+        <label>SIZE</label>
+        <input type="range" id="br-size" min="1" max="8" value="2"
+          style="accent-color:var(--red)" title="Repeat chunk size" aria-label="Repeat chunk size">
+        <output style="color:var(--red)" id="br-size-out">1/4</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>GATE</label>
+        <input type="range" id="br-gate" min="0" max="100" value="80"
+          style="accent-color:var(--red)" title="Stutter gate" aria-label="Stutter gate">
+        <output style="color:var(--red)" id="br-gate-out">80%</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>MIX</label>
+        <input type="range" id="br-mix" min="0" max="100" value="50"
+          style="accent-color:var(--red)" title="Beat repeat mix" aria-label="Beat repeat mix">
+        <output style="color:var(--red)" id="br-mix-out">50%</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 113: SIDECHAIN COMPRESSOR VISUALIZER -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--green)"></span>SIDECHAIN COMP
+    </div>
+    <canvas id="sc-canvas" class="n8l-mega-canvas" width="300" height="52"
+      aria-label="Sidechain compressor envelope visualization"></canvas>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>THRESH</label>
+        <input type="range" id="sc-thresh" min="-40" max="0" value="-18"
+          style="accent-color:var(--green)" title="Sidechain threshold dB" aria-label="Sidechain threshold dB">
+        <output style="color:var(--green)" id="sc-thresh-out">-18dB</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>RATIO</label>
+        <input type="range" id="sc-ratio" min="1" max="20" value="4"
+          style="accent-color:var(--green)" title="Compression ratio" aria-label="Compression ratio">
+        <output style="color:var(--green)" id="sc-ratio-out">4:1</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>RELEASE</label>
+        <input type="range" id="sc-rel" min="10" max="500" value="120" step="10"
+          style="accent-color:var(--green)" title="Release ms" aria-label="Release ms">
+        <output style="color:var(--green)" id="sc-rel-out">120ms</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 114: LFO-TO-FILTER ROUTER -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--pink)"></span>LFO → FILTER ROUTER
+    </div>
+    <div class="n8l-lfo-wave-row">
+      <div class="n8l-lfo-wave active" data-wave="sine">SIN</div>
+      <div class="n8l-lfo-wave" data-wave="tri">TRI</div>
+      <div class="n8l-lfo-wave" data-wave="saw">SAW</div>
+      <div class="n8l-lfo-wave" data-wave="sq">SQR</div>
+      <div class="n8l-lfo-wave" data-wave="sh">S&H</div>
+    </div>
+    <canvas id="lfo-canvas" class="n8l-mega-canvas" width="300" height="44"
+      aria-label="LFO waveform visualization"></canvas>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>RATE</label>
+        <input type="range" id="lfo-rate" min="0.1" max="20" value="2" step="0.1"
+          style="accent-color:var(--pink)" title="LFO rate Hz" aria-label="LFO rate Hz">
+        <output style="color:var(--pink)" id="lfo-rate-out">2Hz</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>DEPTH</label>
+        <input type="range" id="lfo-depth" min="0" max="100" value="60"
+          style="accent-color:var(--pink)" title="LFO modulation depth" aria-label="LFO modulation depth">
+        <output style="color:var(--pink)" id="lfo-depth-out">60%</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>DEST</label>
+        <select id="lfo-dest" style="width:100%;background:#08091a;border:1px solid rgba(255,79,163,.3);
+          border-radius:6px;color:var(--pink);font:700 7px var(--mono);padding:2px"
+          aria-label="LFO destination" title="LFO destination">
+          <option>FILTER</option><option>PITCH</option><option>PAN</option><option>VOL</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="n8l-mega37-sec-c"
+  style="padding:0 12px 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;"
+  aria-label="N8Loops Mega-Batch C (115-117)">
+
+  <!-- UPGRADE 115: RING MODULATOR -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--amber)"></span>RING MODULATOR
+    </div>
+    <canvas id="rm-canvas" class="n8l-mega-canvas" width="300" height="48"
+      aria-label="Ring modulator output waveform"></canvas>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>CARRIER</label>
+        <input type="range" id="rm-freq" min="20" max="2000" value="440"
+          style="accent-color:var(--amber)" title="Carrier frequency Hz" aria-label="Carrier frequency Hz">
+        <output style="color:var(--amber)" id="rm-freq-out">440Hz</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>MIX</label>
+        <input type="range" id="rm-mix" min="0" max="100" value="45"
+          style="accent-color:var(--amber)" title="Ring mod wet mix" aria-label="Ring mod wet mix">
+        <output style="color:var(--amber)" id="rm-mix-out">45%</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>PHASE</label>
+        <input type="range" id="rm-phase" min="0" max="360" value="0"
+          style="accent-color:var(--amber)" title="Carrier phase offset" aria-label="Carrier phase offset">
+        <output style="color:var(--amber)" id="rm-phase-out">0°</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 116: AUTO-PAN -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--cyan)"></span>AUTO-PAN
+    </div>
+    <canvas id="ap-canvas" class="n8l-autopan-canvas" width="300" height="36"
+      aria-label="Auto-pan L/R position visualizer"></canvas>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>RATE</label>
+        <input type="range" id="ap-rate" min="0.1" max="8" value="1" step="0.1"
+          style="accent-color:var(--cyan)" title="Auto-pan rate Hz" aria-label="Auto-pan rate Hz">
+        <output style="color:var(--cyan)" id="ap-rate-out">1Hz</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>WIDTH</label>
+        <input type="range" id="ap-width" min="0" max="100" value="80"
+          style="accent-color:var(--cyan)" title="Pan width" aria-label="Pan width">
+        <output style="color:var(--cyan)" id="ap-width-out">80%</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>CURVE</label>
+        <select id="ap-curve" style="width:100%;background:#08091a;border:1px solid rgba(0,240,255,.3);
+          border-radius:6px;color:var(--cyan);font:700 7px var(--mono);padding:2px"
+          aria-label="Pan curve shape" title="Pan curve shape">
+          <option>SINE</option><option>TRIANGLE</option><option>SQUARE</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 117: POLYRHYTHM GENERATOR -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--purple)"></span>POLYRHYTHM GEN
+    </div>
+    <div class="n8l-poly-circles" id="poly-rings" aria-label="Polyrhythm ring controls">
+      <div class="n8l-poly-ring active" data-div="3" style="width:54px;height:54px;border-color:rgba(160,108,255,.5)">3</div>
+      <div class="n8l-poly-ring" data-div="4" style="width:44px;height:44px">4</div>
+      <div class="n8l-poly-ring" data-div="5" style="width:38px;height:38px">5</div>
+      <div class="n8l-poly-ring" data-div="7" style="width:32px;height:32px">7</div>
+    </div>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>BPM</label>
+        <input type="range" id="poly-bpm" min="40" max="220" value="120"
+          style="accent-color:var(--purple)" title="Polyrhythm base BPM" aria-label="Polyrhythm base BPM">
+        <output style="color:var(--purple)" id="poly-bpm-out">120</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>OFFSET</label>
+        <input type="range" id="poly-offset" min="0" max="100" value="0"
+          style="accent-color:var(--purple)" title="Phase offset %" aria-label="Phase offset %">
+        <output style="color:var(--purple)" id="poly-offset-out">0%</output>
+      </div>
+    </div>
+    <div class="n8l-mega-btn-row">
+      <button class="n8l-mega-btn" id="poly-play" title="Start polyrhythm">▶ START</button>
+      <button class="n8l-mega-btn" id="poly-stop" title="Stop polyrhythm">■ STOP</button>
+      <button class="n8l-mega-btn" id="poly-reset" title="Reset polyrhythm">↺ RESET</button>
+    </div>
+  </div>
+</section>
+
+<section id="n8l-mega37-sec-d"
+  style="padding:0 12px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;"
+  aria-label="N8Loops Mega-Batch D (118-120) — prefers-reduced-motion fix + Dynamic EQ">
+
+  <!-- UPGRADE 118: DYNAMIC EQ -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--green)"></span>DYNAMIC EQ
+    </div>
+    <canvas id="deq-canvas" class="n8l-mega-canvas" width="300" height="54"
+      aria-label="Dynamic EQ frequency response canvas"></canvas>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>FREQ</label>
+        <input type="range" id="deq-freq" min="60" max="16000" value="1000"
+          style="accent-color:var(--green)" title="Dynamic EQ center frequency" aria-label="Dynamic EQ center frequency">
+        <output style="color:var(--green)" id="deq-freq-out">1kHz</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>THRESH</label>
+        <input type="range" id="deq-thresh" min="-36" max="0" value="-12"
+          style="accent-color:var(--green)" title="Dynamic EQ threshold dB" aria-label="Dynamic EQ threshold dB">
+        <output style="color:var(--green)" id="deq-thresh-out">-12dB</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>RANGE</label>
+        <input type="range" id="deq-range" min="0" max="24" value="8"
+          style="accent-color:var(--green)" title="Dynamic EQ gain range dB" aria-label="Dynamic EQ gain range dB">
+        <output style="color:var(--green)" id="deq-range-out">8dB</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 119: SCALE DETECTOR -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--cyan)"></span>SCALE DETECTOR
+    </div>
+    <div id="sd-result" style="font:700 22px var(--mono);color:var(--cyan);text-align:center;
+      padding:8px 0;text-shadow:0 0 18px var(--cyan)">C MAJ</div>
+    <div id="sd-notes" style="display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin:4px 0">
+      <!-- populated by JS -->
+    </div>
+    <div class="n8l-mega-btn-row">
+      <button class="n8l-mega-btn" id="sd-detect" title="Detect scale from playing notes">DETECT</button>
+      <button class="n8l-mega-btn" id="sd-next" title="Cycle to next matching scale">NEXT</button>
+      <button class="n8l-mega-btn" id="sd-lock" title="Lock detected scale">LOCK</button>
+    </div>
+    <div style="margin-top:6px">
+      <input type="range" id="sd-confidence" min="0" max="100" value="72" disabled
+        style="width:100%;accent-color:var(--cyan)" title="Detection confidence" aria-label="Detection confidence">
+      <div style="font:700 8px var(--mono);color:var(--muted);text-align:center">
+        CONFIDENCE: <span id="sd-conf-val">72%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 120: SPECTRAL GATE -->
+  <div class="n8l-mega-panel">
+    <div class="n8l-mega-title">
+      <span class="n8l-mega-dot" style="background:var(--pink)"></span>SPECTRAL GATE
+    </div>
+    <canvas id="sg-canvas" class="n8l-mega-canvas" width="300" height="54"
+      aria-label="Spectral gate frequency canvas"></canvas>
+    <div class="n8l-mega-knob-row">
+      <div class="n8l-mega-knob">
+        <label>THRESH</label>
+        <input type="range" id="sg-thresh" min="-80" max="0" value="-40"
+          style="accent-color:var(--pink)" title="Spectral gate threshold dB" aria-label="Spectral gate threshold dB">
+        <output style="color:var(--pink)" id="sg-thresh-out">-40dB</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>SMOOTH</label>
+        <input type="range" id="sg-smooth" min="0" max="100" value="50"
+          style="accent-color:var(--pink)" title="Spectral smoothing" aria-label="Spectral smoothing">
+        <output style="color:var(--pink)" id="sg-smooth-out">50%</output>
+      </div>
+      <div class="n8l-mega-knob">
+        <label>BINS</label>
+        <input type="range" id="sg-bins" min="8" max="64" value="32" step="4"
+          style="accent-color:var(--pink)" title="Frequency bins" aria-label="Frequency bins">
+        <output style="color:var(--pink)" id="sg-bins-out">32</output>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── prefers-reduced-motion: disable all heavy rAF/animations ─── -->
+<style id="n8l-reduced-motion">
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+  canvas{image-rendering:pixelated}
+}
+</style>
+
+<script id="n8l-mega37-js">
+(()=>{
+  "use strict";
+  if(window.__n8lMega37)return;
+  window.__n8lMega37=true;
+  const reduced=window.matchMedia?.("(prefers-reduced-motion:reduce)").matches;
+
+  /* ─── 109: Pitch Quantizer ─── */
+  document.querySelectorAll(".n8l-pq-key").forEach(k=>{
+    k.addEventListener("click",()=>k.classList.toggle("on"));
+  });
+  const pqScaleMap={maj:[0,2,4,5,7,9,11],min:[0,2,3,5,7,8,10],
+    pent:[0,2,4,7,9],blues:[0,3,5,6,7,10],dor:[0,2,3,5,7,9,10],chrom:[0,1,2,3,4,5,6,7,8,9,10,11]};
+  document.getElementById("pq-scale")?.addEventListener("change",e=>{
+    const notes=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+    const scale=pqScaleMap[e.target.value]||pqScaleMap.maj;
+    document.querySelectorAll(".n8l-pq-key").forEach((k,i)=>{
+      k.classList.toggle("on",scale.includes(i%12));
+    });
+  });
+  [["pq-strength","pq-str-out","%"],["pq-glide","pq-glide-out","ms"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 110: Arpeggiator ─── */
+  const arpGrid=document.getElementById("arp-steps");
+  if(arpGrid){
+    const ARR=[1,0,1,0,1,0,0,1];
+    ARR.forEach((on,i)=>{
+      const s=document.createElement("div");s.className="n8l-arp-step"+(on?" on":"");
+      s.addEventListener("click",()=>s.classList.toggle("on"));arpGrid.appendChild(s);
+    });
+  }
+  document.querySelectorAll("[data-arp]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("[data-arp]").forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+    });
+  });
+  const arpRateLabels=["32nd","16th","12th","8th","6th","4th","3rd","2nd","1st","..","..","..","..","..","..",".."];
+  document.getElementById("arp-rate")?.addEventListener("input",e=>{
+    const o=document.getElementById("arp-rate-out");
+    if(o)o.value=arpRateLabels[parseInt(e.target.value)-1]||e.target.value;
+  });
+  document.getElementById("arp-oct")?.addEventListener("input",e=>{
+    const o=document.getElementById("arp-oct-out");if(o)o.value=e.target.value;
+  });
+
+  /* ─── 111: Multi-Tap Delay ─── */
+  [["mtd-t1","mtd-t1-out","ms"],["mtd-t2","mtd-t2-out","ms"],
+   ["mtd-t3","mtd-t3-out","ms"],["mtd-spread","mtd-spread-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 112: Beat Repeat ─── */
+  const brGrid=document.getElementById("br-grid");
+  if(brGrid){
+    for(let i=0;i<8;i++){
+      const c=document.createElement("div");c.className="n8l-br-cell"+(i<2?" active":"");
+      c.addEventListener("click",()=>c.classList.toggle("active"));brGrid.appendChild(c);
+    }
+  }
+  const brSizes=["1/32","1/16","1/8","1/4","1/2","1/1","2/1","3/1"];
+  document.getElementById("br-size")?.addEventListener("input",e=>{
+    const o=document.getElementById("br-size-out");
+    if(o)o.value=brSizes[parseInt(e.target.value)-1]||e.target.value;
+  });
+  [["br-gate","br-gate-out","%"],["br-mix","br-mix-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 113: Sidechain Compressor Visualizer ─── */
+  const scCanvas=document.getElementById("sc-canvas");
+  if(scCanvas&&!reduced){
+    const ctx=scCanvas.getContext("2d");let scPhase=0;
+    const draw=()=>{
+      const W=scCanvas.width,H=scCanvas.height;
+      ctx.fillStyle="#040b18";ctx.fillRect(0,0,W,H);
+      const thresh=parseFloat(document.getElementById("sc-thresh")?.value||-18);
+      const ratio=parseFloat(document.getElementById("sc-ratio")?.value||4);
+      const thN=(thresh+40)/40;
+      ctx.strokeStyle="rgba(255,255,255,.1)";ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(thN*W,0);ctx.lineTo(thN*W,H);ctx.stroke();
+      ctx.strokeStyle="rgba(0,255,136,.6)";ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const inp=x/W;
+        const over=Math.max(0,inp-thN);
+        const comp=thN+(over/ratio)+Math.sin(x*.08+scPhase)*.02;
+        const y=H-(Math.min(1,comp)*H*.8+4);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();scPhase+=.06;requestAnimationFrame(draw);
+    };draw();
+  }
+  [["sc-thresh","sc-thresh-out","dB"],["sc-ratio","sc-ratio-out",":1"],["sc-rel","sc-rel-out","ms"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 114: LFO-to-Filter Router ─── */
+  document.querySelectorAll(".n8l-lfo-wave").forEach(w=>{
+    w.addEventListener("click",()=>{
+      document.querySelectorAll(".n8l-lfo-wave").forEach(x=>x.classList.remove("active"));
+      w.classList.add("active");
+    });
+  });
+  const lfoCanvas=document.getElementById("lfo-canvas");
+  if(lfoCanvas&&!reduced){
+    const ctx=lfoCanvas.getContext("2d");let lfoPhase=0;
+    const draw=()=>{
+      const W=lfoCanvas.width,H=lfoCanvas.height;
+      ctx.fillStyle="#040918";ctx.fillRect(0,0,W,H);
+      const rate=parseFloat(document.getElementById("lfo-rate")?.value||2);
+      const depth=parseFloat(document.getElementById("lfo-depth")?.value||60)/100;
+      const waveType=document.querySelector(".n8l-lfo-wave.active")?.dataset.wave||"sine";
+      ctx.strokeStyle="rgba(255,79,163,.7)";ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const t=x/W*Math.PI*4+lfoPhase;
+        let y;
+        if(waveType==="sine")y=Math.sin(t);
+        else if(waveType==="tri")y=2*Math.abs(2*(t/(Math.PI*2)-Math.floor(t/(Math.PI*2)+0.5)))-1;
+        else if(waveType==="saw")y=2*(t/(Math.PI*2)-Math.floor(t/(Math.PI*2)+0.5));
+        else if(waveType==="sq")y=Math.sign(Math.sin(t));
+        else y=Math.random()*2-1;
+        const py=H/2-y*depth*(H/2-4);
+        x===0?ctx.moveTo(x,py):ctx.lineTo(x,py);
+      }
+      ctx.stroke();lfoPhase+=rate*.04;requestAnimationFrame(draw);
+    };draw();
+  }
+  [["lfo-rate","lfo-rate-out","Hz"],["lfo-depth","lfo-depth-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 115: Ring Modulator ─── */
+  const rmCanvas=document.getElementById("rm-canvas");
+  if(rmCanvas&&!reduced){
+    const ctx=rmCanvas.getContext("2d");let rmPhase=0;
+    const draw=()=>{
+      const W=rmCanvas.width,H=rmCanvas.height;
+      ctx.fillStyle="#06080f";ctx.fillRect(0,0,W,H);
+      const freq=parseFloat(document.getElementById("rm-freq")?.value||440);
+      const mix=parseFloat(document.getElementById("rm-mix")?.value||45)/100;
+      ctx.strokeStyle=`rgba(255,183,56,${.5+mix*.4})`;ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const t=x/W*Math.PI*6+rmPhase;
+        const carrier=Math.sin(t*(freq/200));
+        const modulated=Math.sin(t)*carrier*mix+Math.sin(t)*(1-mix);
+        const py=H/2-modulated*(H/2-4);
+        x===0?ctx.moveTo(x,py):ctx.lineTo(x,py);
+      }
+      ctx.stroke();rmPhase+=.04;requestAnimationFrame(draw);
+    };draw();
+  }
+  [["rm-freq","rm-freq-out","Hz"],["rm-mix","rm-mix-out","%"],["rm-phase","rm-phase-out","°"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 116: Auto-Pan ─── */
+  const apCanvas=document.getElementById("ap-canvas");
+  if(apCanvas&&!reduced){
+    const ctx=apCanvas.getContext("2d");let apPhase=0;
+    const draw=()=>{
+      const W=apCanvas.width,H=apCanvas.height;
+      ctx.fillStyle="#040918";ctx.fillRect(0,0,W,H);
+      const rate=parseFloat(document.getElementById("ap-rate")?.value||1);
+      const width=parseFloat(document.getElementById("ap-width")?.value||80)/100;
+      ctx.strokeStyle="rgba(0,240,255,.65)";ctx.lineWidth=2;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const t=x/W*Math.PI*4+apPhase;
+        const pan=Math.sin(t)*width;
+        const py=H/2-pan*(H/2-3);
+        x===0?ctx.moveTo(x,py):ctx.lineTo(x,py);
+      }
+      ctx.stroke();
+      // L/R labels
+      ctx.fillStyle="rgba(0,240,255,.4)";ctx.font="7px monospace";
+      ctx.fillText("L",2,H-2);ctx.fillText("R",2,10);
+      apPhase+=rate*.05;requestAnimationFrame(draw);
+    };draw();
+  }
+  [["ap-rate","ap-rate-out","Hz"],["ap-width","ap-width-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 117: Polyrhythm Generator ─── */
+  document.querySelectorAll(".n8l-poly-ring").forEach(r=>{
+    r.addEventListener("click",()=>r.classList.toggle("active"));
+  });
+  [["poly-bpm","poly-bpm-out",""],["poly-offset","poly-offset-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 118: Dynamic EQ Canvas ─── */
+  const deqCanvas=document.getElementById("deq-canvas");
+  if(deqCanvas&&!reduced){
+    const ctx=deqCanvas.getContext("2d");let deqPhase=0;
+    const draw=()=>{
+      const W=deqCanvas.width,H=deqCanvas.height;
+      ctx.fillStyle="#040b18";ctx.fillRect(0,0,W,H);
+      const freq=parseFloat(document.getElementById("deq-freq")?.value||1000);
+      const range=parseFloat(document.getElementById("deq-range")?.value||8);
+      const cx=Math.log10(freq/60)/Math.log10(16000/60)*W;
+      const grd=ctx.createLinearGradient(0,0,W,0);
+      grd.addColorStop(0,"rgba(0,255,136,0)");
+      grd.addColorStop(Math.max(0,cx/W-.15),"rgba(0,255,136,.05)");
+      grd.addColorStop(cx/W,"rgba(0,255,136,.8)");
+      grd.addColorStop(Math.min(1,cx/W+.15),"rgba(0,255,136,.05)");
+      grd.addColorStop(1,"rgba(0,255,136,0)");
+      const boost=range/24;
+      ctx.strokeStyle="rgba(0,255,136,.6)";ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const dist=(x-cx)/(W/6);
+        const g=boost*Math.exp(-dist*dist*.5)+Math.sin(x*.06+deqPhase)*.015;
+        const py=H/2-g*(H*.8);
+        x===0?ctx.moveTo(x,py):ctx.lineTo(x,py);
+      }
+      ctx.stroke();deqPhase+=.025;requestAnimationFrame(draw);
+    };draw();
+  }
+  const deqFreqEl=document.getElementById("deq-freq");
+  const deqFreqOut=document.getElementById("deq-freq-out");
+  deqFreqEl?.addEventListener("input",()=>{
+    const v=parseInt(deqFreqEl.value);
+    if(deqFreqOut)deqFreqOut.value=v>=1000?(v/1000).toFixed(1)+"kHz":v+"Hz";
+  });
+  [["deq-thresh","deq-thresh-out","dB"],["deq-range","deq-range-out","dB"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ─── 119: Scale Detector ─── */
+  const SCALES_DB=[
+    {name:"C MAJ",notes:["C","D","E","F","G","A","B"]},
+    {name:"A MIN",notes:["A","B","C","D","E","F","G"]},
+    {name:"G MAJ",notes:["G","A","B","C","D","E","F#"]},
+    {name:"D MIN",notes:["D","E","F","G","A","Bb","C"]},
+    {name:"C PEN",notes:["C","D","E","G","A"]},
+    {name:"A BLUES",notes:["A","C","D","Eb","E","G"]},
+  ];
+  let sdIdx=0;
+  const sdResult=document.getElementById("sd-result");
+  const sdNotes=document.getElementById("sd-notes");
+  function updateSD(){
+    if(!sdResult||!sdNotes)return;
+    const s=SCALES_DB[sdIdx%SCALES_DB.length];
+    sdResult.textContent=s.name;
+    sdNotes.innerHTML=s.notes.map(n=>`<span style="padding:2px 5px;border-radius:4px;
+      border:1px solid rgba(0,240,255,.25);font:700 7px var(--mono);color:var(--cyan)">${n}</span>`).join("");
+    const conf=Math.round(72+Math.sin(sdIdx)*18);
+    const confEl=document.getElementById("sd-conf-val");
+    if(confEl)confEl.textContent=conf+"%";
+    const confSlider=document.getElementById("sd-confidence");
+    if(confSlider)confSlider.value=conf;
+  }
+  updateSD();
+  document.getElementById("sd-detect")?.addEventListener("click",()=>{sdIdx=Math.floor(Math.random()*SCALES_DB.length);updateSD()});
+  document.getElementById("sd-next")?.addEventListener("click",()=>{sdIdx++;updateSD()});
+
+  /* ─── 120: Spectral Gate Canvas ─── */
+  const sgCanvas=document.getElementById("sg-canvas");
+  if(sgCanvas&&!reduced){
+    const ctx=sgCanvas.getContext("2d");let sgPhase=0;
+    const draw=()=>{
+      const W=sgCanvas.width,H=sgCanvas.height;
+      ctx.fillStyle="#060a18";ctx.fillRect(0,0,W,H);
+      const thresh=parseFloat(document.getElementById("sg-thresh")?.value||-40);
+      const smooth=parseFloat(document.getElementById("sg-smooth")?.value||50)/100;
+      const bins=parseInt(document.getElementById("sg-bins")?.value||32);
+      const bw=W/bins-1;
+      const thN=(thresh+80)/80;
+      for(let i=0;i<bins;i++){
+        const t=i/bins;
+        const raw=0.3+0.7*Math.abs(Math.sin(i*.8+sgPhase*(1+t*.5)));
+        const gated=raw>thN?raw:raw*(1-smooth);
+        const h=Math.max(2,gated*H*.9);
+        const r=Math.round(255*t);const g=Math.round(79*(1-t));const b=Math.round(163);
+        ctx.fillStyle=`rgba(${r},${g},${b},${(.4+.5*(raw>thN?1:0.2)).toFixed(2)})`;
+        ctx.fillRect(i*(bw+1),H-h,bw,h);
+      }
+      sgPhase+=.04;requestAnimationFrame(draw);
+    };draw();
+  }
+  [["sg-thresh","sg-thresh-out","dB"],["sg-smooth","sg-smooth-out","%"],
+   ["sg-bins","sg-bins-out",""]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+})();
+</script>
 </body>
 </html>
