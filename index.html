@@ -2404,5 +2404,260 @@
   });
 })();
 </script>
+<!-- =======================================================
+     N8LOOPS BATCH 35 — UPGRADES 103 · 104 · 105
+     Granular Pitch Freeze | Step Probability | Stereo Width
+     ======================================================= -->
+<style id="n8l-batch35-css">
+  /* shared chrome */
+  .n8l-b35-panel{background:linear-gradient(150deg,rgba(6,18,36,.97),rgba(20,8,38,.95));
+    border:1px solid rgba(0,240,255,.14);border-radius:16px;padding:14px;
+    box-shadow:0 14px 40px rgba(0,0,0,.36),inset 0 1px rgba(255,255,255,.05)}
+  .n8l-b35-title{font:700 10px/1 var(--mono);color:var(--muted);letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .n8l-b35-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+  /* ── 103: Granular Pitch Freeze ── */
+  #n8l-grain-freeze-btn{width:100%;min-height:48px;border:1px solid rgba(0,240,255,.35);
+    border-radius:12px;background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(160,108,255,.06));
+    color:var(--cyan);font:700 11px var(--mono);letter-spacing:.1em;cursor:pointer;
+    transition:.18s ease;display:flex;align-items:center;justify-content:center;gap:8px}
+  #n8l-grain-freeze-btn:hover{background:linear-gradient(135deg,rgba(0,240,255,.18),rgba(160,108,255,.14));
+    box-shadow:0 0 22px rgba(0,240,255,.18)}
+  #n8l-grain-freeze-btn.active{background:linear-gradient(135deg,rgba(0,240,255,.3),rgba(160,108,255,.22));
+    border-color:var(--cyan);box-shadow:0 0 30px rgba(0,240,255,.3);color:#fff;
+    animation:grainFreezePulse35 1.2s ease-in-out infinite}
+  @keyframes grainFreezePulse35{0%,100%{box-shadow:0 0 20px rgba(0,240,255,.25)}
+    50%{box-shadow:0 0 42px rgba(0,240,255,.55)}}
+  .n8l-grain-knobs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+  .n8l-grain-knob{display:grid;gap:3px;text-align:center}
+  .n8l-grain-knob label{font:7px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .n8l-grain-knob input[type=range]{width:100%;accent-color:var(--cyan)}
+  .n8l-grain-knob output{font:700 9px var(--mono);color:var(--cyan)}
+
+  /* ── 104: Step Probability Engine ── */
+  .n8l-prob-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-top:8px}
+  .n8l-prob-step{display:grid;gap:3px;text-align:center}
+  .n8l-prob-step label{font:6px var(--mono);color:var(--muted)}
+  .n8l-prob-step input[type=range]{writing-mode:vertical-lr;direction:rtl;
+    width:14px;height:44px;accent-color:var(--green);margin:0 auto;display:block}
+  .n8l-prob-step .n8l-prob-val{font:600 7px var(--mono);color:var(--green)}
+  .n8l-prob-actions{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
+  .n8l-prob-actions button{flex:1;padding:4px 0;border:1px solid rgba(255,255,255,.1);
+    border-radius:7px;background:rgba(255,255,255,.05);color:var(--muted);
+    font:700 8px var(--mono);letter-spacing:.06em;cursor:pointer;transition:.14s ease}
+  .n8l-prob-actions button:hover{border-color:rgba(0,255,136,.4);color:var(--green)}
+
+  /* ── 105: Stereo Width Matrix ── */
+  .n8l-stereo-viz{position:relative;width:100%;height:72px;border-radius:10px;
+    background:#040b18;border:1px solid rgba(0,240,255,.12);overflow:hidden;margin-bottom:8px}
+  .n8l-stereo-viz canvas{display:block;width:100%;height:100%}
+  .n8l-stereo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .n8l-stereo-ctrl{display:grid;gap:3px;text-align:center}
+  .n8l-stereo-ctrl label{font:7px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .n8l-stereo-ctrl input[type=range]{width:100%;accent-color:var(--pink)}
+  .n8l-stereo-ctrl output{font:700 9px var(--mono);color:var(--pink)}
+</style>
+
+<section id="n8l-batch35-section"
+  style="padding:0 12px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;"
+  aria-label="N8Loops Batch 35 Upgrades">
+
+  <!-- UPGRADE 103: GRANULAR PITCH FREEZE -->
+  <div class="n8l-b35-panel" id="n8l-grain-module">
+    <div class="n8l-b35-title">
+      <span class="n8l-b35-dot" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan)"></span>
+      GRANULAR PITCH FREEZE
+    </div>
+    <button id="n8l-grain-freeze-btn" title="Toggle granular pitch freeze" aria-pressed="false">
+      <span id="n8l-grain-freeze-icon">❄️</span> FREEZE
+    </button>
+    <div class="n8l-grain-knobs">
+      <div class="n8l-grain-knob">
+        <label>GRAIN SIZE</label>
+        <input type="range" id="grain-size" min="10" max="500" value="120" step="5"
+          title="Grain size in ms" aria-label="Grain size ms">
+        <output id="grain-size-out">120ms</output>
+      </div>
+      <div class="n8l-grain-knob">
+        <label>SCATTER</label>
+        <input type="range" id="grain-scatter" min="0" max="100" value="30"
+          title="Grain position scatter" aria-label="Grain position scatter">
+        <output id="grain-scatter-out">30%</output>
+      </div>
+      <div class="n8l-grain-knob">
+        <label>PITCH SHIFT</label>
+        <input type="range" id="grain-pitch" min="-12" max="12" value="0" step="1"
+          title="Pitch shift semitones" aria-label="Pitch shift semitones">
+        <output id="grain-pitch-out">0st</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE 104: STEP PROBABILITY ENGINE -->
+  <div class="n8l-b35-panel" id="n8l-prob-module">
+    <div class="n8l-b35-title">
+      <span class="n8l-b35-dot" style="background:var(--green);box-shadow:0 0 8px var(--green)"></span>
+      STEP PROBABILITY ENGINE
+    </div>
+    <div class="n8l-prob-grid" id="n8l-prob-grid" aria-label="Per-step probability controls">
+      <!-- Generated by JS -->
+    </div>
+    <div class="n8l-prob-actions">
+      <button id="n8l-prob-random" title="Randomize step probabilities">RANDOM</button>
+      <button id="n8l-prob-full" title="Set all steps to 100%">FULL</button>
+      <button id="n8l-prob-ghost" title="Set ghost notes pattern">GHOST</button>
+      <button id="n8l-prob-reset" title="Reset all to 100%">RESET</button>
+    </div>
+  </div>
+
+  <!-- UPGRADE 105: STEREO WIDTH MATRIX -->
+  <div class="n8l-b35-panel" id="n8l-stereo-module">
+    <div class="n8l-b35-title">
+      <span class="n8l-b35-dot" style="background:var(--pink);box-shadow:0 0 8px var(--pink)"></span>
+      STEREO WIDTH MATRIX
+    </div>
+    <div class="n8l-stereo-viz">
+      <canvas id="n8l-stereo-canvas" aria-label="Stereo field Lissajous visualizer"></canvas>
+    </div>
+    <div class="n8l-stereo-row">
+      <div class="n8l-stereo-ctrl">
+        <label>WIDTH</label>
+        <input type="range" id="stereo-width" min="0" max="200" value="100"
+          title="Stereo width 0-200%" aria-label="Stereo width">
+        <output id="stereo-width-out">100%</output>
+      </div>
+      <div class="n8l-stereo-ctrl">
+        <label>BALANCE</label>
+        <input type="range" id="stereo-balance" min="-100" max="100" value="0"
+          title="L/R balance" aria-label="Stereo balance">
+        <output id="stereo-balance-out">C</output>
+      </div>
+      <div class="n8l-stereo-ctrl">
+        <label>BASS MONO</label>
+        <input type="range" id="stereo-bassmono" min="0" max="250" value="80"
+          title="Bass mono crossover Hz" aria-label="Bass mono crossover Hz">
+        <output id="stereo-bassmono-out">80Hz</output>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script id="n8l-batch35-js">
+(()=>{
+  "use strict";
+  if(window.__n8lBatch35)return;
+  window.__n8lBatch35=true;
+
+  /* ── UPGRADE 103: Granular Pitch Freeze ── */
+  const freezeBtn=document.getElementById("n8l-grain-freeze-btn");
+  const freezeIcon=document.getElementById("n8l-grain-freeze-icon");
+  let frozen=false;
+  if(freezeBtn){
+    freezeBtn.addEventListener("click",()=>{
+      frozen=!frozen;
+      freezeBtn.classList.toggle("active",frozen);
+      freezeBtn.setAttribute("aria-pressed",frozen);
+      freezeIcon.textContent=frozen?"🔵":"❄️";
+      freezeBtn.querySelector("span+span")||freezeBtn.lastChild;
+      const label=freezeBtn.childNodes[freezeBtn.childNodes.length-1];
+      if(label&&label.nodeType===3)label.textContent=frozen?" FROZEN":" FREEZE";
+    });
+    [["grain-size","grain-size-out","ms"],
+     ["grain-scatter","grain-scatter-out","%"],
+     ["grain-pitch","grain-pitch-out","st"]].forEach(([id,outId,unit])=>{
+      const inp=document.getElementById(id);
+      const out=document.getElementById(outId);
+      if(inp&&out)inp.addEventListener("input",()=>out.value=inp.value+unit);
+    });
+  }
+
+  /* ── UPGRADE 104: Step Probability Engine ── */
+  const probGrid=document.getElementById("n8l-prob-grid");
+  const probInputs=[];
+  if(probGrid){
+    for(let i=1;i<=8;i++){
+      const cell=document.createElement("div");
+      cell.className="n8l-prob-step";
+      const lbl=document.createElement("label");
+      lbl.textContent=i;
+      const inp=document.createElement("input");
+      inp.type="range";inp.min=0;inp.max=100;inp.value=100;
+      inp.title=`Step ${i} probability`;inp.setAttribute("aria-label",`Step ${i} probability`);
+      inp.style.accentColor="var(--green)";
+      inp.style.writingMode="vertical-lr";inp.style.direction="rtl";
+      inp.style.width="14px";inp.style.height="44px";inp.style.margin="0 auto";inp.style.display="block";
+      const val=document.createElement("span");
+      val.className="n8l-prob-val";val.textContent="100%";
+      inp.addEventListener("input",()=>val.textContent=inp.value+"%");
+      cell.append(lbl,inp,val);
+      probGrid.appendChild(cell);
+      probInputs.push(inp);
+    }
+    document.getElementById("n8l-prob-random")?.addEventListener("click",()=>{
+      probInputs.forEach(inp=>{
+        const v=Math.round(Math.random()*100);
+        inp.value=v;inp.dispatchEvent(new Event("input"));
+      });
+    });
+    document.getElementById("n8l-prob-full")?.addEventListener("click",()=>{
+      probInputs.forEach(inp=>{inp.value=100;inp.dispatchEvent(new Event("input"))});
+    });
+    document.getElementById("n8l-prob-ghost")?.addEventListener("click",()=>{
+      const GHOST=[100,25,80,15,100,35,65,20];
+      probInputs.forEach((inp,i)=>{inp.value=GHOST[i]||50;inp.dispatchEvent(new Event("input"))});
+    });
+    document.getElementById("n8l-prob-reset")?.addEventListener("click",()=>{
+      probInputs.forEach(inp=>{inp.value=100;inp.dispatchEvent(new Event("input"))});
+    });
+  }
+
+  /* ── UPGRADE 105: Stereo Width Matrix ── */
+  const stereoCanvas=document.getElementById("n8l-stereo-canvas");
+  if(stereoCanvas){
+    const ctx=stereoCanvas.getContext("2d");
+    let phase=0;
+    const widthEl=document.getElementById("stereo-width");
+    const balEl=document.getElementById("stereo-balance");
+    function resizeStereo(){stereoCanvas.width=stereoCanvas.offsetWidth||280;stereoCanvas.height=stereoCanvas.offsetHeight||72}
+    resizeStereo();new ResizeObserver(resizeStereo).observe(stereoCanvas);
+    function drawStereo(){
+      const W=stereoCanvas.width,H=stereoCanvas.height;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle="#040b18";ctx.fillRect(0,0,W,H);
+      const w=(parseFloat(widthEl?.value||100)/200);
+      const bal=(parseFloat(balEl?.value||0)/100);
+      const cx=W/2+bal*W*0.3,cy=H/2;
+      ctx.strokeStyle="rgba(255,79,163,.08)";ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(cx,0);ctx.lineTo(cx,H);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,cy);ctx.lineTo(W,cy);ctx.stroke();
+      ctx.strokeStyle="rgba(0,240,255,.55)";ctx.lineWidth=1.5;
+      ctx.beginPath();
+      for(let t=0;t<200;t++){
+        const a=t/200*Math.PI*4+phase;
+        const x=cx+Math.cos(a)*w*cx*.85;
+        const y=cy+Math.sin(a*1.3)*cy*.75;
+        t===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+      phase+=.018;
+      requestAnimationFrame(drawStereo);
+    }
+    drawStereo();
+    [["stereo-width","stereo-width-out","%"],
+     ["stereo-bassmono","stereo-bassmono-out","Hz"]].forEach(([id,outId,unit])=>{
+      const inp=document.getElementById(id);
+      const out=document.getElementById(outId);
+      if(inp&&out)inp.addEventListener("input",()=>out.value=inp.value+unit);
+    });
+    document.getElementById("stereo-balance")?.addEventListener("input",(e)=>{
+      const v=parseInt(e.target.value);
+      const out=document.getElementById("stereo-balance-out");
+      if(out)out.value=v===0?"C":v<0?`L${Math.abs(v)}`:`R${v}`;
+    });
+  }
+})();
+</script>
 </body>
 </html>
