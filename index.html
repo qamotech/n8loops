@@ -1020,6 +1020,27 @@
       </div>
     </section>
 
+    <!-- BATCH 31 UPGRADES (UPGRADES 91, 92, 93): HIGH-SHELF AIR EQ, SYNTH VELOCITY CURVE & BRICKWALL GUARD LED -->
+    <section id="beats-batch31-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 91: BEATS HIGH-SHELF AIR EQ -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">✨ HIGH-SHELF AIR EQ (kHz)</b>
+        <input type="range" min="4" max="18" value="12" style="width:100%; accent-color:#ff0033;" title="High-Shelf Air Frequency (kHz)" />
+      </div>
+
+      <!-- UPGRADE 92: BEATS SYNTH VELOCITY CURVE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🎹 VELOCITY CURVE PROFILE</b>
+        <button class="btn tiny primary" onclick="const c=['LINEAR','SOFT','HARD']; const idx=(c.indexOf(this.textContent.split(': ')[1])+1)%c.length; this.textContent='VELOCITY: '+c[idx];" style="width:100%;">VELOCITY: LINEAR</button>
+      </div>
+
+      <!-- UPGRADE 93: BEATS BRICKWALL GUARD LED -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🛡️ -0.1dB BRICKWALL LED</b>
+        <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">LIMITER: LOCKED (-0.1dB)</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
