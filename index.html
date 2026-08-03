@@ -610,6 +610,27 @@
       </div>
     </section>
 
+    <!-- BATCH 12 UPGRADES (UPGRADES 34, 35, 36): CHORUS ENSEMBLE, HIGH-PASS FILTER & LIVE SESSION RECORDER -->
+    <section id="beats-batch12-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 34: BEATS CHORUS ENSEMBLE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#a87cff; display:block; margin-bottom:6px;">🌊 ANALOG CHORUS ENSEMBLE</b>
+        <input type="range" min="0" max="100" value="30" style="width:100%; accent-color:#a87cff;" title="Chorus Width" />
+      </div>
+
+      <!-- UPGRADE 35: BEATS HIGH-PASS FILTER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🎛️ HIGH-PASS CUTOFF (Hz)</b>
+        <input type="range" min="20" max="1000" value="80" style="width:100%; accent-color:#00f0ff;" title="High-Pass Cutoff Frequency" />
+      </div>
+
+      <!-- UPGRADE 36: BEATS LIVE SESSION RECORDER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🔴 LIVE SESSION RECORDER</b>
+        <button class="btn tiny cyan" onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? '🔴 RECORDING SESSION...' : '🔴 REC SESSION WAV';" style="width:100%;">🔴 REC SESSION WAV</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
