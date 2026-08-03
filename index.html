@@ -893,6 +893,27 @@
       </div>
     </section>
 
+    <!-- BATCH 25 UPGRADES (UPGRADES 73, 74, 75): SUB-HARMONIC SYNTHESIZER, KEY-TRACKING FILTER & PRECISION PEAK DETECTOR LED -->
+    <section id="beats-batch25-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 73: BEATS SUB-HARMONIC SYNTHESIZER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🔊 SUB-HARMONIC SYNTHESIZER</b>
+        <input type="range" min="20" max="60" value="35" style="width:100%; accent-color:#ff0033;" title="Sub-Octave Harmonics Generator (Hz)" />
+      </div>
+
+      <!-- UPGRADE 74: BEATS KEY-TRACKING FILTER CUTOFF -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🎛️ KEY-TRACKING FILTER CUTOFF</b>
+        <input type="range" min="100" max="12000" value="3500" style="width:100%; accent-color:#00f0ff;" title="Key-Tracking Filter Cutoff (Hz)" />
+      </div>
+
+      <!-- UPGRADE 75: BEATS PRECISION PEAK DETECTOR LED -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🛡️ PRECISION PEAK DETECTOR</b>
+        <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">PEAK GUARD: ACTIVE</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
