@@ -395,6 +395,29 @@
       </div>
     </section>
 
+    <!-- BATCH 3 UPGRADES (UPGRADES 7, 8, 9): ADSR GRAPH CANVAS, TUBE SATURATOR & OVERDUB RECORDER -->
+    <section id="beats-batch3-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 7: BEATS ADSR GRAPH CANVAS VISUALIZER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">📉 ADSR CURVE VISUALIZER</b>
+        <svg viewBox="0 0 100 40" style="width:100%; height:36px; background:rgba(0,0,0,0.5); border-radius:6px;">
+          <path d="M0,40 L15,5 L40,18 L75,18 L100,40 Z" fill="rgba(0,240,255,0.2)" stroke="#00f0ff" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <!-- UPGRADE 8: BEATS TUBE SATURATOR KNOB -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🔥 TUBE SATURATOR WARMTH</b>
+        <input type="range" min="0" max="100" value="45" style="width:100%; accent-color:#ffb800;" />
+      </div>
+
+      <!-- UPGRADE 9: BEATS OVERDUB RECORDER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🎙️ OVERDUB LOOP RECORDER</b>
+        <button class="btn tiny primary" onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? '● OVERDUBBING...' : '● START OVERDUB';" style="background:linear-gradient(135deg,#ff0033,#80001a); width:100%;">● START OVERDUB</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
