@@ -439,6 +439,36 @@
       </div>
     </section>
 
+    <!-- BATCH 5 UPGRADES (UPGRADES 13, 14, 15): IMPEDANCE DRIVE SELECTOR, LISSAJOUS PHASE GRAPH & BPM NUDGE -->
+    <section id="beats-batch5-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 13: BEATS IMPEDANCE DRIVE SELECTOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">⚡ IMPEDANCE DRIVE</b>
+        <select class="theme-select" style="width:100%; height:28px; font-size:8px;" title="Headphone Impedance Mode">
+          <option value="16">16Ω IN-EAR MONITOR</option>
+          <option value="32" selected>32Ω STUDIO PRO</option>
+          <option value="250">250Ω HIGH GAIN AUDIOPHILE</option>
+        </select>
+      </div>
+
+      <!-- UPGRADE 14: LISSAJOUS PHASE GRAPH -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🌀 LISSAJOUS PHASE ALIGN</b>
+        <svg viewBox="0 0 100 40" style="width:100%; height:32px; background:rgba(0,0,0,0.5); border-radius:6px;">
+          <ellipse cx="50" cy="20" rx="30" ry="12" fill="none" stroke="#00f0ff" stroke-width="2" transform="rotate(-25 50 20)"/>
+        </svg>
+      </div>
+
+      <!-- UPGRADE 15: BPM MICRO-NUDGE ACCELEROMETER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">⏱️ BPM MICRO-NUDGE</b>
+        <div style="display:flex; gap:4px;">
+          <button class="btn tiny" onclick="const b=document.getElementById('bpm'); if(b){b.value=parseInt(b.value)-1;}">-1 BPM</button>
+          <button class="btn tiny" onclick="const b=document.getElementById('bpm'); if(b){b.value=parseInt(b.value)+1;}">+1 BPM</button>
+        </div>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
