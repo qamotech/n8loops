@@ -522,6 +522,27 @@
       </div>
     </section>
 
+    <!-- BATCH 8 UPGRADES (UPGRADES 22, 23, 24): TAPE WOW & FLUTTER, LOW-PASS FILTER & STEM EXPORTER -->
+    <section id="beats-batch8-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 22: BEATS TAPE WOW & FLUTTER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">📻 TAPE WOW & FLUTTER</b>
+        <input type="range" min="0" max="100" value="15" style="width:100%; accent-color:#ffb800;" title="Tape Wobble Depth" />
+      </div>
+
+      <!-- UPGRADE 23: BEATS LOW-PASS FILTER CUTOFF -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🎛️ LOW-PASS CUTOFF (kHz)</b>
+        <input type="range" min="20" max="20000" value="18000" style="width:100%; accent-color:#00f0ff;" title="Filter Cutoff Frequency" />
+      </div>
+
+      <!-- UPGRADE 24: BEATS STEM EXPORTER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🎚️ EXPORT AUDIO STEMS</b>
+        <button class="btn tiny cyan" onclick="if(typeof bounce==='function') bounce();" style="width:100%;">⇩ BOUNCE STEMS (ZIP)</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
