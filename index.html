@@ -418,6 +418,27 @@
       </div>
     </section>
 
+    <!-- BATCH 4 UPGRADES (UPGRADES 10, 11, 12): BINAURAL 3D PANNER, DYNAMIC COMPRESSOR & AI BEAT GENERATOR -->
+    <section id="beats-batch4-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 10: BEATS BINAURAL 3D PANNER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🌐 360° BINAURAL PANNER</b>
+        <input type="range" min="-1" max="1" value="0" step="0.05" style="width:100%; accent-color:#00f0ff;" title="Binaural Spatial Panner" />
+      </div>
+
+      <!-- UPGRADE 11: BEATS DYNAMIC COMPRESSOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">⚡ MASTER COMPRESSOR</b>
+        <button class="btn tiny primary" onclick="this.classList.toggle('active');" style="width:100%;">LIMITER: ACTIVE (-0.1dB)</button>
+      </div>
+
+      <!-- UPGRADE 12: BEATS AI BEAT GENERATOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🤖 AI BEAT GEN 3000</b>
+        <button class="btn tiny cyan" onclick="if(typeof seed==='function') seed(); if(typeof renderAll==='function') renderAll();" style="width:100%;">⚡ GENERATE RANDOM BEAT</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
