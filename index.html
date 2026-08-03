@@ -631,6 +631,37 @@
       </div>
     </section>
 
+    <!-- BATCH 13 UPGRADES (UPGRADES 37, 38, 39): CHORD STRUM AUTO-ARP, LO-FI RESAMPLER & PEAK HOLD GRAPH -->
+    <section id="beats-batch13-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 37: BEATS CHORD STRUM AUTO-ARP -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🎸 CHORD STRUM MODE</b>
+        <select class="theme-select" style="width:100%; height:28px; font-size:8px;" title="Chord Strum Mode">
+          <option value="maj7" selected>MAJOR 7TH STRUM</option>
+          <option value="min9">MINOR 9TH STRUM</option>
+          <option value="sus4">SUS4 CHORD STRUM</option>
+          <option value="dim">DIMINISHED STRUM</option>
+        </select>
+      </div>
+
+      <!-- UPGRADE 38: BEATS LO-FI RESAMPLER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">📻 SAMPLE RATE (kHz)</b>
+        <input type="range" min="4" max="44" value="44" style="width:100%; accent-color:#ffb800;" title="Lo-Fi Sample Rate" />
+      </div>
+
+      <!-- UPGRADE 39: BEATS MASTER PEAK HOLD GRAPH -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">📊 PEAK HOLD LED GAUGE</b>
+        <div style="display:flex; gap:3px; height:24px; align-items:center;">
+          <div style="flex:1; height:12px; background:#00ff88; border-radius:2px;"></div>
+          <div style="flex:1; height:12px; background:#00ff88; border-radius:2px;"></div>
+          <div style="flex:1; height:12px; background:#ffb800; border-radius:2px;"></div>
+          <div style="flex:1; height:12px; background:#ff0033; border-radius:2px;"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
