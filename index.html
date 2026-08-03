@@ -662,6 +662,27 @@
       </div>
     </section>
 
+    <!-- BATCH 14 UPGRADES (UPGRADES 40, 41, 42): VACUUM TUBE OVERDRIVE, STEREO AUTO-PAN & WAV NORMALIZER -->
+    <section id="beats-batch14-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 40: BEATS VACUUM TUBE OVERDRIVE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">💡 VACUUM TUBE OVERDRIVE</b>
+        <input type="range" min="0" max="100" value="30" style="width:100%; accent-color:#ff0033;" title="Tube Harmonic Saturation" />
+      </div>
+
+      <!-- UPGRADE 41: BEATS STEREO AUTO-PAN MODULATOR -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">↔️ LFO STEREO AUTO-PAN</b>
+        <input type="range" min="0" max="100" value="40" style="width:100%; accent-color:#00ff88;" title="Auto-Pan Depth" />
+      </div>
+
+      <!-- UPGRADE 42: BEATS WAV NORMALIZER ENGINE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🔊 WAV NORMALIZATION</b>
+        <button class="btn tiny primary" onclick="this.classList.toggle('active');" style="width:100%;">0dBFS NORM: ON</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
