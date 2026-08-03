@@ -725,6 +725,27 @@
       </div>
     </section>
 
+    <!-- BATCH 17 UPGRADES (UPGRADES 49, 50, 51): COMPRESSION KNEE CURVE, 3D SURROUND & -0.1dB CEILING LIMITER -->
+    <section id="beats-batch17-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 49: BEATS COMPRESSION KNEE CURVE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">📈 COMPRESSOR KNEE CURVE</b>
+        <input type="range" min="0" max="40" value="12" style="width:100%; accent-color:#ff0033;" title="Soft/Hard Knee Curve" />
+      </div>
+
+      <!-- UPGRADE 50: BEATS 3D SURROUND ENGINE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00f0ff; display:block; margin-bottom:6px;">🌐 3D SPATIAL SURROUND</b>
+        <button class="btn tiny primary" onclick="this.classList.toggle('active');" style="width:100%;">3D SPATIAL: ACTIVE</button>
+      </div>
+
+      <!-- UPGRADE 51: BEATS CEILING LIMITER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🛡️ -0.1dB CEILING LIMITER</b>
+        <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">GUARD ON (-0.1dBFS)</button>
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
