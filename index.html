@@ -935,6 +935,27 @@
       </div>
     </section>
 
+    <!-- BATCH 27 UPGRADES (UPGRADES 79, 80, 81): SUB-BASS CROSSOVER, SYNTH GLIDE & LIMITER KNEE ANGLE -->
+    <section id="beats-batch27-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <!-- UPGRADE 79: BEATS SUB-BASS CROSSOVER -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ff0033; display:block; margin-bottom:6px;">🔊 SUB-BASS CROSSOVER (Hz)</b>
+        <input type="range" min="20" max="90" value="45" style="width:100%; accent-color:#ff0033;" title="Mono Sub-Bass Crossover Cutoff" />
+      </div>
+
+      <!-- UPGRADE 80: BEATS SYNTH GLIDE TIME -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">📈 SYNTH GLIDE TIME (ms)</b>
+        <input type="range" min="0" max="500" value="65" style="width:100%; accent-color:#ffb800;" title="Portamento Glide Time (ms)" />
+      </div>
+
+      <!-- UPGRADE 81: BEATS LIMITER KNEE ANGLE -->
+      <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🧱 LIMITER KNEE ANGLE</b>
+        <input type="range" min="0" max="45" value="12" style="width:100%; accent-color:#00ff88;" title="Limiter Soft Knee Angle (deg)" />
+      </div>
+    </section>
+
     <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="mobile-bottom-nav">
       <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
