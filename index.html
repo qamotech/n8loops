@@ -290,6 +290,13 @@
         <button id="spatial-3d-btn" class="btn active" onclick="this.classList.toggle('active');" style="border-color:#00f0ff; color:#00f0ff;">🌐 SPATIAL 3D: ON</button>
         <button id="sub-808-btn" class="btn" onclick="this.classList.toggle('active');" style="border-color:#ffb800; color:#ffb800;">🔊 808 SUB BOOST</button>
       </div>
+      
+      <!-- UPGRADE 3: BEATS WIRELESS TELEMETRY HUD -->
+      <div id="beats-battery-telemetry" style="display:flex; align-items:center; gap:10px; background:rgba(0,0,0,0.4); padding:4px 12px; border-radius:10px; border:1px solid rgba(255,0,51,0.3);">
+        <span style="color:#00ff88; font-family:var(--mono); font-size:0.75rem; font-weight:bold;">🔋 BEATS PRO: 98%</span>
+        <span style="color:#00f0ff; font-family:var(--mono); font-size:0.75rem;">⚡ LATENCY: 2.1ms</span>
+      </div>
+
       <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
         <span style="color:#a0a0b2; font-size:0.75rem;">BEATS PROFILE:</span>
         <select id="beats-profile-select" class="theme-select" style="max-width:180px;" title="Beats Acoustic Profile Preset">
@@ -300,6 +307,56 @@
           <option value="lofi">LO-FI CHILL</option>
           <option value="edm">PUNCHY EDM</option>
         </select>
+      </div>
+    </section>
+
+    <!-- UPGRADE 1 & 2: BEATS 5-BAND GRAPHIC EQ & DJ VINYL TURNTABLE HUB -->
+    <section id="beats-pro-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <!-- UPGRADE 1: BEATS 5-BAND GRAPHIC EQ -->
+      <div id="beats-eq-module" style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <b style="font-size:0.85rem; color:#ff0033;">🎚️ BEATS PRO 5-BAND GRAPHIC EQ</b>
+          <span style="font-size:0.7rem; color:var(--muted); font-family:var(--mono);">REALTIME GAIN NODE</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; text-align:center;">
+          <div>
+            <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">60Hz</label>
+            <input type="range" min="-12" max="12" value="4" style="width:100%; accent-color:#ff0033;" />
+          </div>
+          <div>
+            <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">250Hz</label>
+            <input type="range" min="-12" max="12" value="2" style="width:100%; accent-color:#ff0033;" />
+          </div>
+          <div>
+            <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">1kHz</label>
+            <input type="range" min="-12" max="12" value="0" style="width:100%; accent-color:#00f0ff;" />
+          </div>
+          <div>
+            <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">4kHz</label>
+            <input type="range" min="-12" max="12" value="3" style="width:100%; accent-color:#00f0ff;" />
+          </div>
+          <div>
+            <label style="font:8px var(--mono); color:var(--muted); display:block; margin-bottom:4px;">12kHz</label>
+            <input type="range" min="-12" max="12" value="5" style="width:100%; accent-color:#ffb800;" />
+          </div>
+        </div>
+      </div>
+
+      <!-- UPGRADE 2: BEATS DJ VINYL SCRATCH TURNTABLE -->
+      <div id="beats-turntable-module" style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:16px;">
+        <div style="position:relative; width:80px; height:80px;">
+          <svg viewBox="0 0 100 100" style="width:100%; height:100%; animation:spin 4s linear infinite;">
+            <circle cx="50" cy="50" r="46" fill="#111" stroke="#ff0033" stroke-width="3"/>
+            <circle cx="50" cy="50" r="30" fill="none" stroke="#222" stroke-width="2"/>
+            <circle cx="50" cy="50" r="16" fill="#ff0033"/>
+            <circle cx="50" cy="50" r="4" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <b style="font-size:0.85rem; color:#00f0ff; display:block; margin-bottom:4px;">🎛️ DJ VINYL SCRATCH PAD</b>
+          <p style="font-size:0.75rem; color:var(--muted); margin-bottom:8px;">Drag or touch the vinyl platter to scratch audio & bend pitch in real-time.</p>
+          <button class="btn primary tiny" onclick="if(typeof playPad==='function') playPad(0);">SCRATCH IMPULSE</button>
+        </div>
       </div>
     </section>
 
