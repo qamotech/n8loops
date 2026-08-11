@@ -4459,5 +4459,650 @@
   });
 })();
 </script>
+<!-- ══════════════════════════════════════════════════════
+     N8LOOPS MEGA-BATCH 45-46 — UPGRADES 127 through 132
+     task-663 iterations 63 + 64
+     ✦ 127 Waveshaper Distortion   ✦ 128 Stereo Enhancer
+     ✦ 129 Pattern Sequencer       ✦ 130 Oscilloscope View
+     ✦ 131 Chord Arpeggio Builder  ✦ 132 Granular Texture Engine
+     ══════════════════════════════════════════════════════ -->
+<style id="n8l-b4546-css">
+.n8l-b45-panel{
+  background:linear-gradient(150deg,rgba(5,10,24,.97),rgba(12,5,24,.95));
+  border:1px solid rgba(110,248,255,.10);border-radius:14px;padding:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.04);
+  margin:0 12px 9px;
+}
+.n8l-b45-title{font:700 9px/1 var(--mono);color:var(--muted);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.n8l-b45-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  animation:b45Dot 2s ease-in-out infinite}
+@keyframes b45Dot{0%,100%{opacity:1}50%{opacity:.2}}
+.n8l-b45-row{display:flex;gap:5px;align-items:flex-end;flex-wrap:wrap;margin-top:5px}
+.n8l-b45-knob{flex:1;min-width:44px;display:grid;gap:2px;text-align:center}
+.n8l-b45-knob label{font:6px var(--mono);color:var(--muted);text-transform:uppercase}
+.n8l-b45-knob input[type=range]{width:100%}
+.n8l-b45-knob output{font:700 8px var(--mono)}
+.n8l-b45-canvas{width:100%;border-radius:8px;display:block;margin-bottom:5px}
+.n8l-b45-chips{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:5px}
+.n8l-b45-chip{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.08);border-radius:6px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 7px var(--mono);
+  cursor:pointer;transition:.12s;text-align:center;min-width:30px}
+.n8l-b45-chip:hover{border-color:rgba(110,248,255,.35);color:var(--cyan)}
+.n8l-b45-chip.on{border-color:rgba(110,248,255,.65);background:rgba(110,248,255,.12);color:var(--cyan)}
+
+/* 129: Pattern Sequencer */
+.n8l-ps-grid{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;margin:5px 0}
+.n8l-ps-step{height:22px;border-radius:3px;border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);cursor:pointer;transition:.08s;position:relative}
+.n8l-ps-step.on{background:rgba(0,240,255,.3);border-color:var(--cyan)}
+.n8l-ps-step.play{background:rgba(0,240,255,.7);box-shadow:0 0 10px rgba(0,240,255,.5)}
+.n8l-ps-vel-row{display:grid;grid-template-columns:repeat(16,1fr);gap:2px}
+.n8l-ps-vel{height:14px;border-radius:2px;background:rgba(160,108,255,.5);
+  border:none;cursor:ns-resize;min-height:2px}
+
+/* 130: Oscilloscope */
+.n8l-osc-mode-row{display:flex;gap:3px;margin-bottom:4px}
+.n8l-osc-mode{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.08);border-radius:6px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 7px var(--mono);
+  cursor:pointer;transition:.12s;text-align:center}
+.n8l-osc-mode.on{border-color:rgba(0,255,136,.6);background:rgba(0,255,136,.12);color:var(--green)}
+
+/* 131: Chord Arpeggio */
+.n8l-ca-chord-row{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:4px}
+.n8l-ca-chord{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.08);border-radius:6px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 6px var(--mono);
+  cursor:pointer;transition:.12s;text-align:center;min-width:28px}
+.n8l-ca-chord.on{border-color:rgba(255,183,56,.6);background:rgba(255,183,56,.12);color:var(--amber)}
+.n8l-ca-note-display{display:flex;gap:2px;flex-wrap:wrap;margin:3px 0}
+.n8l-ca-note{padding:2px 5px;border-radius:4px;border:1px solid rgba(255,183,56,.25);
+  font:700 7px var(--mono);color:var(--amber)}
+
+/* 132: Granular Texture */
+.n8l-gt-scatter{display:flex;gap:3px;margin-bottom:4px}
+.n8l-gt-s-btn{flex:1;padding:3px 0;border:1px solid rgba(255,255,255,.08);border-radius:6px;
+  background:rgba(255,255,255,.04);color:var(--muted);font:700 6px var(--mono);
+  cursor:pointer;transition:.12s;text-align:center}
+.n8l-gt-s-btn.on{border-color:rgba(255,79,163,.6);background:rgba(255,79,163,.12);color:var(--pink)}
+</style>
+
+<!-- Row 1: 127 + 128 + 129 -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:0">
+
+  <!-- ── UPGRADE 127: WAVESHAPER DISTORTION ── -->
+  <div class="n8l-b45-panel">
+    <div class="n8l-b45-title">
+      <span class="n8l-b45-dot" style="background:var(--red)"></span>WAVESHAPER DISTORTION
+    </div>
+    <div class="n8l-b45-chips" role="group" aria-label="Distortion curve type">
+      <div class="n8l-b45-chip on" data-ws="soft">SOFT</div>
+      <div class="n8l-b45-chip" data-ws="hard">HARD</div>
+      <div class="n8l-b45-chip" data-ws="fold">FOLD</div>
+      <div class="n8l-b45-chip" data-ws="bit">BIT</div>
+      <div class="n8l-b45-chip" data-ws="tape">TAPE</div>
+    </div>
+    <canvas id="ws-canvas" class="n8l-b45-canvas" width="300" height="56"
+      aria-label="Waveshaper transfer curve visualization"></canvas>
+    <div class="n8l-b45-row">
+      <div class="n8l-b45-knob">
+        <label>DRIVE</label>
+        <input type="range" id="ws-drive" min="1" max="100" value="35"
+          style="accent-color:var(--red)" title="Distortion drive" aria-label="Distortion drive">
+        <output style="color:var(--red)" id="ws-drive-out">35</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>TONE</label>
+        <input type="range" id="ws-tone" min="0" max="100" value="60"
+          style="accent-color:var(--red)" title="Post distortion tone" aria-label="Post distortion tone">
+        <output style="color:var(--red)" id="ws-tone-out">60%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>BITS</label>
+        <input type="range" id="ws-bits" min="1" max="16" value="8"
+          style="accent-color:var(--red)" title="Bit depth for bit crush" aria-label="Bit depth for bit crush">
+        <output style="color:var(--red)" id="ws-bits-out">8</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>MIX</label>
+        <input type="range" id="ws-mix" min="0" max="100" value="65"
+          style="accent-color:var(--red)" title="Distortion wet mix" aria-label="Distortion wet mix">
+        <output style="color:var(--red)" id="ws-mix-out">65%</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UPGRADE 128: STEREO ENHANCER ── -->
+  <div class="n8l-b45-panel">
+    <div class="n8l-b45-title">
+      <span class="n8l-b45-dot" style="background:var(--cyan)"></span>STEREO ENHANCER
+    </div>
+    <canvas id="se-canvas" class="n8l-b45-canvas" width="300" height="56"
+      aria-label="M/S stereo width meter visualization"></canvas>
+    <div class="n8l-b45-row">
+      <div class="n8l-b45-knob">
+        <label>WIDTH</label>
+        <input type="range" id="se-width" min="0" max="200" value="130"
+          style="accent-color:var(--cyan)" title="Stereo width %" aria-label="Stereo width %">
+        <output style="color:var(--cyan)" id="se-width-out">130%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>FOCUS</label>
+        <input type="range" id="se-focus" min="0" max="100" value="50"
+          style="accent-color:var(--cyan)" title="Center focus" aria-label="Center focus">
+        <output style="color:var(--cyan)" id="se-focus-out">50%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>HAAS</label>
+        <input type="range" id="se-haas" min="0" max="35" value="8"
+          style="accent-color:var(--cyan)" title="Haas effect delay ms" aria-label="Haas effect delay ms">
+        <output style="color:var(--cyan)" id="se-haas-out">8ms</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>AIR</label>
+        <input type="range" id="se-air" min="0" max="100" value="40"
+          style="accent-color:var(--cyan)" title="High-frequency air boost" aria-label="High-frequency air boost">
+        <output style="color:var(--cyan)" id="se-air-out">40%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>MIX</label>
+        <input type="range" id="se-mix" min="0" max="100" value="75"
+          style="accent-color:var(--cyan)" title="Stereo enhancer wet mix" aria-label="Stereo enhancer wet mix">
+        <output style="color:var(--cyan)" id="se-mix-out">75%</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UPGRADE 129: PATTERN SEQUENCER ── -->
+  <div class="n8l-b45-panel">
+    <div class="n8l-b45-title">
+      <span class="n8l-b45-dot" style="background:var(--purple)"></span>PATTERN SEQUENCER
+    </div>
+    <div class="n8l-ps-grid" id="ps-grid" aria-label="16-step pattern sequencer grid"></div>
+    <div class="n8l-ps-vel-row" id="ps-vel-row" aria-label="Per-step velocity bars"></div>
+    <div class="n8l-b45-row" style="margin-top:5px">
+      <div class="n8l-b45-knob">
+        <label>STEPS</label>
+        <input type="range" id="ps-steps" min="4" max="16" value="16" step="4"
+          style="accent-color:var(--purple)" title="Active sequencer steps" aria-label="Active sequencer steps">
+        <output style="color:var(--purple)" id="ps-steps-out">16</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>SWING</label>
+        <input type="range" id="ps-swing" min="0" max="100" value="20"
+          style="accent-color:var(--purple)" title="Sequencer swing %" aria-label="Sequencer swing %">
+        <output style="color:var(--purple)" id="ps-swing-out">20%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>PROB</label>
+        <input type="range" id="ps-prob" min="0" max="100" value="100"
+          style="accent-color:var(--purple)" title="Global step probability" aria-label="Global step probability">
+        <output style="color:var(--purple)" id="ps-prob-out">100%</output>
+      </div>
+    </div>
+    <div class="n8l-b45-chips" style="margin-top:4px">
+      <div class="n8l-b45-chip on" id="ps-play" title="Start sequencer">▶ PLAY</div>
+      <div class="n8l-b45-chip" id="ps-stop" title="Stop sequencer">■ STOP</div>
+      <div class="n8l-b45-chip" id="ps-clear" title="Clear pattern">✕ CLR</div>
+      <div class="n8l-b45-chip" id="ps-rand" title="Randomize pattern">⟳ RND</div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 2: 130 + 131 + 132 -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:0">
+
+  <!-- ── UPGRADE 130: OSCILLOSCOPE VIEW ── -->
+  <div class="n8l-b45-panel">
+    <div class="n8l-b45-title">
+      <span class="n8l-b45-dot" style="background:var(--green)"></span>OSCILLOSCOPE VIEW
+    </div>
+    <div class="n8l-osc-mode-row" role="group" aria-label="Oscilloscope display mode">
+      <div class="n8l-osc-mode on" data-osc="time">TIME</div>
+      <div class="n8l-osc-mode" data-osc="xy">X-Y</div>
+      <div class="n8l-osc-mode" data-osc="spectrum">FFT</div>
+    </div>
+    <canvas id="osc-canvas" class="n8l-b45-canvas" width="300" height="64"
+      aria-label="Oscilloscope waveform display"></canvas>
+    <div class="n8l-b45-row">
+      <div class="n8l-b45-knob">
+        <label>ZOOM</label>
+        <input type="range" id="osc-zoom" min="1" max="8" value="2" step=".5"
+          style="accent-color:var(--green)" title="Time scale zoom" aria-label="Oscilloscope time scale zoom">
+        <output style="color:var(--green)" id="osc-zoom-out">2x</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>TRIG</label>
+        <input type="range" id="osc-trig" min="-100" max="100" value="0"
+          style="accent-color:var(--green)" title="Trigger level" aria-label="Oscilloscope trigger level">
+        <output style="color:var(--green)" id="osc-trig-out">0</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>BRIGHT</label>
+        <input type="range" id="osc-bright" min="10" max="100" value="70"
+          style="accent-color:var(--green)" title="Trace brightness" aria-label="Oscilloscope trace brightness">
+        <output style="color:var(--green)" id="osc-bright-out">70%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>PERSIST</label>
+        <input type="range" id="osc-persist" min="0" max="95" value="40"
+          style="accent-color:var(--green)" title="Phosphor persistence" aria-label="Oscilloscope phosphor persistence">
+        <output style="color:var(--green)" id="osc-persist-out">40%</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UPGRADE 131: CHORD ARPEGGIO BUILDER ── -->
+  <div class="n8l-b45-panel">
+    <div class="n8l-b45-title">
+      <span class="n8l-b45-dot" style="background:var(--amber)"></span>CHORD ARPEGGIO BUILDER
+    </div>
+    <div class="n8l-ca-chord-row" role="group" aria-label="Chord type selection">
+      <div class="n8l-ca-chord on" data-chord="maj">MAJ</div>
+      <div class="n8l-ca-chord" data-chord="min">MIN</div>
+      <div class="n8l-ca-chord" data-chord="dom7">DOM7</div>
+      <div class="n8l-ca-chord" data-chord="maj7">MAJ7</div>
+      <div class="n8l-ca-chord" data-chord="min7">MIN7</div>
+      <div class="n8l-ca-chord" data-chord="dim">DIM</div>
+      <div class="n8l-ca-chord" data-chord="aug">AUG</div>
+      <div class="n8l-ca-chord" data-chord="sus4">SUS4</div>
+    </div>
+    <div class="n8l-ca-note-display" id="ca-notes" aria-label="Chord note display"></div>
+    <div class="n8l-b45-chips" style="margin:4px 0">
+      <div class="n8l-b45-chip on" data-arp-pat="up">UP</div>
+      <div class="n8l-b45-chip" data-arp-pat="down">DN</div>
+      <div class="n8l-b45-chip" data-arp-pat="updown">UD</div>
+      <div class="n8l-b45-chip" data-arp-pat="random">RND</div>
+      <div class="n8l-b45-chip" data-arp-pat="chord">CHD</div>
+    </div>
+    <div class="n8l-b45-row">
+      <div class="n8l-b45-knob">
+        <label>ROOT</label>
+        <select id="ca-root" style="width:100%;background:#040b18;border:1px solid rgba(255,183,56,.3);
+          border-radius:6px;color:var(--amber);font:700 7px var(--mono);padding:2px"
+          aria-label="Chord root note" title="Chord root note">
+          <option>C</option><option>C#</option><option>D</option><option>D#</option>
+          <option>E</option><option>F</option><option>F#</option><option>G</option>
+          <option>G#</option><option>A</option><option>A#</option><option>B</option>
+        </select>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>INV</label>
+        <input type="range" id="ca-inv" min="0" max="3" value="0"
+          style="accent-color:var(--amber)" title="Chord inversion" aria-label="Chord inversion">
+        <output style="color:var(--amber)" id="ca-inv-out">Root</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>OCT</label>
+        <input type="range" id="ca-oct" min="1" max="4" value="2"
+          style="accent-color:var(--amber)" title="Arpeggio octave span" aria-label="Arpeggio octave span">
+        <output style="color:var(--amber)" id="ca-oct-out">2</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>RATE</label>
+        <input type="range" id="ca-rate" min="1" max="16" value="8"
+          style="accent-color:var(--amber)" title="Arp rate divisions" aria-label="Arp rate divisions">
+        <output style="color:var(--amber)" id="ca-rate-out">8th</output>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UPGRADE 132: GRANULAR TEXTURE ENGINE ── -->
+  <div class="n8l-b45-panel">
+    <div class="n8l-b45-title">
+      <span class="n8l-b45-dot" style="background:var(--pink)"></span>GRANULAR TEXTURE ENGINE
+    </div>
+    <div class="n8l-gt-scatter" role="group" aria-label="Grain scatter mode">
+      <div class="n8l-gt-s-btn on" data-scatter="rand">RAND</div>
+      <div class="n8l-gt-s-btn" data-scatter="forward">FWD</div>
+      <div class="n8l-gt-s-btn" data-scatter="reverse">REV</div>
+      <div class="n8l-gt-s-btn" data-scatter="pingpong">PING</div>
+    </div>
+    <canvas id="gt-canvas" class="n8l-b45-canvas" width="300" height="52"
+      aria-label="Granular texture grain field visualization"></canvas>
+    <div class="n8l-b45-row">
+      <div class="n8l-b45-knob">
+        <label>SIZE</label>
+        <input type="range" id="gt-size" min="2" max="500" value="80"
+          style="accent-color:var(--pink)" title="Grain size ms" aria-label="Grain size ms">
+        <output style="color:var(--pink)" id="gt-size-out">80ms</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>DENSITY</label>
+        <input type="range" id="gt-density" min="1" max="100" value="40"
+          style="accent-color:var(--pink)" title="Grain density" aria-label="Grain density">
+        <output style="color:var(--pink)" id="gt-density-out">40</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>POSITION</label>
+        <input type="range" id="gt-pos" min="0" max="100" value="50"
+          style="accent-color:var(--pink)" title="Grain position in buffer %" aria-label="Grain position %">
+        <output style="color:var(--pink)" id="gt-pos-out">50%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>SCATTER</label>
+        <input type="range" id="gt-scatter" min="0" max="100" value="35"
+          style="accent-color:var(--pink)" title="Pitch scatter amount" aria-label="Pitch scatter amount">
+        <output style="color:var(--pink)" id="gt-scatter-out">35%</output>
+      </div>
+      <div class="n8l-b45-knob">
+        <label>MIX</label>
+        <input type="range" id="gt-mix" min="0" max="100" value="55"
+          style="accent-color:var(--pink)" title="Granular wet mix" aria-label="Granular wet mix">
+        <output style="color:var(--pink)" id="gt-mix-out">55%</output>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="n8l-b4546-js">
+(()=>{
+  "use strict";
+  if(window.__n8lB4546)return;
+  window.__n8lB4546=true;
+  const reduced=window.matchMedia?.("(prefers-reduced-motion:reduce)").matches;
+  const ra=requestAnimationFrame;
+
+  /* ── 127: Waveshaper Distortion ── */
+  document.querySelectorAll("[data-ws]").forEach(c=>{
+    c.addEventListener("click",()=>{
+      document.querySelectorAll("[data-ws]").forEach(x=>x.classList.remove("on"));
+      c.classList.add("on");
+    });
+  });
+  const wsCanvas=document.getElementById("ws-canvas");
+  if(wsCanvas&&!reduced){
+    const ctx=wsCanvas.getContext("2d");let wsPhase=0;
+    const transfer=(x,type,drive,bits)=>{
+      const d=1+drive*.08;
+      if(type==="soft"){const k=2*d/(1-d);return(1+k)*x/(1+k*Math.abs(x))}
+      if(type==="hard")return Math.max(-1,Math.min(1,x*d));
+      if(type==="fold"){let v=x*d;while(v>1||v<-1){if(v>1)v=2-v;if(v<-1)v=-2-v;}return v;}
+      if(type==="bit"){const s=Math.pow(2,bits-1);return Math.round(x*s)/s;}
+      // tape sat
+      return x<0?-(1-Math.exp(x*d)):1-Math.exp(-x*d);
+    };
+    const draw=()=>{
+      const W=wsCanvas.width,H=wsCanvas.height;
+      ctx.fillStyle="#06050f";ctx.fillRect(0,0,W,H);
+      // Grid
+      ctx.strokeStyle="rgba(255,255,255,.06)";ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(W/2,0);ctx.lineTo(W/2,H);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+      const type=document.querySelector("[data-ws].on")?.dataset.ws||"soft";
+      const drive=parseFloat(document.getElementById("ws-drive")?.value||35)/100;
+      const bits=parseInt(document.getElementById("ws-bits")?.value||8);
+      const mix=parseFloat(document.getElementById("ws-mix")?.value||65)/100;
+      // Transfer curve
+      ctx.strokeStyle=`rgba(255,60,80,${.5+mix*.4})`;ctx.lineWidth=1.5;ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const inp=(x/W)*2-1;
+        const out=transfer(inp,type,drive*10,bits);
+        const py=H/2-out*(H/2-4);
+        x===0?ctx.moveTo(x,py):ctx.lineTo(x,py);
+      }
+      ctx.stroke();
+      // Animated input dot
+      const inp=Math.sin(wsPhase)*.9;
+      const out=transfer(inp,type,drive*10,bits);
+      const dx=(inp+1)/2*W,dy=H/2-out*(H/2-4);
+      ctx.fillStyle="rgba(255,226,107,.9)";
+      ctx.beginPath();ctx.arc(dx,dy,4,0,Math.PI*2);ctx.fill();
+      wsPhase+=.06;ra(draw);
+    };draw();
+  }
+  [["ws-drive","ws-drive-out",""],["ws-tone","ws-tone-out","%"],
+   ["ws-bits","ws-bits-out",""],["ws-mix","ws-mix-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ── 128: Stereo Enhancer ── */
+  const seCanvas=document.getElementById("se-canvas");
+  if(seCanvas&&!reduced){
+    const ctx=seCanvas.getContext("2d");let sePhase=0;
+    const draw=()=>{
+      const W=seCanvas.width,H=seCanvas.height;
+      ctx.fillStyle="#040b18";ctx.fillRect(0,0,W,H);
+      const width=parseFloat(document.getElementById("se-width")?.value||130)/100;
+      const focus=parseFloat(document.getElementById("se-focus")?.value||50)/100;
+      // M/S meter bars
+      const mLevel=Math.abs(Math.sin(sePhase*.7))*(1-focus*.3);
+      const sLevel=Math.abs(Math.sin(sePhase*1.3+1))*width*.6;
+      // Mid bar (center)
+      const mH=mLevel*(H-12);
+      ctx.fillStyle="rgba(0,240,255,.6)";
+      ctx.fillRect(W/2-12,H-6-mH,24,mH);
+      ctx.fillStyle="rgba(0,240,255,.2)";
+      ctx.fillRect(W/2-12,H-6-mH-2,24,3);
+      // Side bars
+      const sH=sLevel*(H-12);
+      ctx.fillStyle="rgba(160,108,255,.5)";
+      ctx.fillRect(4,H-6-sH,16,sH);
+      ctx.fillRect(W-20,H-6-sH,16,sH);
+      // Labels
+      ctx.fillStyle="rgba(255,255,255,.3)";ctx.font="6px monospace";
+      ctx.fillText("L",5,H-1);ctx.fillText("M",W/2-4,H-1);ctx.fillText("R",W-16,H-1);
+      // Width indicator arc
+      const cx=W/2,cy=H*.4;const r=Math.min(22,H*.3);
+      const sweep=Math.min(Math.PI*0.9,width*Math.PI*.5);
+      ctx.strokeStyle="rgba(0,240,255,.4)";ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2-sweep,-Math.PI/2+sweep);ctx.stroke();
+      sePhase+=.04;ra(draw);
+    };draw();
+  }
+  [["se-width","se-width-out","%"],["se-focus","se-focus-out","%"],
+   ["se-haas","se-haas-out","ms"],["se-air","se-air-out","%"],
+   ["se-mix","se-mix-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ── 129: Pattern Sequencer ── */
+  const psGrid=document.getElementById("ps-grid");
+  const psVelRow=document.getElementById("ps-vel-row");
+  const psSteps=Array(16).fill(false);const psVels=Array(16).fill(.75);
+  let psCursor=0,psInterval=null;
+  if(psGrid&&psVelRow){
+    const stepEls=[],velEls=[];
+    for(let i=0;i<16;i++){
+      const s=document.createElement("div");s.className="n8l-ps-step";
+      s.dataset.i=i;
+      s.addEventListener("click",()=>{psSteps[i]=!psSteps[i];s.classList.toggle("on",psSteps[i])});
+      psGrid.appendChild(s);stepEls.push(s);
+      const v=document.createElement("div");v.className="n8l-ps-vel";
+      v.style.height=Math.round(psVels[i]*100)+"%;";
+      v.title=`Step ${i+1} velocity`;v.setAttribute("aria-label",`Step ${i+1} velocity`);
+      psVelRow.appendChild(v);velEls.push(v);
+    }
+    const tick=()=>{
+      const activeSteps=parseInt(document.getElementById("ps-steps")?.value||16);
+      stepEls.forEach((s,i)=>s.classList.toggle("play",i===psCursor&&i<activeSteps));
+      psCursor=(psCursor+1)%activeSteps;
+    };
+    document.getElementById("ps-play")?.addEventListener("click",()=>{
+      if(psInterval)clearInterval(psInterval);
+      const swing=parseFloat(document.getElementById("ps-swing")?.value||20)/100;
+      psInterval=setInterval(tick,Math.round(125*(1+swing*.1)));
+    });
+    document.getElementById("ps-stop")?.addEventListener("click",()=>{
+      clearInterval(psInterval);psInterval=null;psCursor=0;
+      stepEls.forEach(s=>s.classList.remove("play"));
+    });
+    document.getElementById("ps-clear")?.addEventListener("click",()=>{
+      psSteps.fill(false);stepEls.forEach(s=>{s.classList.remove("on","play")});
+    });
+    document.getElementById("ps-rand")?.addEventListener("click",()=>{
+      for(let i=0;i<16;i++){
+        psSteps[i]=Math.random()>.45;
+        stepEls[i].classList.toggle("on",psSteps[i]);
+        psVels[i]=.4+Math.random()*.6;
+        velEls[i].style.height=Math.round(psVels[i]*100)+"%";
+      }
+    });
+  }
+  [["ps-steps","ps-steps-out",""],["ps-swing","ps-swing-out","%"],
+   ["ps-prob","ps-prob-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ── 130: Oscilloscope View ── */
+  document.querySelectorAll("[data-osc]").forEach(m=>{
+    m.addEventListener("click",()=>{
+      document.querySelectorAll("[data-osc]").forEach(x=>x.classList.remove("on"));
+      m.classList.add("on");
+    });
+  });
+  const oscCanvas=document.getElementById("osc-canvas");
+  if(oscCanvas&&!reduced){
+    const ctx=oscCanvas.getContext("2d");let oscPhase=0,oscPhase2=0;
+    const draw=()=>{
+      const W=oscCanvas.width,H=oscCanvas.height;
+      const persist=parseFloat(document.getElementById("osc-persist")?.value||40)/100;
+      const bright=parseFloat(document.getElementById("osc-bright")?.value||70)/100;
+      const zoom=parseFloat(document.getElementById("osc-zoom")?.value||2);
+      const mode=document.querySelector("[data-osc].on")?.dataset.osc||"time";
+      ctx.fillStyle=`rgba(4,10,4,${1-persist*.7})`;ctx.fillRect(0,0,W,H);
+      const col=`rgba(0,255,100,${.5+bright*.4})`;
+      ctx.strokeStyle=col;ctx.lineWidth=1.5;
+      if(mode==="xy"){
+        // Lissajous
+        ctx.beginPath();
+        for(let t=0;t<Math.PI*4;t+=0.04){
+          const x=W/2+Math.sin(t*1.5+oscPhase*.5)*(W*.38);
+          const y=H/2+Math.sin(t*2.0+oscPhase*.3)*(H*.38);
+          t<0.04?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      } else if(mode==="spectrum"){
+        for(let i=0;i<W;i++){
+          const t=i/W;
+          const v=Math.abs(Math.sin(t*20*zoom+oscPhase)*Math.exp(-t*2));
+          const h=Math.max(1,v*(H*.85));
+          ctx.fillStyle=col;ctx.fillRect(i,H-h,1,h);
+        }
+      } else {
+        // Time domain
+        ctx.beginPath();
+        for(let x=0;x<W;x++){
+          const t=x/W*Math.PI*4*zoom+oscPhase;
+          const y=H/2-Math.sin(t)*(H*.35)*bright-Math.sin(t*2.01+1)*(H*.08)*bright;
+          x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      }
+      oscPhase+=.04;oscPhase2+=.026;ra(draw);
+    };draw();
+  }
+  [["osc-zoom","osc-zoom-out","x"],["osc-trig","osc-trig-out",""],
+   ["osc-bright","osc-bright-out","%"],["osc-persist","osc-persist-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+
+  /* ── 131: Chord Arpeggio Builder ── */
+  const CHORD_INTERVALS={
+    maj:[0,4,7],min:[0,3,7],dom7:[0,4,7,10],maj7:[0,4,7,11],
+    min7:[0,3,7,10],dim:[0,3,6],aug:[0,4,8],sus4:[0,5,7]
+  };
+  const NOTE_NAMES=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+  const INV_LABELS=["Root","1st","2nd","3rd"];
+  function updateChord(){
+    const root=document.getElementById("ca-root")?.value||"C";
+    const type=document.querySelector("[data-chord].on")?.dataset.chord||"maj";
+    const inv=parseInt(document.getElementById("ca-inv")?.value||0);
+    const rootIdx=NOTE_NAMES.indexOf(root);
+    let intervals=[...(CHORD_INTERVALS[type]||[0,4,7])];
+    // Apply inversion
+    for(let i=0;i<inv&&i<intervals.length;i++){
+      const n=intervals.shift();intervals.push(n+12);
+    }
+    const notesEl=document.getElementById("ca-notes");
+    if(notesEl){
+      notesEl.innerHTML=intervals.map(n=>{
+        const name=NOTE_NAMES[(rootIdx+n)%12];
+        const oct=Math.floor((rootIdx+n)/12);
+        return`<span class="n8l-ca-note">${name}${oct>0?"+"+oct:""}</span>`;
+      }).join("");
+    }
+    const invOut=document.getElementById("ca-inv-out");
+    if(invOut)invOut.value=INV_LABELS[Math.min(inv,3)];
+  }
+  document.querySelectorAll("[data-chord]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("[data-chord]").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");updateChord();
+    });
+  });
+  document.querySelectorAll("[data-arp-pat]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("[data-arp-pat]").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");
+    });
+  });
+  document.getElementById("ca-root")?.addEventListener("change",updateChord);
+  document.getElementById("ca-inv")?.addEventListener("input",updateChord);
+  const caOct=document.getElementById("ca-oct");
+  const caOctOut=document.getElementById("ca-oct-out");
+  caOct?.addEventListener("input",()=>{if(caOctOut)caOctOut.value=caOct.value});
+  const caRateLabels=["32nd","16th","12th","8th","6th","4th","3rd","2nd","..","..","..","..","..","..","..",".."];
+  const caRate=document.getElementById("ca-rate");
+  const caRateOut=document.getElementById("ca-rate-out");
+  caRate?.addEventListener("input",()=>{if(caRateOut)caRateOut.value=caRateLabels[parseInt(caRate.value)-1]||caRate.value});
+  updateChord();
+
+  /* ── 132: Granular Texture Engine ── */
+  document.querySelectorAll("[data-scatter]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("[data-scatter]").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");
+    });
+  });
+  const gtCanvas=document.getElementById("gt-canvas");
+  if(gtCanvas&&!reduced){
+    const ctx=gtCanvas.getContext("2d");
+    let grains=Array.from({length:24},()=>({
+      x:Math.random(),y:Math.random()*.8+.1,
+      vx:(Math.random()-.5)*.004,vy:(Math.random()-.5)*.003,
+      size:Math.random()*6+2,alpha:Math.random()*.7+.2,life:Math.random()
+    }));
+    let gtTick=0;
+    const draw=()=>{
+      const W=gtCanvas.width,H=gtCanvas.height;
+      ctx.fillStyle="rgba(5,4,14,.35)";ctx.fillRect(0,0,W,H);
+      const density=parseFloat(document.getElementById("gt-density")?.value||40)/100;
+      const pos=parseFloat(document.getElementById("gt-pos")?.value||50)/100;
+      const scatter=parseFloat(document.getElementById("gt-scatter")?.value||35)/100;
+      const mode=document.querySelector("[data-scatter].on")?.dataset.scatter||"rand";
+      grains.forEach((g,i)=>{
+        g.life+=0.012;
+        if(mode==="forward")g.x+=.003*density;
+        else if(mode==="reverse")g.x-=.003*density;
+        else if(mode==="pingpong"){g.vx+=g.x>1||g.x<0?g.vx*-2:0;g.x+=g.vx*density;}
+        else{g.x+=g.vx*(1+scatter*2);g.y+=g.vy;}
+        if(g.x<0)g.x=1;if(g.x>1)g.x=0;
+        if(g.y<0||g.y>1){g.y=Math.random()*.8+.1;g.vy*=-1;}
+        if(g.life>1){
+          grains[i]={x:pos+((Math.random()-.5)*scatter*.6),y:Math.random()*.8+.1,
+            vx:(Math.random()-.5)*.004,vy:(Math.random()-.5)*.003,
+            size:Math.random()*6+2,alpha:Math.random()*.7+.2,life:0};
+          return;
+        }
+        const a=g.alpha*(1-Math.abs(g.life-.5)*2)*density;
+        const hue=280+scatter*80;
+        ctx.fillStyle=`hsla(${hue},100%,70%,${a.toFixed(2)})`;
+        ctx.beginPath();ctx.arc(g.x*W,g.y*H,g.size*(1-g.life*.5),0,Math.PI*2);ctx.fill();
+      });
+      gtTick++;ra(draw);
+    };draw();
+  }
+  [["gt-size","gt-size-out","ms"],["gt-density","gt-density-out",""],
+   ["gt-pos","gt-pos-out","%"],["gt-scatter","gt-scatter-out","%"],
+   ["gt-mix","gt-mix-out","%"]].forEach(([id,o,u])=>{
+    const i=document.getElementById(id),v=document.getElementById(o);
+    if(i&&v)i.addEventListener("input",()=>v.value=i.value+u);
+  });
+})();
+</script>
 </body>
 </html>
