@@ -96,8 +96,8 @@
     @keyframes spin{to{transform:rotate(360deg)}}.boot-card h1{font-size:clamp(28px,7vw,48px);margin:0;letter-spacing:-.04em}
     .boot-card h1 span{color:var(--pink)}.boot-card p{color:var(--muted);font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase}
 
-    #app{position:relative;z-index:1;width:100%;max-width:1920px;margin:0 auto;min-height:100vh;padding:clamp(6px,1vw,12px);display:grid;grid-template-rows:auto auto 1fr auto;gap:clamp(7px,1vw,11px)}
-    #topbar{min-height:64px;border-radius:16px;padding:9px 11px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    #app{position:relative;z-index:1;width:100%;max-width:1920px;margin:0 auto;min-height:100vh;padding:clamp(6px,1vw,12px);display:flex;flex-direction:column;gap:clamp(7px,1vw,11px)}
+    #topbar{min-height:64px;border-radius:16px;padding:9px 11px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:clamp(6px,1vw,12px);z-index:1100}
     .brand{display:flex;align-items:center;gap:10px;padding-right:12px;border-right:1px solid var(--line);min-width:max-content}
     .logo{width:40px;height:40px;border-radius:13px;background:conic-gradient(from 210deg,var(--pink),var(--purple),var(--cyan),var(--pink));padding:1px;
       box-shadow:0 0 24px rgba(255,79,163,.18)}
@@ -124,7 +124,7 @@
     #visualizer{position:absolute;inset:0;width:100%;height:100%}
     .viz-label{position:absolute;right:14px;top:12px;font:8px var(--mono);letter-spacing:.12em;color:var(--muted)}
 
-    #workspace{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(7px,1vw,11px);min-height:0}
+    #workspace{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(7px,1vw,11px);min-height:0;flex:1}
     .module{border-radius:var(--radius);overflow:hidden;min-width:0}
     .module-head{min-height:48px;padding:7px 12px;display:flex;align-items:center;align-content:center;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}
     .module-title{font-size:12px;letter-spacing:.075em;text-transform:uppercase}.module-title small{display:block;color:var(--muted);font:8px var(--mono);letter-spacing:.06em;margin-top:2px;text-transform:none}
@@ -319,6 +319,119 @@
         </select>
       </div>
     </section>
+
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="mobile-bottom-nav">
+      <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
+        <span>🥁</span><span>DRUMS</span>
+      </button>
+      <button onclick="document.body.className=''; document.getElementById('sequencer-module').scrollIntoView();">
+        <span>🎹</span><span>SEQ</span>
+      </button>
+      <button onclick="document.body.className=''; document.getElementById('topbar').scrollIntoView();">
+        <span>🎧</span><span>ACOUSTICS</span>
+      </button>
+      <button onclick="document.getElementById('bounce-btn').click();">
+        <span>⇩</span><span>WAV</span>
+      </button>
+    </nav>
+
+    <section id="hero-strip" class="glass">
+      <div class="hero-copy">
+        <span class="kicker">Play it · Loop it · Shape it</span>
+        <h1>Your ideas, <span>in motion.</span></h1>
+        <p>Performance pads and a modular multitrack beat constructor—entirely in your browser.</p>
+        <span id="theme-vibe" style="color:var(--muted);font:8px var(--mono);margin-top:6px">RYOBI NIGHT · deep navy machinery, electric tool-green energy, moving power-grid current</span>
+      </div>
+      <div class="visualizer-wrap"><canvas id="visualizer"></canvas><span class="viz-label">MASTER SPECTRUM</span></div>
+    </section>
+
+    <section id="workspace">
+      <section id="performance-module" class="module glass">
+        <header class="module-head">
+          <div class="module-title">Performance pads<small>Keyboard: 1–4 · Q–R · A–F · Z–V</small></div>
+          <span class="module-spacer"></span>
+          <div id="bank-tabs" class="bank-tabs"></div>
+          <button class="btn icon tiny module-collapse" data-collapse="performance-module" title="Collapse performance pads">⌃</button>
+        </header>
+        <div class="module-body"><div id="pads" aria-label="Playable synthesizer pads"></div></div>
+        <div class="performance-controls">
+          <div class="control"><label for="root-note">Root</label><select id="root-note"></select></div>
+          <div class="control"><label for="scale">Scale</label><select id="scale"></select></div>
+          <div class="control"><label for="octave">Octave <output id="octave-out">3</output></label><input id="octave" type="range" min="1" max="6" value="3"></div>
+          <div class="control"><label for="attack">Attack <output id="attack-out">0.01</output></label><input id="attack" type="range" min="0.001" max="2" value=".01" step=".001"></div>
+          <div class="control"><label for="release">Release <output id="release-out">0.40</output></label><input id="release" type="range" min=".05" max="5" value=".4" step=".05"></div>
+          <div class="control"><label for="cutoff">Cutoff <output id="cutoff-out">7.5k</output></label><input id="cutoff" type="range" min="150" max="16000" value="7500"></div>
+          <div class="control"><label for="resonance">Resonance <output id="resonance-out">2.0</output></label><input id="resonance" type="range" min=".1" max="18" value="2" step=".1"></div>
+          <div class="control"><label for="waveform">Waveform</label><select id="waveform"><option>sawtooth</option><option>square</option><option>triangle</option><option>sine</option></select></div>
+          <div class="control"><label for="velocity">Velocity <output id="velocity-out">88%</output></label><input id="velocity" type="range" min=".15" max="1" value=".88" step=".01"></div>
+          <div class="control"><label for="glide">Glide <output id="glide-out">0ms</output></label><input id="glide" type="range" min="0" max=".5" value="0" step=".01"></div>
+          <div class="control"><label for="pad-delay">Delay send <output id="pad-delay-out">18%</output></label><input id="pad-delay" type="range" min="0" max=".8" value=".18" step=".01"></div>
+          <div class="control"><label for="pad-reverb">Reverb send <output id="pad-reverb-out">22%</output></label><input id="pad-reverb" type="range" min="0" max=".8" value=".22" step=".01"></div>
+        </div>
+      </section>
+
+      <section id="sequencer-module" class="module glass">
+        <header class="module-head">
+          <div class="module-title">Loop constructor<small>Click: on · accent · off / right-click: probability</small></div>
+          <span class="module-spacer"></span>
+          <label class="control" style="width:92px"><span style="font:8px var(--mono);color:var(--muted)">STEPS</span>
+            <select id="step-count" class="compact-select"><option value="16">16</option><option value="32">32</option></select></label>
+          <label class="control" style="width:100px"><span style="font:8px var(--mono);color:var(--muted)">SWING</span>
+            <input id="swing" type="range" min="0" max=".42" value=".08" step=".01" title="Swing Amount" aria-label="Swing Amount"></label>
+          <div class="step-page"><button id="step-page-prev" class="btn tiny icon" title="Previous 16 steps">‹</button><span id="step-page-label">1–16</span><button id="step-page-next" class="btn tiny icon" title="Next 16 steps">›</button></div>
+          <button id="follow-page" class="btn tiny active" title="Automatically follow the active 16-step page">FOLLOW</button>
+          <button class="btn icon tiny module-collapse" data-collapse="sequencer-module" title="Collapse sequencer">⌃</button>
+        </header>
+        <div class="pattern-bar">
+          <span style="font:8px var(--mono);color:var(--muted)">PATTERN</span>
+          <div class="pattern-slots">
+            <button class="pattern-slot active" data-pattern="A">A</button><button class="pattern-slot" data-pattern="B">B</button>
+            <button class="pattern-slot" data-pattern="C">C</button><button class="pattern-slot" data-pattern="D">D</button>
+          </div>
+          <input id="pattern-name" class="pattern-name" value="Midnight Draft" aria-label="Pattern name">
+          <select id="groove-preset" class="compact-select" aria-label="Groove preset"><option value="">GROOVE…</option><option value="straight">STRAIGHT</option><option value="mpc">MPC POCKET</option><option value="lazy">LAZY SWING</option><option value="drill">DRILL TIGHT</option><option value="shuffle">SHUFFLE</option></select>
+          <button id="count-in" class="btn tiny" title="Play one bar of count-in before recording or playback">COUNT-IN</button>
+          <button id="duplicate-pattern" class="btn tiny">DUPLICATE</button>
+          <button id="clear-pattern" class="btn tiny danger">CLEAR</button>
+          <button id="randomize-pattern" class="btn tiny">GENERATE</button>
+        </div>
+        <div id="tracks-wrap"><div id="tracks"></div></div>
+        <footer class="sequencer-foot">
+          <button id="add-track" class="btn tiny">＋ ADD TRACK</button>
+          <button id="clear-steps" class="btn tiny danger">CLEAR STEPS</button>
+          <button id="humanize" class="btn tiny">HUMANIZE</button>
+          <button id="fill-hats" class="btn tiny">FILL HATS</button>
+          <button id="double-pattern" class="btn tiny">DOUBLE</button>
+          <button id="copy-track" class="btn tiny">COPY TRACK</button>
+          <button id="paste-track" class="btn tiny">PASTE TRACK</button>
+          <button id="mirror-track" class="btn tiny">MIRROR</button>
+          <button id="euclid-track" class="btn tiny">EUCLID</button>
+          <button id="rotate-left" class="btn tiny">SHIFT ◀</button>
+          <button id="rotate-right" class="btn tiny">SHIFT ▶</button>
+          <select id="loop-repeats" class="compact-select" aria-label="Loop repeat count"><option value="0">LOOP ∞</option><option value="1">PLAY ×1</option><option value="2">PLAY ×2</option><option value="4">PLAY ×4</option><option value="8">PLAY ×8</option></select>
+          <span id="position-display">1.1.01</span>
+        </footer>
+      </section>
+    </section>
+
+    <section id="mixer-module" class="module glass">
+      <header class="module-head">
+        <div class="module-title">Mixer & master effects<small>Every track is routed independently before the final mix</small></div>
+        <span class="module-spacer"></span>
+        <select id="bass-profile" class="compact-select" aria-label="Bass processing preset"><option value="">BASS PROFILE…</option><option value="clean">CLEAN SUB</option><option value="headphone">HEADPHONE THUMP</option><option value="trunk">TRUNK RATTLE</option><option value="drill">DRILL PRESSURE</option></select>
+        <div class="control" style="width:90px"><label>Master <output id="master-out">82%</output></label><input id="master" type="range" min="0" max="1" value=".82" step=".01" title="Master Volume" aria-label="Master Volume"></div>
+        <div class="control" style="width:90px"><label>Delay <output id="delay-out">20%</output></label><input id="delay" type="range" min="0" max=".7" value=".2" step=".01" title="Delay Mix" aria-label="Delay Mix"></div>
+        <div class="control" style="width:90px"><label>Reverb <output id="reverb-out">18%</output></label><input id="reverb" type="range" min="0" max=".7" value=".18" step=".01" title="Reverb Mix" aria-label="Reverb Mix"></div>
+        <div class="control" style="width:90px"><label>Drive <output id="drive-out">8%</output></label><input id="drive" type="range" min="0" max=".8" value=".08" step=".01" title="Drive Amount" aria-label="Drive Amount"></div>
+        <div class="control" style="width:90px"><label>Thump <output id="thump-out">72%</output></label><input id="thump" type="range" min="0" max="1" value=".72" step=".01" title="Thump Level" aria-label="Thump Level"></div>
+        <div class="control" style="width:90px"><label>Punch <output id="punch-out">48%</output></label><input id="punch" type="range" min="0" max="1" value=".48" step=".01" title="Punch Level" aria-label="Punch Level"></div>
+        <button class="btn icon tiny module-collapse" data-collapse="mixer-module" title="Collapse mixer">⌃</button>
+      </header>
+      <div id="mixer"></div>
+    </section>
+
 
     <!-- UPGRADE 1 & 2: BEATS 5-BAND GRAPHIC EQ & DJ VINYL TURNTABLE HUB -->
     <section id="beats-pro-upgrades" class="glass" style="padding:14px; border-radius:16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
@@ -1090,117 +1203,6 @@
         <b style="font-size:0.8rem; color:#00ff88; display:block; margin-bottom:6px;">🔥 SOFT SATURATION STAGE</b>
         <button class="btn tiny primary" style="width:100%; background:linear-gradient(135deg,#00ff88,#008044); color:#000; font-weight:bold;">SATURATION: ACTIVE</button>
       </div>
-    </section>
-
-    <!-- MOBILE BOTTOM NAVIGATION BAR -->
-    <nav class="mobile-bottom-nav">
-      <button onclick="document.body.className=''; document.getElementById('performance-module').scrollIntoView();" class="active">
-        <span>🥁</span><span>DRUMS</span>
-      </button>
-      <button onclick="document.body.className=''; document.getElementById('sequencer-module').scrollIntoView();">
-        <span>🎹</span><span>SEQ</span>
-      </button>
-      <button onclick="document.body.className=''; document.getElementById('topbar').scrollIntoView();">
-        <span>🎧</span><span>ACOUSTICS</span>
-      </button>
-      <button onclick="document.getElementById('bounce-btn').click();">
-        <span>⇩</span><span>WAV</span>
-      </button>
-    </nav>
-
-    <section id="hero-strip" class="glass">
-      <div class="hero-copy">
-        <span class="kicker">Play it · Loop it · Shape it</span>
-        <h1>Your ideas, <span>in motion.</span></h1>
-        <p>Performance pads and a modular multitrack beat constructor—entirely in your browser.</p>
-        <span id="theme-vibe" style="color:var(--muted);font:8px var(--mono);margin-top:6px">RYOBI NIGHT · deep navy machinery, electric tool-green energy, moving power-grid current</span>
-      </div>
-      <div class="visualizer-wrap"><canvas id="visualizer"></canvas><span class="viz-label">MASTER SPECTRUM</span></div>
-    </section>
-
-    <section id="workspace">
-      <section id="performance-module" class="module glass">
-        <header class="module-head">
-          <div class="module-title">Performance pads<small>Keyboard: 1–4 · Q–R · A–F · Z–V</small></div>
-          <span class="module-spacer"></span>
-          <div id="bank-tabs" class="bank-tabs"></div>
-          <button class="btn icon tiny module-collapse" data-collapse="performance-module" title="Collapse performance pads">⌃</button>
-        </header>
-        <div class="module-body"><div id="pads" aria-label="Playable synthesizer pads"></div></div>
-        <div class="performance-controls">
-          <div class="control"><label for="root-note">Root</label><select id="root-note"></select></div>
-          <div class="control"><label for="scale">Scale</label><select id="scale"></select></div>
-          <div class="control"><label for="octave">Octave <output id="octave-out">3</output></label><input id="octave" type="range" min="1" max="6" value="3"></div>
-          <div class="control"><label for="attack">Attack <output id="attack-out">0.01</output></label><input id="attack" type="range" min="0.001" max="2" value=".01" step=".001"></div>
-          <div class="control"><label for="release">Release <output id="release-out">0.40</output></label><input id="release" type="range" min=".05" max="5" value=".4" step=".05"></div>
-          <div class="control"><label for="cutoff">Cutoff <output id="cutoff-out">7.5k</output></label><input id="cutoff" type="range" min="150" max="16000" value="7500"></div>
-          <div class="control"><label for="resonance">Resonance <output id="resonance-out">2.0</output></label><input id="resonance" type="range" min=".1" max="18" value="2" step=".1"></div>
-          <div class="control"><label for="waveform">Waveform</label><select id="waveform"><option>sawtooth</option><option>square</option><option>triangle</option><option>sine</option></select></div>
-          <div class="control"><label for="velocity">Velocity <output id="velocity-out">88%</output></label><input id="velocity" type="range" min=".15" max="1" value=".88" step=".01"></div>
-          <div class="control"><label for="glide">Glide <output id="glide-out">0ms</output></label><input id="glide" type="range" min="0" max=".5" value="0" step=".01"></div>
-          <div class="control"><label for="pad-delay">Delay send <output id="pad-delay-out">18%</output></label><input id="pad-delay" type="range" min="0" max=".8" value=".18" step=".01"></div>
-          <div class="control"><label for="pad-reverb">Reverb send <output id="pad-reverb-out">22%</output></label><input id="pad-reverb" type="range" min="0" max=".8" value=".22" step=".01"></div>
-        </div>
-      </section>
-
-      <section id="sequencer-module" class="module glass">
-        <header class="module-head">
-          <div class="module-title">Loop constructor<small>Click: on · accent · off / right-click: probability</small></div>
-          <span class="module-spacer"></span>
-          <label class="control" style="width:92px"><span style="font:8px var(--mono);color:var(--muted)">STEPS</span>
-            <select id="step-count" class="compact-select"><option value="16">16</option><option value="32">32</option></select></label>
-          <label class="control" style="width:100px"><span style="font:8px var(--mono);color:var(--muted)">SWING</span>
-            <input id="swing" type="range" min="0" max=".42" value=".08" step=".01" title="Swing Amount" aria-label="Swing Amount"></label>
-          <div class="step-page"><button id="step-page-prev" class="btn tiny icon" title="Previous 16 steps">‹</button><span id="step-page-label">1–16</span><button id="step-page-next" class="btn tiny icon" title="Next 16 steps">›</button></div>
-          <button id="follow-page" class="btn tiny active" title="Automatically follow the active 16-step page">FOLLOW</button>
-          <button class="btn icon tiny module-collapse" data-collapse="sequencer-module" title="Collapse sequencer">⌃</button>
-        </header>
-        <div class="pattern-bar">
-          <span style="font:8px var(--mono);color:var(--muted)">PATTERN</span>
-          <div class="pattern-slots">
-            <button class="pattern-slot active" data-pattern="A">A</button><button class="pattern-slot" data-pattern="B">B</button>
-            <button class="pattern-slot" data-pattern="C">C</button><button class="pattern-slot" data-pattern="D">D</button>
-          </div>
-          <input id="pattern-name" class="pattern-name" value="Midnight Draft" aria-label="Pattern name">
-          <select id="groove-preset" class="compact-select" aria-label="Groove preset"><option value="">GROOVE…</option><option value="straight">STRAIGHT</option><option value="mpc">MPC POCKET</option><option value="lazy">LAZY SWING</option><option value="drill">DRILL TIGHT</option><option value="shuffle">SHUFFLE</option></select>
-          <button id="count-in" class="btn tiny" title="Play one bar of count-in before recording or playback">COUNT-IN</button>
-          <button id="duplicate-pattern" class="btn tiny">DUPLICATE</button>
-          <button id="clear-pattern" class="btn tiny danger">CLEAR</button>
-          <button id="randomize-pattern" class="btn tiny">GENERATE</button>
-        </div>
-        <div id="tracks-wrap"><div id="tracks"></div></div>
-        <footer class="sequencer-foot">
-          <button id="add-track" class="btn tiny">＋ ADD TRACK</button>
-          <button id="clear-steps" class="btn tiny danger">CLEAR STEPS</button>
-          <button id="humanize" class="btn tiny">HUMANIZE</button>
-          <button id="fill-hats" class="btn tiny">FILL HATS</button>
-          <button id="double-pattern" class="btn tiny">DOUBLE</button>
-          <button id="copy-track" class="btn tiny">COPY TRACK</button>
-          <button id="paste-track" class="btn tiny">PASTE TRACK</button>
-          <button id="mirror-track" class="btn tiny">MIRROR</button>
-          <button id="euclid-track" class="btn tiny">EUCLID</button>
-          <button id="rotate-left" class="btn tiny">SHIFT ◀</button>
-          <button id="rotate-right" class="btn tiny">SHIFT ▶</button>
-          <select id="loop-repeats" class="compact-select" aria-label="Loop repeat count"><option value="0">LOOP ∞</option><option value="1">PLAY ×1</option><option value="2">PLAY ×2</option><option value="4">PLAY ×4</option><option value="8">PLAY ×8</option></select>
-          <span id="position-display">1.1.01</span>
-        </footer>
-      </section>
-    </section>
-
-    <section id="mixer-module" class="module glass">
-      <header class="module-head">
-        <div class="module-title">Mixer & master effects<small>Every track is routed independently before the final mix</small></div>
-        <span class="module-spacer"></span>
-        <select id="bass-profile" class="compact-select" aria-label="Bass processing preset"><option value="">BASS PROFILE…</option><option value="clean">CLEAN SUB</option><option value="headphone">HEADPHONE THUMP</option><option value="trunk">TRUNK RATTLE</option><option value="drill">DRILL PRESSURE</option></select>
-        <div class="control" style="width:90px"><label>Master <output id="master-out">82%</output></label><input id="master" type="range" min="0" max="1" value=".82" step=".01" title="Master Volume" aria-label="Master Volume"></div>
-        <div class="control" style="width:90px"><label>Delay <output id="delay-out">20%</output></label><input id="delay" type="range" min="0" max=".7" value=".2" step=".01" title="Delay Mix" aria-label="Delay Mix"></div>
-        <div class="control" style="width:90px"><label>Reverb <output id="reverb-out">18%</output></label><input id="reverb" type="range" min="0" max=".7" value=".18" step=".01" title="Reverb Mix" aria-label="Reverb Mix"></div>
-        <div class="control" style="width:90px"><label>Drive <output id="drive-out">8%</output></label><input id="drive" type="range" min="0" max=".8" value=".08" step=".01" title="Drive Amount" aria-label="Drive Amount"></div>
-        <div class="control" style="width:90px"><label>Thump <output id="thump-out">72%</output></label><input id="thump" type="range" min="0" max="1" value=".72" step=".01" title="Thump Level" aria-label="Thump Level"></div>
-        <div class="control" style="width:90px"><label>Punch <output id="punch-out">48%</output></label><input id="punch" type="range" min="0" max="1" value=".48" step=".01" title="Punch Level" aria-label="Punch Level"></div>
-        <button class="btn icon tiny module-collapse" data-collapse="mixer-module" title="Collapse mixer">⌃</button>
-      </header>
-      <div id="mixer"></div>
     </section>
 
     <footer id="statusbar">
