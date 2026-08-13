@@ -696,8 +696,8 @@
       <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
         <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">⏱️ BPM MICRO-NUDGE</b>
         <div style="display:flex; gap:4px;">
-          <button class="btn tiny" onclick="const b=document.getElementById('bpm'); if(b){b.value=parseInt(b.value)-1;}">-1 BPM</button>
-          <button class="btn tiny" onclick="const b=document.getElementById('bpm'); if(b){b.value=parseInt(b.value)+1;}">+1 BPM</button>
+          <button class="btn tiny" onclick="let b1=document.getElementById('bpm'); if(b1){b1.value=parseInt(b1.value)-1;}">-1 BPM</button>
+          <button class="btn tiny" onclick="let b2=document.getElementById('bpm'); if(b2){b2.value=parseInt(b2.value)+1;}">+1 BPM</button>
         </div>
       </div>
     </section>
@@ -1242,7 +1242,7 @@
       <!-- UPGRADE 89: BEATS SYNTH LFO WAVEFORM -->
       <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
         <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">〰️ LFO WAVEFORM SELECTOR</b>
-        <button class="btn tiny primary" onclick="const w=['SINE','TRIANGLE','SQUARE','SAW']; const idx=(w.indexOf(this.textContent.split(': ')[1])+1)%w.length; this.textContent='LFO: '+w[idx];" style="width:100%;">LFO: SINE</button>
+        <button class="btn tiny primary" onclick="const w=['SINE','TRIANGLE','SQUARE','SAW']; const idx1=(w.indexOf(this.textContent.split(': ')[1])+1)%w.length; this.textContent='LFO: '+w[idx1];" style="width:100%;">LFO: SINE</button>
       </div>
 
       <!-- UPGRADE 90: BEATS BRICKWALL KNEE CURVE -->
@@ -1263,7 +1263,7 @@
       <!-- UPGRADE 92: BEATS SYNTH VELOCITY CURVE -->
       <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
         <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🎹 VELOCITY CURVE PROFILE</b>
-        <button class="btn tiny primary" onclick="const c=['LINEAR','SOFT','HARD']; const idx=(c.indexOf(this.textContent.split(': ')[1])+1)%c.length; this.textContent='VELOCITY: '+c[idx];" style="width:100%;">VELOCITY: LINEAR</button>
+        <button class="btn tiny primary" onclick="const c=['LINEAR','SOFT','HARD']; const idx2=(c.indexOf(this.textContent.split(': ')[1])+1)%c.length; this.textContent='VELOCITY: '+c[idx2];" style="width:100%;">VELOCITY: LINEAR</button>
       </div>
 
       <!-- UPGRADE 93: BEATS BRICKWALL GUARD LED -->
