@@ -114,6 +114,10 @@
     .visualizer-wrap{position:relative;min-height:84px;background:linear-gradient(90deg,transparent,rgba(82,232,226,.025))}
     #visualizer{position:absolute;inset:0;width:100%;height:100%}
     .viz-label{position:absolute;right:14px;top:12px;font:8px var(--mono);letter-spacing:.12em;color:var(--muted)}
+    /* Feature 3: waveform/spectrum visualizer mode toggle */
+    .viz-mode-btn{opacity:.75;font:700 8px var(--mono);letter-spacing:.1em;padding:6px 10px}
+    .viz-mode-btn:hover{opacity:1}
+    .viz-mode-btn[aria-pressed="true"]{border-color:var(--cyan);color:var(--cyan);opacity:1}
 
     #workspace{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(7px,1vw,11px);min-height:0;flex:1}
     .module{border-radius:var(--radius);overflow:hidden;min-width:0}
@@ -191,6 +195,41 @@
     dialog::backdrop{background:rgba(4,4,8,.75);backdrop-filter:blur(7px)}.dialog-head{height:50px;padding:0 13px 0 17px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
     .dialog-head h2{margin:0;font-size:13px;letter-spacing:.06em}.dialog-head button{margin-left:auto}.dialog-body{padding:16px;max-height:calc(100vh - 115px);overflow:auto}
     .dialog-actions{padding:10px 16px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:7px}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    /* Feature 1: keyboard shortcut cheatsheet */
+    #shortcut-search{width:100%;box-sizing:border-box;margin:2px 0 12px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.32);color:var(--text);font:12px var(--font)}
+    #shortcut-search::placeholder{color:var(--muted)}
+    .sc-cat{margin:12px 0 6px;font:700 10px var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+    .sc-row{display:flex;align-items:center;gap:12px;padding:7px 10px;border:1px solid transparent;border-radius:10px}
+    .sc-row:hover{background:rgba(255,255,255,.03);border-color:var(--line)}
+    .sc-keys{display:flex;align-items:center;gap:4px;min-width:118px;flex-wrap:wrap}
+    .sc-kbd{display:inline-block;min-width:20px;padding:4px 8px;border-radius:7px;border:1px solid var(--cyan);background:rgba(69,240,131,.08);color:var(--cyan);font:600 11px var(--mono);text-align:center;box-shadow:0 2px 0 rgba(69,240,131,.25)}
+    .sc-plus{color:var(--muted);font:11px var(--mono)}
+    .sc-desc{color:var(--text);font-size:12px}
+    .sc-empty{padding:18px;text-align:center;color:var(--muted);font-size:12px}
+    /* Feature 2: synth preset manager */
+    #preset-status{color:var(--muted);font:8px var(--mono);margin:0 0 4px}
+    #preset-status b{color:var(--cyan)}
+    .preset-list{display:grid;gap:7px;margin-bottom:4px}
+    .preset-row{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.018)}
+    .preset-row:hover{border-color:color-mix(in srgb,var(--cyan) 45%,transparent)}
+    .preset-row .p-name{font-size:11px;font-weight:700}
+    .preset-row .p-desc{color:var(--muted);font:8px var(--mono);margin-top:2px}
+    .preset-row time{color:var(--muted);font:8px var(--mono);margin-left:auto;white-space:nowrap}
+    .preset-tag{flex:0 0 auto;font:700 7px var(--mono);letter-spacing:.08em;padding:3px 7px;border-radius:6px;border:1px solid var(--cyan);color:var(--cyan);background:rgba(69,240,131,.07)}
+    .preset-tag.user{border-color:var(--pink);color:var(--pink);background:rgba(255,79,199,.07)}
+    .preset-row .btn{flex:0 0 auto}
+    /* Feature 4: FFT spectrum analyzer */
+    #spectrum-dialog{width:min(780px,94vw)}
+    #spectrum-canvas{width:100%;height:280px;display:block;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.4)}
+    .spec-readout{display:flex;gap:12px;align-items:baseline;margin:0 0 10px;font:10px var(--mono);color:var(--muted)}
+    .spec-readout b{font-size:16px;color:var(--cyan);letter-spacing:.05em}
+    #spec-peak-freq{color:var(--pink)}
+    .spec-frozen{font:700 8px var(--mono);letter-spacing:.1em;color:#04110d;background:var(--cyan);border-radius:5px;padding:2px 7px}
+    .spec-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+    .spec-label{display:flex;align-items:center;gap:6px;font:700 9px var(--mono);letter-spacing:.08em;color:var(--muted)}
+    .spec-select{background:#0c0f16;color:var(--cyan);border:1px solid var(--line);border-radius:8px;font:10px var(--mono);padding:5px 7px}
+    .spec-range{width:120px;accent-color:var(--cyan)}
+    .spec-controls .btn.active{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 10px rgba(66,232,198,.25)}
     .help-card{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025)}.help-card b{font-size:10px}.help-card p{color:var(--muted);font:9px/1.5 var(--mono);margin:5px 0 0}
     .project-list{display:grid;gap:7px}.project-row{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:10px}.project-row time{color:var(--muted);font:8px var(--mono);margin-left:auto}
     #toast-stack{position:fixed;z-index:1200;right:14px;bottom:14px;width:min(340px,calc(100vw - 28px));display:grid;gap:7px;pointer-events:none}
@@ -407,7 +446,7 @@
         <button id="save-btn" class="btn"><span>SAVE</span> ◇</button>
         <button id="projects-btn" class="btn"><span>PROJECTS</span> ▤</button>
         <button id="bounce-btn" class="btn cyan"><span>BOUNCE WAV</span> ⇩</button>
-        <button id="help-btn" class="btn icon" aria-label="Help">?</button>
+        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button>
       </div>
     </header>
 
@@ -1453,9 +1492,52 @@
         <div class="help-card"><b>Output guard</b><p>Safe Audio adds headroom, all wet effects now pass through the final limiter, and the ceiling control prevents accidental overload.</p></div>
         <div class="help-card"><b>Mix translation</b><p>Use mono check, stereo width, rumble filtering, and the live peak monitor to make the loop translate better across speakers and headphones.</p></div>
         <div class="help-card"><b>Pattern chain</b><p>Chain A→B or A→B→C→D to audition longer arrangements without manually switching pattern slots.</p></div>
-        <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · arrows change octave.</p></div>
+        <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
       </div>
     </div>
+  </dialog>
+
+  <dialog id="shortcuts-dialog">
+    <div class="dialog-head"><h2>Keyboard Shortcuts</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <input id="shortcut-search" type="search" placeholder="Search shortcuts… (e.g. save, pads, octave)" aria-label="Search shortcuts">
+      <div id="shortcut-list" role="list"></div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Ctrl+/ anywhere to reopen this cheatsheet</span><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="spectrum-dialog">
+    <div class="dialog-head"><h2>Spectrum Analyzer · Master Bus</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <div class="spec-readout"><span>PEAK</span><b id="spec-peak-note">—</b><span id="spec-peak-freq">—</span><span id="spec-peak-db">—</span><span id="spec-frozen-tag" class="spec-frozen" style="display:none">FROZEN</span></div>
+      <canvas id="spectrum-canvas"></canvas>
+      <div class="spec-controls">
+        <label class="spec-label">FFT <select id="spec-fftsize" class="spec-select" aria-label="FFT size">
+          <option value="512">512</option><option value="1024">1024</option><option value="2048">2048</option><option value="4096">4096</option>
+        </select></label>
+        <button id="spec-scale" class="btn tiny" aria-label="Toggle log/linear frequency scale">LOG</button>
+        <button id="spec-hold" class="btn tiny" aria-pressed="true">PEAK HOLD</button>
+        <button id="spec-freeze" class="btn tiny" aria-pressed="false">❚❚ FREEZE</button>
+        <label class="spec-label">SMOOTH <input id="spec-smooth" type="range" min="0" max="95" value="80" class="spec-range" aria-label="Display smoothing"></label>
+      </div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+S anywhere to open the analyzer</span><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="preset-dialog">
+    <div class="dialog-head"><h2>Synth Presets</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <div style="display:flex;gap:7px;margin-bottom:8px">
+        <input id="preset-name" class="pattern-name" style="flex:1;height:36px" placeholder="Name this sound…" aria-label="Preset name" maxlength="40">
+        <button id="preset-save" class="btn cyan">SAVE</button>
+      </div>
+      <p id="preset-status">Current preset: <b>Default</b></p>
+      <div class="sc-cat">Factory</div>
+      <div id="factory-preset-list" class="preset-list" role="list"></div>
+      <div class="sc-cat">My presets</div>
+      <div id="user-preset-list" class="preset-list" role="list"></div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Ctrl+Shift+P anywhere to open presets</span><button class="btn cyan" data-close>CLOSE</button></div>
   </dialog>
 
   <dialog id="projects-dialog">
@@ -2220,17 +2302,59 @@
       $("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";$("#follow-page").classList.toggle("active",state.autoFollow)
     }
 
+    /* Feature 3: waveform visualizer — spectrum / oscilloscope toggle on the master bus */
     function setupVisualizer(){
-      const canvas=$("#visualizer"),ctx=canvas.getContext("2d");
+      const canvas=$("#visualizer"),ctx=canvas.getContext("2d"),VIZMODE_KEY="n8loops.vizmode.v1";
       function resize(){const r=canvas.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)}
       new ResizeObserver(resize).observe(canvas);resize();
+      let vizMode="spectrum";
+      try{vizMode=localStorage.getItem(VIZMODE_KEY)||"spectrum"}catch{}
+      if(vizMode!=="waveform"&&vizMode!=="spectrum")vizMode="spectrum";
+      const label=document.querySelector(".visualizer-wrap .viz-label"),modeBtn=$("#viz-mode-btn");
+      function syncVizUI(){
+        if(label)label.textContent=vizMode==="waveform"?"MASTER WAVEFORM":"MASTER SPECTRUM";
+        if(modeBtn){modeBtn.innerHTML=vizMode==="waveform"?"\u224b SPEC":"\u224b WAVE";modeBtn.setAttribute("aria-pressed",vizMode==="waveform")}
+      }
+      function toggleVizMode(){
+        vizMode=vizMode==="waveform"?"spectrum":"waveform";
+        try{localStorage.setItem(VIZMODE_KEY,vizMode)}catch{}
+        const hero=$("#hero-strip");
+        if(hero){hero.classList.remove("hidden-module","collapsed");state.ui.hiddenModules=(state.ui.hiddenModules||[]).filter(id=>id!=="hero-strip");applyLayoutPrefs();scheduleAutosave()}
+        syncVizUI()
+      }
+      if(modeBtn)modeBtn.addEventListener("click",toggleVizMode);
+      syncVizUI();
+      let peakEnv=0;
+      function gradient(w){const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,state.visualColors[0]);g.addColorStop(.52,state.visualColors[1]);g.addColorStop(1,state.visualColors[2]);return g}
       function draw(){
-        const w=canvas.clientWidth,h=canvas.clientHeight;ctx.clearRect(0,0,w,h);const bins=64,data=new Uint8Array(bins);
-        if(engine.analyser)engine.analyser.getByteFrequencyData(data);else for(let i=0;i<bins;i++)data[i]=10+Math.sin(Date.now()/500+i*.4)*7;
-        const gradient=ctx.createLinearGradient(0,0,w,0);gradient.addColorStop(0,state.visualColors[0]);gradient.addColorStop(.52,state.visualColors[1]);gradient.addColorStop(1,state.visualColors[2]);
-        ctx.strokeStyle=gradient;ctx.lineWidth=1.6;ctx.shadowBlur=12;ctx.shadowColor="#9d74ff";ctx.beginPath();
-        for(let i=0;i<bins;i++){const x=i/(bins-1)*w,y=h-12-(data[i]/255)*(h-24);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();
-        ctx.globalAlpha=.14;ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.fillStyle=gradient;ctx.fill();ctx.globalAlpha=1;visualFrame=requestAnimationFrame(draw)
+        const w=canvas.clientWidth,h=canvas.clientHeight;ctx.clearRect(0,0,w,h);
+        if(vizMode==="waveform"){
+          /* ---- oscilloscope: live time-domain master output ---- */
+          const n=engine.analyser?engine.analyser.fftSize:2048,scope=new Float32Array(n);
+          if(engine.analyser)engine.analyser.getFloatTimeDomainData(scope);else for(let i=0;i<n;i++)scope[i]=Math.sin(Date.now()/420+i*.05)*.3;
+          let pk=0;for(let i=0;i<n;i+=4){const a=Math.abs(scope[i]);if(a>pk)pk=a}
+          peakEnv=Math.max(pk,peakEnv*.995);
+          ctx.save();
+          ctx.globalAlpha=.22;ctx.strokeStyle=state.visualColors[2];ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(0,h/2);ctx.lineTo(w,h/2);ctx.stroke();
+          ctx.globalAlpha=.35;ctx.strokeStyle=state.visualColors[0];
+          ctx.beginPath();ctx.moveTo(0,h/2-peakEnv*h*.46);ctx.lineTo(w,h/2-peakEnv*h*.46);ctx.moveTo(0,h/2+peakEnv*h*.46);ctx.lineTo(w,h/2+peakEnv*h*.46);ctx.stroke();
+          ctx.restore();
+          const g=gradient(w);
+          ctx.strokeStyle=g;ctx.lineWidth=1.8;ctx.shadowBlur=12;ctx.shadowColor="#52e8e2";ctx.beginPath();
+          for(let i=0;i<n;i++){const x=i/(n-1)*w,y=h/2-scope[i]*h*.46;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}
+          ctx.stroke();ctx.shadowBlur=0;
+          ctx.globalAlpha=.13;ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.globalAlpha=1;
+        }else{
+          /* ---- spectrum line (unchanged) ---- */
+          const bins=64,data=new Uint8Array(bins);
+          if(engine.analyser)engine.analyser.getByteFrequencyData(data);else for(let i=0;i<bins;i++)data[i]=10+Math.sin(Date.now()/500+i*.4)*7;
+          const g=gradient(w);
+          ctx.strokeStyle=g;ctx.lineWidth=1.6;ctx.shadowBlur=12;ctx.shadowColor="#9d74ff";ctx.beginPath();
+          for(let i=0;i<bins;i++){const x=i/(bins-1)*w,y=h-12-(data[i]/255)*(h-24);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();
+          ctx.globalAlpha=.14;ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.fillStyle=g;ctx.fill();ctx.globalAlpha=1
+        }
+        visualFrame=requestAnimationFrame(draw)
       }draw()
     }
 
@@ -2424,10 +2548,208 @@
       $("#save-project").addEventListener("click",()=>ProjectStore.saveVersion());$("#export-project").addEventListener("click",exportProject);$("#import-project").addEventListener("click",()=>$("#project-file").click());
       $("#project-file").addEventListener("change",e=>{importProject(e.target.files[0]);e.target.value=""});$("#bounce-btn").addEventListener("click",bounce);
       $("#help-btn").addEventListener("click",()=>$("#help-dialog").showModal());$$("[data-close]").forEach(b=>b.addEventListener("click",()=>b.closest("dialog").close()));
+      /* Feature 1: keyboard shortcut cheatsheet (Ctrl+/) */
+      const KEYBOARD_SHORTCUTS=[
+        {keys:["Space"],desc:"Play / stop the loop",cat:"Transport"},
+        {keys:["Shift","R"],desc:"Toggle record",cat:"Transport"},
+        {keys:["M"],desc:"Toggle metronome",cat:"Transport"},
+        {keys:["1","2","3","4"],desc:"Trigger pads 1–4",cat:"Pads"},
+        {keys:["Q","W","E","R"],desc:"Trigger pads 5–8",cat:"Pads"},
+        {keys:["A","S","D","F"],desc:"Trigger pads 9–12",cat:"Pads"},
+        {keys:["Z","X","C","V"],desc:"Trigger pads 13–16",cat:"Pads"},
+        {keys:["↑"],desc:"Raise synth octave",cat:"Synth"},
+        {keys:["↓"],desc:"Lower synth octave",cat:"Synth"},
+        {keys:["Ctrl/Cmd","S"],desc:"Save project",cat:"Project"},
+        {keys:["Ctrl/Cmd","E"],desc:"Bounce / export WAV",cat:"Project"},
+        {keys:["Ctrl/Cmd","Shift","P"],desc:"Open the synth preset manager",cat:"Synth"},
+        {keys:["Shift","V"],desc:"Toggle spectrum / waveform visualizer",cat:"View"},
+        {keys:["Shift","S"],desc:"Open the FFT spectrum analyzer",cat:"View"},
+        {keys:["Ctrl/Cmd","/"],desc:"Open this shortcut cheatsheet",cat:"Help"}
+      ];
+      function renderShortcutCheatsheet(){
+        const q=($("#shortcut-search").value||"").trim().toLowerCase(),list=$("#shortcut-list");
+        list.innerHTML="";let shown=0;
+        [...new Set(KEYBOARD_SHORTCUTS.map(s=>s.cat))].forEach(cat=>{
+          const items=KEYBOARD_SHORTCUTS.filter(s=>s.cat===cat&&(!q||s.desc.toLowerCase().includes(q)||s.keys.join(" ").toLowerCase().includes(q)));
+          if(!items.length)return;
+          const head=document.createElement("div");head.className="sc-cat";head.textContent=cat;list.append(head);
+          items.forEach(s=>{
+            const row=document.createElement("div");row.className="sc-row";row.setAttribute("role","listitem");
+            const keys=document.createElement("span");keys.className="sc-keys";
+            s.keys.forEach((k,i)=>{if(i){const plus=document.createElement("span");plus.className="sc-plus";plus.textContent="+";keys.append(plus)}const kb=document.createElement("kbd");kb.className="sc-kbd";kb.textContent=k;keys.append(kb)});
+            const desc=document.createElement("span");desc.className="sc-desc";desc.textContent=s.desc;
+            row.append(keys,desc);list.append(row);shown++
+          })
+        });
+        if(!shown){const empty=document.createElement("div");empty.className="sc-empty";empty.textContent="No shortcuts match your search.";list.append(empty)}
+      }
+      function openShortcutCheatsheet(){
+        $("#shortcut-search").value="";renderShortcutCheatsheet();
+        const dlg=$("#shortcuts-dialog");if(!dlg.open)dlg.showModal();
+        setTimeout(()=>$("#shortcut-search").focus(),50)
+      }
+      $("#shortcuts-btn").addEventListener("click",openShortcutCheatsheet);
+      $("#shortcut-search").addEventListener("input",renderShortcutCheatsheet);
+      /* Feature 2: synth preset manager — save/load/name patch presets */
+      const PRESET_KEY="n8loops.presets.v1";
+      const FACTORY_PRESETS=[
+        {name:"Neon Stab",desc:"Punchy saw stab · bright & tight",patch:{waveform:"sawtooth",octave:3,attack:.01,release:.4,cutoff:7500,resonance:2,velocity:.88,glide:0,padDelay:.18,padReverb:.22}},
+        {name:"Warm Pad",desc:"Mellow triangle pad · soft attack",patch:{waveform:"triangle",octave:3,attack:.6,release:2.5,cutoff:2800,resonance:1,velocity:.8,glide:.06,padDelay:.25,padReverb:.55}},
+        {name:"Acid Bass",desc:"Square bass · resonant & gritty",patch:{waveform:"square",octave:2,attack:.01,release:.28,cutoff:900,resonance:9,velocity:.95,glide:.08,padDelay:.05,padReverb:.08}},
+        {name:"Deep Sub",desc:"Pure sine sub · heavy low end",patch:{waveform:"sine",octave:2,attack:.01,release:.35,cutoff:500,resonance:1,velocity:1,glide:.03,padDelay:0,padReverb:.05}},
+        {name:"Glass Pluck",desc:"Crystal triangle pluck · quick decay",patch:{waveform:"triangle",octave:4,attack:.01,release:.18,cutoff:9500,resonance:3,velocity:.85,glide:0,padDelay:.32,padReverb:.35}},
+        {name:"Laser Lead",desc:"Searing saw lead · long glide",patch:{waveform:"sawtooth",octave:4,attack:.03,release:.9,cutoff:6800,resonance:5,velocity:.92,glide:.22,padDelay:.28,padReverb:.3}},
+        {name:"Club Organ",desc:"Square stab · club-house classic",patch:{waveform:"square",octave:3,attack:.02,release:.5,cutoff:4200,resonance:4,velocity:.9,glide:.05,padDelay:.15,padReverb:.25}},
+        {name:"Space Chords",desc:"Wide saw wash · dreamy & deep",patch:{waveform:"sawtooth",octave:3,attack:.9,release:3.5,cutoff:3600,resonance:1.5,velocity:.75,glide:.15,padDelay:.45,padReverb:.7}}
+      ];
+      function getUserPresets(){try{return JSON.parse(localStorage.getItem(PRESET_KEY))||[]}catch{return[]}}
+      function setUserPresets(list){try{localStorage.setItem(PRESET_KEY,JSON.stringify(list))}catch{}}
+      function applyPreset(preset){
+        Object.assign(state.patch,preset.patch);
+        state.currentPreset=preset.name;
+        syncAllUI();renderPads();scheduleAutosave();renderPresetStatus();
+        toast(`Loaded preset "${preset.name}".`,"good")
+      }
+      function renderPresetStatus(){const el=$("#preset-status");if(el)el.innerHTML=`Current preset: <b>${state.currentPreset||"Default"}</b>`}
+      function presetRow({name,desc,time,tag,tagClass,onLoad,onDelete}){
+        const row=document.createElement("div");row.className="preset-row";row.setAttribute("role","listitem");
+        const info=document.createElement("div");info.style.minWidth="0";
+        const nm=document.createElement("div");nm.className="p-name";nm.textContent=name;
+        info.append(nm);
+        if(desc){const d=document.createElement("div");d.className="p-desc";d.textContent=desc;info.append(d)}
+        row.append(info);
+        const badge=document.createElement("span");badge.className="preset-tag"+(tagClass?" "+tagClass:"");badge.textContent=tag;row.append(badge);
+        if(time){const t=document.createElement("time");t.textContent=new Date(time).toLocaleDateString();row.append(t)}
+        const load=document.createElement("button");load.className="btn tiny cyan";load.textContent="LOAD";load.addEventListener("click",onLoad);row.append(load);
+        if(onDelete){const del=document.createElement("button");del.className="btn tiny danger";del.textContent="×";del.setAttribute("aria-label",`Delete preset ${name}`);del.addEventListener("click",onDelete);row.append(del)}
+        return row
+      }
+      function renderPresetList(){
+        const fl=$("#factory-preset-list");fl.replaceChildren();
+        FACTORY_PRESETS.forEach(p=>fl.append(presetRow({name:p.name,desc:p.desc,tag:"FACTORY",onLoad:()=>applyPreset(p)})));
+        const ul=$("#user-preset-list");ul.replaceChildren();
+        const list=getUserPresets();
+        if(!list.length){const p=document.createElement("p");p.style.cssText="color:var(--muted);font:9px var(--mono)";p.textContent="No saved presets yet — dial in a sound and hit SAVE.";ul.append(p)}
+        list.forEach(p=>ul.append(presetRow({name:p.name,desc:p.desc,time:p.savedAt,tag:"USER",tagClass:"user",
+          onLoad:()=>applyPreset(p),
+          onDelete:()=>{setUserPresets(getUserPresets().filter(x=>x.savedAt!==p.savedAt));renderPresetList();toast(`Preset "${p.name}" deleted.`,"warn")}})))
+      }
+      function openPresets(){$("#preset-name").value="";renderPresetList();renderPresetStatus();const dlg=$("#preset-dialog");if(!dlg.open)dlg.showModal()}
+      $("#presets-btn").addEventListener("click",openPresets);
+      $("#preset-save").addEventListener("click",()=>{
+        const list=getUserPresets();
+        const name=($("#preset-name").value||"").trim()||`Custom ${list.length+1}`;
+        list.unshift({name,desc:"User preset",savedAt:Date.now(),patch:{...state.patch}});
+        setUserPresets(list.slice(0,60));
+        state.currentPreset=name;renderPresetList();renderPresetStatus();scheduleAutosave();
+        toast(`Preset "${name}" saved.`,"good")
+      });
+      $("#preset-name").addEventListener("keydown",e=>{if(e.key==="Enter"){e.stopPropagation();$("#preset-save").click()}});
+      /* Feature 4: FFT spectrum analyzer on the master bus */
+      const SPECANA_KEY="n8loops.specana.v1";
+      const specana={fftSize:2048,scale:"log",peakHold:true,frozen:false,smoothing:.8,raf:0,prevFft:0,vals:new Float32Array(96),peaks:new Float32Array(96),peakFreq:0,peakDb:-100};
+      try{Object.assign(specana,JSON.parse(localStorage.getItem(SPECANA_KEY))||{})}catch{}
+      if(![512,1024,2048,4096].includes(specana.fftSize))specana.fftSize=2048;
+      if(specana.scale!=="log"&&specana.scale!=="lin")specana.scale="log";
+      specana.frozen=false;specana.raf=0;
+      function saveSpecana(){try{localStorage.setItem(SPECANA_KEY,JSON.stringify({fftSize:specana.fftSize,scale:specana.scale,peakHold:specana.peakHold,smoothing:specana.smoothing}))}catch{}}
+      const SPEC_NOTE_NAMES=["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+      function specFreqToNote(f){if(!(f>0))return"—";const n=Math.round(12*Math.log2(f/440))+69;return SPEC_NOTE_NAMES[((n%12)+12)%12]+(Math.floor(n/12)-1)}
+      function specFmtFreq(f){return f>=1000?(f/1000).toFixed(f>=10000?0:1)+"k":String(Math.round(f))}
+      function syncSpecanaUI(){
+        $("#spec-fftsize").value=String(specana.fftSize);
+        const sc=$("#spec-scale");sc.textContent=specana.scale==="log"?"LOG":"LIN";sc.classList.toggle("active",specana.scale==="log");
+        $("#spec-hold").classList.toggle("active",specana.peakHold);$("#spec-hold").setAttribute("aria-pressed",specana.peakHold);
+        $("#spec-freeze").classList.toggle("active",specana.frozen);$("#spec-freeze").setAttribute("aria-pressed",specana.frozen);
+        $("#spec-freeze").textContent=specana.frozen?"▶ RESUME":"❚❚ FREEZE";
+        $("#spec-smooth").value=Math.round(specana.smoothing*100);
+        const tag=$("#spec-frozen-tag");if(tag)tag.style.display=specana.frozen?"inline-block":"none";
+      }
+      function openSpectrumAnalyzer(){
+        const dlg=$("#spectrum-dialog");if(!dlg)return;syncSpecanaUI();
+        if(engine.analyser){specana.prevFft=engine.analyser.fftSize;engine.analyser.fftSize=specana.fftSize}
+        if(!dlg.open)dlg.showModal();startSpectrumLoop();
+      }
+      function startSpectrumLoop(){
+        cancelAnimationFrame(specana.raf);
+        const canvas=$("#spectrum-canvas"),ctx=canvas.getContext("2d");
+        const resize=()=>{const r=canvas.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);canvas.width=Math.max(1,Math.round(r.width*d));canvas.height=Math.max(1,Math.round(r.height*d));ctx.setTransform(d,0,0,d,0,0)};
+        new ResizeObserver(resize).observe(canvas);resize();
+        const N=specana.vals.length,GRID_LO=[50,100,200,500,1000,2000,5000,10000],DB_STEPS=[0,-20,-40,-60,-80];
+        let freqData=null;
+        function draw(){
+          const an=engine.analyser,w=canvas.clientWidth,h=canvas.clientHeight;
+          const sr=an?an.context.sampleRate:44100,nyq=sr/2,fmin=20,fmax=Math.min(20000,nyq),log=specana.scale==="log";
+          const xFor=f=>log?w*Math.log10(f/fmin)/Math.log10(fmax/fmin):w*(f-fmin)/(fmax-fmin);
+          const yFor=db=>h-(clamp(db,-90,-20)+90)/70*h;
+          const target=new Float32Array(N);
+          if(an&&!specana.frozen){
+            const bins=an.frequencyBinCount;
+            if(!freqData||freqData.length!==bins)freqData=new Float32Array(bins);
+            an.getFloatFrequencyData(freqData);
+            const bw=nyq/bins;
+            let pkDb=-100,pkBin=1;
+            for(let i=0;i<N;i++){
+              const f0=fmin*Math.pow(fmax/fmin,i/N),f1=fmin*Math.pow(fmax/fmin,(i+1)/N);
+              const b0=Math.max(1,Math.floor(f0/bw)),b1=Math.min(bins-1,Math.ceil(f1/bw));
+              let m=-100;
+              for(let b=b0;b<=b1;b++){const v=freqData[b];if(v>m){m=v;if(v>pkDb){pkDb=v;pkBin=b}}}
+              target[i]=clamp((m+90)/70,0,1);
+            }
+            let interp=0;
+            if(pkBin>0&&pkBin<bins-1){const a=freqData[pkBin-1],b=freqData[pkBin],c=freqData[pkBin+1],den=a-2*b+c;if(den<0)interp=.5*(a-c)/den}
+            specana.peakFreq=(pkBin+interp)*bw;specana.peakDb=pkDb;
+          }else if(!an&&!specana.frozen){
+            const t=Date.now()/1000;
+            for(let i=0;i<N;i++)target[i]=Math.max(0,.3+.24*Math.sin(t*2.1-i*.29)+.13*Math.sin(t*4.3+i*.17));
+            specana.peakFreq=0;specana.peakDb=-100;
+          }else{target.set(specana.vals)}
+          const k=1-specana.smoothing;
+          for(let i=0;i<N;i++){
+            if(!specana.frozen){
+              specana.vals[i]+=(target[i]-specana.vals[i])*k;
+              specana.peaks[i]=Math.max(specana.peaks[i]-.006,specana.vals[i]);
+            }
+          }
+          ctx.clearRect(0,0,w,h);
+          ctx.font="8px var(--mono)";ctx.textBaseline="top";
+          DB_STEPS.forEach(db=>{const y=yFor(db);
+            ctx.strokeStyle="rgba(255,255,255,.07)";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();
+            ctx.fillStyle="rgba(255,255,255,.35)";ctx.fillText(db+" dB",4,y+2)});
+          const gridFs=log?GRID_LO:[1,2,3,4,5,6,7].map(i=>fmin+(fmax-fmin)*i/8);
+          gridFs.forEach(f=>{if(f<=fmin||f>=fmax)return;const x=xFor(f);
+            ctx.strokeStyle="rgba(255,255,255,.06)";ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();
+            ctx.fillStyle="rgba(255,255,255,.35)";ctx.fillText(specFmtFreq(f),x+3,h-11)});
+          const colors=state.visualColors;
+          ctx.shadowBlur=8;
+          for(let i=0;i<N;i++){
+            const fc=fmin*Math.pow(fmax/fmin,(i+.5)/N);
+            const x0=xFor(fmin*Math.pow(fmax/fmin,i/N)),x1=xFor(fmin*Math.pow(fmax/fmin,(i+1)/N));
+            const bh=specana.vals[i]*h,bx=x0,bwid=Math.max(1,x1-x0-1);
+            ctx.fillStyle=fc<250?colors[2]:fc<2000?colors[1]:colors[0];ctx.shadowColor=ctx.fillStyle;
+            ctx.fillRect(bx,h-bh,bwid,bh);
+            if(specana.peakHold){ctx.fillStyle="#fff";ctx.fillRect(bx,h-specana.peaks[i]*h,bwid,2)}
+          }
+          ctx.shadowBlur=0;
+          const noteEl=$("#spec-peak-note"),freqEl=$("#spec-peak-freq"),dbEl=$("#spec-peak-db");
+          if(noteEl)noteEl.textContent=specana.peakFreq>0?specFreqToNote(specana.peakFreq):"—";
+          if(freqEl)freqEl.textContent=specana.peakFreq>0?specFmtFreq(specana.peakFreq)+" Hz":"—";
+          if(dbEl)dbEl.textContent=specana.peakFreq>0?Math.round(specana.peakDb)+" dB":"—";
+          specana.raf=requestAnimationFrame(draw);
+        }
+        draw();
+      }
+      $("#spectrum-btn").addEventListener("click",openSpectrumAnalyzer);
+      $("#spectrum-dialog").addEventListener("close",()=>{cancelAnimationFrame(specana.raf);if(engine.analyser&&specana.prevFft)engine.analyser.fftSize=specana.prevFft;specana.frozen=false;syncSpecanaUI()});
+      $("#spec-fftsize").addEventListener("change",e=>{specana.fftSize=Number(e.target.value);if(engine.analyser)engine.analyser.fftSize=specana.fftSize;saveSpecana()});
+      $("#spec-scale").addEventListener("click",()=>{specana.scale=specana.scale==="log"?"lin":"log";saveSpecana();syncSpecanaUI()});
+      $("#spec-hold").addEventListener("click",()=>{specana.peakHold=!specana.peakHold;saveSpecana();syncSpecanaUI()});
+      $("#spec-freeze").addEventListener("click",()=>{specana.frozen=!specana.frozen;syncSpecanaUI()});
+      $("#spec-smooth").addEventListener("input",e=>{specana.smoothing=Number(e.target.value)/100;saveSpecana()});
       document.addEventListener("keydown",e=>{
         if(e.target.matches("input,select")||e.repeat)return;const key=e.key.toLowerCase(),index=PAD_KEYS.indexOf(key),modified=e.ctrlKey||e.metaKey||e.altKey||e.shiftKey;
         if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}
-        if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}
+        if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}
         if(e.key==="ArrowUp"){state.patch.octave=clamp(state.patch.octave+1,1,6);syncAllUI();renderPads()}if(e.key==="ArrowDown"){state.patch.octave=clamp(state.patch.octave-1,1,6);syncAllUI();renderPads()}
       });
       addEventListener("beforeunload",()=>ProjectStore.autosave())
