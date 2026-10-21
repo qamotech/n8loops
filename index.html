@@ -225,6 +225,12 @@
     #song-dialog{width:min(880px,94vw)}
     /* Feature 8: swing templates */
     #swing-dialog{width:min(680px,94vw)}
+    /* Feature 10: metronome accent */
+    #metro-dialog{width:min(460px,94vw)}
+    .metro-beats{display:flex;align-items:center;gap:10px;margin:2px 0 12px}
+    .metro-beats b{font:700 16px var(--mono);min-width:26px;text-align:center;color:var(--cyan)}
+    #metro-readout{color:var(--muted);font:10px/1.6 var(--mono)}
+    #metro-readout b{color:var(--text)}
     .swing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
     .swing-card{display:grid;gap:7px;justify-items:stretch;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.018);color:var(--text);cursor:pointer;text-align:left;font-family:var(--font)}
     .swing-card:hover{border-color:color-mix(in srgb,var(--cyan) 45%,transparent)}
@@ -235,6 +241,25 @@
     .sw-desc{color:var(--muted);font:8px/1.5 var(--mono)}
     #swing-current{color:var(--muted);font:9px var(--mono);margin:10px 0 0}
     #swing-current b{color:var(--cyan)}
+    /* Feature 9: chord generator */
+    #chord-dialog{width:min(720px,94vw)}
+    .chord-roots{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:10px}
+    .root-btn{padding:8px 0;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.03);color:var(--text);font:700 11px var(--mono);cursor:pointer}
+    .root-btn.sharp{background:rgba(0,0,0,.42);color:var(--muted)}
+    .root-btn:hover{border-color:color-mix(in srgb,var(--cyan) 45%,transparent)}
+    .root-btn.active{border-color:var(--pink);color:var(--pink);box-shadow:0 0 10px rgba(255,45,149,.35)}
+    .chord-oct{display:flex;align-items:center;gap:8px;margin:0 0 4px;color:var(--muted);font:9px var(--mono)}
+    .chord-oct b{color:var(--cyan);font-size:12px;min-width:14px;text-align:center}
+    .chord-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+    .chord-card{display:grid;gap:5px;justify-items:stretch;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.018);color:var(--text);cursor:pointer;text-align:left;font-family:var(--font)}
+    .chord-card:hover{border-color:color-mix(in srgb,var(--pink) 45%,transparent)}
+    .chord-card.active{border-color:var(--pink);box-shadow:0 0 12px rgba(255,45,149,.3);background:rgba(50,0,30,.4)}
+    .ch-name{display:flex;align-items:baseline;justify-content:space-between;font-size:11px;font-weight:700}
+    .ch-sym{font:700 9px var(--mono);color:var(--amber)}
+    .ch-desc{color:var(--muted);font:8px/1.5 var(--mono)}
+    .chord-targets{display:flex;gap:8px}
+    #chord-readout{color:var(--muted);font:9px var(--mono);margin:12px 0 0}
+    #chord-readout b{color:var(--pink)}
     .song-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
     .song-row .lbl{font:700 10px var(--font);letter-spacing:.14em;color:var(--muted);margin-right:2px}
     #song-sequence{display:flex;flex-wrap:wrap;gap:8px;min-height:54px;padding:10px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.35);margin-bottom:10px}
@@ -258,7 +283,7 @@
     .spec-range{width:120px;accent-color:var(--cyan)}
     .spec-controls .btn.active{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 10px rgba(66,232,198,.25)}
     .help-card{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025)}.help-card b{font-size:10px}.help-card p{color:var(--muted);font:9px/1.5 var(--mono);margin:5px 0 0}
-    .project-list{display:grid;gap:7px}.project-row{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:10px}.project-row time{color:var(--muted);font:8px var(--mono);margin-left:auto}
+    .project-list{display:grid;gap:7px}.qs-list{display:grid;gap:7px}.qs-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015)}.qs-num{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#0ff,#7af);color:#001318;font:700 12px var(--mono);flex:none}.qs-row.qs-empty .qs-num{background:transparent;border:1px dashed var(--line);color:var(--muted)}.qs-meta{min-width:0;flex:1}.qs-meta b{display:block;font:600 11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qs-meta time,.qs-meta span.sub{display:block;color:var(--muted);font:8px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qs-key{font:8px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 5px;flex:none}.fx-list{display:grid;gap:8px}.fx-card{display:grid;grid-template-columns:28px 54px 32px minmax(110px,1fr) minmax(120px,160px) 62px;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-left:3px solid var(--fx,#0ff);border-radius:10px;background:rgba(255,255,255,.015)}.fx-card.fx-off{opacity:.5}.fx-pos{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.06);font:700 11px var(--mono);color:var(--muted)}.fx-power{font:700 9px var(--mono);padding:6px 0;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.fx-power.on{color:#001318;background:linear-gradient(135deg,#0ff,#7af);border-color:transparent;box-shadow:0 0 10px rgba(0,255,255,.35)}.fx-icon{font-size:19px;text-align:center}.fx-meta{min-width:0}.fx-meta b{display:block;font:600 11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fx-meta span{display:block;color:var(--muted);font:8px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fx-mix label{display:flex;justify-content:space-between;color:var(--muted);font:7px var(--mono);margin-bottom:2px}.fx-mix input{width:100%}.fx-move{display:flex;gap:4px}.fx-flow{font:9px/1.7 var(--mono);color:var(--muted);margin:0 0 10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}.fx-flow b{color:var(--cyan)}.fx-flow s{opacity:.55}.project-row{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:10px}.project-row time{color:var(--muted);font:8px var(--mono);margin-left:auto}
     #toast-stack{position:fixed;z-index:1200;right:14px;bottom:14px;width:min(340px,calc(100vw - 28px));display:grid;gap:7px;pointer-events:none}
     .toast{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:rgba(20,22,32,.95);box-shadow:0 18px 50px #000;backdrop-filter:blur(18px);font:9px/1.45 var(--mono);animation:toast-in .2s ease}
     .toast.good{border-color:rgba(101,242,163,.4)}.toast.warn{border-color:rgba(255,196,94,.42)}.toast.error{border-color:rgba(255,102,124,.5)}
@@ -454,7 +479,7 @@
         <button class="btn pattern-slot" data-pattern="D">D</button>
         <button id="undo-btn" class="btn icon" title="Undo (Ctrl+Z)">↶</button>
         <button id="redo-btn" class="btn icon" title="Redo (Ctrl+Shift+Z / Ctrl+Y)">↷</button>
-        <button id="metronome-btn" class="btn" title="Metronome">METRO</button>
+        <button id="metronome-btn" class="btn" title="Metronome — click toggles, right-click or Shift+M opens accent & volume">METRO</button>
         <select id="theme-select" class="theme-select" aria-label="Interface style">
           <option value="dark">STYLE · DARK</option><option value="light">STYLE · LIGHT</option><option value="dim">STYLE · DIM</option>
           <option value="cyber">STYLE · CYBER</option><option value="matrix">STYLE · MATRIX</option><option value="tech">STYLE · TECH</option><option value="beats">STYLE · BEATS</option>
@@ -473,7 +498,7 @@
         <button id="save-btn" class="btn"><span>SAVE</span> ◇</button>
         <button id="projects-btn" class="btn"><span>PROJECTS</span> ▤</button>
         <button id="bounce-btn" class="btn cyan"><span>BOUNCE WAV</span> ⇩</button>
-        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button>
+        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button><button id="chordgen-btn" class="btn icon" aria-label="Chord generator" title="Chord generator (Shift+C)">🎹</button><button id="quicksave-btn" class="btn icon" aria-label="Quick-save slots" title="Quick-save slots — Shift+1–4 saves, Ctrl/Cmd+1–4 loads">💾</button><button id="fxchain-btn" class="btn icon" aria-label="FX chain" title="FX chain — reorderable distortion, chorus, delay, reverb (Shift+X)">⛓️</button>
       </div>
     </header>
 
@@ -1516,12 +1541,13 @@
         <div class="help-card"><b>Six interface styles</b><p>Dark, Light, Dim, Cyber, Matrix, and Tech provide practical production views without changing your audio or project data.</p></div>
         <div class="help-card"><b>Screen pet</b><p>Toggle the pet from the toolbar, customize one of six character bodies and seven dance moves, then drag it anywhere. It locks to every quarter-note pulse.</p></div>
         <div class="help-card"><b>Visual descriptions</b><p>Turn on Describe mode, then hover or focus controls, pads, steps, tracks and modules for a plain-language explanation in the floating description bar.</p></div>
-        <div class="help-card"><b>Save projects</b><p>Save stores complete projects locally. Export and import project JSON from the Projects window for backup or sharing.</p></div>
+        <div class="help-card"><b>Save projects</b><p>Save stores complete projects locally. Export and import project JSON from the Projects window for backup or sharing. Quick-save slots (Shift+1–4 to save, Ctrl/Cmd+1–4 to load) snapshot the full project instantly into one of four slots.</p></div>
         <div class="help-card"><b>Output guard</b><p>Safe Audio adds headroom, all wet effects now pass through the final limiter, and the ceiling control prevents accidental overload.</p></div>
-        <div class="help-card"><b>Mix translation</b><p>Use mono check, stereo width, rumble filtering, and the live peak monitor to make the loop translate better across speakers and headphones.</p></div>
+        <div class="help-card"><b>Mix translation</b><p>Use mono check, stereo width, rumble filtering, and the live peak monitor to make the loop translate better across speakers and headphones. The FX chain (Shift+X) runs distortion, chorus, delay and reverb as reorderable post-limiter inserts.</p></div>
         <div class="help-card"><b>Pattern chain</b><p>Chain A→B or A→B→C→D to audition longer arrangements without manually switching pattern slots. For full song control, open the Song Arranger (Shift+G) to build a play-in-order sequence with per-entry repeats.</p></div>
         <div class="help-card"><b>Swing templates</b><p>Open the swing template library (Shift+W or the 🌀 toolbar button) to audition grooves like MPC Pocket, Dilla Slop, Lazy Swing and Shuffle. Each template sets the swing amount plus a matching hat-velocity pattern, and the velocity edit is undoable.</p></div>
-        <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · Ctrl/Cmd+Z undo · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
+        <div class="help-card"><b>Chord generator</b><p>Press Shift+C (or the 🎹 toolbar button) for one-click chord stabs: pick a root note, one of 12 chord types and a stab rhythm, preview it, then write it to a new track or the selected track. The write is undoable.</p></div>
+        <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome (Shift+M click settings) · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · Ctrl/Cmd+Z undo · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
       </div>
     </div>
   </dialog>
@@ -1595,6 +1621,45 @@
     <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+W anywhere &#183; click a template to audition it while the loop plays</span><button class="btn cyan" data-close>CLOSE</button></div>
   </dialog>
 
+  <dialog id="chord-dialog">
+    <div class="dialog-head"><h2>Chord Generator &#183; Stabs</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <div class="sc-cat">Root note</div>
+      <div id="chord-roots" class="chord-roots" role="listbox" aria-label="Root note"></div>
+      <div class="chord-oct"><span>OCTAVE</span><button id="chord-oct-down" class="btn tiny" aria-label="Lower octave">−</button><b id="chord-oct-val">4</b><button id="chord-oct-up" class="btn tiny" aria-label="Raise octave">+</button></div>
+      <div class="sc-cat">Chord type</div>
+      <div id="chord-types" class="chord-grid" role="listbox" aria-label="Chord type"></div>
+      <div class="sc-cat">Stab rhythm</div>
+      <div id="chord-rhythms" class="chord-grid" role="listbox" aria-label="Stab rhythm"></div>
+      <div class="sc-cat">Write to</div>
+      <div id="chord-targets" class="chord-targets"><button id="chord-target-new" class="btn tiny active">NEW TRACK</button><button id="chord-target-sel" class="btn tiny">SELECTED TRACK</button></div>
+      <p id="chord-readout"></p>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+C anywhere &#183; preview first, then generate</span><button id="chord-preview-btn" class="btn">▶ PREVIEW</button><button id="chord-generate-btn" class="btn cyan">GENERATE STABS</button><button class="btn" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="metro-dialog">
+    <div class="dialog-head"><h2>Metronome &#183; Accent &amp; Volume</h2><button class="btn icon" data-close>&times;</button></div>
+    <div class="dialog-body">
+      <div class="sc-cat">Downbeat accent</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px">
+        <button id="metro-accent-btn" class="btn tiny cyan" aria-pressed="true">ACCENT: ON</button>
+        <span style="color:var(--muted);font-size:11px">Beat 1 plays brighter &amp; louder (1150 Hz)</span>
+      </div>
+      <div class="sc-cat">Beats per bar</div>
+      <div class="metro-beats">
+        <button id="metro-beats-down" class="btn tiny" aria-label="Fewer beats per bar">&minus;</button>
+        <b id="metro-beats-val">4</b>
+        <button id="metro-beats-up" class="btn tiny" aria-label="More beats per bar">+</button>
+        <span style="color:var(--muted);font-size:11px">Where the accent lands</span>
+      </div>
+      <div class="sc-cat">Click volume</div>
+      <div class="control"><label for="metro-vol">Volume <output id="metro-vol-out">100%</output></label><input id="metro-vol" type="range" min="0" max="1" value="1" step="0.01"></div>
+      <p id="metro-readout"></p>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+M anywhere &#183; right-click the METRO toolbar button</span><button id="metro-test-btn" class="btn">&#9654; TEST BAR</button><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
   <dialog id="preset-dialog">
     <div class="dialog-head"><h2>Synth Presets</h2><button class="btn icon" data-close>×</button></div>
     <div class="dialog-body">
@@ -1621,6 +1686,25 @@
       <div id="project-list" class="project-list"></div>
     </div>
     <div class="dialog-actions"><button id="import-project" class="btn">IMPORT JSON</button><button id="export-project" class="btn cyan">EXPORT JSON</button></div>
+  </dialog>
+
+  <dialog id="quicksave-dialog">
+    <div class="dialog-head"><h2>Quick-Save Slots</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p style="color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 13px">Four instant slots. <b>Shift+1–4</b> snapshots the full project into a slot; <b>Ctrl/Cmd+1–4</b> loads it back. Keys 1–4 still trigger pads. Slots persist across reloads.</p>
+      <div id="quicksave-list" class="qs-list"></div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: Ctrl/Cmd+1–4 loads a slot without opening this window</span><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="fxchain-dialog">
+    <div class="dialog-head"><h2>FX Chain</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p style="color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 10px">Four master insert effects in series, <b>post-limiter</b> on the master bus. Reorder with ▲▼, toggle each module’s power, dial the mix. The legacy Delay / Reverb sends and the Drive knob keep working independently.</p>
+      <div id="fxchain-flow" class="fx-flow" aria-live="polite"></div>
+      <div id="fxchain-list" class="fx-list"></div>
+    </div>
+    <div class="dialog-actions"><button id="fxchain-reset" class="btn">RESET CHAIN</button><button class="btn cyan" data-close>CLOSE</button></div>
   </dialog>
 
   <dialog id="pet-dialog">
@@ -1712,7 +1796,7 @@
     };
     const INSTRUMENTS = {
       kick:"Kick",punchkick:"Punch Kick",trapkick:"Trap Kick",snare:"Snare",snare808:"808 Snare",hat:"Closed Hat",traphat:"Trap Hat",openhat:"Open Hat",clap:"Clap",tom:"Tom",rim:"Rim",cowbell:"Cowbell",
-      bass:"Analog Bass",sub808:"Clean 808",dist808:"Distorted 808",glide808:"Glide 808",reese:"Reese Bass",pluck:"Digital Pluck",lead:"Neon Lead",pad:"Air Pad",chord:"Poly Chord",keys:"Glass Keys",
+      bass:"Analog Bass",sub808:"Clean 808",dist808:"Distorted 808",glide808:"Glide 808",reese:"Reese Bass",pluck:"Digital Pluck",lead:"Neon Lead",pad:"Air Pad",chord:"Poly Chord",chordprog:"Chord Stab",keys:"Glass Keys",
       brass:"Street Brass",bell:"Trap Bell",vocal:"Vocal Chop",vinyl:"Vinyl Dust",scratch:"DJ Scratch",laser:"Laser",noise:"Noise Rise",zap:"Zap",impact:"Impact",perc:"Perc",sub:"Sub Drop"
     };
 
@@ -1724,7 +1808,7 @@
       patch:{root:0,scale:"Minor",octave:3,attack:.01,release:.4,cutoff:7500,resonance:2,waveform:"sawtooth",velocity:.88,glide:0,padDelay:.18,padReverb:.22},
       master:{volume:.82,delay:.2,reverb:.18,drive:.08,thump:.72,punch:.48,width:1,ceiling:-1,rumble:30,safe:true},
       ui:{theme:"dark",describe:false,petVisible:false,petStyle:"bot",petMove:"bounce",petColor:"#93d23d",petSize:1,petName:"THUMP",petReact:1,petX:22,petY:40,
-        viewMode:"studio",density:"compact",engineMode:"balanced",patternChain:"off",song:{enabled:false,loop:true,sequence:[{slot:"A",repeats:2},{slot:"B",repeats:2}]},autoTrackPads:true,synthControls:false,stepPaint:"draw",collapsed:["mixer-module"],hiddenModules:["hero-strip"],moduleSizes:{},mobilePanel:"sequencer",countIn:false,loopRepeats:0,masterMuted:false,monoCheck:false}
+        viewMode:"studio",density:"compact",engineMode:"balanced",patternChain:"off",song:{enabled:false,loop:true,sequence:[{slot:"A",repeats:2},{slot:"B",repeats:2}]},autoTrackPads:true,synthControls:false,stepPaint:"draw",collapsed:["mixer-module"],hiddenModules:["hero-strip"],moduleSizes:{},mobilePanel:"sequencer",countIn:false,loopRepeats:0,masterMuted:false,monoCheck:false,metro:{accent:true,vol:1,beats:4},fxChain:{order:["dist","chorus","delay","reverb"],on:{dist:true,chorus:true,delay:true,reverb:true},mix:{dist:.1,chorus:.25,delay:.12,reverb:.14}}}
     };
 
     const defaultTracks = () => [
@@ -1897,8 +1981,8 @@
         if(instrument==="brass"){
           [-8,0,8].forEach(detune=>this.osc(ctx,"sawtooth",freq,when,.12,destination,velocity*.28,.025,.32,detune,Math.min(cutoff,2400),6));return
         }
-        if(instrument==="chord"||instrument==="pad"){
-          const intervals=instrument==="chord"?[0,4,7,11]:[0,7,12];
+        if(instrument==="chord"||instrument==="pad"||instrument==="chordprog"){
+          const intervals=instrument==="chordprog"?(CHORD_VOICE.intervals||[0,4,7]):(instrument==="chord"?[0,4,7,11]:[0,7,12]);
           intervals.forEach((semi,i)=>this.osc(ctx,wave,freq*Math.pow(2,semi/12),when,duration,destination,velocity/(intervals.length*.72),patch.attack??.02,patch.release??.7,(i-1)*7,cutoff,q));
           return
         }
@@ -1918,7 +2002,7 @@
     }
 
     class AudioEngine {
-      constructor(){this.ctx=null;this.channels=new Map();this.preview=null;this.analyser=null;this.peak=0}
+      constructor(){this.ctx=null;this.channels=new Map();this.preview=null;this.analyser=null;this.peak=0;this.fx=null;this.fxOrderSig=""}
       latencyHint(){return {tight:"interactive",balanced:"balanced",safe:"playback"}[state.ui.engineMode]||"balanced"}
       async init(){
         if(!this.ctx){
@@ -1931,7 +2015,7 @@
           this.delay=this.ctx.createDelay(1.5);this.delay.delayTime.value=.285;this.delayFeedback=this.ctx.createGain();this.delayFeedback.gain.value=.24;this.delayWet=this.ctx.createGain();
           this.reverb=this.ctx.createConvolver();this.reverb.buffer=this.impulse(2.05,2.35);this.reverbWet=this.ctx.createGain();
           this.masterInput.connect(this.inputTrim).connect(this.rumble).connect(this.bassShelf).connect(this.drive).connect(this.driveComp).connect(this.compressor).connect(this.limiter);
-          this.limiter.connect(this.stereoGain).connect(this.masterGain);
+          this.stereoGain.connect(this.masterGain);
           this.splitter=this.ctx.createChannelSplitter(2);this.monoSum=this.ctx.createGain();this.monoSum.gain.value=.5;this.monoMerger=this.ctx.createChannelMerger(2);
           this.limiter.connect(this.splitter);this.splitter.connect(this.monoSum,0);this.splitter.connect(this.monoSum,1);this.monoSum.connect(this.monoMerger,0,0);this.monoSum.connect(this.monoMerger,0,1);this.monoMerger.connect(this.monoGain).connect(this.masterGain);
           this.masterGain.connect(this.analyser).connect(this.ctx.destination);
@@ -1971,7 +2055,24 @@
         this.limiter.threshold.setTargetAtTime(ceiling,now,.02);this.limiter.knee.setTargetAtTime(0,now,.02);this.limiter.ratio.setTargetAtTime(20,now,.02);this.limiter.attack.setTargetAtTime(.001,now,.02);this.limiter.release.setTargetAtTime(.075,now,.02);
         this.drive.curve=this.curve(state.master.drive);this.drive.oversample="4x";this.driveComp.gain.setTargetAtTime(1-state.master.drive*.16,now,.025);
         this.stereoGain.gain.setTargetAtTime(state.ui.monoCheck?0:1,now,.012);this.monoGain.gain.setTargetAtTime(state.ui.monoCheck?1:0,now,.012);
-        this.syncTracks()
+        this.syncTracks();this.syncFxChain()
+      }
+      rebuildFxChain(){
+        if(!this.ctx)return;
+        const old=this.fx;
+        try{
+          if(old){this.limiter.disconnect(old.input);old.output.disconnect();Object.values(old.modules).forEach(m=>{try{m.stop&&m.stop()}catch(_){}});old.nodes.forEach(n=>{try{n.disconnect()}catch(_){}})}
+        }catch(_){}
+        const chain=buildFxChain(this.ctx);
+        this.limiter.connect(chain.input);chain.output.connect(this.stereoGain);
+        this.fx=chain;this.fxOrderSig=chain.order.join(",")
+      }
+      syncFxChain(){
+        if(!this.ctx)return;
+        if(!this.fx){this.rebuildFxChain();return}
+        const o=fxChainOpts(),sig=o.order.join(",");
+        if(sig!==this.fxOrderSig){this.rebuildFxChain();return}
+        Object.keys(this.fx.modules).forEach(id=>applyFxModule(this.fx.modules[id],o.on[id],o.mix[id],true))
       }
       trigger(pad,velocity=state.patch.velocity,when=null,destination=null){
         const time=when??this.ctx.currentTime+.008,target=destination||this.preview.input,safeVelocity=clamp(velocity,.05,1);
@@ -1980,7 +2081,7 @@
       }
       triggerTrack(track,when,velocity,step=null){
         const soloed=state.tracks.some(t=>t.solo);if(track.mute||(soloed&&!track.solo))return;
-        const ch=this.channels.get(track.id);if(!ch)return;VoiceFactory.schedule(this.ctx,ch.input,step?.instrument||track.instrument,step?.note??track.note,when,clamp(velocity,.05,1),state.patch,.14);ch.level=Math.max(ch.level,velocity)
+        const ch=this.channels.get(track.id);if(!ch)return;CHORD_VOICE.intervals=step?.chord||null;VoiceFactory.schedule(this.ctx,ch.input,step?.instrument||track.instrument,step?.note??track.note,when,clamp(velocity,.05,1),state.patch,.14);ch.level=Math.max(ch.level,velocity)
       }
       peakDb(){
         if(!this.analyser)return -Infinity;const data=new Float32Array(this.analyser.fftSize);this.analyser.getFloatTimeDomainData(data);let peak=0;for(const sample of data)peak=Math.max(peak,Math.abs(sample));this.peak=Math.max(peak,this.peak*.9);return this.peak>0?20*Math.log10(this.peak):-Infinity
@@ -2024,9 +2125,7 @@
           const step=track.steps[index];if(!step?.on||track.mute||(soloed&&!track.solo)||Math.random()>step.probability)return;
           this.engine.triggerTrack(track,when,step.velocity,step)
         });
-        if(state.metronome&&index%4===0){
-          VoiceFactory.osc(this.engine.ctx,"sine",index===0?1150:850,when,.01,this.engine.masterInput,index===0?.15:.09,.002,.035)
-        }
+        if(state.metronome&&index%4===0)metroClick(this.engine.ctx,when,index/4,this.engine.masterInput)
         const delay=Math.max(0,(when-this.engine.ctx.currentTime)*1000);setTimeout(()=>this.onStep(index),delay)
       }
       closestStep(){if(!state.playing)return 0;return (this.step-1+state.stepCount)%state.stepCount}
@@ -2039,7 +2138,7 @@
         const ctx=new Offline(2,Math.ceil(duration*sampleRate),sampleRate),masterInput=ctx.createGain(),inputTrim=ctx.createGain(),rumble=ctx.createBiquadFilter(),shelf=ctx.createBiquadFilter(),shaper=ctx.createWaveShaper(),driveComp=ctx.createGain(),compressor=ctx.createDynamicsCompressor(),limiter=ctx.createDynamicsCompressor(),master=ctx.createGain();
         const safe=state.master.safe!==false,ceiling=clamp(state.master.ceiling??-1,-6,-.3);inputTrim.gain.value=safe?.58:.78;rumble.type="highpass";rumble.frequency.value=state.master.rumble>0?state.master.rumble:10;rumble.Q.value=.72;shelf.type="lowshelf";shelf.frequency.value=92;shelf.gain.value=state.master.thump*(safe?8:10);
         shaper.curve=VoiceFactory.driveCurve(state.master.drive);shaper.oversample="4x";driveComp.gain.value=1-state.master.drive*.16;compressor.threshold.value=-16-state.master.punch*8;compressor.knee.value=16-state.master.punch*8;compressor.ratio.value=2.2+state.master.punch*2.8;compressor.attack.value=.008-state.master.punch*.004;compressor.release.value=.18+state.master.punch*.06;
-        limiter.threshold.value=ceiling;limiter.knee.value=0;limiter.ratio.value=20;limiter.attack.value=.001;limiter.release.value=.075;master.gain.value=state.master.volume;masterInput.connect(inputTrim).connect(rumble).connect(shelf).connect(shaper).connect(driveComp).connect(compressor).connect(limiter).connect(master).connect(ctx.destination);
+        limiter.threshold.value=ceiling;limiter.knee.value=0;limiter.ratio.value=20;limiter.attack.value=.001;limiter.release.value=.075;master.gain.value=state.master.volume;masterInput.connect(inputTrim).connect(rumble).connect(shelf).connect(shaper).connect(driveComp).connect(compressor).connect(limiter);const fxChain=buildFxChain(ctx);limiter.connect(fxChain.input);fxChain.output.connect(master);master.connect(ctx.destination);
         const delay=ctx.createDelay(1.5),feedback=ctx.createGain(),delayWet=ctx.createGain(),reverb=ctx.createConvolver(),reverbWet=ctx.createGain();delay.delayTime.value=.285;feedback.gain.value=.18+state.master.delay*.18;delayWet.gain.value=state.master.delay*(safe?.62:.78);delay.connect(feedback).connect(delay);delay.connect(delayWet).connect(masterInput);
         const impulse=ctx.createBuffer(2,Math.floor(ctx.sampleRate*2.05),ctx.sampleRate);for(let c=0;c<2;c++){const d=impulse.getChannelData(c);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.35)}reverb.buffer=impulse;reverbWet.gain.value=state.master.reverb*(safe?.58:.76);reverb.connect(reverbWet).connect(masterInput);
         const soloed=state.tracks.some(t=>t.solo);
@@ -2050,7 +2149,7 @@
           for(let i=0;i<steps;i++){
             const step=track.steps[i];if(!step.on)continue;
             const when=i*stepDuration+(i%2?stepDuration*state.swing:0);
-            VoiceFactory.schedule(ctx,filter,step.instrument||track.instrument,step.note??track.note,when,clamp(step.velocity,.05,1),state.patch,.14)
+            CHORD_VOICE.intervals=step.chord||null;VoiceFactory.schedule(ctx,filter,step.instrument||track.instrument,step.note??track.note,when,clamp(step.velocity,.05,1),state.patch,.14)
           }
         });
         return ctx.startRendering()
@@ -2337,7 +2436,7 @@
       ["attack","release","cutoff","resonance","velocity","glide","padDelay","padReverb"].forEach(key=>{const id=key.replace(/[A-Z]/g,m=>`-${m.toLowerCase()}`);const el=$(`#${id}`);if(el)el.value=state.patch[key]});
       $("#master").value=state.master.volume;$("#delay").value=state.master.delay;$("#reverb").value=state.master.reverb;$("#drive").value=state.master.drive;$("#thump").value=state.master.thump;$("#punch").value=state.master.punch;
       $("#stereo-width").value=state.master.width??1;$("#output-ceiling").value=state.master.ceiling??-1;$("#rumble-filter").value=state.master.rumble??30;
-      $("#theme-select").value=state.ui.theme;$("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";updateOutputs();applyPetSettings();applyLayoutPrefs();syncSongUI()
+      $("#theme-select").value=state.ui.theme;$("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";updateOutputs();applyPetSettings();applyLayoutPrefs();syncSongUI();syncMetroUI();syncFxUI()
     }
     function updateOutputs(){
       $("#octave-out").textContent=state.patch.octave;$("#attack-out").textContent=state.patch.attack.toFixed(2);$("#release-out").textContent=state.patch.release.toFixed(2);
@@ -2349,6 +2448,147 @@
       $("#thump-out").textContent=`${Math.round(state.master.thump*100)}%`;$("#punch-out").textContent=`${Math.round(state.master.punch*100)}%`;
       $("#width-out").textContent=`${Math.round((state.master.width??1)*100)}%`;$("#ceiling-out").textContent=`${(state.master.ceiling??-1).toFixed(1).replace("-","−")} dB`;
       $("#safe-note").textContent=state.master.safe!==false?"LIMITER READY · 6 dB HEADROOM":"LIMITER READY · HOT INPUT"
+    }
+
+    /* Feature 10: metronome accent — downbeat accent toggle, beats/bar, click volume */
+    function metroOpts(){const m=state.ui.metro||(state.ui.metro={accent:true,vol:1,beats:4});return{accent:m.accent!==false,vol:clamp(Number(m.vol??1),0,1),beats:clamp(Math.round(Number(m.beats)||4),2,8)}}
+    function metroClick(ctx,when,beatIdx,destination){
+      const o=metroOpts();if(o.vol<=0)return;
+      const accented=(beatIdx%o.beats)===0&&o.accent;
+      VoiceFactory.osc(ctx,"sine",accented?1150:850,when,.01,destination||engine.masterInput,clamp((accented?.15:.09)*o.vol,0,1),.002,.035)
+    }
+    function syncMetroUI(){
+      const o=metroOpts();
+      const ab=$("#metro-accent-btn");if(ab){ab.textContent=`ACCENT: ${o.accent?"ON":"OFF"}`;ab.classList.toggle("cyan",o.accent);ab.setAttribute("aria-pressed",String(o.accent))}
+      const bv=$("#metro-beats-val");if(bv)bv.textContent=o.beats;
+      const mv=$("#metro-vol");if(mv)mv.value=o.vol;
+      const mo=$("#metro-vol-out");if(mo)mo.textContent=`${Math.round(o.vol*100)}%`;
+      const ro=$("#metro-readout");if(ro)ro.innerHTML=`Bar of ${o.beats} beats: <b>beat 1</b> ${o.accent?"<b style='color:var(--cyan)'>accented &#183; 1150 Hz</b>":"same as the rest"} &#183; click volume ${Math.round(o.vol*100)}%`
+    }
+    function setMetro(patch){Object.assign(state.ui.metro||(state.ui.metro={}),patch);syncMetroUI();scheduleAutosave()}
+    function openMetroDialog(){syncMetroUI();const dlg=$("#metro-dialog");if(dlg&&!dlg.open)dlg.showModal()}
+    /* Feature 12: FX chain — reorderable master insert: distortion, chorus, delay, reverb */
+    const FX_MODULES=[
+      {id:"dist",name:"DISTORTION",icon:"🔥",desc:"Saturation & grit",color:"#ff5d5d"},
+      {id:"chorus",name:"CHORUS",icon:"🌊",desc:"Width & shimmer",color:"#a87cff"},
+      {id:"delay",name:"DELAY",icon:"🏓",desc:"Tempo echo",color:"#ffb800"},
+      {id:"reverb",name:"REVERB",icon:"🏰",desc:"Space & air",color:"#37e0ff"}
+    ];
+    const FXCHAIN_DEFAULTS={order:["dist","chorus","delay","reverb"],on:{dist:true,chorus:true,delay:true,reverb:true},mix:{dist:.1,chorus:.25,delay:.12,reverb:.14}};
+    function fxChainOpts(){
+      const cur=state.ui.fxChain||{},ids=FX_MODULES.map(m=>m.id);
+      let order=Array.isArray(cur.order)?cur.order.filter(id=>ids.includes(id)):[];
+      ids.forEach(id=>{if(!order.includes(id))order.push(id)});
+      const on={},mix={};
+      ids.forEach(id=>{on[id]=!cur.on||cur.on[id]!==false;mix[id]=clamp(Number(cur.mix&&cur.mix[id]!==undefined?cur.mix[id]:FXCHAIN_DEFAULTS.mix[id]),0,1)});
+      return{order,on,mix}
+    }
+    function fxImpulse(ctx,seconds,decay){
+      const len=Math.max(1,Math.floor(ctx.sampleRate*seconds)),buf=ctx.createBuffer(2,len,ctx.sampleRate);
+      for(let c=0;c<2;c++){const d=buf.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay)}
+      return buf
+    }
+    function buildFxModule(ctx,id){
+      const input=ctx.createGain(),dry=ctx.createGain(),wet=ctx.createGain(),output=ctx.createGain();
+      input.connect(dry);dry.connect(output);
+      const mod={id,input,output,dry,wet,nodes:[input,dry,wet,output],stop:null,wetNode:null};
+      if(id==="dist"){
+        const shaper=ctx.createWaveShaper();shaper.oversample="4x";shaper.curve=VoiceFactory.driveCurve(FXCHAIN_DEFAULTS.mix.dist);
+        input.connect(shaper);shaper.connect(wet);wet.connect(output);mod.nodes.push(shaper);mod.wetNode=shaper
+      }else if(id==="chorus"){
+        const dly=ctx.createDelay(1);dly.delayTime.value=.016;
+        const lfo=ctx.createOscillator();lfo.type="sine";lfo.frequency.value=.8;
+        const depth=ctx.createGain();depth.gain.value=.0045;lfo.connect(depth);depth.connect(dly.delayTime);
+        input.connect(dly);dly.connect(wet);wet.connect(output);
+        try{lfo.start()}catch(_){}
+        mod.nodes.push(dly,lfo,depth);mod.stop=()=>{try{lfo.stop()}catch(_){}}
+      }else if(id==="delay"){
+        const dly=ctx.createDelay(1.5);dly.delayTime.value=.285;const fb=ctx.createGain();fb.gain.value=.32;
+        input.connect(dly);dly.connect(fb);fb.connect(dly);dly.connect(wet);wet.connect(output);mod.nodes.push(dly,fb)
+      }else if(id==="reverb"){
+        const conv=ctx.createConvolver();conv.buffer=fxImpulse(ctx,1.9,2.6);
+        input.connect(conv);conv.connect(wet);wet.connect(output);mod.nodes.push(conv)
+      }
+      return mod
+    }
+    function applyFxModule(mod,on,mix,realtime){
+      const set=(param,val)=>{if(realtime)param.setTargetAtTime(val,mod.input.context.currentTime,.02);else param.value=val};
+      if(on){set(mod.dry.gain,1-mix*.55);set(mod.wet.gain,mix);if(mod.id==="dist"&&mod.wetNode)mod.wetNode.curve=VoiceFactory.driveCurve(mix)}
+      else{set(mod.dry.gain,1);set(mod.wet.gain,0)}
+    }
+    function buildFxChain(ctx){
+      const o=fxChainOpts(),input=ctx.createGain(),output=ctx.createGain();
+      const chain={input,output,modules:{},order:o.order.slice(),nodes:[input,output]};
+      let prev=input;
+      o.order.forEach(id=>{const m=buildFxModule(ctx,id);prev.connect(m.input);prev=m.output;chain.modules[id]=m;chain.nodes.push(...m.nodes)});
+      prev.connect(output);
+      Object.keys(chain.modules).forEach(id=>applyFxModule(chain.modules[id],o.on[id],o.mix[id],false));
+      return chain
+    }
+    function setFxChain(patch){
+      const cur=state.ui.fxChain||(state.ui.fxChain=JSON.parse(JSON.stringify(FXCHAIN_DEFAULTS)));
+      if(patch.order)cur.order=patch.order.slice();
+      if(patch.on)Object.assign(cur.on||(cur.on={}),patch.on);
+      if(patch.mix)Object.assign(cur.mix||(cur.mix={}),patch.mix);
+      syncFxUI();engine.syncFxChain();scheduleAutosave()
+    }
+    function moveFxModule(id,dir){
+      const o=fxChainOpts(),i=o.order.indexOf(id),j=i+dir;
+      if(i<0||j<0||j>=o.order.length)return;
+      const order=o.order.slice();[order[i],order[j]]=[order[j],order[i]];
+      setFxChain({order});renderFxChain();
+      const meta=FX_MODULES.find(m=>m.id===id);
+      toast(`${meta.name} moved ${dir<0?"earlier":"later"} in the chain`);setStatus(`FX chain: ${fxFlowText()}`)
+    }
+    function fxFlowText(){const o=fxChainOpts();return o.order.map(id=>{const m=FX_MODULES.find(x=>x.id===id);return o.on[id]?m.name:m.name+" (off)"}).join(" \u2192 ")}
+    function renderFxChain(){
+      const wrap=$("#fxchain-list");if(!wrap)return;wrap.replaceChildren();
+      const o=fxChainOpts();
+      o.order.forEach((id,pos)=>{
+        const meta=FX_MODULES.find(m=>m.id===id);
+        const card=document.createElement("div");card.className="fx-card";card.dataset.fx=id;card.style.setProperty("--fx",meta.color);
+        const badge=document.createElement("span");badge.className="fx-pos";badge.textContent=pos+1;card.append(badge);
+        const power=document.createElement("button");power.className="fx-power";power.setAttribute("aria-label",`Toggle ${meta.name}`);
+        power.addEventListener("click",()=>setFxChain({on:{[id]:!fxChainOpts().on[id]}}));card.append(power);
+        const icon=document.createElement("span");icon.className="fx-icon";icon.textContent=meta.icon;card.append(icon);
+        const mm=document.createElement("div");mm.className="fx-meta";
+        const b=document.createElement("b");b.textContent=meta.name;const s=document.createElement("span");s.textContent=meta.desc;mm.append(b,s);card.append(mm);
+        const mixw=document.createElement("div");mixw.className="fx-mix";
+        const lab=document.createElement("label");const out=document.createElement("output");lab.append("MIX ",out);mixw.append(lab);
+        const slider=document.createElement("input");slider.type="range";slider.min="0";slider.max="1";slider.step=".01";
+        slider.setAttribute("aria-label",`${meta.name} mix`);
+        slider.addEventListener("input",e=>{const v=Number(e.target.value);out.textContent=`${Math.round(v*100)}%`;setFxChain({mix:{[id]:v}})});
+        mixw.append(slider);card.append(mixw);
+        const mv=document.createElement("div");mv.className="fx-move";
+        const up=document.createElement("button");up.className="btn tiny";up.textContent="\u25B2";up.disabled=pos===0;up.setAttribute("aria-label",`Move ${meta.name} earlier`);
+        up.addEventListener("click",()=>moveFxModule(id,-1));
+        const dn=document.createElement("button");dn.className="btn tiny";dn.textContent="\u25BC";dn.disabled=pos===o.order.length-1;dn.setAttribute("aria-label",`Move ${meta.name} later`);
+        dn.addEventListener("click",()=>moveFxModule(id,1));
+        mv.append(up,dn);card.append(mv);
+        card._fx={power,slider,out};wrap.append(card)
+      });
+      syncFxUI()
+    }
+    function syncFxUI(){
+      const wrap=$("#fxchain-list");if(!wrap||!wrap.children.length)return;
+      const o=fxChainOpts();
+      [...wrap.children].forEach(card=>{
+        const id=card.dataset.fx,refs=card._fx;if(!refs)return;
+        card.classList.toggle("fx-off",!o.on[id]);
+        refs.power.textContent=o.on[id]?"ON":"OFF";refs.power.classList.toggle("on",o.on[id]);refs.power.setAttribute("aria-pressed",String(o.on[id]));
+        if(document.activeElement!==refs.slider)refs.slider.value=o.mix[id];
+        refs.out.textContent=`${Math.round(o.mix[id]*100)}%`
+      });
+      const flow=$("#fxchain-flow");
+      if(flow)flow.innerHTML=`SIGNAL FLOW &nbsp;${o.order.map((id,i)=>{const m=FX_MODULES.find(x=>x.id===id);const label=o.on[id]?`<b>${m.name}</b>`:`<s>${m.name}</s>`;return (i?` \u2192 `:"")+label}).join("")}`
+    }
+    function openFxChain(){renderFxChain();const dlg=$("#fxchain-dialog");if(dlg&&!dlg.open)dlg.showModal()}
+    async function testMetro(){
+      try{await engine.init()}catch(error){toast(error.message,"error");return}
+      try{engine.ctx.resume()}catch(_){}
+      const o=metroOpts(),t0=engine.ctx.currentTime+.06,step=60/state.bpm;
+      for(let b=0;b<o.beats;b++)metroClick(engine.ctx,t0+b*step,b,engine.masterInput);
+      setStatus(`Metronome test: ${o.beats} beats at ${state.bpm} BPM`)
     }
 
     function snapshotPatternAction(action){
@@ -2424,6 +2664,69 @@
       if(!opts.quiet)toast(`${t.name} groove applied \u2014 swing ${Math.round(t.swing*100)}%.`,"good")
     }
     function applyGroove(name){applySwingTemplate(name)}
+    /* Feature 9: chord generator — one-click chord stabs from root note + chord type */
+    const CHORD_VOICE={intervals:null}; // per-step voicing handoff consumed synchronously by VoiceFactory.schedule
+    const CHORD_LIBRARY=[
+      {id:"maj",name:"Major",sym:"",iv:[0,4,7],desc:"Happy and resolved \u2014 the classic triad."},
+      {id:"min",name:"Minor",sym:"m",iv:[0,3,7],desc:"Dark and moody \u2014 the minor triad."},
+      {id:"maj7",name:"Major 7",sym:"maj7",iv:[0,4,7,11],desc:"Lush and jazzy \u2014 major seventh."},
+      {id:"min7",name:"Minor 7",sym:"m7",iv:[0,3,7,10],desc:"Smooth R&B staple \u2014 minor seventh."},
+      {id:"dom7",name:"Dominant 7",sym:"7",iv:[0,4,7,10],desc:"Bluesy tension \u2014 wants to resolve."},
+      {id:"sus4",name:"Suspended 4",sym:"sus4",iv:[0,5,7],desc:"Floating, unresolved \u2014 no third."},
+      {id:"sus2",name:"Suspended 2",sym:"sus2",iv:[0,2,7],desc:"Open and airy \u2014 no third."},
+      {id:"dim",name:"Diminished",sym:"dim",iv:[0,3,6],desc:"Tense and dark \u2014 stacked minor thirds."},
+      {id:"aug",name:"Augmented",sym:"aug",iv:[0,4,8],desc:"Dreamy and unstable \u2014 stacked major thirds."},
+      {id:"add9",name:"Add 9",sym:"add9",iv:[0,4,7,14],desc:"Bright sparkle \u2014 triad plus the ninth."},
+      {id:"six",name:"Sixth",sym:"6",iv:[0,4,7,9],desc:"Vintage swing \u2014 triad plus the sixth."},
+      {id:"pow",name:"Power 5",sym:"5",iv:[0,7,12],desc:"Raw and driving \u2014 root, fifth, octave."}
+    ];
+    const CHORD_RHYTHMS=[
+      {id:"off8",name:"Offbeat 8ths",steps:[2,6,10,14,18,22,26,30],desc:"Classic house skank \u2014 hits between the kicks."},
+      {id:"qtr",name:"Quarter Stabs",steps:[0,8,16,24],desc:"Four-on-the-floor punctuation."},
+      {id:"sync",name:"Syncopated",steps:[0,7,10,16,23,26],desc:"Off-grid bounce \u2014 Dilla-adjacent."},
+      {id:"half",name:"Half Notes",steps:[0,16],desc:"Wide, breathing stabs."},
+      {id:"one",name:"One Shot",steps:[0],desc:"A single hit on the downbeat."}
+    ];
+    function chordRootMidi(rootIdx,octave){return 12*(octave+1)+rootIdx}
+    function chordOf(id){return CHORD_LIBRARY.find(c=>c.id===id)||CHORD_LIBRARY[0]}
+    function rhythmOf(id){return CHORD_RHYTHMS.find(r=>r.id===id)||CHORD_RHYTHMS[0]}
+    function chordLabel(rootIdx,chordId){const c=chordOf(chordId);return `${NOTES[rootIdx]}${c.sym}`}
+    function previewChordStab(rootIdx,octave,chordId){
+      const chord=chordOf(chordId),midi=chordRootMidi(rootIdx,octave),label=chordLabel(rootIdx,chordId);
+      engine.init().then(()=>{
+        CHORD_VOICE.intervals=chord.iv.slice();
+        engine.trigger({instrument:"chordprog",note:midi,duration:.55},.85);
+        setStatus(`Previewing ${label} ${chord.name}`)
+      }).catch(err=>toast(err.message,"error"))
+    }
+    function generateChordStabs(rootIdx,octave,chordId,rhythmId,target){
+      const chord=chordOf(chordId),rhythm=rhythmOf(rhythmId);
+      const midi=chordRootMidi(rootIdx,octave),label=chordLabel(rootIdx,chordId);
+      if(target==="new"&&state.tracks.length>=12){toast("Maximum 12 tracks reached.","warn");return}
+      pushUndo();
+      let extended=false;
+      if(state.stepCount===16){
+        state.tracks.filter(t=>!t.lock).forEach(t=>{for(let i=0;i<16;i++)t.steps[i+16]=clone(t.steps[i])});
+        state.stepCount=32;state.stepPage=0;extended=true;
+        const sc=$("#step-count");if(sc)sc.value=32;updateLoopTime()
+      }
+      let track;
+      if(target==="new"){
+        track=makeTrack(`${label} STAB`,"chordprog",midi,[],state.tracks.length);
+        state.tracks.push(track);state.selectedTrack=track.id
+      }else{
+        track=state.tracks.find(t=>t.id===state.selectedTrack)||currentTrack();
+        track.name=`${label} STAB`;track.instrument="chordprog";track.note=midi
+      }
+      track.instrument="chordprog";track.note=midi;
+      track.steps.forEach(s=>{s.on=false;s.velocity=0;delete s.chord;delete s.instrument});
+      rhythm.steps.forEach(st=>{
+        const step=track.steps[st];if(!step)return;
+        step.on=true;step.velocity=st%8===0?.9:(st%4===0?.8:.7);step.note=midi;step.chord=chord.iv.slice()
+      });
+      engine.syncTracks();renderAll();scheduleAutosave();
+      toast(`${label} ${chord.name.toLowerCase()} stabs \u2014 ${rhythm.name} \u2014 written to ${track.name}.${extended?" Pattern extended to 32 steps so every stab sounds.":""}`,"good")
+    }
     function applyLayoutPrefs(){
       document.body.classList.remove("view-pads","view-sequencer","density-compact");
       if(state.ui.viewMode!=="studio")document.body.classList.add(`view-${state.ui.viewMode}`);
@@ -2595,7 +2898,7 @@
       "stereo-width":"Scales track panning from mono-centered to extra-wide.",
       "output-ceiling":"Sets the final limiter ceiling to protect against digital clipping.",
       "master-mute":"Silences or restores the final master output without changing any saved channel levels.","panic-btn":"Immediately stops transport, cancels count-in, and suspends the audio engine.",
-      "metronome-btn":"Adds an audible click on every quarter note, with a brighter click at the start of the bar.",
+      "metronome-btn":"Audible click on every quarter note. Right-click or Shift+M opens the downbeat-accent & volume settings.",
       "bounce-btn":"Renders the current multitrack pattern into one stereo WAV file with levels, panning, bass boost, and punch processing.",
       "bass-profile":"Applies a coordinated low-end preset: clean studio sub, headphone-style thump, trunk-rattling saturation, or sliding drill pressure.",
       "master":"Controls final output volume.","delay":"Controls the amount of tempo-friendly echo in the master mix.","reverb":"Controls spacious synthetic room ambience.",
@@ -2603,7 +2906,7 @@
       "punch":"Shapes compression to preserve attack while gluing the beat together.","swing":"Delays alternating steps to create bounce and pocket.",
       "step-count":"Changes the active loop between one 16-step bar and two 16-step bars.","root-note":"Sets the tonal root used by melodic pad banks.",
       "step-page-prev":"Shows steps 1 through 16 of a 32-step pattern.","step-page-next":"Shows steps 17 through 32 of a 32-step pattern.",
-      "follow-page":"Keeps the visible sequencer page synchronized with playback.","groove-preset":"Applies a timing pocket and alternating hat velocity pattern.","swing-btn":"Opens the swing template library \u2014 8 preset grooves (shuffle, swing, straight and more), each with a timing pocket and a matching hat-velocity pattern.",
+      "follow-page":"Keeps the visible sequencer page synchronized with playback.","groove-preset":"Applies a timing pocket and alternating hat velocity pattern.","swing-btn":"Opens the swing template library \u2014 8 preset grooves (shuffle, swing, straight and more), each with a timing pocket and a matching hat-velocity pattern.","chordgen-btn":"Opens the chord generator \u2014 pick a root note, one of 12 chord types and a stab rhythm, preview it, then write one-click chord stabs to a new track or the selected track.","quicksave-btn":"Opens the quick-save slots \u2014 Shift+1\u20134 snapshots the full project into a slot, Ctrl/Cmd+1\u20134 loads it back.","fxchain-btn":"Opens the FX chain \u2014 reorderable master insert effects (distortion, chorus, delay, reverb) with per-module power and mix, Shift+X.",
       "count-in":"Adds one bar of audible count-in before playback begins.","loop-repeats":"Stops automatically after the chosen number of complete loops.",
       "copy-track":"Copies the selected track sound, pitch, velocity, probability, and steps.","paste-track":"Pastes the copied pattern into the selected unlocked track.",
       "mirror-track":"Reverses the selected track pattern within the active loop length.","euclid-track":"Distributes hits evenly using a Euclidean rhythm generator.",
@@ -2647,6 +2950,13 @@
       $("#play-btn").addEventListener("click",togglePlay);$("#stop-btn").addEventListener("click",stopTransport);
       $("#record-btn").addEventListener("click",async()=>{await engine.init();state.recording=!state.recording;updateTransport();if(state.recording&&!state.tracks.some(t=>t.arm)){state.tracks[0].arm=true;state.selectedTrack=state.tracks[0].id;renderTracks()}});
       $("#tap-btn").addEventListener("click",tapTempo);$("#metronome-btn").addEventListener("click",()=>{state.metronome=!state.metronome;$("#metronome-btn").classList.toggle("active",state.metronome)});
+      /* Feature 10: metronome accent — wiring (helpers live at top level) */
+      $("#metronome-btn").addEventListener("contextmenu",e=>{e.preventDefault();openMetroDialog()});
+      $("#metro-accent-btn").addEventListener("click",()=>setMetro({accent:!metroOpts().accent}));
+      $("#metro-beats-down").addEventListener("click",()=>setMetro({beats:metroOpts().beats-1}));
+      $("#metro-beats-up").addEventListener("click",()=>setMetro({beats:metroOpts().beats+1}));
+      $("#metro-vol").addEventListener("input",e=>setMetro({vol:Number(e.target.value)}));
+      $("#metro-test-btn").addEventListener("click",testMetro);
       $("#preset-select").addEventListener("change",e=>{if(e.target.value)applyPreset(e.target.value)});
       $("#theme-select").addEventListener("change",e=>applyTheme(e.target.value,true));
       $("#describe-btn").addEventListener("click",()=>{state.ui.describe=!state.ui.describe;document.body.classList.toggle("describe-mode",state.ui.describe);$("#describe-btn").classList.toggle("active",state.ui.describe);$("#describe-btn").textContent=state.ui.describe?"DESCRIBE ON":"DESCRIBE";wireDescriptions();scheduleAutosave()});
@@ -2700,6 +3010,7 @@
         {keys:["Space"],desc:"Play / stop the loop",cat:"Transport"},
         {keys:["Shift","R"],desc:"Toggle record",cat:"Transport"},
         {keys:["M"],desc:"Toggle metronome",cat:"Transport"},
+        {keys:["Shift","M"],desc:"Metronome accent & volume",cat:"Transport"},
         {keys:["T"],desc:"Tap tempo \u2014 tap up to 4\u00D7 in rhythm to set BPM",cat:"Transport"},
         {keys:["1","2","3","4"],desc:"Trigger pads 1–4",cat:"Pads"},
         {keys:["Q","W","E","R"],desc:"Trigger pads 5–8",cat:"Pads"},
@@ -2708,6 +3019,8 @@
         {keys:["↑"],desc:"Raise synth octave",cat:"Synth"},
         {keys:["↓"],desc:"Lower synth octave",cat:"Synth"},
         {keys:["Ctrl/Cmd","S"],desc:"Save project",cat:"Project"},
+        {keys:["Shift","1–4"],desc:"Save the full project into quick-save slot 1–4",cat:"Project"},
+        {keys:["Ctrl/Cmd","1–4"],desc:"Load the project from quick-save slot 1–4",cat:"Project"},
         {keys:["Ctrl/Cmd","E"],desc:"Bounce / export WAV",cat:"Project"},
         {keys:["Ctrl/Cmd","Z"],desc:"Undo pattern edit",cat:"Edit"},
         {keys:["Ctrl/Cmd","Shift","Z"],desc:"Redo pattern edit (or Ctrl/Cmd+Y)",cat:"Edit"},
@@ -2716,6 +3029,8 @@
         {keys:["Shift","S"],desc:"Open the FFT spectrum analyzer",cat:"View"},
         {keys:["Shift","G"],desc:"Open the song arranger (chain patterns into a song)",cat:"Arrange"},
         {keys:["Shift","W"],desc:"Open swing templates \u2014 apply shuffle, swing or straight grooves",cat:"Edit"},
+        {keys:["Shift","C"],desc:"Open the chord generator \u2014 one-click chord stabs from root note + chord type",cat:"Edit"},
+        {keys:["Shift","X"],desc:"Open the reorderable FX chain \u2014 distortion, chorus, delay, reverb in any order",cat:"Mix"},
         {keys:["Ctrl/Cmd","/"],desc:"Open this shortcut cheatsheet",cat:"Help"}
       ];
       function renderShortcutCheatsheet(){
@@ -2900,8 +3215,8 @@
       $("#spec-smooth").addEventListener("input",e=>{specana.smoothing=Number(e.target.value)/100;saveSpecana()});
       document.addEventListener("keydown",e=>{
         if(e.target.matches("input,select")||e.repeat)return;const key=e.key.toLowerCase(),index=PAD_KEYS.indexOf(key),modified=e.ctrlKey||e.metaKey||e.altKey||e.shiftKey;
-        if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}if(key==="t"&&!modified){e.preventDefault();tapTempo()}
-        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}
+        if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}if(key==="m"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openMetroDialog()}if(key==="t"&&!modified){e.preventDefault();tapTempo()}
+        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}if(key==="c"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openChordGenerator()}if(e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();saveQuickSlot(Number(e.code.slice(5)))}if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();loadQuickSlot(Number(e.code.slice(5)))}if(key==="x"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openFxChain()}
         if(e.key==="ArrowUp"){state.patch.octave=clamp(state.patch.octave+1,1,6);syncAllUI();renderPads()}if(e.key==="ArrowDown"){state.patch.octave=clamp(state.patch.octave-1,1,6);syncAllUI();renderPads()}
       });
       /* Feature 6: song arranger — chain pattern slots into a play-in-order song arrangement */
@@ -2992,6 +3307,103 @@
       }
       $("#swing-btn").addEventListener("click",openSwingTemplates);
 
+      /* Feature 9: chord generator — one-click chord stabs */
+      const cg={root:0,octave:4,chordId:"maj",rhythmId:"off8",target:"new"};
+      function syncChordReadout(){
+        const r=rhythmOf(cg.rhythmId);
+        $("#chord-readout").innerHTML=`Writing: <b>${chordLabel(cg.root,cg.chordId)}</b> ${chordOf(cg.chordId).name} \u00B7 ${r.name} (${r.steps.length} stabs) \u00B7 ${cg.target==="new"?"new track":"selected track"}`
+      }
+      function renderChordRoots(){
+        const wrap=$("#chord-roots");wrap.replaceChildren();
+        NOTES.forEach((n,i)=>{
+          const b=document.createElement("button");b.type="button";
+          b.className="root-btn"+(n.includes("#")?" sharp":"")+(i===cg.root?" active":"");
+          b.textContent=n;b.setAttribute("role","option");b.setAttribute("aria-selected",i===cg.root?"true":"false");
+          b.setAttribute("aria-label",`Root note ${n}`);
+          b.addEventListener("click",()=>{cg.root=i;renderChordRoots();syncChordReadout()});
+          wrap.append(b)
+        })
+      }
+      function renderChordCards(){
+        const wrap=$("#chord-types");wrap.replaceChildren();
+        CHORD_LIBRARY.forEach(c=>{
+          const b=document.createElement("button");b.type="button";
+          b.className="chord-card"+(c.id===cg.chordId?" active":"");
+          b.setAttribute("role","option");b.setAttribute("aria-selected",c.id===cg.chordId?"true":"false");
+          b.setAttribute("aria-label",`${c.name} chord, intervals ${c.iv.join(", ")} semitones`);
+          const head=document.createElement("span");head.className="ch-name";
+          const nm=document.createElement("span");nm.textContent=c.name;head.append(nm);
+          const sym=document.createElement("span");sym.className="ch-sym";sym.textContent=c.sym||"\u25b3";head.append(sym);
+          const desc=document.createElement("span");desc.className="ch-desc";desc.textContent=c.desc;
+          b.append(head,desc);
+          b.addEventListener("click",()=>{cg.chordId=c.id;renderChordCards();syncChordReadout()});
+          wrap.append(b)
+        });
+        const rw=$("#chord-rhythms");rw.replaceChildren();
+        CHORD_RHYTHMS.forEach(r=>{
+          const b=document.createElement("button");b.type="button";
+          b.className="chord-card"+(r.id===cg.rhythmId?" active":"");
+          b.setAttribute("role","option");b.setAttribute("aria-selected",r.id===cg.rhythmId?"true":"false");
+          b.setAttribute("aria-label",`${r.name} rhythm, ${r.steps.length} stabs`);
+          const head=document.createElement("span");head.className="ch-name";
+          const nm=document.createElement("span");nm.textContent=r.name;head.append(nm);
+          const n=document.createElement("span");n.className="ch-sym";n.textContent=`${r.steps.length}\u00D7`;head.append(n);
+          const desc=document.createElement("span");desc.className="ch-desc";desc.textContent=r.desc;
+          b.append(head,desc);
+          b.addEventListener("click",()=>{cg.rhythmId=r.id;renderChordCards();syncChordReadout()});
+          rw.append(b)
+        })
+      }
+      function syncChordTargets(){
+        $("#chord-target-new").classList.toggle("active",cg.target==="new");
+        $("#chord-target-sel").classList.toggle("active",cg.target==="sel");
+        syncChordReadout()
+      }
+      function openChordGenerator(){
+        renderChordRoots();renderChordCards();syncChordTargets();
+        $("#chord-oct-val").textContent=cg.octave;
+        const dlg=$("#chord-dialog");if(!dlg.open)dlg.showModal()
+      }
+      $("#chordgen-btn").addEventListener("click",openChordGenerator);
+      $("#chord-oct-down").addEventListener("click",()=>{cg.octave=Math.max(1,cg.octave-1);$("#chord-oct-val").textContent=cg.octave;syncChordReadout()});
+      $("#chord-oct-up").addEventListener("click",()=>{cg.octave=Math.min(6,cg.octave+1);$("#chord-oct-val").textContent=cg.octave;syncChordReadout()});
+      $("#chord-target-new").addEventListener("click",()=>{cg.target="new";syncChordTargets()});
+      $("#chord-target-sel").addEventListener("click",()=>{cg.target="sel";syncChordTargets()});
+      $("#chord-preview-btn").addEventListener("click",()=>previewChordStab(cg.root,cg.octave,cg.chordId));
+      $("#chord-generate-btn").addEventListener("click",()=>{generateChordStabs(cg.root,cg.octave,cg.chordId,cg.rhythmId,cg.target);syncChordReadout()});
+      /* Feature 11: quick-save slots — Shift+1-4 saves, Ctrl/Cmd+1-4 loads; full-project snapshots */
+      const QUICKSAVE_KEY="n8loops.quicksave.v1";
+      function getQuickSlots(){try{return Object.assign({1:null,2:null,3:null,4:null},JSON.parse(localStorage.getItem(QUICKSAVE_KEY))||{})}catch{return{1:null,2:null,3:null,4:null}}}
+      function setQuickSlots(slots){try{localStorage.setItem(QUICKSAVE_KEY,JSON.stringify(slots))}catch{}}
+      function quickSlotSummary(item){if(!item)return"EMPTY";const when=item.savedAt?new Date(item.savedAt).toLocaleString():"";return `${item.bpm||112} BPM · ${item.stepCount||16} steps · ${when}`}
+      function saveQuickSlot(n){const slots=getQuickSlots();slots[n]=ProjectStore.snapshot();setQuickSlots(slots);renderQuickSlots();toast(`Quick slot ${n} saved \u2014 ${state.projectName||"project"}.`,"good");setStatus(`Saved to quick slot ${n}`)}
+      function loadQuickSlot(n){const slot=getQuickSlots()[n];if(!slot){toast(`Quick slot ${n} is empty \u2014 press Shift+${n} to save here.`);return}try{ProjectStore.load(slot);toast(`Loaded quick slot ${n} \u2014 ${slot.name||"project"}.`,"good")}catch(err){toast(`Quick slot ${n} is incompatible: ${err.message}`,"error")}}
+      function renderQuickSlots(){
+        const wrap=$("#quicksave-list");if(!wrap)return;wrap.replaceChildren();const slots=getQuickSlots();
+        let filled=0;
+        for(let n=1;n<=4;n++){
+          const item=slots[n];if(item)filled++;
+          const row=document.createElement("div");row.className="qs-row"+(item?" qs-filled":" qs-empty");
+          const badge=document.createElement("span");badge.className="qs-num";badge.textContent=n;row.append(badge);
+          const meta=document.createElement("div");meta.className="qs-meta";
+          const b=document.createElement("b");b.textContent=item?(item.name||`Slot ${n}`):`Slot ${n} \u2014 empty`;
+          const sub=document.createElement("span");sub.className="sub";sub.textContent=quickSlotSummary(item);
+          meta.append(b,sub);row.append(meta);
+          const keys=document.createElement("span");keys.className="qs-key";keys.textContent=`Shift+${n} save \u00B7 Ctrl+${n} load`;row.append(keys);
+          const load=document.createElement("button");load.className="btn tiny";load.textContent="LOAD";load.disabled=!item;load.setAttribute("aria-label",`Load quick-save slot ${n}`);
+          load.addEventListener("click",()=>{loadQuickSlot(n);$("#quicksave-dialog").close()});row.append(load);
+          const save=document.createElement("button");save.className="btn tiny cyan";save.textContent="SAVE";save.setAttribute("aria-label",`Save project to quick-save slot ${n}`);
+          save.addEventListener("click",()=>saveQuickSlot(n));row.append(save);
+          wrap.append(row)
+        }
+        const qb=$("#quicksave-btn");if(qb)qb.title=`Quick-save slots \u2014 Shift+1\u20134 saves, Ctrl/Cmd+1\u20134 loads (${filled}/4 filled)`
+      }
+      function openQuickSlots(){renderQuickSlots();const dlg=$("#quicksave-dialog");if(!dlg.open)dlg.showModal()}
+      $("#quicksave-btn").addEventListener("click",openQuickSlots);
+
+      /* Feature 12: FX chain wiring */
+      $("#fxchain-btn").addEventListener("click",openFxChain);
+      $("#fxchain-reset").addEventListener("click",()=>{setFxChain({order:FXCHAIN_DEFAULTS.order.slice(),on:Object.assign({},FXCHAIN_DEFAULTS.on),mix:Object.assign({},FXCHAIN_DEFAULTS.mix)});renderFxChain();toast("FX chain reset to defaults","good")});
       addEventListener("beforeunload",()=>ProjectStore.autosave())
     }
 
