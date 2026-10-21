@@ -466,6 +466,104 @@
     .auto-chip.sel{border-color:#0ff}
     .auto-x{color:var(--muted);font-weight:700}
     .auto-chip:hover .auto-x{color:#ff5d5d}
+
+    /* Feature 17: arpeggiator patterns */
+    #arp-dialog{width:min(640px,94vw)}
+    .arp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:8px}
+    .arp-card{display:grid;gap:7px;justify-items:stretch;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.018);color:var(--text);cursor:pointer;text-align:left;font-family:var(--font)}
+    .arp-card:hover{border-color:color-mix(in srgb,#ffb800 45%,transparent)}
+    .arp-card.active{border-color:#ffb800;box-shadow:0 0 12px rgba(255,184,0,.3);background:rgba(50,32,0,.45)}
+    .arp-name{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:700}
+    .arp-icon{font-size:14px}
+    .arp-svg{width:100%;height:30px;color:#ffb800}
+    .arp-desc{color:var(--muted);font:8px/1.5 var(--mono)}
+    .arp-keys{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:10px}
+    .arp-key{padding:11px 0 9px;border-radius:6px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font:700 9px var(--mono);cursor:pointer}
+    .arp-key.sharp{background:rgba(0,0,0,.55)}
+    .arp-key:hover{border-color:#ffb800}
+    .arp-key.active{background:linear-gradient(135deg,#ffb800,#ff7a00);color:#1a0e00;border-color:transparent;box-shadow:0 0 10px rgba(255,184,0,.45)}
+    .arp-row{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:10px}
+    .arp-row label{display:block;font:700 8px var(--mono);color:var(--muted);margin-bottom:4px}
+    .arp-stepper{display:flex;align-items:center;gap:6px}
+    .arp-stepper b{font:700 12px var(--mono);min-width:18px;text-align:center;color:var(--amber)}
+    .arp-stepper span{font:700 8px var(--mono);color:var(--muted);margin-right:2px}
+    #arp-voice,#arp-track{background:#0b0f16;border:1px solid var(--line);border-radius:8px;color:var(--ink);font:600 10px var(--mono);padding:7px 9px;max-width:170px}
+    .arp-actions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+    .arp-actions .btn{font:700 9px var(--mono);padding:7px 10px}
+    #arp-readout{color:var(--muted);font:9px var(--mono);margin:10px 0 0}
+    #arp-readout b{color:var(--amber);font-weight:700}
+    #arp-pattern,#arp-rate{flex:1;min-width:0}
+
+    /* Feature 18: performance pads — stage mode */
+    #perf-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 12px;margin:0 0 8px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.38);font:8px var(--mono);color:var(--muted)}
+    body.perf-mode #perf-bar{display:flex}
+    .perf-title{font:700 11px var(--mono);color:#fff;letter-spacing:.1em}
+    #perf-bar label{display:flex;align-items:center;gap:6px;white-space:nowrap}
+    #perf-bank,#perf-rate{background:#0b0f16;border:1px solid var(--line);border-radius:8px;color:var(--ink);font:600 10px var(--mono);padding:6px 8px}
+    #perf-vel{width:110px;accent-color:#ff5d8f}
+    #perf-vel-out{min-width:34px;color:var(--text)}
+    #perf-hint{margin-left:auto}
+    #perf-mode-btn.active{color:#07100d;background:#ff5d8f;border-color:transparent}
+    #perf-repeat.active,#perf-latch.active{color:#07100d;background:var(--cyan);border-color:transparent}
+    body.perf-mode{overflow:hidden}
+    body.perf-mode #app{height:100dvh;display:flex;flex-direction:column}
+    body.perf-mode #topbar{flex:0 0 auto}
+    body.perf-mode #app>section{display:none!important}
+    body.perf-mode #app>section#workspace{display:grid!important;grid-template-columns:1fr;flex:1;min-height:0}
+    body.perf-mode #sequencer-module{display:none!important}
+    body.perf-mode #performance-module{display:grid;grid-template-rows:auto auto minmax(0,1fr);height:100%;min-height:0}
+    body.perf-mode .performance-controls{display:none}
+    body.perf-mode #performance-module .module-body{min-height:0;overflow:hidden;display:flex;flex:1}
+    body.perf-mode #pads{flex:1;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:10px;min-height:0;height:100%;padding:0}
+    body.perf-mode .pad{min-height:90px}
+    body.perf-mode .pad b{font-size:clamp(14px,1.3vw,22px)}
+    body.perf-mode .pad small{font-size:clamp(9px,.55vw,12px)}
+    body.perf-mode .pad-key{width:30px;height:30px;font-size:11px}
+    .pad.perf-held{border-color:#fff}
+    .pad.perf-latched{border-color:#fff;animation:perf-latch-pulse .6s ease-in-out infinite}
+    @keyframes perf-latch-pulse{0%,100%{box-shadow:0 0 8px rgba(255,93,143,.35)}50%{box-shadow:0 0 26px rgba(255,93,143,.85)}}
+
+    /* Feature 19: audio recorder — master takes */
+    #audiorec-btn.recording{color:#fff;background:var(--red);border-color:transparent;animation:record-pulse 1s infinite}
+    /* Feature 20: MIDI input */
+    #midi-btn.connected{color:#00ff88;border-color:#00ff88;box-shadow:0 0 12px rgba(0,255,136,.45)}
+    #midi-btn.hit{animation:midi-hit .18s ease-out}
+    @keyframes midi-hit{0%{transform:scale(1.35);background:rgba(0,255,136,.35)}100%{transform:scale(1)}}
+    .midi-toprow{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+    .midi-status{font:700 10px var(--mono);padding:6px 10px;border-radius:8px;letter-spacing:.08em;border:1px solid var(--line);color:var(--muted)}
+    .midi-status.on{color:#00ff88;border-color:#00ff88;background:rgba(0,255,136,.08)}
+    .midi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+    .midi-grid label{font:9px var(--mono);color:var(--muted);display:flex;flex-direction:column;gap:5px;letter-spacing:.06em}
+    .midi-stepper{display:flex;gap:6px;align-items:center}
+    .midi-stepper output{font:700 11px var(--mono);color:var(--cyan);min-width:34px;text-align:center}
+    .midi-autocon{flex-direction:row!important;align-items:center;gap:8px}
+    .midi-monitor{border:1px solid var(--line);border-radius:10px;padding:10px;background:rgba(255,255,255,.02)}
+    .midi-mon-head{display:flex;justify-content:space-between;font:700 9px var(--mono);color:var(--muted);letter-spacing:.1em;margin-bottom:8px}
+    #midi-last-note{color:#00ff88;font-size:11px}
+    .midi-strip{display:flex;gap:4px;flex-wrap:wrap;min-height:26px}
+    .midi-chip{font:700 9px var(--mono);padding:4px 7px;border-radius:6px;border:1px solid #00ff88;color:#00ff88;background:rgba(0,255,136,.08);animation:midi-hit .3s ease-out}
+    #midi-device{max-width:230px}
+    .rec-transport{display:flex;align-items:center;gap:12px;margin:0 0 12px;flex-wrap:wrap}
+    #rec-take-btn{font:700 11px var(--mono);padding:10px 18px;letter-spacing:.08em}
+    #rec-take-btn.rec-on{background:var(--red);border-color:transparent;color:#fff;animation:record-pulse 1s infinite}
+    .rec-meter{display:flex;flex-direction:column;gap:2px;min-width:110px}
+    #rec-timer{font:700 20px var(--mono);color:#fff;letter-spacing:.06em}
+    .rec-meter.rec-live #rec-timer{color:#ff5d5d}
+    #rec-status{font:700 9px var(--mono);color:var(--muted);letter-spacing:.1em}
+    .rec-list{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow:auto;margin:0 0 10px}
+    .rec-empty{color:var(--muted);font:9px/1.6 var(--mono);border:1px dashed var(--line);border-radius:8px;padding:12px;text-align:center}
+    .rec-row{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(0,0,0,.3);font:9px var(--mono)}
+    .rec-row.drag-src{opacity:.4}
+    .rec-row.drag-over{border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan)}
+    .rec-grip{cursor:grab;color:var(--muted);font-size:13px;line-height:1}
+    .rec-idx{color:var(--cyan);font-weight:700;min-width:18px}
+    .rec-name{flex:1;color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:text}
+    .rec-dur{color:var(--muted);min-width:46px;text-align:right}
+    .rec-rename{flex:1;background:#0b0f16;border:1px solid var(--cyan);border-radius:6px;color:var(--ink);font:600 9px var(--mono);padding:4px 6px}
+    .rec-row .btn.tiny{padding:5px 8px;font-size:10px}
+    .rec-statusline{font:9px var(--mono);color:var(--muted);letter-spacing:.06em}
+    .rec-statusline span{color:var(--cyan)}
+    #rec-count{margin-left:auto;color:var(--muted);font:700 9px var(--mono)}
   </style>
 </head>
 <body data-theme="dark" class="synth-controls-closed">
@@ -527,7 +625,7 @@
         <button id="save-btn" class="btn"><span>SAVE</span> ◇</button>
         <button id="projects-btn" class="btn"><span>PROJECTS</span> ▤</button>
         <button id="bounce-btn" class="btn cyan"><span>BOUNCE WAV</span> ⇩</button><button id="stems-btn" class="btn icon" aria-label="Export stems" title="Export stems — render each track as a separate WAV file (Shift+E)">🎚️</button><button id="templates-btn" class="btn icon" aria-label="Project templates" title="Project templates — start a fresh project from a house, hip-hop, ambient or techno starter (Shift+N)">📁</button>
-        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button><button id="chordgen-btn" class="btn icon" aria-label="Chord generator" title="Chord generator (Shift+C)">🎹</button><button id="quicksave-btn" class="btn icon" aria-label="Quick-save slots" title="Quick-save slots — Shift+1–4 saves, Ctrl/Cmd+1–4 loads">💾</button><button id="fxchain-btn" class="btn icon" aria-label="FX chain" title="FX chain — reorderable distortion, chorus, delay, reverb (Shift+X)">⛓️</button><button id="auto-btn" class="btn icon" aria-label="Automation lanes" title="Automation lanes — draw per-step volume, cutoff, pan, delay, reverb motion (Shift+A)">📈</button>
+        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button><button id="chordgen-btn" class="btn icon" aria-label="Chord generator" title="Chord generator (Shift+C)">🎹</button><button id="quicksave-btn" class="btn icon" aria-label="Quick-save slots" title="Quick-save slots — Shift+1–4 saves, Ctrl/Cmd+1–4 loads">💾</button><button id="fxchain-btn" class="btn icon" aria-label="FX chain" title="FX chain — reorderable distortion, chorus, delay, reverb (Shift+X)">⛓️</button><button id="auto-btn" class="btn icon" aria-label="Automation lanes" title="Automation lanes — draw per-step volume, cutoff, pan, delay, reverb motion (Shift+A)">📈</button><button id="audiorec-btn" class="btn icon" aria-label="Audio recorder" title="Audio recorder — capture the master output into takes, drag to arrange (Shift+Q)">⏺</button><button id="midi-btn" class="btn icon" aria-label="MIDI input" title="MIDI input — play the synth from an external keyboard or controller (Shift+D)">🔌</button>
       </div>
     </header>
 
@@ -593,9 +691,20 @@
           <div class="module-title">Performance pads<small>Keyboard: 1–4 · Q–R · A–F · Z–V</small></div>
           <span class="module-spacer"></span>
           <div id="bank-tabs" class="bank-tabs"></div>
+          <button id="perf-mode-btn" class="btn tiny" aria-pressed="false" title="Performance mode — full-screen 16-pad stage with note repeat, latch & live velocity (Shift+O)" aria-label="Toggle performance mode">🎤 STAGE</button>
           <button class="btn icon tiny module-collapse" data-collapse="performance-module" title="Collapse performance pads">⌃</button>
         </header>
         <div class="module-body"><div id="pads" aria-label="Playable synthesizer pads"></div></div>
+        <div id="perf-bar" aria-label="Performance stage controls">
+          <span class="perf-title">🎤 STAGE</span>
+          <label for="perf-bank">BANK <select id="perf-bank" aria-label="Pad bank"></select></label>
+          <button id="perf-repeat" class="btn tiny" aria-pressed="false" title="Hold a pad to retrigger it at the repeat rate (tempo-synced)">↻ REPEAT</button>
+          <label for="perf-rate">RATE <select id="perf-rate" aria-label="Note repeat rate"><option value="1/4">1/4</option><option value="1/8">1/8</option><option value="1/16" selected>1/16</option><option value="1/32">1/32</option></select></label>
+          <button id="perf-latch" class="btn tiny" aria-pressed="false" title="Latch mode — tap a pad to toggle its repeat loop on/off">🔒 LATCH</button>
+          <label for="perf-vel">VELOCITY <input id="perf-vel" type="range" min=".15" max="1" step=".01" value=".9" aria-label="Performance velocity"><output id="perf-vel-out">90%</output></label>
+          <span id="perf-hint">hold a pad to repeat · tap to latch · Esc exits</span>
+          <button id="perf-exit" class="btn tiny danger" title="Exit performance mode (Esc)">EXIT ✕</button>
+        </div>
         <div class="performance-controls">
           <div class="control"><label for="root-note">Root</label><select id="root-note"></select></div>
           <div class="control"><label for="scale">Scale</label><select id="scale"></select></div>
@@ -726,14 +835,20 @@
         </div>
       </div>
 
-      <!-- UPGRADE 5: BEATS ARPEGGIATOR PATTERN ENGINE -->
+      <!-- UPGRADE 5: BEATS ARPEGGIATOR PATTERN ENGINE (Feature 17: real arp engine) -->
       <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
         <b style="font-size:0.8rem; color:#ffb800; display:block; margin-bottom:6px;">🎹 ARPEGGIATOR ENGINE</b>
-        <div style="display:flex; gap:6px;">
-          <select class="theme-select" style="height:28px; font-size:8px;" title="Arpeggiator Rate">
-            <option value="1/4">1/4 NOTE</option><option value="1/8" selected>1/8 NOTE</option><option value="1/16">1/16 NOTE</option>
+        <div style="display:flex; gap:6px; margin-bottom:6px;">
+          <select id="arp-rate" class="theme-select" style="height:28px; font-size:8px;" title="Arpeggiator rate — note length per arp tick (Shift+U for patterns)" aria-label="Arpeggiator rate">
+            <option value="1/4">1/4 NOTE</option><option value="1/8" selected>1/8 NOTE</option><option value="1/16">1/16 NOTE</option><option value="1/32">1/32 NOTE</option>
           </select>
-          <button class="btn tiny primary" onclick="this.classList.toggle('active');">ARP: ON</button>
+          <select id="arp-pattern" class="theme-select" style="height:28px; font-size:8px;" title="Arpeggiator pattern — how latched notes are cycled (Shift+U for all options)" aria-label="Arpeggiator pattern">
+            <option value="up" selected>UP</option><option value="down">DOWN</option><option value="updown">UP/DOWN</option><option value="random">RANDOM</option><option value="walk">RANDOM WALK</option><option value="chord">CHORD</option>
+          </select>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button id="arp-on-btn" class="btn tiny primary" style="flex:1;" aria-pressed="false" title="Start/stop the arpeggiator (latch notes in the Shift+U dialog first)">ARP: OFF</button>
+          <button id="arp-settings-btn" class="btn tiny" title="Open the arpeggiator pattern engine (Shift+U)" aria-label="Open arpeggiator settings">⚙</button>
         </div>
       </div>
 
@@ -1560,6 +1675,7 @@
     <div class="dialog-head"><h2>NEON//BEAT Quick Guide</h2><button class="btn icon" data-close>×</button></div>
     <div class="dialog-body">
       <div class="help-grid">
+        <div class="help-card"><b>Perform live</b><p>Hit 🎤 STAGE (or Shift+O) for a full-screen 16-pad performance view: hold any pad for tempo-synced note repeat (1/4–1/32), tap 🔒 LATCH to toggle repeating loops, and ride the live velocity slider. Esc exits.</p></div>
         <div class="help-card"><b>Play and assign pads</b><p>Tap a pad to preview it. Drag a colored sound identifier from the library, another pad, or a track onto any synth pad to replace its voice.</p></div>
         <div class="help-card"><b>Paint a loop</b><p>Use Draw, Accent, or Erase, then drag across the channel rack. Right-click still cycles trigger probability.</p></div>
         <div class="help-card"><b>Record live</b><p>Enable Auto Track, press Record, then perform. Each assigned pad sound creates or reuses a matching channel-rack lane and quantizes into the loop.</p></div>
@@ -1577,6 +1693,8 @@
         <div class="help-card"><b>Swing templates</b><p>Open the swing template library (Shift+W or the 🌀 toolbar button) to audition grooves like MPC Pocket, Dilla Slop, Lazy Swing and Shuffle. Each template sets the swing amount plus a matching hat-velocity pattern, and the velocity edit is undoable.</p></div>
         <div class="help-card"><b>Chord generator</b><p>Press Shift+C (or the 🎹 toolbar button) for one-click chord stabs: pick a root note, one of 12 chord types and a stab rhythm, preview it, then write it to a new track or the selected track. The write is undoable.</p></div>
         <div class="help-card"><b>Automation lanes</b><p>Press Shift+A (or the 📈 toolbar button) to draw per-step motion for volume, cutoff, pan, delay or reverb on any track. Lanes are stored per pattern slot (A–D) and are included in WAV bounces.</p></div><div class="help-card"><b>Sample preview</b><p>Click any library chip to audition it before loading. Toggle LOOP (P) to hear the sound’s suggested loop at the current BPM, or HOVER (Shift+H) to audition chips by hovering over them.</p></div><div class="help-card"><b>Export stems</b><p>Press Shift+E (or the &#127912; toolbar button) to render every track of the active pattern as its own stereo WAV stem — levels, panning, automation lanes and delay/reverb sends included.</p></div><div class="help-card"><b>Project templates</b><p>Press Shift+N (or the &#128193; toolbar button) to start a fresh project from a genre starter — Warehouse Four (house), Block Party Boom (hip-hop), Slow Bloom (ambient) or Acid Warehouse (techno). Each template fills all four pattern slots with matched grooves, tempo, swing and mix, ready to tweak.</p></div>
+        <div class="help-card"><b>Audio recorder</b><p>Press Shift+Q (or the ⏺ toolbar button) to capture the master output into takes — up to 60 seconds each. Preview a take, download it as WAV, double-click to rename, drag takes to arrange their order, then play the arrangement back.</p></div>
+        <div class="help-card"><b>MIDI keyboard</b><p>Hit 🔌 MIDI (or Shift+D) to connect a USB MIDI keyboard and play the synth voices from real keys — velocity-sensitive, with a channel filter, voice select, transpose and velocity curve.</p></div>
         <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome (Shift+M click settings) · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · Ctrl/Cmd+Z undo · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
       </div>
     </div>
@@ -1773,6 +1891,48 @@
     <div class="dialog-actions"><button id="stems-render-all" class="btn cyan">RENDER ALL + DOWNLOAD</button><button class="btn" data-close>CLOSE</button></div>
   </dialog>
 
+  <dialog id="audiorec-dialog">
+    <div class="dialog-head"><h2>Audio Recorder · Master Takes</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p style="color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 10px">Capture the <b style="color:#ff5d5d">master output</b> into takes — up to 60 seconds each. Preview a take, download it as <b style="color:var(--cyan)">WAV</b>, double-click a name to rename, and <b style="color:var(--cyan)">drag takes to arrange</b> their playback order. Takes live in this session only.</p>
+      <div class="rec-transport">
+        <button id="rec-take-btn" class="btn cyan">● REC</button>
+        <div class="rec-meter" id="rec-meter"><span id="rec-timer">00:00</span><span id="rec-status">READY</span></div>
+        <button id="rec-play-arr" class="btn">▶ PLAY ARRANGEMENT</button>
+        <span id="rec-count"></span>
+      </div>
+      <div id="rec-take-list" class="rec-list"></div>
+      <div class="rec-statusline">HINT · drag a take&apos;s <span>⠿</span> grip to reorder — PLAY ARRANGEMENT plays the takes back-to-back through the master bus.</div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+Q anywhere to open the recorder</span><button class="btn" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="midi-dialog">
+    <div class="dialog-head"><h2>MIDI Input · Play From Your Keyboard</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p style="color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 10px">Plug in a <b style="color:var(--cyan)">USB MIDI keyboard or controller</b> and play the synth voices directly — notes arrive with their <b style="color:#00ff88">velocity</b> and trigger through the audition chain. Needs <b style="color:var(--cyan)">Web MIDI</b> (Chrome / Edge; not available in Firefox / Safari).</p>
+      <div class="midi-toprow">
+        <button id="midi-connect-btn" class="btn cyan">🔌 CONNECT</button>
+        <span id="midi-status" class="midi-status off">DISCONNECTED</span>
+        <select id="midi-device" aria-label="MIDI input device"></select>
+        <button id="midi-rescan" class="btn tiny" title="Rescan for MIDI input devices">⟳</button>
+      </div>
+      <div class="midi-grid">
+        <label>CHANNEL <select id="midi-channel" aria-label="MIDI channel filter"></select></label>
+        <label>VOICE <select id="midi-voice" aria-label="MIDI synth voice"></select></label>
+        <label>VELOCITY <select id="midi-velcurve" aria-label="MIDI velocity curve"><option value="linear">Linear</option><option value="soft">Soft (light touch)</option><option value="hard">Hard (firm touch)</option></select></label>
+        <label>TRANSPOSE <span class="midi-stepper"><button id="midi-trans-down" class="btn tiny" aria-label="Transpose down">−</button><output id="midi-trans-out">+0</output><button id="midi-trans-up" class="btn tiny" aria-label="Transpose up">+</button></span></label>
+        <label class="midi-autocon"><input type="checkbox" id="midi-autoconnect"> AUTO-CONNECT ON LOAD</label>
+      </div>
+      <div class="midi-monitor">
+        <div class="midi-mon-head"><span>LIVE ACTIVITY</span><span id="midi-last-note">—</span></div>
+        <div id="midi-note-strip" class="midi-strip" aria-hidden="true"></div>
+      </div>
+      <div class="rec-statusline">HINT · note-on from your controller triggers the selected voice; velocity shapes loudness. One-shot voices — no stuck notes.</div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+D anywhere to open MIDI input</span><button class="btn" data-close>CLOSE</button></div>
+  </dialog>
+
   <dialog id="templates-dialog">
     <div class="dialog-head"><h2>Project Templates</h2><button class="btn icon" data-close>×</button></div>
     <div class="dialog-body">
@@ -1813,6 +1973,29 @@
     <button data-mobile-panel="sequencer" class="active" aria-label="Show loop sequencer" title="Loop sequencer">▦</button>
     <button data-mobile-panel="mixer" aria-label="Show mixer" title="Mixer and mastering">≋</button>
   </nav>
+
+  <dialog id="arp-dialog">
+    <div class="dialog-head"><h2>Arpeggiator &#183; Pattern Engine</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <div class="sc-cat">Pattern</div>
+      <div id="arp-pattern-list" class="arp-grid" role="listbox" aria-label="Arpeggiator pattern"></div>
+      <div class="sc-cat">Note pool — tap keys to latch notes</div>
+      <div id="arp-keys" class="arp-keys" role="listbox" aria-label="Arpeggiator note pool"></div>
+      <div class="arp-row">
+        <div><label>OCTAVES</label><div class="arp-stepper"><span>RANGE</span><button id="arp-oct-down" class="btn tiny" aria-label="Fewer octaves">−</button><b id="arp-oct-val">2</b><button id="arp-oct-up" class="btn tiny" aria-label="More octaves">+</button></div></div>
+        <div><label for="arp-voice">VOICE</label><select id="arp-voice" class="theme-select"></select></div>
+        <div><label for="arp-track">CAPTURE SOURCE</label><select id="arp-track" class="theme-select"></select></div>
+      </div>
+      <div class="arp-actions">
+        <button id="arp-capture-btn" class="btn tiny">⇪ CAPTURE TRACK</button>
+        <button id="arp-clear-btn" class="btn tiny">CLEAR</button>
+        <button id="arp-audition-btn" class="btn tiny cyan">▶ AUDITION</button>
+        <button id="arp-enable-btn" class="btn tiny primary" aria-pressed="false">ARP: OFF</button>
+      </div>
+      <p id="arp-readout"></p>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+U anywhere · latch notes, pick a pattern, hit ARP</span><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
 
   <dialog id="source-dialog">
     <div class="dialog-head"><h2>Baltimore Sources &amp; Rights Notes</h2><button class="btn icon" data-close>×</button></div>
@@ -1883,7 +2066,7 @@
       patch:{root:0,scale:"Minor",octave:3,attack:.01,release:.4,cutoff:7500,resonance:2,waveform:"sawtooth",velocity:.88,glide:0,padDelay:.18,padReverb:.22},
       master:{volume:.82,delay:.2,reverb:.18,drive:.08,thump:.72,punch:.48,width:1,ceiling:-1,rumble:30,safe:true},
       ui:{theme:"dark",describe:false,petVisible:false,petStyle:"bot",petMove:"bounce",petColor:"#93d23d",petSize:1,petName:"THUMP",petReact:1,petX:22,petY:40,
-        viewMode:"studio",density:"compact",engineMode:"balanced",patternChain:"off",song:{enabled:false,loop:true,sequence:[{slot:"A",repeats:2},{slot:"B",repeats:2}]},autoTrackPads:true,synthControls:false,stepPaint:"draw",collapsed:["mixer-module"],hiddenModules:["hero-strip"],moduleSizes:{},mobilePanel:"sequencer",countIn:false,loopRepeats:0,masterMuted:false,monoCheck:false,metro:{accent:true,vol:1,beats:4},fxChain:{order:["dist","chorus","delay","reverb"],on:{dist:true,chorus:true,delay:true,reverb:true},mix:{dist:.1,chorus:.25,delay:.12,reverb:.14}}}
+        viewMode:"studio",density:"compact",engineMode:"balanced",patternChain:"off",song:{enabled:false,loop:true,sequence:[{slot:"A",repeats:2},{slot:"B",repeats:2}]},autoTrackPads:true,synthControls:false,stepPaint:"draw",collapsed:["mixer-module"],hiddenModules:["hero-strip"],moduleSizes:{},mobilePanel:"sequencer",countIn:false,loopRepeats:0,masterMuted:false,monoCheck:false,metro:{accent:true,vol:1,beats:4},arp:{on:false,pattern:"up",rate:"1/8",octaves:2,voice:"arp",pool:[60,64,67]},fxChain:{order:["dist","chorus","delay","reverb"],on:{dist:true,chorus:true,delay:true,reverb:true},mix:{dist:.1,chorus:.25,delay:.12,reverb:.14}},midi:{autoConnect:false,channel:"all",voice:"lead",transpose:0,velCurve:"linear",deviceId:""}}
     };
 
     const defaultTracks = () => [
@@ -2094,6 +2277,10 @@
           this.splitter=this.ctx.createChannelSplitter(2);this.monoSum=this.ctx.createGain();this.monoSum.gain.value=.5;this.monoMerger=this.ctx.createChannelMerger(2);
           this.limiter.connect(this.splitter);this.splitter.connect(this.monoSum,0);this.splitter.connect(this.monoSum,1);this.monoSum.connect(this.monoMerger,0,0);this.monoSum.connect(this.monoMerger,0,1);this.monoMerger.connect(this.monoGain).connect(this.masterGain);
           this.masterGain.connect(this.analyser).connect(this.ctx.destination);
+          /* Feature 19: audio recorder — ScriptProcessor tap on the master bus (post-FX, post-limiter) */
+          this.recTap=this.ctx.createScriptProcessor(4096,2,2);this.recTapGain=this.ctx.createGain();this.recTapGain.gain.value=0;
+          this.masterGain.connect(this.recTap);this.recTap.connect(this.recTapGain);this.recTapGain.connect(this.ctx.destination);
+          this.recTap.onaudioprocess=e=>recCapture(e);
           this.delay.connect(this.delayFeedback).connect(this.delay);this.delay.connect(this.delayWet).connect(this.masterInput);this.reverb.connect(this.reverbWet).connect(this.masterInput);
           this.preview=this.createChannel("preview");this.updateMaster();this.syncTracks();
         }
@@ -2520,7 +2707,7 @@
       ["attack","release","cutoff","resonance","velocity","glide","padDelay","padReverb"].forEach(key=>{const id=key.replace(/[A-Z]/g,m=>`-${m.toLowerCase()}`);const el=$(`#${id}`);if(el)el.value=state.patch[key]});
       $("#master").value=state.master.volume;$("#delay").value=state.master.delay;$("#reverb").value=state.master.reverb;$("#drive").value=state.master.drive;$("#thump").value=state.master.thump;$("#punch").value=state.master.punch;
       $("#stereo-width").value=state.master.width??1;$("#output-ceiling").value=state.master.ceiling??-1;$("#rumble-filter").value=state.master.rumble??30;
-      $("#theme-select").value=state.ui.theme;$("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";updateOutputs();applyPetSettings();applyLayoutPrefs();syncSongUI();syncMetroUI();syncFxUI()
+      $("#theme-select").value=state.ui.theme;$("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";updateOutputs();applyPetSettings();applyLayoutPrefs();syncSongUI();syncMetroUI();syncFxUI();syncArpUI();if(typeof syncPerfUI==="function")syncPerfUI()
     }
     function updateOutputs(){
       $("#octave-out").textContent=state.patch.octave;$("#attack-out").textContent=state.patch.attack.toFixed(2);$("#release-out").textContent=state.patch.release.toFixed(2);
@@ -2532,6 +2719,210 @@
       $("#thump-out").textContent=`${Math.round(state.master.thump*100)}%`;$("#punch-out").textContent=`${Math.round(state.master.punch*100)}%`;
       $("#width-out").textContent=`${Math.round((state.master.width??1)*100)}%`;$("#ceiling-out").textContent=`${(state.master.ceiling??-1).toFixed(1).replace("-","−")} dB`;
       $("#safe-note").textContent=state.master.safe!==false?"LIMITER READY · 6 dB HEADROOM":"LIMITER READY · HOT INPUT"
+    }
+
+    /* Feature 17: arpeggiator patterns — real-time pattern engine (top-level helpers) */
+    const ARP_PATTERNS=[
+      {id:"up",name:"UP",icon:"↗",desc:"Climbs the latched notes, lowest to highest, then wraps.",color:"#37e0ff"},
+      {id:"down",name:"DOWN",icon:"↘",desc:"Falls from the highest latched note back down to the lowest.",color:"#a87cff"},
+      {id:"updown",name:"UP / DOWN",icon:"↕",desc:"Ping-pong: climbs up and falls back down without repeating the ends.",color:"#42e8c6"},
+      {id:"random",name:"RANDOM",icon:"🎲",desc:"Picks a latched note at random every tick (never repeats twice in a row).",color:"#ffb800"},
+      {id:"walk",name:"RANDOM WALK",icon:"🚶",desc:"Wanders one step up or down at random, bouncing off the ends.",color:"#ff7a5d"},
+      {id:"chord",name:"CHORD",icon:"🎛",desc:"Fires every latched note together, like a sequenced chord stab.",color:"#ff5d8f"}
+    ];
+    const ARP_RATES={"1/4":1,"1/8":.5,"1/16":.25,"1/32":.125};
+    const ARP_VOICES=[["arp","Digital Arp"],["supersaw","Super Saw"],["fmstab","FM Stab"],["pluck","Pluck"],["bass","Bass"],["acid","Acid Mono"]];
+    function arpOpts(){
+      const a=state.ui.arp||(state.ui.arp={});
+      const pool=Array.isArray(a.pool)?a.pool.filter(n=>Number.isFinite(n)).map(n=>clamp(Math.round(n),0,127)):[];
+      return{
+        on:a.on===true,
+        pattern:ARP_PATTERNS.some(p=>p.id===a.pattern)?a.pattern:"up",
+        rate:ARP_RATES[a.rate]!==undefined?a.rate:"1/8",
+        octaves:clamp(Math.round(Number(a.octaves)||2),1,4),
+        voice:ARP_VOICES.some(v=>v[0]===a.voice)?a.voice:"arp",
+        pool:[...new Set(pool)].sort((x,y)=>x-y).slice(0,16)
+      };
+    }
+    function setArp(patch){
+      const wasPlaying=!!arpRt.timer;
+      Object.assign(state.ui.arp||(state.ui.arp={}),patch);
+      if(wasPlaying){arpRt.notes=arpExpanded(arpOpts());arpRt.ptr=clamp(arpRt.ptr,0,Math.max(0,arpRt.notes.length-1))}
+      syncArpUI();scheduleAutosave();
+    }
+    function arpNoteName(m){return NOTES[((m%12)+12)%12]+(Math.floor(m/12)-1)}
+    function arpExpanded(o){
+      const notes=[];
+      for(let k=0;k<o.octaves;k++)for(const n of o.pool){const m=n+12*k;if(m<=127)notes.push(m)}
+      return [...new Set(notes)].sort((a,b)=>a-b);
+    }
+    const arpRt={timer:null,nextTime:0,ptr:0,dir:1,notes:[]};
+    function arpStepSeconds(){const o=arpOpts();return 60/state.bpm*ARP_RATES[o.rate]}
+    function arpAdvance(n){
+      const o=arpOpts(),rt=arpRt;
+      switch(o.pattern){
+        case "down":rt.ptr=(rt.ptr-1+n)%n;break;
+        case "updown":
+          if(n<=1)break;
+          rt.ptr+=rt.dir;
+          if(rt.ptr>=n){rt.ptr=n-2;rt.dir=-1}else if(rt.ptr<0){rt.ptr=1;rt.dir=1}
+          break;
+        case "random":if(n>1){let i;do{i=Math.floor(Math.random()*n)}while(i===rt.ptr);rt.ptr=i}break;
+        case "walk":
+          if(n>1){rt.ptr+=Math.random()<.5?-1:1;if(rt.ptr<0)rt.ptr=1;if(rt.ptr>=n)rt.ptr=n-2}
+          break;
+        case "chord":break;
+        default:rt.ptr=(rt.ptr+1)%n;
+      }
+    }
+    function arpFire(when){
+      const o=arpOpts(),notes=arpRt.notes,n=notes.length;
+      if(!n||!engine.ctx)return;
+      CHORD_VOICE.intervals=null;
+      const vel=clamp(state.patch.velocity,.05,1);
+      if(o.pattern==="chord"){
+        notes.forEach(m=>engine.trigger({instrument:o.voice,note:m,duration:.22},clamp(vel*.82,.05,1),when));
+      }else{
+        arpRt.ptr=clamp(arpRt.ptr,0,n-1);
+        engine.trigger({instrument:o.voice,note:notes[arpRt.ptr],duration:.16},vel,when);
+        arpAdvance(n);
+      }
+    }
+    function arpTick(){
+      if(!engine.ctx)return;
+      const now=engine.ctx.currentTime;
+      while(arpRt.nextTime<now+.12){arpFire(arpRt.nextTime);arpRt.nextTime+=arpStepSeconds()}
+    }
+    async function toggleArp(on){
+      const o=arpOpts();
+      if(on){
+        if(!o.pool.length){toast("Latch some notes first \u2014 tap the mini keyboard in the arpeggiator.","warn");return}
+        try{await engine.init()}catch(error){toast(error.message,"error");return}
+        try{engine.ctx.resume()}catch(_){}
+        arpRt.notes=arpExpanded(o);
+        arpRt.ptr=o.pattern==="down"?Math.max(0,arpRt.notes.length-1):0;arpRt.dir=1;
+        arpRt.nextTime=engine.ctx.currentTime+.06;
+        clearInterval(arpRt.timer);arpRt.timer=setInterval(arpTick,25);arpTick();
+        setArp({on:true});
+        const pname=ARP_PATTERNS.find(p=>p.id===o.pattern).name;
+        setStatus(`Arpeggiator on \u2014 ${pname} @ ${o.rate}`);
+        toast(`Arpeggiator ON \u2014 ${pname} \u00b7 ${arpRt.notes.length} notes`,"good");
+      }else{
+        clearInterval(arpRt.timer);arpRt.timer=null;setArp({on:false});
+        setStatus("Arpeggiator off");
+      }
+    }
+    async function arpAudition(){
+      const o=arpOpts();
+      if(!o.pool.length){toast("Latch some notes first \u2014 tap the mini keyboard.","warn");return}
+      try{await engine.init()}catch(error){toast(error.message,"error");return}
+      try{engine.ctx.resume()}catch(_){}
+      const sPtr=arpRt.ptr,sDir=arpRt.dir,sNotes=arpRt.notes;
+      arpRt.notes=arpExpanded(o);arpRt.ptr=o.pattern==="down"?arpRt.notes.length-1:0;arpRt.dir=1;
+      const t0=engine.ctx.currentTime+.06,step=arpStepSeconds();
+      for(let i=0;i<8;i++)arpFire(t0+i*step);
+      arpRt.ptr=sPtr;arpRt.dir=sDir;arpRt.notes=sNotes;
+      setStatus(`Arpeggiator audition \u2014 ${o.pattern}`);
+    }
+    function arpPreviewSeq(id){
+      switch(id){
+        case "down":return [[2],[1],[0],[2],[1],[0],[2],[1]];
+        case "updown":return [[0],[1],[2],[1],[0],[1],[2],[1]];
+        case "random":return [[1],[0],[2],[1],[2],[0],[2],[1]];
+        case "walk":return [[1],[2],[1],[0],[1],[2],[1],[0]];
+        case "chord":return [[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]];
+        default:return [[0],[1],[2],[0],[1],[2],[0],[1]];
+      }
+    }
+    function arpSVG(id){
+      const w=150,h=30,seq=arpPreviewSeq(id),y=i=>(h-((i+.5)/3*h)).toFixed(1);
+      let s="";
+      for(let c=0;c<8;c++){
+        const x=((c+.5)/8*w).toFixed(1);
+        seq[c].forEach(i=>{s+=`<circle cx="${x}" cy="${y(i)}" r="2.8" fill="currentColor"/>`});
+        if(seq[c].length===1&&c<7&&seq[c+1].length===1)
+          s+=`<line x1="${x}" y1="${y(seq[c][0])}" x2="${((c+1.5)/8*w).toFixed(1)}" y2="${y(seq[c+1][0])}" stroke="currentColor" stroke-width="1" opacity=".45"/>`;
+      }
+      return `<svg class="arp-svg" viewBox="0 0 ${w} ${h}" aria-hidden="true">${s}</svg>`;
+    }
+    function renderArpCards(){
+      const wrap=$("#arp-pattern-list");if(!wrap)return;
+      const o=arpOpts();wrap.replaceChildren();
+      ARP_PATTERNS.forEach(p=>{
+        const b=document.createElement("button");b.type="button";
+        b.className="arp-card"+(p.id===o.pattern?" active":"");
+        b.setAttribute("role","option");b.setAttribute("aria-selected",p.id===o.pattern?"true":"false");
+        b.setAttribute("aria-label",`${p.name} arpeggiator pattern. ${p.desc}`);
+        const head=document.createElement("span");head.className="arp-name";
+        const nm=document.createElement("span");nm.textContent=p.name;head.append(nm);
+        const ic=document.createElement("span");ic.className="arp-icon";ic.textContent=p.icon;head.append(ic);
+        const svg=document.createElement("span");svg.innerHTML=arpSVG(p.id);
+        const desc=document.createElement("span");desc.className="arp-desc";desc.textContent=p.desc;
+        b.append(head,svg,desc);
+        b.addEventListener("click",()=>{setArp({pattern:p.id});setStatus(`Arpeggiator pattern: ${p.name}`)});
+        wrap.append(b);
+      });
+    }
+    function renderArpKeys(){
+      const wrap=$("#arp-keys");if(!wrap)return;
+      const o=arpOpts();wrap.replaceChildren();
+      for(let m=60;m<72;m++){
+        const nm=NOTES[m%12],b=document.createElement("button");b.type="button";
+        b.className="arp-key"+(nm.includes("#")?" sharp":"")+(o.pool.includes(m)?" active":"");
+        b.textContent=arpNoteName(m);
+        b.setAttribute("role","option");b.setAttribute("aria-selected",o.pool.includes(m)?"true":"false");
+        b.setAttribute("aria-label",`${arpNoteName(m)}${o.pool.includes(m)?", latched":", not latched"}`);
+        b.addEventListener("click",()=>{
+          const cur=arpOpts(),i=cur.pool.indexOf(m);
+          if(i>=0)cur.pool.splice(i,1);else cur.pool.push(m);
+          setArp({pool:cur.pool});
+        });
+        wrap.append(b);
+      }
+    }
+    function renderArpTracks(){
+      const sel=$("#arp-track");if(!sel)return;
+      const cur=sel.value;sel.replaceChildren();
+      state.tracks.forEach(t=>{
+        const opt=document.createElement("option");opt.value=t.id;opt.textContent=t.name||t.id;sel.append(opt);
+      });
+      if([...sel.options].some(x=>x.value===cur))sel.value=cur;
+    }
+    function renderArpVoices(){
+      const sel=$("#arp-voice");if(!sel||sel.options.length)return;
+      ARP_VOICES.forEach(([id,label])=>{const opt=document.createElement("option");opt.value=id;opt.textContent=label.toUpperCase();sel.append(opt)});
+    }
+    function syncArpReadout(){
+      const ro=$("#arp-readout");if(!ro)return;
+      const o=arpOpts(),n=arpExpanded(o).length,pname=ARP_PATTERNS.find(p=>p.id===o.pattern).name;
+      ro.innerHTML=o.pool.length
+        ?`Pool: <b>${o.pool.map(arpNoteName).join(" ")}</b> &middot; ${o.pool.length} note${o.pool.length===1?"":"s"} &times; ${o.octaves} oct = <b>${n} steps</b> &middot; ${pname} @ ${o.rate} &middot; ${state.bpm} BPM`
+        :`Pool is empty &mdash; tap the keys above or capture a track.`;
+    }
+    function syncArpUI(){
+      const o=arpOpts(),on=!!arpRt.timer;
+      const ob=$("#arp-on-btn");if(ob){ob.textContent=on?"ARP: ON":"ARP: OFF";ob.classList.toggle("active",on);ob.setAttribute("aria-pressed",String(on))}
+      const eb=$("#arp-enable-btn");if(eb){eb.textContent=on?"ARP: ON":"ARP: OFF";eb.classList.toggle("active",on);eb.setAttribute("aria-pressed",String(on))}
+      const rs=$("#arp-rate");if(rs)rs.value=o.rate;
+      const ps=$("#arp-pattern");if(ps)ps.value=o.pattern;
+      const ov=$("#arp-oct-val");if(ov)ov.textContent=o.octaves;
+      const vs=$("#arp-voice");if(vs)vs.value=o.voice;
+      renderArpVoices();renderArpCards();renderArpKeys();renderArpTracks();syncArpReadout();
+    }
+    function arpCaptureTrack(){
+      const sel=$("#arp-track"),track=state.tracks.find(t=>t.id===(sel&&sel.value))||state.tracks[0];
+      if(!track){toast("No tracks to capture from.","warn");return}
+      const notes=new Set();
+      track.steps.forEach(s=>{if(s&&s.on)notes.add(clamp(Math.round(s.note??track.note??60),0,127))});
+      if(!notes.size&&Number.isFinite(track.note))notes.add(clamp(Math.round(track.note),0,127));
+      const pool=[...notes].sort((a,b)=>a-b).slice(0,16);
+      if(!pool.length){toast("That track has no notes.","warn");return}
+      setArp({pool});
+      toast(`Captured ${pool.length} note${pool.length===1?"":"s"} from ${track.name||"track"}.`,"good");
+    }
+    function openArpDialog(){
+      syncArpUI();
+      const dlg=$("#arp-dialog");if(dlg&&!dlg.open)dlg.showModal();
     }
 
     /* Feature 10: metronome accent — downbeat accent toggle, beats/bar, click volume */
@@ -2949,6 +3340,162 @@
         row.append(btn);list.append(row);
       });
     }
+    /* Feature 19: audio recorder — capture the master output into takes, drag to arrange */
+    const REC_MAX_SEC=60;
+    const REC={recording:false,chunks:null,startedAt:0,takes:[],seq:0,timerId:null,previewSrc:null,arrSources:[],arrPlaying:false};
+    function recFmtTime(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+    function recCapture(e){
+      if(!REC.recording||!REC.chunks)return;
+      REC.chunks[0].push(new Float32Array(e.inputBuffer.getChannelData(0)));
+      REC.chunks[1].push(new Float32Array(e.inputBuffer.getChannelData(1)));
+      const samples=REC.chunks[0].length*e.inputBuffer.length;
+      if(samples>=REC_MAX_SEC*e.inputBuffer.sampleRate)stopRecTake(true);
+    }
+    function syncRecUI(){
+      const btn=$("#rec-take-btn");
+      if(btn){btn.innerHTML=REC.recording?"■ STOP":"● REC";btn.classList.toggle("rec-on",REC.recording)}
+      const meter=$("#rec-meter");if(meter)meter.classList.toggle("rec-live",REC.recording);
+      const tb=$("#audiorec-btn");if(tb)tb.classList.toggle("recording",REC.recording);
+      syncRecTimer();
+    }
+    function syncRecTimer(){
+      const el=$("#rec-timer");if(!el)return;
+      el.textContent=REC.recording?recFmtTime((performance.now()-REC.startedAt)/1000):(REC.takes.length?recFmtTime(REC.takes[REC.takes.length-1].seconds):"00:00");
+    }
+    async function toggleRecTake(){
+      if(REC.recording){stopRecTake(false);return}
+      try{await engine.init()}catch(err){toast("Audio engine failed to start.","error");return}
+      stopPreview();stopArrangement(true);
+      REC.chunks=[[],[]];REC.startedAt=performance.now();REC.recording=true;
+      syncRecUI();
+      REC.timerId=setInterval(syncRecTimer,250);
+      setStatus("RECORDING TAKE");
+      $("#rec-status").textContent="● RECORDING";
+      toast(state.playing?"Recording master output…":"Recording — press play to capture the loop.","warn");
+    }
+    function stopRecTake(auto){
+      if(!REC.recording)return;
+      REC.recording=false;clearInterval(REC.timerId);REC.timerId=null;
+      const sr=engine.ctx.sampleRate;
+      const len=REC.chunks[0].reduce((n,b)=>n+b.length,0);
+      const savedChunks=REC.chunks;REC.chunks=null;
+      if(len>0&&savedChunks){
+        const buf=engine.ctx.createBuffer(2,len,sr);
+        let off=0;for(const b of savedChunks[0]){buf.getChannelData(0).set(b,off);off+=b.length}
+        off=0;for(const b of savedChunks[1]){buf.getChannelData(1).set(b,off);off+=b.length}
+        REC.seq++;
+        REC.takes.push({id:"take"+Date.now()+"_"+REC.seq,name:"Take "+REC.seq,buffer:buf,seconds:buf.duration,at:Date.now()});
+        toast(auto?`Take ${REC.seq} saved — capped at 60s (${buf.duration.toFixed(1)}s).`:`Take ${REC.seq} saved (${buf.duration.toFixed(1)}s).`,"good");
+        setStatus("TAKE SAVED");
+      }else{
+        toast("Nothing recorded.","warn");setStatus("READY");
+      }
+      renderRecTakes();syncRecUI();
+      const rst=$("#rec-status");if(rst)rst.textContent=len>0?"TAKE SAVED":"READY";
+    }
+    function openAudioRecorder(){
+      stopArrangement(true);
+      renderRecTakes();syncRecUI();
+      const st=$("#rec-status");if(st)st.textContent=REC.recording?"● RECORDING":"READY";
+      const dlg=$("#audiorec-dialog");if(dlg&&!dlg.open)dlg.showModal();
+    }
+    function renderRecTakes(){
+      const list=$("#rec-take-list");if(!list)return;list.replaceChildren();
+      if(!REC.takes.length){
+        const p=document.createElement("p");p.className="rec-empty";
+        p.textContent="No takes yet — hit ● REC, play the loop, then ■ STOP. Takes live in this session only; download the keepers as WAV.";
+        list.append(p);
+      }
+      REC.takes.forEach((take,i)=>{
+        const row=document.createElement("div");row.className="rec-row";row.draggable=true;row.dataset.takeId=take.id;
+        row.setAttribute("aria-label",`Take ${i+1}: ${take.name}, ${take.seconds.toFixed(1)} seconds. Drag to reorder.`);
+        const grip=document.createElement("span");grip.className="rec-grip";grip.title="Drag to arrange";grip.textContent="⠿";
+        const idx=document.createElement("span");idx.className="rec-idx";idx.textContent=String(i+1);
+        const nm=document.createElement("span");nm.className="rec-name";nm.title="Double-click to rename";nm.textContent=take.name;
+        const dur=document.createElement("span");dur.className="rec-dur";dur.textContent=take.seconds.toFixed(1)+"s";
+        const pv=document.createElement("button");pv.className="btn tiny rec-preview";pv.title="Preview take";pv.textContent="▶";
+        const wv=document.createElement("button");wv.className="btn tiny rec-wav";wv.title="Download take as WAV";wv.textContent="⇩";
+        const del=document.createElement("button");del.className="btn tiny rec-del";del.title="Delete take";del.textContent="🗑";
+        nm.addEventListener("dblclick",()=>renameTake(row,take));
+        pv.addEventListener("click",ev=>{ev.stopPropagation();previewTake(take,pv)});
+        wv.addEventListener("click",()=>downloadTake(take));
+        del.addEventListener("click",()=>deleteTake(take.id));
+        row.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",take.id);e.dataTransfer.effectAllowed="move";row.classList.add("drag-src")});
+        row.addEventListener("dragend",()=>{row.classList.remove("drag-src");$$(".rec-row.drag-over",list).forEach(r=>r.classList.remove("drag-over"))});
+        row.addEventListener("dragover",e=>{e.preventDefault();e.dataTransfer.dropEffect="move";row.classList.add("drag-over")});
+        row.addEventListener("dragleave",()=>row.classList.remove("drag-over"));
+        row.addEventListener("drop",e=>{e.preventDefault();moveTake(e.dataTransfer.getData("text/plain"),take.id);row.classList.remove("drag-over")});
+        row.append(grip,idx,nm,dur,pv,wv,del);list.append(row);
+      });
+      const cnt=$("#rec-count");if(cnt)cnt.textContent=REC.takes.length?`${REC.takes.length} TAKE${REC.takes.length>1?"S":""}`:"";
+    }
+    function moveTake(dragId,dropId){
+      if(!dragId||dragId===dropId)return;
+      const from=REC.takes.findIndex(t=>t.id===dragId),to=REC.takes.findIndex(t=>t.id===dropId);
+      if(from<0||to<0)return;
+      const [t]=REC.takes.splice(from,1);REC.takes.splice(to,0,t);
+      stopPreview();stopArrangement(true);renderRecTakes();setStatus("TAKES REARRANGED");
+    }
+    function renameTake(row,take){
+      const nameEl=$(".rec-name",row);if(!nameEl||row.querySelector(".rec-rename"))return;
+      const input=document.createElement("input");input.className="rec-rename";input.value=take.name;input.maxLength=32;
+      input.setAttribute("aria-label","Rename take");let done=false;
+      const commit=()=>{if(done)return;done=true;take.name=input.value.trim()||take.name;renderRecTakes()};
+      input.addEventListener("keydown",e=>{e.stopPropagation();if(e.key==="Enter")commit();if(e.key==="Escape"){done=true;renderRecTakes()}});
+      input.addEventListener("blur",commit);
+      nameEl.replaceWith(input);input.focus();input.select();
+    }
+    function stopPreview(){
+      if(REC.previewSrc){try{REC.previewSrc.onended=null;REC.previewSrc.stop()}catch(_){}}
+      REC.previewSrc=null;
+      $$("#rec-take-list .rec-preview").forEach(b=>{b.textContent="▶"});
+    }
+    function previewTake(take,btn){
+      if(!engine.ctx){toast("Start the audio engine first (hit ● REC once).","warn");return}
+      if(REC.previewSrc&&REC.previewSrc._takeId===take.id){stopPreview();$("#rec-status").textContent="READY";return}
+      stopPreview();stopArrangement(true);
+      const s=engine.ctx.createBufferSource();s.buffer=take.buffer;s.connect(engine.masterGain);s._takeId=take.id;
+      s.onended=()=>{if(REC.previewSrc===s){REC.previewSrc=null;btn.textContent="▶";const st=$("#rec-status");if(st&&!REC.recording)st.textContent="READY"}};
+      s.start();REC.previewSrc=s;btn.textContent="■";
+      $("#rec-status").textContent="PREVIEW · "+take.name.toUpperCase();
+    }
+    function downloadTake(take){
+      try{
+        const wav=BounceRenderer.wav(take.buffer);
+        const name=take.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"take";
+        download(wav,`${name}.wav`,"audio/wav");
+        toast(`${take.name} downloaded as WAV.`,"good");
+      }catch(err){toast("WAV export failed: "+err.message,"error")}
+    }
+    function deleteTake(id){
+      const i=REC.takes.findIndex(t=>t.id===id);if(i<0)return;
+      if(REC.previewSrc&&REC.previewSrc._takeId===id)stopPreview();
+      stopArrangement(true);
+      REC.takes.splice(i,1);renderRecTakes();syncRecUI();setStatus("TAKE DELETED");
+    }
+    function stopArrangement(silent){
+      REC.arrSources.forEach(s=>{try{s.onended=null;s.stop()}catch(_){}});
+      REC.arrSources=[];REC.arrPlaying=false;
+      const b=$("#rec-play-arr");if(b){b.innerHTML="▶ PLAY ARRANGEMENT";b.classList.remove("cyan")}
+      if(!silent){const st=$("#rec-status");if(st&&!REC.recording)st.textContent="READY"}
+    }
+    function playArrangement(){
+      if(REC.arrPlaying){stopArrangement();return}
+      if(!REC.takes.length){toast("Record a take first.","warn");return}
+      if(!engine.ctx){toast("Start the audio engine first (hit ● REC once).","warn");return}
+      stopPreview();stopArrangement(true);
+      const ctx=engine.ctx;let t=ctx.currentTime+.06;
+      REC.takes.forEach((take,i)=>{
+        const s=ctx.createBufferSource();s.buffer=take.buffer;s.connect(engine.masterGain);
+        s.start(t);t+=take.buffer.duration+.05;
+        if(i===REC.takes.length-1)s.onended=()=>{stopArrangement();setStatus("ARRANGEMENT FINISHED");toast("Arrangement finished.","good")};
+        REC.arrSources.push(s);
+      });
+      REC.arrPlaying=true;
+      const b=$("#rec-play-arr");if(b){b.innerHTML="■ STOP";b.classList.add("cyan")}
+      $("#rec-status").textContent=`PLAYING ARRANGEMENT · ${REC.takes.length} TAKE${REC.takes.length>1?"S":""}`;
+      setStatus("PLAYING TAKE ARRANGEMENT");
+    }
     function openStems(){
       renderStemRows();
       $("#stem-status-text").textContent="READY";
@@ -3049,7 +3596,7 @@
       "master-mute":"Silences or restores the final master output without changing any saved channel levels.","panic-btn":"Immediately stops transport, cancels count-in, and suspends the audio engine.",
       "metronome-btn":"Audible click on every quarter note. Right-click or Shift+M opens the downbeat-accent & volume settings.",
       "bounce-btn":"Renders the current multitrack pattern into one stereo WAV file with levels, panning, bass boost, and punch processing.",
-      "stems-btn":"Opens the stem exporter — renders each track of the active pattern as a separate stereo WAV file with its levels, panning, automation and delay/reverb sends (Shift+E).","templates-btn":"Opens project templates — start a fresh project from a house, hip-hop, ambient or techno starter that fills all four pattern slots with matched grooves, tempo and swing (Shift+N).",
+      "stems-btn":"Opens the stem exporter — renders each track of the active pattern as a separate stereo WAV file with its levels, panning, automation and delay/reverb sends (Shift+E).","templates-btn":"Opens project templates — start a fresh project from a house, hip-hop, ambient or techno starter that fills all four pattern slots with matched grooves, tempo and swing (Shift+N).","audiorec-btn":"Opens the audio recorder — capture the master output into takes, preview them, download WAVs, drag takes to arrange their order, and play the arrangement back (Shift+Q).","midi-btn":"Opens MIDI input — connect a USB MIDI keyboard or controller and play the synth voices from real keys, with a channel filter, voice select, transpose and velocity curve (Shift+D).",
       "bass-profile":"Applies a coordinated low-end preset: clean studio sub, headphone-style thump, trunk-rattling saturation, or sliding drill pressure.",
       "master":"Controls final output volume.","delay":"Controls the amount of tempo-friendly echo in the master mix.","reverb":"Controls spacious synthetic room ambience.",
       "drive":"Adds soft-clipped harmonic saturation so drums and bass feel louder and denser.","thump":"Boosts the deep 92 Hz region for chest-hitting low end.",
@@ -3250,6 +3797,27 @@
       $("#metro-beats-up").addEventListener("click",()=>setMetro({beats:metroOpts().beats+1}));
       $("#metro-vol").addEventListener("input",e=>setMetro({vol:Number(e.target.value)}));
       $("#metro-test-btn").addEventListener("click",testMetro);
+      /* Feature 17: arpeggiator patterns — wiring (helpers live at top level) */
+      $("#arp-rate").addEventListener("change",e=>setArp({rate:e.target.value}));
+      $("#arp-pattern").addEventListener("change",e=>setArp({pattern:e.target.value}));
+      $("#arp-on-btn").addEventListener("click",()=>toggleArp(!arpRt.timer));
+      $("#arp-settings-btn").addEventListener("click",openArpDialog);
+      $("#arp-oct-down").addEventListener("click",()=>setArp({octaves:arpOpts().octaves-1}));
+      $("#arp-oct-up").addEventListener("click",()=>setArp({octaves:arpOpts().octaves+1}));
+      $("#arp-voice").addEventListener("change",e=>setArp({voice:e.target.value}));
+      $("#arp-capture-btn").addEventListener("click",arpCaptureTrack);
+      $("#arp-clear-btn").addEventListener("click",()=>{setArp({pool:[]});toast("Note pool cleared.","warn")});
+      $("#arp-audition-btn").addEventListener("click",arpAudition);
+      $("#arp-enable-btn").addEventListener("click",()=>toggleArp(!arpRt.timer));
+      /* Feature 18: performance pads — stage mode wiring (helpers live at top level) */
+      $("#perf-mode-btn").addEventListener("click",togglePerfMode);
+      $("#perf-exit").addEventListener("click",exitPerfMode);
+      $("#perf-repeat").addEventListener("click",()=>{setPerf({repeat:!perfOpts().repeat});if(!perfOpts().repeat){perfReleaseVia("pointer");perfReleaseVia("key")}});
+      $("#perf-latch").addEventListener("click",()=>{const on=!perfOpts().latch;stopAllPerfHolds();setPerf({latch:on});toast(on?"Latch on — tap a pad to toggle its repeat loop.":"Latch off.","good")});
+      $("#perf-rate").addEventListener("change",e=>{setPerf({rate:e.target.value});setStatus(`Note repeat rate ${e.target.value}`)});
+      $("#perf-vel").addEventListener("input",e=>{setPerf({vel:clamp(Number(e.target.value),.15,1)});$("#perf-vel-out").textContent=`${Math.round(perfOpts().vel*100)}%`});
+      $("#perf-bank").addEventListener("change",e=>{stopAllPerfHolds();state.bank=e.target.value;renderPads();renderBanks();syncPerfUI();scheduleAutosave()});
+      syncPerfUI();
       $("#preset-select").addEventListener("change",e=>{if(e.target.value)applyPreset(e.target.value)});
       $("#theme-select").addEventListener("change",e=>applyTheme(e.target.value,true));
       $("#describe-btn").addEventListener("click",()=>{state.ui.describe=!state.ui.describe;document.body.classList.toggle("describe-mode",state.ui.describe);$("#describe-btn").classList.toggle("active",state.ui.describe);$("#describe-btn").textContent=state.ui.describe?"DESCRIBE ON":"DESCRIBE";wireDescriptions();scheduleAutosave()});
@@ -3298,6 +3866,9 @@
       $("#save-project").addEventListener("click",()=>ProjectStore.saveVersion());$("#export-project").addEventListener("click",exportProject);$("#import-project").addEventListener("click",()=>$("#project-file").click());
       $("#project-file").addEventListener("change",e=>{importProject(e.target.files[0]);e.target.value=""});$("#bounce-btn").addEventListener("click",bounce);
       $("#stems-btn").addEventListener("click",openStems);$("#stems-render-all").addEventListener("click",renderAllStems);
+      /* Feature 19: audio recorder */
+      $("#audiorec-btn").addEventListener("click",openAudioRecorder);$("#rec-take-btn").addEventListener("click",toggleRecTake);
+      $("#rec-play-arr").addEventListener("click",playArrangement);$("#audiorec-dialog").addEventListener("close",()=>{stopPreview();stopArrangement(true)});
       $("#help-btn").addEventListener("click",()=>$("#help-dialog").showModal());$$("[data-close]").forEach(b=>b.addEventListener("click",()=>b.closest("dialog").close()));
       /* Feature 1: keyboard shortcut cheatsheet (Ctrl+/) */
       const KEYBOARD_SHORTCUTS=[
@@ -3310,6 +3881,8 @@
         {keys:["Q","W","E","R"],desc:"Trigger pads 5–8",cat:"Pads"},
         {keys:["A","S","D","F"],desc:"Trigger pads 9–12",cat:"Pads"},
         {keys:["Z","X","C","V"],desc:"Trigger pads 13–16",cat:"Pads"},
+        {keys:["Shift","O"],desc:"Performance mode — full-screen 16-pad stage with tempo-synced note repeat, latch & live velocity",cat:"Pads"},
+        {keys:["Esc"],desc:"Exit performance mode",cat:"Pads"},
         {keys:["↑"],desc:"Raise synth octave",cat:"Synth"},
         {keys:["↓"],desc:"Lower synth octave",cat:"Synth"},
         {keys:["Ctrl/Cmd","S"],desc:"Save project",cat:"Project"},
@@ -3318,6 +3891,8 @@
         {keys:["Ctrl/Cmd","E"],desc:"Bounce / export WAV",cat:"Project"},
         {keys:["Shift","E"],desc:"Export stems — each track rendered as a separate WAV",cat:"Project"},
         {keys:["Shift","N"],desc:"Open project templates — start from a house, hip-hop, ambient or techno starter",cat:"Project"},
+        {keys:["Shift","U"],desc:"Open the arpeggiator — latch notes and run them as up, down, ping-pong, random or chord patterns",cat:"Synth"},
+        {keys:["Shift","D"],desc:"Open MIDI input — play the synth from an external keyboard or controller",cat:"Synth"},
         {keys:["Ctrl/Cmd","Z"],desc:"Undo pattern edit",cat:"Edit"},
         {keys:["Ctrl/Cmd","Shift","Z"],desc:"Redo pattern edit (or Ctrl/Cmd+Y)",cat:"Edit"},
         {keys:["Ctrl/Cmd","Shift","P"],desc:"Open the synth preset manager",cat:"Synth"},
@@ -3330,6 +3905,7 @@
         {keys:["Shift","A"],desc:"Open automation lanes — draw per-step volume, cutoff, pan, delay & reverb motion",cat:"Mix"},
         {keys:["P"],desc:"Toggle library preview one-shot / loop at the current BPM",cat:"Library"},
         {keys:["Shift","H"],desc:"Toggle hover-to-preview in the sound browser",cat:"Library"},
+        {keys:["Shift","Q"],desc:"Open the audio recorder \u2014 capture the master output into takes, drag to arrange",cat:"Record"},
         {keys:["Ctrl/Cmd","/"],desc:"Open this shortcut cheatsheet",cat:"Help"}
       ];
       function renderShortcutCheatsheet(){
@@ -3512,10 +4088,96 @@
       $("#spec-hold").addEventListener("click",()=>{specana.peakHold=!specana.peakHold;saveSpecana();syncSpecanaUI()});
       $("#spec-freeze").addEventListener("click",()=>{specana.frozen=!specana.frozen;syncSpecanaUI()});
       $("#spec-smooth").addEventListener("input",e=>{specana.smoothing=Number(e.target.value)/100;saveSpecana()});
+      /* Feature 20: MIDI input — play the synth from an external controller via Web MIDI */
+      const MIDI_VOICES=[["lead","Lead"],["supersaw","Super Saw"],["fmstab","FM Stab"],["pluck","Pluck"],["arp","Digital Arp"],["epiano","Electric Piano"],["keys","Glass Keys"],["pad","Air Pad"],["organstab","Organ Stab"],["bass","Sub Bass"],["acid","Acid Mono"]];
+      const MIDI_NOTE_NAMES=["C","C\u266f","D","D\u266f","E","F","F\u266f","G","G\u266f","A","A\u266f","B"];
+      const midi={access:null,connected:false};
+      function midiNoteName(n){n=clamp(Math.round(n),0,127);return MIDI_NOTE_NAMES[n%12]+(Math.floor(n/12)-1)}
+      function midiSupported(){return typeof navigator!=="undefined"&&!!navigator.requestMIDIAccess}
+      function midiCfg(){return state.ui.midi}
+      function syncMidiUI(){
+        const m=midiCfg(),sup=midiSupported();
+        const st=$("#midi-status");if(st){st.textContent=!sup?"NOT SUPPORTED":midi.connected?"\u25cf CONNECTED":"DISCONNECTED";st.className="midi-status "+(midi.connected?"on":"off")}
+        const cb=$("#midi-connect-btn");if(cb){cb.textContent=midi.connected?"\u23bb DISCONNECT":"\U0001f50c CONNECT";cb.disabled=!sup}
+        const tb=$("#midi-btn");if(tb)tb.classList.toggle("connected",midi.connected);
+        const dev=$("#midi-device");
+        if(dev&&sup){const ins=midi.access?[...midi.access.inputs.values()]:[];
+          dev.replaceChildren();
+          if(!ins.length){const o=document.createElement("option");o.textContent=midi.access?"No MIDI inputs found \u2014 plug one in and hit \u27f3":"Press CONNECT first";dev.append(o)}
+          ins.forEach(i=>{const o=document.createElement("option");o.value=i.id;o.textContent=(i.manufacturer?i.manufacturer+" ":"")+(i.name||"MIDI input");dev.append(o)});
+          const sel=ins.find(i=>i.id===m.deviceId)||ins[0];if(sel){dev.value=sel.id;m.deviceId=sel.id}}
+        const ch=$("#midi-channel");
+        if(ch&&!ch.options.length){[["all","All channels"],...Array.from({length:16},(_,i)=>[String(i+1),"Channel "+(i+1)])].forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;ch.append(o)})}
+        if(ch)ch.value=m.channel;
+        const vs=$("#midi-voice");
+        if(vs&&!vs.options.length){MIDI_VOICES.forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;vs.append(o)})}
+        if(vs)vs.value=MIDI_VOICES.some(([v])=>v===m.voice)?m.voice:"lead";
+        const vc=$("#midi-velcurve");if(vc)vc.value=m.velCurve;
+        const to=$("#midi-trans-out");if(to)to.textContent=(m.transpose>=0?"+":"")+m.transpose;
+        const ac=$("#midi-autoconnect");if(ac)ac.checked=!!m.autoConnect;
+      }
+      function midiFlash(note,vel){
+        const btn=$("#midi-btn");if(btn){btn.classList.remove("hit");void btn.offsetWidth;btn.classList.add("hit")}
+        const last=$("#midi-last-note");if(last)last.textContent=midiNoteName(note)+" \u00b7 "+Math.round(vel*100)+"%";
+        const strip=$("#midi-note-strip");
+        if(strip){const c=document.createElement("span");c.className="midi-chip";c.textContent=midiNoteName(note);strip.prepend(c);while(strip.children.length>18)strip.lastChild.remove();setTimeout(()=>c.remove(),2600)}
+      }
+      function midiNoteOn(note,rawVel){
+        const m=midiCfg();
+        let v=rawVel/127;
+        if(m.velCurve==="soft")v=Math.sqrt(v);else if(m.velCurve==="hard")v=Math.pow(v,1.7);
+        const n=clamp(Math.round(note)+m.transpose,0,127);
+        try{engine.trigger({instrument:m.voice,note:n,duration:.45},clamp(v,.05,1))}catch(e){}
+        midiFlash(n,clamp(v,.05,1));setStatus("MIDI "+midiNoteName(n));
+      }
+      function onMidiMessage(e){
+        const d=e.data;if(!d||d.length<3)return;
+        const cmd=d[0]&0xF0,ch=(d[0]&0x0F)+1,m=midiCfg();
+        if(m.channel!=="all"&&ch!==Number(m.channel))return;
+        if(cmd===0x90&&d[2]>0)midiNoteOn(d[1],d[2]);
+        /* note-off (0x80 / vel 0) needs no action \u2014 voices are one-shot */
+      }
+      function wireMidiInputs(){
+        if(!midi.access)return;const m=midiCfg(),ids=[...midi.access.inputs.keys()];
+        midi.access.inputs.forEach(inp=>{inp.onmidimessage=onMidiMessage});
+        if(!ids.includes(m.deviceId)&&ids.length)m.deviceId=ids[0];
+      }
+      async function connectMidi(){
+        const m=midiCfg();
+        if(!midiSupported()){toast("Web MIDI is not supported in this browser \u2014 try Chrome or Edge.","error");syncMidiUI();return}
+        try{await engine.init()}catch(err){toast("Audio engine failed to start.","error");return}
+        try{
+          midi.access=await navigator.requestMIDIAccess();
+          wireMidiInputs();
+          midi.access.onstatechange=()=>{wireMidiInputs();syncMidiUI()};
+          midi.connected=true;scheduleAutosave();syncMidiUI();
+          const n=midi.access.inputs.size;
+          toast(n?("MIDI connected \u2014 "+n+" input"+(n===1?"":"s")+" ready. Play your keys."):"MIDI connected \u2014 no inputs found. Plug in a controller and hit \u27f3.","good");
+          setStatus(n?"MIDI CONNECTED":"MIDI \u2014 NO INPUTS");
+        }catch(err){toast("MIDI access denied \u2014 allow MIDI in the browser prompt and retry.","error");midi.connected=false;syncMidiUI()}
+      }
+      function disconnectMidi(){
+        if(midi.access){midi.access.inputs.forEach(inp=>{inp.onmidimessage=null});midi.access.onstatechange=null}
+        midi.connected=false;syncMidiUI();setStatus("MIDI DISCONNECTED");toast("MIDI disconnected.","warn");
+      }
+      function openMidiDialog(){syncMidiUI();const dlg=$("#midi-dialog");if(dlg&&!dlg.open)dlg.showModal()}
+      $("#midi-btn").addEventListener("click",openMidiDialog);
+      $("#midi-connect-btn").addEventListener("click",()=>{midi.connected?disconnectMidi():connectMidi()});
+      $("#midi-rescan").addEventListener("click",()=>{wireMidiInputs();syncMidiUI();toast("MIDI inputs rescanned.","good")});
+      $("#midi-device").addEventListener("change",e=>{midiCfg().deviceId=e.target.value;scheduleAutosave()});
+      $("#midi-channel").addEventListener("change",e=>{midiCfg().channel=e.target.value;scheduleAutosave()});
+      $("#midi-voice").addEventListener("change",e=>{midiCfg().voice=e.target.value;scheduleAutosave()});
+      $("#midi-velcurve").addEventListener("change",e=>{midiCfg().velCurve=e.target.value;scheduleAutosave()});
+      $("#midi-trans-down").addEventListener("click",()=>{const m=midiCfg();m.transpose=clamp(m.transpose-1,-24,24);$("#midi-trans-out").textContent=(m.transpose>=0?"+":"")+m.transpose;scheduleAutosave()});
+      $("#midi-trans-up").addEventListener("click",()=>{const m=midiCfg();m.transpose=clamp(m.transpose+1,-24,24);$("#midi-trans-out").textContent=(m.transpose>=0?"+":"")+m.transpose;scheduleAutosave()});
+      $("#midi-autoconnect").addEventListener("change",e=>{midiCfg().autoConnect=e.target.checked;scheduleAutosave();toast(e.target.checked?"MIDI will auto-connect on load (if the browser already granted access).":"MIDI auto-connect off.","good")});
+      /* silent auto-connect on load when the user opted in */
+      (async()=>{try{if(midiCfg().autoConnect&&midiSupported()){midi.access=await navigator.requestMIDIAccess();wireMidiInputs();midi.access.onstatechange=()=>{wireMidiInputs();syncMidiUI()};midi.connected=midi.access.inputs.size>0;syncMidiUI()}}catch{}})();
+      /* Feature 1 keydown listener follows */
       document.addEventListener("keydown",e=>{
         if(e.target.matches("input,select")||e.repeat)return;const key=e.key.toLowerCase(),index=PAD_KEYS.indexOf(key),modified=e.ctrlKey||e.metaKey||e.altKey||e.shiftKey;
         if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}if(key==="m"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openMetroDialog()}if(key==="t"&&!modified){e.preventDefault();tapTempo()}
-        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}if(key==="c"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openChordGenerator()}if(e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();saveQuickSlot(Number(e.code.slice(5)))}if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();loadQuickSlot(Number(e.code.slice(5)))}if(key==="x"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openFxChain()}if(key==="a"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openAutomation()}if(key==="p"&&!modified){e.preventDefault();togglePreviewMode()}if(key==="h"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();toggleHoverPreview()}if(key==="e"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openStems()}if(key==="n"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openProjectTemplates()}
+        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}if(key==="c"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openChordGenerator()}if(e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();saveQuickSlot(Number(e.code.slice(5)))}if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();loadQuickSlot(Number(e.code.slice(5)))}if(key==="x"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openFxChain()}if(key==="a"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openAutomation()}if(key==="p"&&!modified){e.preventDefault();togglePreviewMode()}if(key==="h"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();toggleHoverPreview()}if(key==="e"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openStems()}if(key==="n"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openProjectTemplates()}if(key==="u"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openArpDialog()}if(key==="o"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();togglePerfMode()}if(key==="d"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openMidiDialog()}if(key==="q"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openAudioRecorder()}
         if(e.key==="ArrowUp"){state.patch.octave=clamp(state.patch.octave+1,1,6);syncAllUI();renderPads()}if(e.key==="ArrowDown"){state.patch.octave=clamp(state.patch.octave-1,1,6);syncAllUI();renderPads()}
       });
       /* Feature 6: song arranger — chain pattern slots into a play-in-order song arrangement */
@@ -3994,6 +4656,10 @@
       "pack-select":"Choose an original synthesized pack informed by different Baltimore club lineages and production traits.",
       "pack-dock":"Drag any sound chip onto a sequencer track to replace its instrument and automatically create a compatible loop.",
       "layout-manager-btn":"Opens the layout manager for hiding, restoring, and resetting resizable panels.",
+      "arp-on-btn":"Starts or stops the arpeggiator, which cycles the latched note pool through the chosen pattern at the chosen rate.",
+      "arp-settings-btn":"Opens the arpeggiator pattern engine (Shift+U): six patterns, a latchable note pool, octave range and voice.",
+      "arp-rate":"Arpeggiator rate — the note length of each arp tick, from quarter notes to 32nd notes.",
+      "arp-pattern":"Arpeggiator pattern — how the latched notes cycle: up, down, ping-pong, random, random walk or chord.",
       "source-notes-btn":"Opens official artist links, local reporting, research notes, and the no-samples rights statement.",
       "mobile-dock":"Switches the single visible workspace panel on phones and tablets to reduce scrolling."
     });
@@ -4061,6 +4727,99 @@
         renderTracks();renderMixer();scheduleAutosave();setStatus(`Recorded ${pad.label} · ${armed.name} step ${step+1}`)
       }else setStatus(`${pad.label} · velocity ${Math.round(posVelocity*100)}`)
     };
+
+    /* Feature 18: performance pads — full-screen stage mode (tempo-synced note
+       repeat, latch, live velocity). Wraps playPad; delegates to the upgraded
+       base whenever stage mode is off. */
+    const PERF_RATES={"1/4":1,"1/8":.5,"1/16":.25,"1/32":.125};
+    state.ui.perf=Object.assign({rate:"1/16",repeat:false,latch:false,vel:.9},state.ui.perf||{});
+    const perf={active:false,holds:{},latched:{}};
+    function perfOpts(){return state.ui.perf}
+    function perfStepDur(){return 60/clamp(state.bpm||112,40,240)*(PERF_RATES[perfOpts().rate]||.25)}
+    function perfPadNode(index){return document.querySelector(`.pad[data-index="${index}"]`)}
+    function syncPerfUI(){
+      const on=perf.active;
+      document.body.classList.toggle("perf-mode",on);
+      const btn=$("#perf-mode-btn");if(btn){btn.classList.toggle("active",on);btn.setAttribute("aria-pressed",String(on))}
+      const rp=$("#perf-repeat");if(rp){rp.classList.toggle("active",!!perfOpts().repeat);rp.setAttribute("aria-pressed",String(!!perfOpts().repeat))}
+      const lt=$("#perf-latch");if(lt){lt.classList.toggle("active",!!perfOpts().latch);lt.setAttribute("aria-pressed",String(!!perfOpts().latch))}
+      const rt=$("#perf-rate");if(rt)rt.value=perfOpts().rate;
+      const vl=$("#perf-vel"),vo=$("#perf-vel-out");if(vl)vl.value=perfOpts().vel;if(vo)vo.textContent=`${Math.round(perfOpts().vel*100)}%`;
+      const bank=$("#perf-bank");
+      if(bank){const names=Object.keys(padBanks()),cur=[...bank.options].map(o=>o.value);
+        if(cur.join("|")!==names.join("|")){bank.replaceChildren();names.forEach(name=>{const o=document.createElement("option");o.value=name;o.textContent=name.toUpperCase();bank.append(o)})}
+        bank.value=state.bank}
+    }
+    function setPerf(patch){Object.assign(perfOpts(),patch);syncPerfUI();scheduleAutosave()}
+    function stopPerfHold(index){
+      const h=perf.holds[index];if(h){clearInterval(h.timer);delete perf.holds[index]}
+      delete perf.latched[index];
+      perfPadNode(index)?.classList.remove("perf-held","perf-latched","hit");
+    }
+    function stopAllPerfHolds(){Object.keys(perf.holds).forEach(k=>stopPerfHold(Number(k)))}
+    function startPerfRepeat(index,sound,vel,via){
+      stopPerfHold(index);
+      const node=perfPadNode(index);
+      let next=engine.ctx.currentTime+.015;
+      const hit=when=>{try{engine.trigger(sound,vel,when)}catch(e){}node?.classList.add("hit");setTimeout(()=>{if(!perf.holds[index])node?.classList.remove("hit")},120)};
+      hit(next);next+=perfStepDur();
+      const timer=setInterval(()=>{
+        if(!engine.ctx){stopPerfHold(index);return}
+        try{while(next<engine.ctx.currentTime+.14){hit(next);next+=perfStepDur()}}
+        catch(e){stopPerfHold(index)}
+      },40);
+      node?.classList.add("perf-held");
+      perf.holds[index]={timer,via};
+    }
+    function enterPerfMode(){
+      if(perf.active)return;perf.active=true;
+      const ws=document.querySelectorAll("#workspace");if(ws[1])ws[1].style.setProperty("display","none","important");
+      const mod=$("#performance-module");
+      if(mod&&mod.classList.contains("collapsed")){mod.classList.remove("collapsed");state.ui.collapsed=(state.ui.collapsed||[]).filter(id=>id!=="performance-module")}
+      stopAllPerfHolds();syncPerfUI();
+      setStatus("Performance mode — hold a pad for note repeat · Esc or Shift+O exits");
+      toast("🎤 Performance mode — stage is live.","good");
+    }
+    function exitPerfMode(){
+      if(!perf.active)return;
+      stopAllPerfHolds();perf.active=false;
+      const ws=document.querySelectorAll("#workspace");if(ws[1])ws[1].style.removeProperty("display");
+      syncPerfUI();setStatus("Performance mode off");scheduleAutosave();
+    }
+    function togglePerfMode(){perf.active?exitPerfMode():enterPerfMode()}
+    function perfRecord(index,pad,vel){
+      if(!state.recording){setStatus(`${pad.label} · velocity ${Math.round(vel*100)}`);return}
+      pushUndo();
+      const armed=state.ui.autoTrackPads!==false?findOrCreatePadTrack(pad):(state.tracks.find(t=>t.arm)||state.tracks.find(t=>t.id===state.selectedTrack)||state.tracks[0]);
+      state.tracks.forEach(t=>t.arm=t.id===armed.id);state.selectedTrack=armed.id;
+      const step=sequencer.closestStep();
+      armed.steps[step]={on:true,velocity:vel,probability:1,instrument:pad.instrument,note:pad.note};
+      renderTracks();renderMixer();scheduleAutosave();
+      setStatus(`Recorded ${pad.label} · ${armed.name} step ${step+1}`);
+    }
+    const basePlayPadPerf=playPad;
+    playPad=async function(index,node=null,event=null){
+      if(!perf.active)return basePlayPadPerf(index,node,event);
+      try{await engine.init()}catch(error){toast(error.message,"error");return}
+      const pad=currentPadSound(index);if(!pad)return;
+      const vel=clamp(perfOpts().vel,.15,1),via=event&&event.type==="pointerdown"?"pointer":"key";
+      if(perfOpts().latch){
+        if(perf.latched[index]){stopPerfHold(index);setStatus(`${pad.label} · latch off`)}
+        else{startPerfRepeat(index,pad,vel,"latch");perf.latched[index]=true;perfPadNode(index)?.classList.add("perf-latched");setStatus(`${pad.label} · latched @ ${perfOpts().rate}`)}
+      }else if(perfOpts().repeat){startPerfRepeat(index,pad,vel,via)}
+      else{engine.trigger(pad,vel);animatePad(index)}
+      perfRecord(index,pad,vel);
+    };
+    const baseRenderBanksPerf=renderBanks;
+    renderBanks=function(){baseRenderBanksPerf();if(perf.active)syncPerfUI()};
+    function perfReleaseVia(via){Object.keys(perf.holds).forEach(k=>{const i=Number(k);if(perf.holds[i]&&perf.holds[i].via===via&&!perf.latched[i])stopPerfHold(i)})}
+    window.addEventListener("pointerup",()=>{if(perf.active)perfReleaseVia("pointer")});
+    window.addEventListener("pointercancel",()=>{if(perf.active)perfReleaseVia("pointer")});
+    window.addEventListener("blur",()=>{if(perf.active)stopAllPerfHolds()});
+    document.addEventListener("keyup",e=>{if(!perf.active)return;const index=PAD_KEYS.indexOf(e.key.toLowerCase());if(index>=0)perfReleaseVia("key")});
+    document.addEventListener("keydown",e=>{
+      if(e.key==="Escape"&&perf.active&&!document.querySelector("dialog[open]")){e.preventDefault();exitPerfMode()}
+    });
 
     function dropTargetAt(x,y){const element=document.elementFromPoint(x,y);return{pad:element?.closest?.(".pad"),track:element?.closest?.(".track")}}
     function clearUniversalTargets(){$$(".pad.drop-ready,.track.sound-drop-target,.track.track-reorder-target").forEach(node=>node.classList.remove("drop-ready","sound-drop-target","track-reorder-target"))}
@@ -4252,7 +5011,7 @@
       $("#pad-auto-track").addEventListener("click",()=>{state.ui.autoTrackPads=!state.ui.autoTrackPads;applyWorkflowState();scheduleAutosave();toast(state.ui.autoTrackPads?"Auto Track will create or reuse a lane for each recorded pad sound.":"Pad recording will use only the manually armed track.","good")});
       $("#reset-pad-bank").addEventListener("click",resetCurrentPadBank);$("#synth-controls-toggle").addEventListener("click",()=>{state.ui.synthControls=!state.ui.synthControls;applyWorkflowState();scheduleAutosave()});
       $("#step-paint-mode").addEventListener("click",()=>{state.ui.stepPaint={draw:"accent",accent:"erase",erase:"draw"}[state.ui.stepPaint||"draw"];applyWorkflowState();scheduleAutosave()});
-      Object.assign(ELEMENT_DESCRIPTIONS,{"pad-auto-track":"When recording, automatically creates or reuses a loop-constructor track that matches the pad sound.","reset-pad-bank":"Clears custom assignments from the current synth-pad bank.","synth-controls-toggle":"Shows or hides detailed synthesizer controls to save screen space.","step-paint-mode":"Cycles Draw, Accent, and Erase tools for painting sequencer steps by dragging.","sound-search":"Searches all built-in packs and studio sounds by name, type, tag, or instrument.","sound-filter-bar":"Filters the sound library into drums, bass, musical voices, effects, or your saved favorites.","sound-inspector":"Shows the selected sound, its type and energy, audition character, preview level, favorite state, and one-click track loading.","audition-mode":"Changes only the library preview path: clean, punchy, spacious, or filtered lo-fi.","surprise-sound":"Selects and previews a random sound from the current filtered results.","preview-mode":"Toggles the library audition between a single one-shot hit and the sound's suggested loop at the current BPM.","hover-preview-btn":"When on, hovering a library chip for a moment auditions it automatically."});
+      Object.assign(ELEMENT_DESCRIPTIONS,{"pad-auto-track":"When recording, automatically creates or reuses a loop-constructor track that matches the pad sound.","reset-pad-bank":"Clears custom assignments from the current synth-pad bank.","synth-controls-toggle":"Shows or hides detailed synthesizer controls to save screen space.","step-paint-mode":"Cycles Draw, Accent, and Erase tools for painting sequencer steps by dragging.","sound-search":"Searches all built-in packs and studio sounds by name, type, tag, or instrument.","sound-filter-bar":"Filters the sound library into drums, bass, musical voices, effects, or your saved favorites.","sound-inspector":"Shows the selected sound, its type and energy, audition character, preview level, favorite state, and one-click track loading.","audition-mode":"Changes only the library preview path: clean, punchy, spacious, or filtered lo-fi.","surprise-sound":"Selects and previews a random sound from the current filtered results.","preview-mode":"Toggles the library audition between a single one-shot hit and the sound's suggested loop at the current BPM.","hover-preview-btn":"When on, hovering a library chip for a moment auditions it automatically.","perf-mode-btn":"Toggles performance mode — a full-screen 16-pad stage with tempo-synced note repeat, latch and live velocity (Shift+O).","perf-repeat":"Hold a pad to retrigger it at the repeat rate, synced to the project tempo.","perf-latch":"Latch mode — tap a pad to toggle its note-repeat loop on or off.","perf-rate":"Note repeat rate for performance mode, from quarter notes to 32nd notes.","perf-vel":"Live performance velocity applied to every pad hit in stage mode.","perf-bank":"Switches the pad bank while in performance mode.","perf-exit":"Exits performance mode and returns to the studio view."});
       state.ui.density=state.ui.density||"compact";applyWorkflowState();applyLayoutPrefs();renderBanks();renderPads();renderTracks();renderMixer();wireDescriptions()
     }
 
