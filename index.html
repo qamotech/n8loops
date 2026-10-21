@@ -101,6 +101,8 @@
     .tempo{display:flex;align-items:center;height:42px;border:1px solid var(--line);border-radius:11px;background:rgba(0,0,0,.15);overflow:hidden}
     .tempo label{font:8px var(--mono);color:var(--muted);padding-left:10px}.tempo input{width:54px;height:40px;border:0;background:transparent;color:#fff;
       font:800 17px var(--mono);text-align:center;outline:0}.tempo span{font:8px var(--mono);color:var(--muted);padding-right:9px}
+    #tap-btn{min-width:76px}#tap-btn.tapping{background:var(--cyan);color:#0b0c10;border-color:transparent;box-shadow:0 0 16px var(--cyan),inset 0 0 8px rgba(255,255,255,.35)}
+    #tap-btn .tap-dots{font-size:7px;letter-spacing:2px;margin-left:5px;vertical-align:1px}
     .top-scroll{display:flex;align-items:center;align-content:center;flex-wrap:wrap;gap:6px;min-width:0;overflow:visible;flex:1;padding:2px}
     .top-scroll::-webkit-scrollbar{display:none}.top-actions{display:flex;gap:6px;margin-left:auto}
     .audio-badge{display:flex;align-items:center;gap:7px;color:var(--muted);font:9px var(--mono);white-space:nowrap}
@@ -220,6 +222,31 @@
     .preset-row .btn{flex:0 0 auto}
     /* Feature 4: FFT spectrum analyzer */
     #spectrum-dialog{width:min(780px,94vw)}
+    #song-dialog{width:min(880px,94vw)}
+    /* Feature 8: swing templates */
+    #swing-dialog{width:min(680px,94vw)}
+    .swing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+    .swing-card{display:grid;gap:7px;justify-items:stretch;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.018);color:var(--text);cursor:pointer;text-align:left;font-family:var(--font)}
+    .swing-card:hover{border-color:color-mix(in srgb,var(--cyan) 45%,transparent)}
+    .swing-card.active{border-color:var(--cyan);box-shadow:0 0 12px rgba(66,232,198,.3);background:rgba(0,40,50,.45)}
+    .sw-name{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:700}
+    .swing-pct{font:700 9px var(--mono);color:var(--amber)}
+    .swing-svg{width:100%;height:26px;color:var(--cyan)}
+    .sw-desc{color:var(--muted);font:8px/1.5 var(--mono)}
+    #swing-current{color:var(--muted);font:9px var(--mono);margin:10px 0 0}
+    #swing-current b{color:var(--cyan)}
+    .song-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+    .song-row .lbl{font:700 10px var(--font);letter-spacing:.14em;color:var(--muted);margin-right:2px}
+    #song-sequence{display:flex;flex-wrap:wrap;gap:8px;min-height:54px;padding:10px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.35);margin-bottom:10px}
+    .song-chip{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:rgba(20,24,40,.85);color:var(--text);cursor:pointer;font:600 10px var(--mono)}
+    .song-chip:hover{border-color:var(--cyan)}
+    .song-chip.selected{border-color:var(--cyan);box-shadow:0 0 10px rgba(0,255,255,.35);background:rgba(0,40,50,.5)}
+    .song-idx{color:var(--muted);font-size:9px;min-width:14px;text-align:right}
+    .song-slot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:var(--cyan);color:#04121a;font-weight:800;font-size:11px}
+    .song-nm{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .song-rep{color:var(--amber);font-weight:700}
+    #song-sel-label{color:var(--muted);font:9px var(--mono);margin-right:2px;min-width:150px}
+    #song-rep-label{color:var(--amber);font:700 12px var(--mono);min-width:28px;text-align:center}
     #spectrum-canvas{width:100%;height:280px;display:block;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.4)}
     .spec-readout{display:flex;gap:12px;align-items:baseline;margin:0 0 10px;font:10px var(--mono);color:var(--muted)}
     .spec-readout b{font-size:16px;color:var(--cyan);letter-spacing:.05em}
@@ -407,7 +434,7 @@
       <div class="tempo">
         <label for="bpm">TEMPO</label><input id="bpm" type="number" min="40" max="240" value="112"><span>BPM</span>
       </div>
-      <button id="tap-btn" class="btn">TAP</button>
+      <button id="tap-btn" class="btn" title="Tap tempo &#8212; tap up to 4x in rhythm (T)" aria-label="Tap tempo: tap up to 4 times in rhythm to set the tempo">TAP</button>
       <button id="covers-toggle" class="btn icon" aria-label="Open Baltimore song-cover presets" title="Open Baltimore song-cover presets">▣</button>
       <select id="preset-select" class="theme-select" aria-label="Baltimore song study preset" hidden>
         <option value="">BALTIMORE SONG STUDIES…</option>
@@ -425,8 +452,8 @@
         <button class="btn pattern-slot" data-pattern="B">B</button>
         <button class="btn pattern-slot" data-pattern="C">C</button>
         <button class="btn pattern-slot" data-pattern="D">D</button>
-        <button id="undo-btn" class="btn icon" title="Undo">↶</button>
-        <button id="redo-btn" class="btn icon" title="Redo">↷</button>
+        <button id="undo-btn" class="btn icon" title="Undo (Ctrl+Z)">↶</button>
+        <button id="redo-btn" class="btn icon" title="Redo (Ctrl+Shift+Z / Ctrl+Y)">↷</button>
         <button id="metronome-btn" class="btn" title="Metronome">METRO</button>
         <select id="theme-select" class="theme-select" aria-label="Interface style">
           <option value="dark">STYLE · DARK</option><option value="light">STYLE · LIGHT</option><option value="dim">STYLE · DIM</option>
@@ -446,7 +473,7 @@
         <button id="save-btn" class="btn"><span>SAVE</span> ◇</button>
         <button id="projects-btn" class="btn"><span>PROJECTS</span> ▤</button>
         <button id="bounce-btn" class="btn cyan"><span>BOUNCE WAV</span> ⇩</button>
-        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button>
+        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button>
       </div>
     </header>
 
@@ -1414,6 +1441,7 @@
           <button id="count-in" class="btn tiny" title="Play one bar of count-in before recording or playback">COUNT-IN</button>
           <button id="step-paint-mode" class="btn tiny active" aria-label="Cycle sequencer paint mode" title="Cycle Draw, Accent, and Erase tools for painting steps">✎ DRAW</button>
           <select id="pattern-chain" class="compact-select" aria-label="Pattern chain"><option value="off">CHAIN OFF</option><option value="AB">CHAIN A→B</option><option value="ABCD">CHAIN A→B→C→D</option></select>
+          <button id="song-btn" class="btn tiny" aria-label="Open song arranger" aria-pressed="false" title="Open the song arranger (Shift+G)">♫ SONG</button>
           <button id="duplicate-pattern" class="btn tiny">DUPLICATE</button>
           <button id="clear-pattern" class="btn tiny danger">CLEAR</button>
           <button id="randomize-pattern" class="btn tiny">GENERATE</button>
@@ -1491,8 +1519,9 @@
         <div class="help-card"><b>Save projects</b><p>Save stores complete projects locally. Export and import project JSON from the Projects window for backup or sharing.</p></div>
         <div class="help-card"><b>Output guard</b><p>Safe Audio adds headroom, all wet effects now pass through the final limiter, and the ceiling control prevents accidental overload.</p></div>
         <div class="help-card"><b>Mix translation</b><p>Use mono check, stereo width, rumble filtering, and the live peak monitor to make the loop translate better across speakers and headphones.</p></div>
-        <div class="help-card"><b>Pattern chain</b><p>Chain A→B or A→B→C→D to audition longer arrangements without manually switching pattern slots.</p></div>
-        <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
+        <div class="help-card"><b>Pattern chain</b><p>Chain A→B or A→B→C→D to audition longer arrangements without manually switching pattern slots. For full song control, open the Song Arranger (Shift+G) to build a play-in-order sequence with per-entry repeats.</p></div>
+        <div class="help-card"><b>Swing templates</b><p>Open the swing template library (Shift+W or the 🌀 toolbar button) to audition grooves like MPC Pocket, Dilla Slop, Lazy Swing and Shuffle. Each template sets the swing amount plus a matching hat-velocity pattern, and the velocity edit is undoable.</p></div>
+        <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · Ctrl/Cmd+Z undo · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
       </div>
     </div>
   </dialog>
@@ -1522,6 +1551,48 @@
       </div>
     </div>
     <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+S anywhere to open the analyzer</span><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="song-dialog">
+    <div class="dialog-head"><h2>Song Arranger · Pattern Chain</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <div class="song-row">
+        <button id="song-enabled" class="btn tiny" aria-pressed="false">SONG MODE: OFF</button>
+        <button id="song-loop" class="btn tiny cyan" aria-pressed="true">LOOP: ON</button>
+        <span class="lbl">plays entries left &#8594; right</span>
+      </div>
+      <div class="song-row"><span class="lbl">ARRANGEMENT</span></div>
+      <div id="song-sequence" role="listbox" aria-label="Song arrangement sequence"></div>
+      <div class="song-row">
+        <span id="song-sel-label">ENTRY —</span>
+        <button id="song-move-left" class="btn tiny" title="Move selected entry left">◀</button>
+        <button id="song-move-right" class="btn tiny" title="Move selected entry right">▶</button>
+        <button id="song-rep-down" class="btn tiny" title="Fewer repeats of the selected entry">−</button>
+        <b id="song-rep-label">×–</b>
+        <button id="song-rep-up" class="btn tiny" title="More repeats of the selected entry">+</button>
+        <button id="song-remove" class="btn tiny danger" title="Remove selected entry">REMOVE</button>
+      </div>
+      <div class="song-row">
+        <span class="lbl">ADD</span>
+        <button id="song-add-a" class="btn tiny" title="Append pattern A">A</button>
+        <button id="song-add-b" class="btn tiny" title="Append pattern B">B</button>
+        <button id="song-add-c" class="btn tiny" title="Append pattern C">C</button>
+        <button id="song-add-d" class="btn tiny" title="Append pattern D">D</button>
+        <button id="song-reset" class="btn tiny" title="Reset the arrangement to A A B B">RESET A-A-B-B</button>
+        <button id="song-clear" class="btn tiny danger" title="Clear the arrangement">CLEAR</button>
+      </div>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: Shift+G opens this arranger · the CHAIN A→B menu keeps working while song mode is off</span><button id="song-play" class="btn cyan">▶ PLAY SONG</button><button class="btn" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="swing-dialog">
+    <div class="dialog-head"><h2>Swing Templates &#183; Groove</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <div class="sc-cat">Presets</div>
+      <div id="swing-template-list" class="swing-grid" role="list"></div>
+      <p id="swing-current">Current: <b>—</b></p>
+    </div>
+    <div class="dialog-actions"><span style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Tip: press Shift+W anywhere &#183; click a template to audition it while the loop plays</span><button class="btn cyan" data-close>CLOSE</button></div>
   </dialog>
 
   <dialog id="preset-dialog">
@@ -1653,7 +1724,7 @@
       patch:{root:0,scale:"Minor",octave:3,attack:.01,release:.4,cutoff:7500,resonance:2,waveform:"sawtooth",velocity:.88,glide:0,padDelay:.18,padReverb:.22},
       master:{volume:.82,delay:.2,reverb:.18,drive:.08,thump:.72,punch:.48,width:1,ceiling:-1,rumble:30,safe:true},
       ui:{theme:"dark",describe:false,petVisible:false,petStyle:"bot",petMove:"bounce",petColor:"#93d23d",petSize:1,petName:"THUMP",petReact:1,petX:22,petY:40,
-        viewMode:"studio",density:"compact",engineMode:"balanced",patternChain:"off",autoTrackPads:true,synthControls:false,stepPaint:"draw",collapsed:["mixer-module"],hiddenModules:["hero-strip"],moduleSizes:{},mobilePanel:"sequencer",countIn:false,loopRepeats:0,masterMuted:false,monoCheck:false}
+        viewMode:"studio",density:"compact",engineMode:"balanced",patternChain:"off",song:{enabled:false,loop:true,sequence:[{slot:"A",repeats:2},{slot:"B",repeats:2}]},autoTrackPads:true,synthControls:false,stepPaint:"draw",collapsed:["mixer-module"],hiddenModules:["hero-strip"],moduleSizes:{},mobilePanel:"sequencer",countIn:false,loopRepeats:0,masterMuted:false,monoCheck:false}
     };
 
     const defaultTracks = () => [
@@ -1925,17 +1996,22 @@
       timing(){return {tight:{interval:18,lookAhead:.085},balanced:{interval:25,lookAhead:.13},safe:{interval:34,lookAhead:.19}}[state.ui.engineMode]||{interval:25,lookAhead:.13}}
       start(){
         if(state.playing)return;state.playing=true;state.completedLoops=0;this.loopsScheduled=0;this.hasScheduled=false;this.step=0;this.nextTime=this.engine.ctx.currentTime+.07;
+        if(songActive()){songRt.cursor=0;songRt.plays=0;const first=state.ui.song.sequence[0].slot;loadPattern(first,true);setStatus(`Song 1/${state.ui.song.sequence.length} · ${first}`)}
         this.timer=setInterval(()=>this.tick(),this.timing().interval);this.tick();updateTransport()
       }
-      stop(){state.playing=false;clearInterval(this.timer);this.timer=null;this.step=0;state.currentStep=0;clearPlayhead();updateTransport();$("#position-display").textContent="1.1.01"}
+      stop(){state.playing=false;clearInterval(this.timer);this.timer=null;this.step=0;state.currentStep=0;songRt.cursor=0;songRt.plays=0;clearPlayhead();updateTransport();$("#position-display").textContent="1.1.01"}
       tick(){
         while(this.nextTime<this.engine.ctx.currentTime+this.timing().lookAhead){
           if(this.step===0&&this.hasScheduled){
             this.loopsScheduled++;state.completedLoops=this.loopsScheduled;
-            if(state.ui.loopRepeats>0&&this.loopsScheduled>=state.ui.loopRepeats){
-              clearInterval(this.timer);this.timer=null;const wait=Math.max(0,(this.nextTime-this.engine.ctx.currentTime)*1000);setTimeout(()=>this.stop(),wait);return
+            if(songActive()){
+              if(!advanceSong(this))return
+            }else{
+              if(state.ui.loopRepeats>0&&this.loopsScheduled>=state.ui.loopRepeats){
+                clearInterval(this.timer);this.timer=null;const wait=Math.max(0,(this.nextTime-this.engine.ctx.currentTime)*1000);setTimeout(()=>this.stop(),wait);return
+              }
+              advancePatternChain()
             }
-            advancePatternChain()
           }
           const base=this.nextTime,swung=this.step%2?base+this.secondsPerStep()*state.swing:base;
           this.scheduleStep(this.step,swung);this.hasScheduled=true;this.nextTime+=this.secondsPerStep();this.step=(this.step+1)%state.stepCount
@@ -2018,16 +2094,17 @@
     const sequencer=new Sequencer(engine,showPlayhead);
     let autosaveTimer=null,visualFrame=null;
 
+    function snapshotTrackState(){return JSON.stringify({tracks:state.tracks,stepCount:state.stepCount})}
     function pushUndo(){
-      state.undo.push(JSON.stringify({tracks:state.tracks,stepCount:state.stepCount}));state.undo=state.undo.slice(-40);state.redo=[];updateUndoButtons()
+      state.undo.push(snapshotTrackState());state.undo=state.undo.slice(-40);state.redo=[];updateUndoButtons()
     }
     function undo(){
-      if(!state.undo.length)return;state.redo.push(JSON.stringify({tracks:state.tracks,stepCount:state.stepCount}));
-      const data=JSON.parse(state.undo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;engine.syncTracks();renderAll();updateUndoButtons();scheduleAutosave()
+      if(!state.undo.length)return;state.redo.push(snapshotTrackState());state.redo=state.redo.slice(-40);
+      const data=JSON.parse(state.undo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;engine.syncTracks();renderAll();updateUndoButtons();scheduleAutosave();setStatus("Undone")
     }
     function redo(){
-      if(!state.redo.length)return;state.undo.push(JSON.stringify({tracks:state.tracks,stepCount:state.stepCount}));
-      const data=JSON.parse(state.redo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;engine.syncTracks();renderAll();updateUndoButtons();scheduleAutosave()
+      if(!state.redo.length)return;state.undo.push(snapshotTrackState());state.undo=state.undo.slice(-40);
+      const data=JSON.parse(state.redo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;engine.syncTracks();renderAll();updateUndoButtons();scheduleAutosave();setStatus("Redone")
     }
     function updateUndoButtons(){$("#undo-btn").disabled=!state.undo.length;$("#redo-btn").disabled=!state.redo.length}
     function scheduleAutosave(){clearTimeout(autosaveTimer);autosaveTimer=setTimeout(()=>ProjectStore.autosave(),650)}
@@ -2035,6 +2112,7 @@
     function storeActivePattern(){state.patterns[state.activePattern]={name:state.patternName,stepCount:state.stepCount,tracks:clone(state.tracks)}}
     function loadPattern(slot,store=true){
       if(store)storeActivePattern();state.activePattern=slot;state.stepPage=0;
+      state.undo=[];state.redo=[];updateUndoButtons();
       const pattern=state.patterns[slot];if(pattern){state.patternName=pattern.name;state.stepCount=pattern.stepCount;state.tracks=clone(pattern.tracks)}
       else{state.patternName=`Pattern ${slot}`;state.tracks=defaultTracks();state.tracks.forEach(t=>t.steps.forEach(s=>s.on=false))}
       $$(".pattern-slot").forEach(btn=>btn.classList.toggle("active",btn.dataset.pattern===slot));$("#pattern-name").value=state.patternName;$("#step-count").value=state.stepCount;
@@ -2043,6 +2121,37 @@
     function advancePatternChain(){
       const chain=state.ui.patternChain;if(chain==="off")return;const slots=chain==="AB"?["A","B"]:["A","B","C","D"],current=slots.indexOf(state.activePattern),next=slots[(current<0?0:current+1)%slots.length];
       loadPattern(next,true);setStatus(`Pattern chain · ${next}`)
+    }
+    /* Feature 6: song arranger runtime — chain pattern slots into a play-in-order song arrangement */
+    const songRt={cursor:0,plays:0};
+    function songActive(){const s=state.ui.song;return !!(s&&s.enabled&&s.sequence&&s.sequence.length)}
+    function patternLabel(slot){const p=state.patterns[slot];return p&&p.name?p.name:`Pattern ${slot}`}
+    function advanceSong(seq){
+      const song=state.ui.song,rt=songRt;
+      rt.plays++;
+      const entry=song.sequence[rt.cursor],repeats=clamp(entry.repeats||1,1,8);
+      if(rt.plays<repeats){storeActivePattern();setStatus(`Song ${rt.cursor+1}/${song.sequence.length} · ${entry.slot} ×${repeats} · take ${rt.plays+1}`);return true}
+      storeActivePattern();rt.plays=0;rt.cursor++;
+      if(rt.cursor>=song.sequence.length){
+        if(song.loop){rt.cursor=0}
+        else{
+          clearInterval(seq.timer);seq.timer=null;
+          const wait=Math.max(0,(seq.nextTime-seq.engine.ctx.currentTime)*1000);
+          setTimeout(()=>seq.stop(),wait);rt.cursor=0;
+          toast("Song arrangement finished.","good");return false
+        }
+      }
+      const slot=song.sequence[rt.cursor].slot;
+      loadPattern(slot,true);
+      setStatus(`Song ${rt.cursor+1}/${song.sequence.length} · ${slot}`);
+      return true
+    }
+    function syncSongUI(){
+      const song=state.ui.song,btn=$("#song-btn");
+      if(btn){btn.classList.toggle("cyan",!!song.enabled);btn.setAttribute("aria-pressed",song.enabled?"true":"false");
+        btn.title=`Song arranger — ${song.sequence.length?`${song.sequence.length} entries, song mode ${song.enabled?"ON":"OFF"}`:"empty"} (Shift+G)`}
+      const en=$("#song-enabled");if(en){en.textContent=song.enabled?"SONG MODE: ON":"SONG MODE: OFF";en.classList.toggle("cyan",!!song.enabled);en.setAttribute("aria-pressed",song.enabled?"true":"false")}
+      const lp=$("#song-loop");if(lp){lp.textContent=song.loop?"LOOP: ON":"LOOP: OFF";lp.classList.toggle("cyan",!!song.loop);lp.setAttribute("aria-pressed",song.loop?"true":"false")}
     }
 
     function padBanks(){
@@ -2228,7 +2337,7 @@
       ["attack","release","cutoff","resonance","velocity","glide","padDelay","padReverb"].forEach(key=>{const id=key.replace(/[A-Z]/g,m=>`-${m.toLowerCase()}`);const el=$(`#${id}`);if(el)el.value=state.patch[key]});
       $("#master").value=state.master.volume;$("#delay").value=state.master.delay;$("#reverb").value=state.master.reverb;$("#drive").value=state.master.drive;$("#thump").value=state.master.thump;$("#punch").value=state.master.punch;
       $("#stereo-width").value=state.master.width??1;$("#output-ceiling").value=state.master.ceiling??-1;$("#rumble-filter").value=state.master.rumble??30;
-      $("#theme-select").value=state.ui.theme;$("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";updateOutputs();applyPetSettings();applyLayoutPrefs()
+      $("#theme-select").value=state.ui.theme;$("#engine-mode").value=state.ui.engineMode||"balanced";$("#pattern-chain").value=state.ui.patternChain||"off";updateOutputs();applyPetSettings();applyLayoutPrefs();syncSongUI()
     }
     function updateOutputs(){
       $("#octave-out").textContent=state.patch.octave;$("#attack-out").textContent=state.patch.attack.toFixed(2);$("#release-out").textContent=state.patch.release.toFixed(2);
@@ -2284,11 +2393,37 @@
         for(let i=0;i<state.stepCount;i++){const on=Math.floor((i+1)*pulses/state.stepCount)!==Math.floor(i*pulses/state.stepCount);track.steps[i]={...track.steps[i],on,velocity:on?(i%4===0?.95:.68):0,probability:1}}
       })
     }
-    function applyGroove(name){
-      const grooves={straight:0,mpc:.18,lazy:.29,drill:.035,shuffle:.36};if(!(name in grooves))return;state.swing=grooves[name];$("#swing").value=state.swing;
-      state.tracks.filter(t=>!t.lock&&t.instrument.includes("hat")).forEach(track=>track.steps.forEach((step,index)=>{if(step.on)step.velocity=index%2?.58:.82}));
-      renderTracks();scheduleAutosave();toast(`${$("#groove-preset").selectedOptions[0].textContent} groove applied.`,"good")
+    /* Feature 8: swing templates — preset grooves with timing + hat velocity pairs */
+    const SWING_TEMPLATES=[
+      {id:"straight",name:"Straight",swing:0,vel:null,desc:"Machine-grid timing; evens out hat velocities."},
+      {id:"drill",name:"Drill Tight",swing:.035,vel:[.86,.74],desc:"Barely-there pocket for UK drill and trap hats."},
+      {id:"halftime",name:"Halftime Bounce",swing:.09,vel:[.84,.68],desc:"Light bounce for halftime grooves."},
+      {id:"boombap",name:"Boom Bap",swing:.13,vel:[.82,.62],desc:"Golden-era head-nod swing."},
+      {id:"mpc",name:"MPC Pocket",swing:.18,vel:[.8,.6],desc:"Classic MPC bounce \u2014 the workhorse."},
+      {id:"dilla",name:"Dilla Slop",swing:.24,vel:[.78,.56],desc:"Off-grid slop for a drunk-drummer feel."},
+      {id:"lazy",name:"Lazy Swing",swing:.29,vel:[.76,.54],desc:"Laid-back swing with a heavy offbeat lean."},
+      {id:"shuffle",name:"Shuffle",swing:.36,vel:[.74,.52],desc:"Heavy shuffle \u2014 dotted-eighth feel."}
+    ];
+    const SWING_LEGACY_IDS=["straight","mpc","lazy","drill","shuffle"];
+    function currentSwingTemplate(){const s=Number(state.swing);return SWING_TEMPLATES.find(t=>Math.abs(t.swing-s)<.0015)||null}
+    function syncSwingCards(){
+      const cur=currentSwingTemplate(),id=cur?cur.id:null;
+      $$("#swing-template-list .swing-card").forEach(c=>c.classList.toggle("active",c.dataset.tpl===id));
+      const el=$("#swing-current");
+      if(el)el.innerHTML=`Current: <b>${cur?cur.name+" \u00B7 "+Math.round(cur.swing*100)+"%":"custom swing "+Math.round(Number(state.swing)*100)+"%"}</b>`
     }
+    function applySwingTemplate(id,opts={}){
+      const t=SWING_TEMPLATES.find(t=>t.id===id);if(!t)return;
+      if(!opts.skipUndo)pushUndo();
+      state.swing=t.swing;$("#swing").value=t.swing;
+      state.tracks.filter(tr=>!tr.lock&&tr.instrument.includes("hat")).forEach(track=>{
+        track.steps.forEach((step,i)=>{if(step.on)step.velocity=t.vel?(i%2?t.vel[1]:t.vel[0]):.82})
+      });
+      const sel=$("#groove-preset");if(sel)sel.value=SWING_LEGACY_IDS.includes(id)?id:"";
+      renderTracks();scheduleAutosave();syncSwingCards();
+      if(!opts.quiet)toast(`${t.name} groove applied \u2014 swing ${Math.round(t.swing*100)}%.`,"good")
+    }
+    function applyGroove(name){applySwingTemplate(name)}
     function applyLayoutPrefs(){
       document.body.classList.remove("view-pads","view-sequencer","density-compact");
       if(state.ui.viewMode!=="studio")document.body.classList.add(`view-${state.ui.viewMode}`);
@@ -2378,9 +2513,21 @@
     function exportProject(){const data=ProjectStore.snapshot(),name=(state.projectName||"project").toLowerCase().replace(/[^a-z0-9]+/g,"-");download(JSON.stringify(data,null,2),`${name}.neonbeat.json`,"application/json")}
     async function importProject(file){try{if(!file)throw new Error("No file selected.");if(file.size>5*1024*1024)throw new Error("Project files must be smaller than 5 MB.");const data=JSON.parse(await file.text());ProjectStore.load(data);$("#projects-dialog").close()}catch(error){toast(`Import failed: ${error.message}`,"error")}}
 
+    let tapLabelTimer=null;
     function tapTempo(){
-      const now=performance.now();state.tapTimes=state.tapTimes.filter(t=>now-t<2200);state.tapTimes.push(now);
-      if(state.tapTimes.length>1){const intervals=state.tapTimes.slice(1).map((t,i)=>t-state.tapTimes[i]),avg=intervals.reduce((a,b)=>a+b,0)/intervals.length;state.bpm=clamp(Math.round(60000/avg),40,240);$("#bpm").value=state.bpm;updateLoopTime();scheduleAutosave()}
+      const now=performance.now(),btn=$("#tap-btn");
+      if(state.tapTimes.length&&now-state.tapTimes[state.tapTimes.length-1]>2000)state.tapTimes.length=0;
+      state.tapTimes.push(now);state.tapTimes=state.tapTimes.slice(-4);
+      const n=state.tapTimes.length;
+      btn.classList.remove("tapping");void btn.offsetWidth;btn.classList.add("tapping");
+      clearTimeout(tapLabelTimer);tapLabelTimer=setTimeout(()=>{btn.textContent="TAP";btn.classList.remove("tapping")},2100);
+      if(n>1){
+        const intervals=[];for(let i=1;i<n;i++)intervals.push(state.tapTimes[i]-state.tapTimes[i-1]);
+        const avg=intervals.reduce((a,b)=>a+b,0)/intervals.length;
+        state.bpm=clamp(Math.round(60000/avg),40,240);$("#bpm").value=state.bpm;updateLoopTime();scheduleAutosave()
+      }
+      btn.innerHTML=`TAP<span class="tap-dots">${"\u25CF".repeat(n)}${"\u25CB".repeat(4-n)}</span>`;
+      setStatus(n>=4?`Tap tempo set: ${state.bpm} BPM`:`Tap tempo: ${4-n} more tap${n===3?"":"s"}&hellip;`);
       dancePet()
     }
 
@@ -2433,7 +2580,7 @@
     const ELEMENT_DESCRIPTIONS = {
       "play-btn":"Starts or pauses the loop constructor. The glowing playhead shows the active sixteenth-note step.",
       "stop-btn":"Stops playback and returns the loop to step one.","record-btn":"Enables quantized pad recording into the track whose R button is armed.",
-      bpm:"Sets tempo from 40 to 240 beats per minute.", "tap-btn":"Tap repeatedly in rhythm to calculate and set a tempo.",
+      bpm:"Sets tempo from 40 to 240 beats per minute.", "tap-btn":"Tap up to 4 times in rhythm (or press T) to set the tempo from the average of your last 4 taps.",
       "preset-select":"Loads a complete production-ready beat preset with matched instruments, pattern, tempo, swing, and bass processing.",
       "theme-select":"Switches the interface among Dark, Light, Dim, Cyber, Matrix, and Tech production styles without changing the beat.",
       "describe-btn":"Turns visual description mode on or off. In this mode every interactive region identifies its purpose on hover or focus.",
@@ -2456,7 +2603,7 @@
       "punch":"Shapes compression to preserve attack while gluing the beat together.","swing":"Delays alternating steps to create bounce and pocket.",
       "step-count":"Changes the active loop between one 16-step bar and two 16-step bars.","root-note":"Sets the tonal root used by melodic pad banks.",
       "step-page-prev":"Shows steps 1 through 16 of a 32-step pattern.","step-page-next":"Shows steps 17 through 32 of a 32-step pattern.",
-      "follow-page":"Keeps the visible sequencer page synchronized with playback.","groove-preset":"Applies a timing pocket and alternating hat velocity pattern.",
+      "follow-page":"Keeps the visible sequencer page synchronized with playback.","groove-preset":"Applies a timing pocket and alternating hat velocity pattern.","swing-btn":"Opens the swing template library \u2014 8 preset grooves (shuffle, swing, straight and more), each with a timing pocket and a matching hat-velocity pattern.",
       "count-in":"Adds one bar of audible count-in before playback begins.","loop-repeats":"Stops automatically after the chosen number of complete loops.",
       "copy-track":"Copies the selected track sound, pitch, velocity, probability, and steps.","paste-track":"Pastes the copied pattern into the selected unlocked track.",
       "mirror-track":"Reverses the selected track pattern within the active loop length.","euclid-track":"Distributes hits evenly using a Euclidean rhythm generator.",
@@ -2553,6 +2700,7 @@
         {keys:["Space"],desc:"Play / stop the loop",cat:"Transport"},
         {keys:["Shift","R"],desc:"Toggle record",cat:"Transport"},
         {keys:["M"],desc:"Toggle metronome",cat:"Transport"},
+        {keys:["T"],desc:"Tap tempo \u2014 tap up to 4\u00D7 in rhythm to set BPM",cat:"Transport"},
         {keys:["1","2","3","4"],desc:"Trigger pads 1–4",cat:"Pads"},
         {keys:["Q","W","E","R"],desc:"Trigger pads 5–8",cat:"Pads"},
         {keys:["A","S","D","F"],desc:"Trigger pads 9–12",cat:"Pads"},
@@ -2561,9 +2709,13 @@
         {keys:["↓"],desc:"Lower synth octave",cat:"Synth"},
         {keys:["Ctrl/Cmd","S"],desc:"Save project",cat:"Project"},
         {keys:["Ctrl/Cmd","E"],desc:"Bounce / export WAV",cat:"Project"},
+        {keys:["Ctrl/Cmd","Z"],desc:"Undo pattern edit",cat:"Edit"},
+        {keys:["Ctrl/Cmd","Shift","Z"],desc:"Redo pattern edit (or Ctrl/Cmd+Y)",cat:"Edit"},
         {keys:["Ctrl/Cmd","Shift","P"],desc:"Open the synth preset manager",cat:"Synth"},
         {keys:["Shift","V"],desc:"Toggle spectrum / waveform visualizer",cat:"View"},
         {keys:["Shift","S"],desc:"Open the FFT spectrum analyzer",cat:"View"},
+        {keys:["Shift","G"],desc:"Open the song arranger (chain patterns into a song)",cat:"Arrange"},
+        {keys:["Shift","W"],desc:"Open swing templates \u2014 apply shuffle, swing or straight grooves",cat:"Edit"},
         {keys:["Ctrl/Cmd","/"],desc:"Open this shortcut cheatsheet",cat:"Help"}
       ];
       function renderShortcutCheatsheet(){
@@ -2748,10 +2900,98 @@
       $("#spec-smooth").addEventListener("input",e=>{specana.smoothing=Number(e.target.value)/100;saveSpecana()});
       document.addEventListener("keydown",e=>{
         if(e.target.matches("input,select")||e.repeat)return;const key=e.key.toLowerCase(),index=PAD_KEYS.indexOf(key),modified=e.ctrlKey||e.metaKey||e.altKey||e.shiftKey;
-        if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}
-        if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}
+        if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}if(key==="t"&&!modified){e.preventDefault();tapTempo()}
+        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}
         if(e.key==="ArrowUp"){state.patch.octave=clamp(state.patch.octave+1,1,6);syncAllUI();renderPads()}if(e.key==="ArrowDown"){state.patch.octave=clamp(state.patch.octave-1,1,6);syncAllUI();renderPads()}
       });
+      /* Feature 6: song arranger — chain pattern slots into a play-in-order song arrangement */
+      const SONG_SLOTS=["A","B","C","D"];
+      let songSel=0;
+      function renderSongSel(){
+        const song=state.ui.song,entry=song.sequence[songSel];
+        $("#song-sel-label").textContent=entry?`ENTRY ${songSel+1}: PATTERN ${entry.slot}`:"ENTRY —";
+        $("#song-rep-label").textContent=entry?`×${clamp(entry.repeats||1,1,8)}`:"×–";
+        ["#song-move-left","#song-move-right","#song-rep-down","#song-rep-up","#song-remove"].forEach(id=>{$(id).disabled=!entry})
+      }
+      function renderSongSequence(){
+        const song=state.ui.song,wrap=$("#song-sequence");wrap.replaceChildren();
+        if(!song.sequence.length){const p=document.createElement("p");p.style.cssText="color:var(--muted);font:9px var(--mono);margin:2px";p.textContent="Empty — add pattern slots below to build your arrangement.";wrap.append(p)}
+        song.sequence.forEach((entry,i)=>{
+          const chip=document.createElement("button");chip.type="button";
+          chip.className="song-chip"+(i===songSel?" selected":"");
+          chip.setAttribute("role","option");chip.setAttribute("aria-selected",i===songSel?"true":"false");
+          chip.setAttribute("aria-label",`Arrangement entry ${i+1}: pattern ${entry.slot}${entry.repeats>1?`, repeated ${entry.repeats} times`:""}`);
+          const idx=document.createElement("span");idx.className="song-idx";idx.textContent=`${i+1}`;
+          const slot=document.createElement("span");slot.className="song-slot";slot.textContent=entry.slot;
+          const nm=document.createElement("span");nm.className="song-nm";nm.textContent=patternLabel(entry.slot);nm.title=patternLabel(entry.slot);
+          chip.append(idx,slot,nm);
+          if(entry.repeats>1){const rep=document.createElement("span");rep.className="song-rep";rep.textContent=`×${entry.repeats}`;chip.append(rep)}
+          chip.addEventListener("click",()=>{songSel=i;renderSongSequence()});
+          wrap.append(chip)
+        });
+        renderSongSel()
+      }
+      function setSongEnabled(on){
+        const song=state.ui.song;
+        if(on&&!song.sequence.length){toast("Add pattern slots to the arrangement first.","warn");return}
+        song.enabled=on;scheduleAutosave();syncSongUI();
+        toast(on?`Song mode on — ${song.sequence.length} entr${song.sequence.length===1?"y":"ies"} play in order.`:"Song mode off.","good")
+      }
+      function openSongArranger(){
+        songSel=clamp(songSel,0,Math.max(0,state.ui.song.sequence.length-1));
+        renderSongSequence();syncSongUI();
+        const dlg=$("#song-dialog");if(!dlg.open)dlg.showModal()
+      }
+      function mutateSong(fn){fn();songSel=clamp(songSel,0,Math.max(0,state.ui.song.sequence.length-1));renderSongSequence();syncSongUI();scheduleAutosave()}
+      $("#song-btn").addEventListener("click",openSongArranger);
+      $("#song-enabled").addEventListener("click",()=>setSongEnabled(!state.ui.song.enabled));
+      $("#song-loop").addEventListener("click",()=>{state.ui.song.loop=!state.ui.song.loop;syncSongUI();scheduleAutosave()});
+      SONG_SLOTS.forEach(slot=>$("#song-add-"+slot.toLowerCase()).addEventListener("click",()=>{mutateSong(()=>{state.ui.song.sequence.push({slot,repeats:1});songSel=state.ui.song.sequence.length-1});toast(`Pattern ${slot} added to the arrangement.`,"good")}));
+      $("#song-reset").addEventListener("click",()=>mutateSong(()=>{state.ui.song.sequence=[{slot:"A",repeats:2},{slot:"B",repeats:2}]}));
+      $("#song-clear").addEventListener("click",()=>mutateSong(()=>{state.ui.song.sequence=[];if(state.ui.song.enabled)setSongEnabled(false)}));
+      $("#song-remove").addEventListener("click",()=>mutateSong(()=>state.ui.song.sequence.splice(songSel,1)));
+      $("#song-move-left").addEventListener("click",()=>mutateSong(()=>{const s=state.ui.song.sequence;if(songSel>0){[s[songSel-1],s[songSel]]=[s[songSel],s[songSel-1]];songSel--}}));
+      $("#song-move-right").addEventListener("click",()=>mutateSong(()=>{const s=state.ui.song.sequence;if(songSel<s.length-1){[s[songSel+1],s[songSel]]=[s[songSel],s[songSel+1]];songSel++}}));
+      $("#song-rep-down").addEventListener("click",()=>mutateSong(()=>{const e=state.ui.song.sequence[songSel];if(e)e.repeats=clamp((e.repeats||1)-1,1,8)}));
+      $("#song-rep-up").addEventListener("click",()=>mutateSong(()=>{const e=state.ui.song.sequence[songSel];if(e)e.repeats=clamp((e.repeats||1)+1,1,8)}));
+      $("#song-play").addEventListener("click",()=>{
+        const song=state.ui.song;
+        if(!song.sequence.length){toast("Add pattern slots to the arrangement first.","warn");return}
+        if(!song.enabled)setSongEnabled(true);
+        $("#song-dialog").close();
+        if(!state.playing)togglePlay()
+      });
+
+      /* Feature 8: swing templates — groove preset library dialog */
+      function swingSVG(t){
+        const w=132,h=26,sw=w/16;let ticks="";
+        for(let i=0;i<16;i++){const x=(i*sw+(i%2?t.swing*sw:0)).toFixed(1),beat=i%4===0;
+          ticks+=`<line x1="${x}" y1="${i%2?8:4}" x2="${x}" y2="${h-4}" stroke-width="${beat?2.4:1.6}"${beat?' style="stroke:var(--amber)"':""}/>`}
+        return `<svg class="swing-svg" viewBox="0 0 ${w} ${h}" aria-hidden="true">${ticks}</svg>`
+      }
+      function renderSwingCards(){
+        const wrap=$("#swing-template-list");wrap.replaceChildren();
+        SWING_TEMPLATES.forEach(t=>{
+          const b=document.createElement("button");b.type="button";b.className="swing-card";b.dataset.tpl=t.id;
+          b.setAttribute("role","listitem");
+          b.setAttribute("aria-label",`${t.name} swing template, ${Math.round(t.swing*100)} percent`);
+          const head=document.createElement("span");head.className="sw-name";
+          const nm=document.createElement("span");nm.textContent=t.name;head.append(nm);
+          const pct=document.createElement("span");pct.className="swing-pct";pct.textContent=`${Math.round(t.swing*100)}%`;head.append(pct);
+          const desc=document.createElement("span");desc.className="sw-desc";desc.textContent=t.desc;
+          const svg=document.createElement("span");svg.innerHTML=swingSVG(t);
+          b.append(head,svg,desc);
+          b.addEventListener("click",()=>applySwingTemplate(t.id));
+          wrap.append(b)
+        });
+        syncSwingCards()
+      }
+      function openSwingTemplates(){
+        renderSwingCards();
+        const dlg=$("#swing-dialog");if(!dlg.open)dlg.showModal()
+      }
+      $("#swing-btn").addEventListener("click",openSwingTemplates);
+
       addEventListener("beforeunload",()=>ProjectStore.autosave())
     }
 
@@ -3152,7 +3392,7 @@
       $$('[data-sound-filter]').forEach(button=>button.addEventListener("click",()=>{libraryFilter=button.dataset.soundFilter;renderPackDock()}));$("#sound-favorite").addEventListener("click",()=>toggleFavorite());$("#sound-preview").addEventListener("click",()=>previewLibrarySound());$("#sound-load").addEventListener("click",()=>{if(selectedLibrarySound)assignSoundToTrack(selectedOrFirstTrack(),selectedLibrarySound,true)});$("#surprise-sound").addEventListener("click",()=>{if(!currentVisibleSounds.length)return;const sound=currentVisibleSounds[Math.floor(Math.random()*currentVisibleSounds.length)];selectLibrarySound(sound,true);$$('.sound-chip').find(chip=>chip.dataset.soundId===soundId(sound))?.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"})});$("#audition-level").addEventListener("input",event=>$("#audition-level-out").textContent=`${Math.round(Number(event.target.value)*100)}%`);
       $("#layout-manager-btn").addEventListener("click",()=>{renderLayoutManager();$("#layout-drawer").hidden=false});$("#layout-close").addEventListener("click",()=>$("#layout-drawer").hidden=true);$("#reset-layout").addEventListener("click",()=>{state.ui.hiddenModules=[];state.ui.moduleSizes={};$$(".user-resizable").forEach(panel=>{panel.style.width="";panel.style.height=""});applyLayoutPrefs();renderLayoutManager();scheduleAutosave();toast("Panel layout reset.","good")});
       $$("#mobile-dock button").forEach(button=>button.addEventListener("click",()=>{state.ui.mobilePanel=button.dataset.mobilePanel;applyLayoutPrefs();scheduleAutosave()}));
-      ["duplicate-pattern","clear-pattern","randomize-pattern","add-track","clear-steps","humanize","fill-hats","double-pattern","copy-track","paste-track","mirror-track","euclid-track","rotate-left","rotate-right"].forEach(id=>{const el=$("#"+id);if(el&&!el.getAttribute("aria-label"))el.setAttribute("aria-label",el.title||el.textContent.trim())});
+      ["undo-btn","redo-btn","duplicate-pattern","clear-pattern","randomize-pattern","add-track","clear-steps","humanize","fill-hats","double-pattern","copy-track","paste-track","mirror-track","euclid-track","rotate-left","rotate-right"].forEach(id=>{const el=$("#"+id);if(el&&!el.getAttribute("aria-label"))el.setAttribute("aria-label",el.title||el.textContent.trim())});
       $("#pad-auto-track").addEventListener("click",()=>{state.ui.autoTrackPads=!state.ui.autoTrackPads;applyWorkflowState();scheduleAutosave();toast(state.ui.autoTrackPads?"Auto Track will create or reuse a lane for each recorded pad sound.":"Pad recording will use only the manually armed track.","good")});
       $("#reset-pad-bank").addEventListener("click",resetCurrentPadBank);$("#synth-controls-toggle").addEventListener("click",()=>{state.ui.synthControls=!state.ui.synthControls;applyWorkflowState();scheduleAutosave()});
       $("#step-paint-mode").addEventListener("click",()=>{state.ui.stepPaint={draw:"accent",accent:"erase",erase:"draw"}[state.ui.stepPaint||"draw"];applyWorkflowState();scheduleAutosave()});
