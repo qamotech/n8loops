@@ -238,6 +238,15 @@
     .sw-name{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:700}
     .swing-pct{font:700 9px var(--mono);color:var(--amber)}
     .swing-svg{width:100%;height:26px;color:var(--cyan)}
+    .tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+    .tpl-name{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--text)}
+    .tpl-icon{font-size:19px}
+    .tpl-desc{font:9px/1.55 var(--mono);color:var(--muted)}
+    .tpl-meta{display:flex;gap:7px;flex-wrap:wrap;font:700 8.5px var(--mono);color:var(--muted)}
+    .tpl-meta b{color:var(--cyan);font-weight:700}
+    .tpl-slots{display:grid;gap:2px;font:9px/1.5 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:7px}
+    .tpl-slots b{color:var(--amber);font-weight:700;margin-right:5px}
+    .tpl-cur{font:700 8px var(--mono);color:var(--green);border:1px solid var(--green);border-radius:4px;padding:1px 5px;margin-left:auto}
     .sw-desc{color:var(--muted);font:8px/1.5 var(--mono)}
     #swing-current{color:var(--muted);font:9px var(--mono);margin:10px 0 0}
     #swing-current b{color:var(--cyan)}
@@ -283,7 +292,7 @@
     .spec-range{width:120px;accent-color:var(--cyan)}
     .spec-controls .btn.active{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 10px rgba(66,232,198,.25)}
     .help-card{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025)}.help-card b{font-size:10px}.help-card p{color:var(--muted);font:9px/1.5 var(--mono);margin:5px 0 0}
-    .project-list{display:grid;gap:7px}.qs-list{display:grid;gap:7px}.qs-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015)}.qs-num{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#0ff,#7af);color:#001318;font:700 12px var(--mono);flex:none}.qs-row.qs-empty .qs-num{background:transparent;border:1px dashed var(--line);color:var(--muted)}.qs-meta{min-width:0;flex:1}.qs-meta b{display:block;font:600 11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qs-meta time,.qs-meta span.sub{display:block;color:var(--muted);font:8px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qs-key{font:8px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 5px;flex:none}.fx-list{display:grid;gap:8px}.fx-card{display:grid;grid-template-columns:28px 54px 32px minmax(110px,1fr) minmax(120px,160px) 62px;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-left:3px solid var(--fx,#0ff);border-radius:10px;background:rgba(255,255,255,.015)}.fx-card.fx-off{opacity:.5}.fx-pos{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.06);font:700 11px var(--mono);color:var(--muted)}.fx-power{font:700 9px var(--mono);padding:6px 0;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.fx-power.on{color:#001318;background:linear-gradient(135deg,#0ff,#7af);border-color:transparent;box-shadow:0 0 10px rgba(0,255,255,.35)}.fx-icon{font-size:19px;text-align:center}.fx-meta{min-width:0}.fx-meta b{display:block;font:600 11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fx-meta span{display:block;color:var(--muted);font:8px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fx-mix label{display:flex;justify-content:space-between;color:var(--muted);font:7px var(--mono);margin-bottom:2px}.fx-mix input{width:100%}.fx-move{display:flex;gap:4px}.fx-flow{font:9px/1.7 var(--mono);color:var(--muted);margin:0 0 10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}.fx-flow b{color:var(--cyan)}.fx-flow s{opacity:.55}.project-row{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:10px}.project-row time{color:var(--muted);font:8px var(--mono);margin-left:auto}
+    .project-list{display:grid;gap:7px}.qs-list{display:grid;gap:7px}.qs-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015)}.qs-num{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#0ff,#7af);color:#001318;font:700 12px var(--mono);flex:none}.qs-row.qs-empty .qs-num{background:transparent;border:1px dashed var(--line);color:var(--muted)}.qs-meta{min-width:0;flex:1}.qs-meta b{display:block;font:600 11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qs-meta time,.qs-meta span.sub{display:block;color:var(--muted);font:8px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qs-key{font:8px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 5px;flex:none}.fx-list{display:grid;gap:8px}.fx-card{display:grid;grid-template-columns:28px 54px 32px minmax(110px,1fr) minmax(120px,160px) 62px;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-left:3px solid var(--fx,#0ff);border-radius:10px;background:rgba(255,255,255,.015)}.fx-card.fx-off{opacity:.5}.fx-pos{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.06);font:700 11px var(--mono);color:var(--muted)}.fx-power{font:700 9px var(--mono);padding:6px 0;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.fx-power.on{color:#001318;background:linear-gradient(135deg,#0ff,#7af);border-color:transparent;box-shadow:0 0 10px rgba(0,255,255,.35)}.fx-icon{font-size:19px;text-align:center}.fx-meta{min-width:0}.fx-meta b{display:block;font:600 11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fx-meta span{display:block;color:var(--muted);font:8px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fx-mix label{display:flex;justify-content:space-between;color:var(--muted);font:7px var(--mono);margin-bottom:2px}.fx-mix input{width:100%}.fx-move{display:flex;gap:4px}.fx-flow{font:9px/1.7 var(--mono);color:var(--muted);margin:0 0 10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}.fx-flow b{color:var(--cyan)}.fx-flow s{opacity:.55}.stem-list{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow:auto;padding-right:2px}.stem-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(0,255,255,.025)}.stem-dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 8px currentColor}.stem-name{font:700 10px var(--mono);color:#fff;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stem-muted{color:#ff5470;font-size:8px;margin-left:6px}.stem-meta{font:8px var(--mono);color:var(--muted);flex:none}.stem-row .btn{flex:none}.stem-status{margin-top:8px;font:8px var(--mono);color:var(--muted)}.stem-status span{color:var(--cyan)}.project-row{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:10px}.project-row time{color:var(--muted);font:8px var(--mono);margin-left:auto}
     #toast-stack{position:fixed;z-index:1200;right:14px;bottom:14px;width:min(340px,calc(100vw - 28px));display:grid;gap:7px;pointer-events:none}
     .toast{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:rgba(20,22,32,.95);box-shadow:0 18px 50px #000;backdrop-filter:blur(18px);font:9px/1.45 var(--mono);animation:toast-in .2s ease}
     .toast.good{border-color:rgba(101,242,163,.4)}.toast.warn{border-color:rgba(255,196,94,.42)}.toast.error{border-color:rgba(255,102,124,.5)}
@@ -431,12 +440,32 @@
     /* Sounds + FX Library Upgrade */
     #bmore-library{min-height:230px;max-height:300px}
     #sound-filter-bar{display:flex;align-items:center;gap:4px;min-width:0;overflow-x:auto;padding:1px 0;scrollbar-width:thin}#sound-filter-bar .btn{flex:0 0 auto;height:25px;font-size:7px;padding:0 8px}#sound-filter-bar .btn.active{color:#07100d;background:var(--cyan);border-color:transparent}.sound-result-count{margin-left:auto;flex:0 0 auto;color:var(--muted);font:7px var(--mono);padding:0 4px}
-    #sound-inspector{display:grid;grid-template-columns:76px minmax(110px,1fr) auto auto minmax(105px,150px) auto auto;align-items:center;gap:6px;padding:6px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.12);min-width:0}.sound-wave{height:29px;display:flex;align-items:center;justify-content:center;gap:2px;padding:4px;border-radius:7px;background:rgba(0,0,0,.18);overflow:hidden}.sound-wave i{width:3px;height:var(--wave-height,40%);border-radius:4px;background:var(--cyan);box-shadow:0 0 5px color-mix(in srgb,var(--cyan) 55%,transparent);transform-origin:center}.sound-wave.playing i{animation:library-wave .44s ease-in-out infinite alternate;animation-delay:calc(var(--wave-index)*-35ms)}@keyframes library-wave{to{height:calc(100% - 4px);filter:hue-rotate(32deg)}}.sound-info{min-width:0}.sound-info b,.sound-info small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sound-info b{font-size:9px}.sound-info small{margin-top:2px;color:var(--muted);font:7px var(--mono)}#sound-favorite{font-size:14px;color:var(--amber)}.audition-level{width:122px}.audition-level label{display:flex;justify-content:space-between;color:var(--muted);font:7px var(--mono);margin-bottom:2px}.audition-level input{width:100%}
+    #sound-inspector{display:grid;grid-template-columns:76px minmax(110px,1fr) auto auto minmax(105px,150px) auto auto auto auto;align-items:center;gap:6px;padding:6px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.12);min-width:0}.sound-wave{height:29px;display:flex;align-items:center;justify-content:center;gap:2px;padding:4px;border-radius:7px;background:rgba(0,0,0,.18);overflow:hidden}.sound-wave i{width:3px;height:var(--wave-height,40%);border-radius:4px;background:var(--cyan);box-shadow:0 0 5px color-mix(in srgb,var(--cyan) 55%,transparent);transform-origin:center}.sound-wave.playing i{animation:library-wave .44s ease-in-out infinite alternate;animation-delay:calc(var(--wave-index)*-35ms)}@keyframes library-wave{to{height:calc(100% - 4px);filter:hue-rotate(32deg)}}.sound-info{min-width:0}.sound-info b,.sound-info small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sound-info b{font-size:9px}.sound-info small{margin-top:2px;color:var(--muted);font:7px var(--mono)}#sound-favorite{font-size:14px;color:var(--amber)}.audition-level{width:122px}.audition-level label{display:flex;justify-content:space-between;color:var(--muted);font:7px var(--mono);margin-bottom:2px}.audition-level input{width:100%}
     .sound-chip{padding-right:48px;min-width:100px}.sound-chip.selected{border-color:var(--cyan);box-shadow:0 0 0 1px color-mix(in srgb,var(--cyan) 52%,transparent),0 0 18px color-mix(in srgb,var(--cyan) 14%,transparent)}.sound-chip .sound-fav{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:18px;height:18px;display:grid;place-items:center;border-radius:5px;color:var(--muted);font-size:12px;cursor:pointer}.sound-chip .sound-fav:hover,.sound-chip .sound-fav.on{color:var(--amber);background:rgba(255,255,255,.08)}.sound-chip .sound-type{position:absolute;right:24px;top:50%;transform:translateY(-50%);color:var(--muted);font:6px var(--mono);pointer-events:none}.sound-chip.previewing{animation:sound-chip-pulse .36s ease}@keyframes sound-chip-pulse{50%{filter:brightness(1.45);transform:translateY(-1px)}}
-    @media(max-width:1100px){#sound-inspector{grid-template-columns:64px minmax(100px,1fr) auto auto auto}.audition-level{display:none}#sound-load{grid-column:auto}.sound-wave{height:27px}}
-    @media(max-width:900px){#bmore-library{min-height:0;max-height:none}#sound-filter-bar{grid-area:filters}.pack-row{grid-template-areas:"label pack" "search search" "dock dock"}#sound-inspector{grid-template-columns:58px minmax(90px,1fr) auto auto;position:sticky;bottom:0;z-index:5;background:var(--panel)}#audition-mode{display:none}#sound-load{font-size:0;width:32px;padding:0}#sound-load::before{content:"＋";font-size:13px}#sound-preview{font-size:0;width:32px;padding:0}#sound-preview::before{content:"▶";font-size:11px}}
-    @media(max-width:560px){#sound-filter-bar .btn{height:27px}.sound-result-count{display:none}#sound-inspector{grid-template-columns:46px minmax(76px,1fr) 30px 30px 30px;gap:4px;padding:4px}#sound-favorite{width:30px}.sound-info b{font-size:8px}.sound-info small{font-size:6px}.sound-wave{height:25px}.sound-chip{min-width:108px}}
+    @media(max-width:1100px){#sound-inspector{grid-template-columns:64px minmax(100px,1fr) auto auto auto auto auto}.audition-level{display:none}#sound-load{grid-column:auto}.sound-wave{height:27px}}
+    @media(max-width:900px){#bmore-library{min-height:0;max-height:none}#sound-filter-bar{grid-area:filters}.pack-row{grid-template-areas:"label pack" "search search" "dock dock"}#sound-inspector{grid-template-columns:58px minmax(90px,1fr) auto auto auto auto;position:sticky;bottom:0;z-index:5;background:var(--panel)}#audition-mode{display:none}#sound-load{font-size:0;width:32px;padding:0}#sound-load::before{content:"＋";font-size:13px}#sound-preview{font-size:0;width:32px;padding:0}#sound-preview::before{content:"▶";font-size:11px}}
+    @media(max-width:560px){#sound-filter-bar .btn{height:27px}.sound-result-count{display:none}#sound-inspector{grid-template-columns:46px minmax(76px,1fr) 30px 30px 30px 30px 30px;gap:4px;padding:4px}#sound-favorite{width:30px}#preview-mode{font-size:0;width:30px;padding:0}#preview-mode::before{content:"◉";font-size:11px}#hover-preview-btn{font-size:0;width:30px;padding:0}#hover-preview-btn::before{content:"✋";font-size:11px}.sound-info b{font-size:8px}.sound-info small{font-size:6px}.sound-wave{height:25px}.sound-chip{min-width:108px}}
 
+  
+    .auto-blurb{color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 10px}
+    .auto-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+    .auto-top label{font:700 9px var(--mono);color:var(--muted)}
+    #auto-track{background:#0b0f16;border:1px solid var(--line);border-radius:8px;color:var(--ink);font:600 10px var(--mono);padding:7px 9px;max-width:170px}
+    .auto-tabs{display:flex;gap:6px;flex-wrap:wrap}
+    .auto-tab{display:inline-flex;align-items:center;gap:6px;font:700 9px var(--mono);padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+    .auto-tab.cyan{color:#001318;background:linear-gradient(135deg,#0ff,#7af);border-color:transparent}
+    .auto-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(255,255,255,.25);flex:none}
+    #auto-canvas{width:100%;height:180px;display:block;border:1px solid var(--line);border-radius:10px;background:#070a10;cursor:crosshair;touch-action:none}
+    .auto-status{display:flex;justify-content:space-between;gap:8px;margin:8px 0;font:700 9px var(--mono);color:var(--muted)}
+    #auto-readout{color:var(--ink)}
+    .auto-actions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+    .auto-actions .btn{font:700 9px var(--mono);padding:7px 10px}
+    .auto-actions .btn:disabled{opacity:.35;cursor:default}
+    .auto-lanes{display:flex;gap:6px;flex-wrap:wrap;min-height:26px}
+    .auto-chip{display:inline-flex;align-items:center;gap:6px;font:700 9px var(--mono);padding:6px 9px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);cursor:pointer}
+    .auto-chip.sel{border-color:#0ff}
+    .auto-x{color:var(--muted);font-weight:700}
+    .auto-chip:hover .auto-x{color:#ff5d5d}
   </style>
 </head>
 <body data-theme="dark" class="synth-controls-closed">
@@ -497,8 +526,8 @@
       <div class="top-actions">
         <button id="save-btn" class="btn"><span>SAVE</span> ◇</button>
         <button id="projects-btn" class="btn"><span>PROJECTS</span> ▤</button>
-        <button id="bounce-btn" class="btn cyan"><span>BOUNCE WAV</span> ⇩</button>
-        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button><button id="chordgen-btn" class="btn icon" aria-label="Chord generator" title="Chord generator (Shift+C)">🎹</button><button id="quicksave-btn" class="btn icon" aria-label="Quick-save slots" title="Quick-save slots — Shift+1–4 saves, Ctrl/Cmd+1–4 loads">💾</button><button id="fxchain-btn" class="btn icon" aria-label="FX chain" title="FX chain — reorderable distortion, chorus, delay, reverb (Shift+X)">⛓️</button>
+        <button id="bounce-btn" class="btn cyan"><span>BOUNCE WAV</span> ⇩</button><button id="stems-btn" class="btn icon" aria-label="Export stems" title="Export stems — render each track as a separate WAV file (Shift+E)">🎚️</button><button id="templates-btn" class="btn icon" aria-label="Project templates" title="Project templates — start a fresh project from a house, hip-hop, ambient or techno starter (Shift+N)">📁</button>
+        <button id="help-btn" class="btn icon" aria-label="Help">?</button><button id="shortcuts-btn" class="btn icon" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (Ctrl+/)">⌨</button><button id="presets-btn" class="btn icon" aria-label="Synth presets" title="Synth presets (Ctrl+Shift+P)">🎛</button><button id="viz-mode-btn" class="btn tiny viz-mode-btn" aria-label="Toggle visualizer mode" title="Toggle spectrum / waveform view (Shift+V)" aria-pressed="false">≋ WAVE</button><button id="spectrum-btn" class="btn icon" aria-label="Spectrum analyzer" title="Spectrum analyzer (Shift+S)">📊</button><button id="swing-btn" class="btn icon" aria-label="Swing templates" title="Swing templates (Shift+W)">🌀</button><button id="chordgen-btn" class="btn icon" aria-label="Chord generator" title="Chord generator (Shift+C)">🎹</button><button id="quicksave-btn" class="btn icon" aria-label="Quick-save slots" title="Quick-save slots — Shift+1–4 saves, Ctrl/Cmd+1–4 loads">💾</button><button id="fxchain-btn" class="btn icon" aria-label="FX chain" title="FX chain — reorderable distortion, chorus, delay, reverb (Shift+X)">⛓️</button><button id="auto-btn" class="btn icon" aria-label="Automation lanes" title="Automation lanes — draw per-step volume, cutoff, pan, delay, reverb motion (Shift+A)">📈</button>
       </div>
     </header>
 
@@ -677,7 +706,7 @@
           <button id="sound-favorite" class="btn icon tiny" aria-label="Favorite selected sound" title="Save or remove this sound from Favorites">☆</button>
           <select id="audition-mode" class="compact-select" aria-label="Library audition character"><option value="clean">AUDITION · CLEAN</option><option value="punch">AUDITION · PUNCH</option><option value="space">AUDITION · SPACE</option><option value="lofi">AUDITION · LO-FI</option></select>
           <div class="audition-level"><label for="audition-level"><span>PREVIEW LEVEL</span><output id="audition-level-out">78%</output></label><input id="audition-level" type="range" min=".2" max="1" value=".78" step=".01"></div>
-          <button id="sound-preview" class="btn tiny cyan" title="Preview the selected sound">▶ PREVIEW</button>
+          <button id="preview-mode" class="btn tiny" aria-pressed="false" title="Preview style: one-shot hit, or the sound's suggested loop at the current BPM (P)">◉ ONE-SHOT</button><button id="hover-preview-btn" class="btn tiny" aria-pressed="false" title="Hover any library chip for 300 ms to auto-preview it (Shift+H)">✋ HOVER</button><button id="sound-preview" class="btn tiny cyan" title="Preview the selected sound">▶ PREVIEW</button>
           <button id="sound-load" class="btn tiny" title="Load the selected sound and its suggested loop on the selected track">＋ LOAD TO TRACK</button>
         </div>
       </div>
@@ -1547,6 +1576,7 @@
         <div class="help-card"><b>Pattern chain</b><p>Chain A→B or A→B→C→D to audition longer arrangements without manually switching pattern slots. For full song control, open the Song Arranger (Shift+G) to build a play-in-order sequence with per-entry repeats.</p></div>
         <div class="help-card"><b>Swing templates</b><p>Open the swing template library (Shift+W or the 🌀 toolbar button) to audition grooves like MPC Pocket, Dilla Slop, Lazy Swing and Shuffle. Each template sets the swing amount plus a matching hat-velocity pattern, and the velocity edit is undoable.</p></div>
         <div class="help-card"><b>Chord generator</b><p>Press Shift+C (or the 🎹 toolbar button) for one-click chord stabs: pick a root note, one of 12 chord types and a stab rhythm, preview it, then write it to a new track or the selected track. The write is undoable.</p></div>
+        <div class="help-card"><b>Automation lanes</b><p>Press Shift+A (or the 📈 toolbar button) to draw per-step motion for volume, cutoff, pan, delay or reverb on any track. Lanes are stored per pattern slot (A–D) and are included in WAV bounces.</p></div><div class="help-card"><b>Sample preview</b><p>Click any library chip to audition it before loading. Toggle LOOP (P) to hear the sound’s suggested loop at the current BPM, or HOVER (Shift+H) to audition chips by hovering over them.</p></div><div class="help-card"><b>Export stems</b><p>Press Shift+E (or the &#127912; toolbar button) to render every track of the active pattern as its own stereo WAV stem — levels, panning, automation lanes and delay/reverb sends included.</p></div><div class="help-card"><b>Project templates</b><p>Press Shift+N (or the &#128193; toolbar button) to start a fresh project from a genre starter — Warehouse Four (house), Block Party Boom (hip-hop), Slow Bloom (ambient) or Acid Warehouse (techno). Each template fills all four pattern slots with matched grooves, tempo, swing and mix, ready to tweak.</p></div>
         <div class="help-card"><b>Shortcuts</b><p>Space play/stop · Shift+R record · M metronome (Shift+M click settings) · Ctrl/Cmd+S save · Ctrl/Cmd+E bounce · Ctrl/Cmd+Z undo · arrows change octave. Press Ctrl+/ for the full searchable shortcut cheatsheet.</p></div>
       </div>
     </div>
@@ -1705,6 +1735,51 @@
       <div id="fxchain-list" class="fx-list"></div>
     </div>
     <div class="dialog-actions"><button id="fxchain-reset" class="btn">RESET CHAIN</button><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="automation-dialog">
+    <div class="dialog-head"><h2>Automation Lanes</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p class="auto-blurb">Draw per-step parameter motion for any track. Lanes live inside the <b>pattern</b> — each slot A–D keeps its own automation — and play back with the loop (the offline WAV bounce follows the same curves).</p>
+      <div class="auto-top">
+        <label id="auto-pattern-label">PATTERN A</label>
+        <select id="auto-track" aria-label="Track"></select>
+        <div id="auto-param-tabs" class="auto-tabs" role="tablist"></div>
+      </div>
+      <canvas id="auto-canvas" width="640" height="180" aria-label="Automation lane editor"></canvas>
+      <div class="auto-status"><span id="auto-readout"></span><span id="auto-hint">DRAG TO DRAW · HOVER FOR VALUES</span></div>
+      <div class="auto-actions">
+        <button id="auto-add" class="btn">ADD LANE</button>
+        <button id="auto-flat" class="btn">FLAT</button>
+        <button id="auto-rampup" class="btn">RAMP ↑</button>
+        <button id="auto-rampdn" class="btn">RAMP ↓</button>
+        <button id="auto-sine" class="btn">SINE</button>
+        <button id="auto-random" class="btn">RANDOM</button>
+        <button id="auto-toggle" class="btn">TURN ON</button>
+        <button id="auto-delete" class="btn">DELETE</button>
+      </div>
+      <div id="auto-lane-list" class="auto-lanes"></div>
+    </div>
+    <div class="dialog-actions"><button class="btn cyan" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="stems-dialog">
+    <div class="dialog-head"><h2>Export Stems</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p style="color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 10px">Render each track of the active pattern as its own <b style="color:var(--cyan)">stereo WAV stem</b> — track level, panning, automation lanes and the track's delay/reverb sends are baked in. Muted tracks are excluded from RENDER ALL.</p>
+      <div id="stem-list" class="stem-list"></div>
+      <div class="stem-status">STATUS · <span id="stem-status-text">READY</span></div>
+    </div>
+    <div class="dialog-actions"><button id="stems-render-all" class="btn cyan">RENDER ALL + DOWNLOAD</button><button class="btn" data-close>CLOSE</button></div>
+  </dialog>
+
+  <dialog id="templates-dialog">
+    <div class="dialog-head"><h2>Project Templates</h2><button class="btn icon" data-close>×</button></div>
+    <div class="dialog-body">
+      <p style="color:var(--muted);font:9px/1.55 var(--mono);margin:0 0 13px">Start a fresh project from a genre starter. Each template fills <b style="color:var(--cyan)">all four pattern slots (A–D)</b> with matched grooves, tempo, swing and mix — ready to tweak. The current pattern stays on the undo stack; quick-save (Shift+1) first if you want the whole project back.</p>
+      <div id="tpl-list" class="tpl-grid"></div>
+    </div>
+    <div class="dialog-actions"><span id="tpl-status" style="color:var(--muted);font-size:11px;margin-right:auto;align-self:center">Pick a starter</span><button class="btn cyan" data-close>CLOSE</button></div>
   </dialog>
 
   <dialog id="pet-dialog">
@@ -2100,7 +2175,7 @@
         if(songActive()){songRt.cursor=0;songRt.plays=0;const first=state.ui.song.sequence[0].slot;loadPattern(first,true);setStatus(`Song 1/${state.ui.song.sequence.length} · ${first}`)}
         this.timer=setInterval(()=>this.tick(),this.timing().interval);this.tick();updateTransport()
       }
-      stop(){state.playing=false;clearInterval(this.timer);this.timer=null;this.step=0;state.currentStep=0;songRt.cursor=0;songRt.plays=0;clearPlayhead();updateTransport();$("#position-display").textContent="1.1.01"}
+      stop(){state.playing=false;clearInterval(this.timer);this.timer=null;this.step=0;state.currentStep=0;songRt.cursor=0;songRt.plays=0;clearPlayhead();engine.syncTracks();updateTransport();$("#position-display").textContent="1.1.01"}
       tick(){
         while(this.nextTime<this.engine.ctx.currentTime+this.timing().lookAhead){
           if(this.step===0&&this.hasScheduled){
@@ -2120,6 +2195,7 @@
       }
       scheduleStep(index,when){
         state.currentStep=index;
+        applyAutomation(index,when);
         const soloed=state.tracks.some(t=>t.solo);
         state.tracks.forEach(track=>{
           const step=track.steps[index];if(!step?.on||track.mute||(soloed&&!track.solo)||Math.random()>step.probability)return;
@@ -2132,7 +2208,7 @@
     }
 
     class BounceRenderer {
-      static async render(){
+      static async render(stemTrack=null){
         const bpm=state.bpm,steps=state.stepCount,stepDuration=60/bpm/4,tail=2.5,duration=steps*stepDuration+tail,sampleRate=44100;
         const Offline=window.OfflineAudioContext||window.webkitOfflineAudioContext;if(!Offline)throw new Error("Offline audio rendering is unavailable.");
         const ctx=new Offline(2,Math.ceil(duration*sampleRate),sampleRate),masterInput=ctx.createGain(),inputTrim=ctx.createGain(),rumble=ctx.createBiquadFilter(),shelf=ctx.createBiquadFilter(),shaper=ctx.createWaveShaper(),driveComp=ctx.createGain(),compressor=ctx.createDynamicsCompressor(),limiter=ctx.createDynamicsCompressor(),master=ctx.createGain();
@@ -2143,9 +2219,17 @@
         const impulse=ctx.createBuffer(2,Math.floor(ctx.sampleRate*2.05),ctx.sampleRate);for(let c=0;c<2;c++){const d=impulse.getChannelData(c);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.35)}reverb.buffer=impulse;reverbWet.gain.value=state.master.reverb*(safe?.58:.76);reverb.connect(reverbWet).connect(masterInput);
         const soloed=state.tracks.some(t=>t.solo);
         state.tracks.forEach(track=>{
-          if(track.mute||(soloed&&!track.solo))return;
+          if(stemTrack){if(track.id!==stemTrack.id)return}else if(track.mute||(soloed&&!track.solo))return;
           const gain=ctx.createGain(),pan=ctx.createStereoPanner(),filter=ctx.createBiquadFilter(),delaySend=ctx.createGain(),reverbSend=ctx.createGain();
           gain.gain.value=track.gain*.88;pan.pan.value=clamp(track.pan*state.master.width,-1,1);filter.type="lowpass";filter.frequency.value=track.filter;delaySend.gain.value=(track.delay??.1)*.72;reverbSend.gain.value=(track.reverb??.08)*.7;filter.connect(gain).connect(pan).connect(masterInput);pan.connect(delaySend).connect(delay);pan.connect(reverbSend).connect(reverb);
+          const offNodes={gain,pan,filter,delaySend,reverbSend};
+          const blanes=(state.patterns[state.activePattern]&&state.patterns[state.activePattern].automation||{})[track.id]||{};
+          for(const bkey of Object.keys(AUTO_PARAMS)){
+            const blane=blanes[bkey];if(!blane||!blane.on)continue;
+            const bdef=AUTO_PARAMS[bkey],bvals=normVals(blane.values,steps,bdef.neutral(track)),bparam=offNodes[bdef.node][bdef.attr];
+            bparam.setValueAtTime(bdef.toVal(bdef.neutral(track),track),0);
+            for(let bi=0;bi<steps;bi++){const bwhen=bi*stepDuration+(bi%2?stepDuration*state.swing:0);bparam.linearRampToValueAtTime(bdef.toVal(clamp(bvals[bi],0,1),track),bwhen)}
+          }
           for(let i=0;i<steps;i++){
             const step=track.steps[i];if(!step.on)continue;
             const when=i*stepDuration+(i%2?stepDuration*state.swing:0);
@@ -2193,26 +2277,26 @@
     const sequencer=new Sequencer(engine,showPlayhead);
     let autosaveTimer=null,visualFrame=null;
 
-    function snapshotTrackState(){return JSON.stringify({tracks:state.tracks,stepCount:state.stepCount})}
+    function snapshotTrackState(){return JSON.stringify({tracks:state.tracks,stepCount:state.stepCount,automation:autoRead()})}
     function pushUndo(){
       state.undo.push(snapshotTrackState());state.undo=state.undo.slice(-40);state.redo=[];updateUndoButtons()
     }
     function undo(){
       if(!state.undo.length)return;state.redo.push(snapshotTrackState());state.redo=state.redo.slice(-40);
-      const data=JSON.parse(state.undo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;engine.syncTracks();renderAll();updateUndoButtons();scheduleAutosave();setStatus("Undone")
+      const data=JSON.parse(state.undo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;autoStore();state.patterns[state.activePattern].automation=clone(data.automation||{});engine.syncTracks();renderAll();if($("#automation-dialog").open)renderAuto();updateUndoButtons();scheduleAutosave();setStatus("Undone")
     }
     function redo(){
       if(!state.redo.length)return;state.undo.push(snapshotTrackState());state.undo=state.undo.slice(-40);
-      const data=JSON.parse(state.redo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;engine.syncTracks();renderAll();updateUndoButtons();scheduleAutosave();setStatus("Redone")
+      const data=JSON.parse(state.redo.pop());state.tracks=data.tracks;state.stepCount=data.stepCount;autoStore();state.patterns[state.activePattern].automation=clone(data.automation||{});engine.syncTracks();renderAll();if($("#automation-dialog").open)renderAuto();updateUndoButtons();scheduleAutosave();setStatus("Redone")
     }
     function updateUndoButtons(){$("#undo-btn").disabled=!state.undo.length;$("#redo-btn").disabled=!state.redo.length}
     function scheduleAutosave(){clearTimeout(autosaveTimer);autosaveTimer=setTimeout(()=>ProjectStore.autosave(),650)}
 
-    function storeActivePattern(){state.patterns[state.activePattern]={name:state.patternName,stepCount:state.stepCount,tracks:clone(state.tracks)}}
+    function storeActivePattern(){state.patterns[state.activePattern]={name:state.patternName,stepCount:state.stepCount,tracks:clone(state.tracks),automation:clone(autoRead())}}
     function loadPattern(slot,store=true){
       if(store)storeActivePattern();state.activePattern=slot;state.stepPage=0;
       state.undo=[];state.redo=[];updateUndoButtons();
-      const pattern=state.patterns[slot];if(pattern){state.patternName=pattern.name;state.stepCount=pattern.stepCount;state.tracks=clone(pattern.tracks)}
+      const pattern=state.patterns[slot];if(pattern){state.patternName=pattern.name;state.stepCount=pattern.stepCount;state.tracks=clone(pattern.tracks);if(!pattern.automation)pattern.automation={}}
       else{state.patternName=`Pattern ${slot}`;state.tracks=defaultTracks();state.tracks.forEach(t=>t.steps.forEach(s=>s.on=false))}
       $$(".pattern-slot").forEach(btn=>btn.classList.toggle("active",btn.dataset.pattern===slot));$("#pattern-name").value=state.patternName;$("#step-count").value=state.stepCount;
       engine.syncTracks();renderTracks();renderMixer();scheduleAutosave()
@@ -2363,7 +2447,7 @@
     }
     function removeTrack(index){
       if(state.tracks.length<=1){toast("Keep at least one track in the rack.","warn");return}
-      pushUndo();const [removed]=state.tracks.splice(index,1);engine.removeChannel(removed.id);renderAll();scheduleAutosave()
+      pushUndo();const [removed]=state.tracks.splice(index,1);engine.removeChannel(removed.id);pruneAutomation(removed.id);renderAll();scheduleAutosave()
     }
     function randomizeTrack(track){
       if(track.lock){toast(`${track.name} is locked.`,"warn");return}
@@ -2807,6 +2891,70 @@
       })
     }
 
+    /* Feature 15: export stems — render each track as a separate WAV stem */
+    function stemSlug(text){return (text||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+    async function renderStemWav(track){
+      const buffer=await BounceRenderer.render(track),wav=BounceRenderer.wav(buffer);
+      const pat=stemSlug(state.patternName)||"neonbeat",tname=stemSlug(track.name)||"track";
+      return {blob:wav,name:`${pat}-stem-${tname}.wav`};
+    }
+    async function downloadStem(track,btn){
+      btn.disabled=true;const old=btn.textContent;btn.textContent="RENDERING…";
+      $("#stem-status-text").textContent="RENDERING "+track.name.toUpperCase()+"…";setStatus("Rendering stem");
+      try{
+        const file=await renderStemWav(track);
+        download(file.blob,file.name,"audio/wav");
+        toast(`Stem exported — ${file.name}`,"good");setStatus("Stem export complete");
+        $("#stem-status-text").textContent="READY";
+      }catch(error){toast(error.message,"error");setStatus("Stem export failed");$("#stem-status-text").textContent="FAILED"}
+      finally{btn.disabled=!!track.mute;btn.textContent=old}
+    }
+    async function renderAllStems(){
+      const targets=state.tracks.filter(t=>!t.mute);
+      if(!targets.length){toast("All tracks are muted — nothing to render.","error");return}
+      const btn=$("#stems-render-all");btn.disabled=true;
+      try{
+        const files=[];
+        for(let i=0;i<targets.length;i++){
+          const t=targets[i];
+          $("#stem-status-text").textContent=`RENDERING ${i+1}/${targets.length} · ${t.name.toUpperCase()}…`;
+          setStatus(`Rendering stems ${i+1}/${targets.length}`);
+          files.push(await renderStemWav(t));
+        }
+        for(let i=0;i<files.length;i++){
+          download(files[i].blob,files[i].name,"audio/wav");
+          if(i<files.length-1)await new Promise(r=>setTimeout(r,450));
+        }
+        toast(`${files.length} stems exported.`,"good");setStatus("Stems export complete");
+        $("#stem-status-text").textContent="DONE";
+      }catch(error){toast(error.message,"error");setStatus("Stems export failed");$("#stem-status-text").textContent="FAILED"}
+      finally{btn.disabled=false}
+    }
+    function renderStemRows(){
+      const list=$("#stem-list");list.innerHTML="";
+      state.tracks.forEach(track=>{
+        const row=document.createElement("div");row.className="stem-row";
+        const dot=document.createElement("span");dot.className="stem-dot";
+        dot.style.background=track.color||"#00f0ff";dot.style.color=track.color||"#00f0ff";row.append(dot);
+        const name=document.createElement("span");name.className="stem-name";name.textContent=track.name;
+        if(track.mute){const m=document.createElement("b");m.className="stem-muted";m.textContent="MUTED";name.append(" ",m)}
+        row.append(name);
+        const hits=track.steps.filter(s=>s.on).length;
+        const meta=document.createElement("span");meta.className="stem-meta";
+        meta.textContent=`${INSTRUMENTS[track.instrument]||track.instrument} · ${hits} hits`;row.append(meta);
+        const btn=document.createElement("button");btn.className="btn tiny cyan";btn.textContent="⇩ WAV";
+        btn.disabled=!!track.mute;
+        btn.title=track.mute?"Track is muted — unmute it to export its stem":"Render this track as a stereo WAV stem";
+        btn.addEventListener("click",()=>downloadStem(track,btn));
+        row.append(btn);list.append(row);
+      });
+    }
+    function openStems(){
+      renderStemRows();
+      $("#stem-status-text").textContent="READY";
+      $("#stems-dialog").showModal();
+    }
+
     async function bounce(){
       $("#bounce-btn").disabled=true;$("#bounce-btn").textContent="RENDERING…";setStatus("Rendering stereo mix");
       try{const buffer=await BounceRenderer.render(),wav=BounceRenderer.wav(buffer),name=(state.patternName||"neonbeat").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
@@ -2884,6 +3032,7 @@
       "play-btn":"Starts or pauses the loop constructor. The glowing playhead shows the active sixteenth-note step.",
       "stop-btn":"Stops playback and returns the loop to step one.","record-btn":"Enables quantized pad recording into the track whose R button is armed.",
       bpm:"Sets tempo from 40 to 240 beats per minute.", "tap-btn":"Tap up to 4 times in rhythm (or press T) to set the tempo from the average of your last 4 taps.",
+      "auto-btn":"Draws per-step automation lanes for volume, cutoff, pan, delay and reverb — motion that plays back with the pattern (Shift+A).",
       "preset-select":"Loads a complete production-ready beat preset with matched instruments, pattern, tempo, swing, and bass processing.",
       "theme-select":"Switches the interface among Dark, Light, Dim, Cyber, Matrix, and Tech production styles without changing the beat.",
       "describe-btn":"Turns visual description mode on or off. In this mode every interactive region identifies its purpose on hover or focus.",
@@ -2900,6 +3049,7 @@
       "master-mute":"Silences or restores the final master output without changing any saved channel levels.","panic-btn":"Immediately stops transport, cancels count-in, and suspends the audio engine.",
       "metronome-btn":"Audible click on every quarter note. Right-click or Shift+M opens the downbeat-accent & volume settings.",
       "bounce-btn":"Renders the current multitrack pattern into one stereo WAV file with levels, panning, bass boost, and punch processing.",
+      "stems-btn":"Opens the stem exporter — renders each track of the active pattern as a separate stereo WAV file with its levels, panning, automation and delay/reverb sends (Shift+E).","templates-btn":"Opens project templates — start a fresh project from a house, hip-hop, ambient or techno starter that fills all four pattern slots with matched grooves, tempo and swing (Shift+N).",
       "bass-profile":"Applies a coordinated low-end preset: clean studio sub, headphone-style thump, trunk-rattling saturation, or sliding drill pressure.",
       "master":"Controls final output volume.","delay":"Controls the amount of tempo-friendly echo in the master mix.","reverb":"Controls spacious synthetic room ambience.",
       "drive":"Adds soft-clipped harmonic saturation so drums and bass feel louder and denser.","thump":"Boosts the deep 92 Hz region for chest-hitting low end.",
@@ -2946,6 +3096,149 @@
       })
     }
 
+
+    /* Feature 13: automation lanes — per-step parameter motion per track per pattern */
+    const AUTO_PARAMS={
+      gain:{label:"VOLUME",short:"VOL",color:"#42e8c6",node:"gain",attr:"gain",neutral:t=>1,
+        fmt:v=>Math.round(v*100)+" %",toVal:(v,t)=>(t?t.gain:1)*.88*v},
+      filter:{label:"CUTOFF",short:"CUT",color:"#4aa3ff",node:"filter",attr:"frequency",neutral:t=>clamp(Math.log(((t&&t.filter)||14000)/200)/Math.log(100),0,1),
+        fmt:v=>{const f=200*Math.pow(100,v);return f>=1000?(f/1000).toFixed(1)+" kHz":Math.round(f)+" Hz"},toVal:(v,t)=>200*Math.pow(100,v)},
+      pan:{label:"PAN",short:"PAN",color:"#ff9f43",node:"pan",attr:"pan",neutral:t=>.5,
+        fmt:v=>v<.495?"L "+Math.round((.5-v)*200):v>.505?"R "+Math.round((v-.5)*200):"CENTER",toVal:(v,t)=>clamp((v*2-1)*state.master.width,-1,1)},
+      delay:{label:"DELAY",short:"DLY",color:"#c77dff",node:"delaySend",attr:"gain",neutral:t=>clamp((t&&t.delay!=null?t.delay:.1),0,1),
+        fmt:v=>Math.round(v*100)+" %",toVal:(v,t)=>v*.72},
+      reverb:{label:"REVERB",short:"RVB",color:"#ff5d8f",node:"reverbSend",attr:"gain",neutral:t=>clamp((t&&t.reverb!=null?t.reverb:.08),0,1),
+        fmt:v=>Math.round(v*100)+" %",toVal:(v,t)=>v*.7}
+    };
+    function autoRead(){const p=state.patterns[state.activePattern];return(p&&p.automation)||{}}
+    function autoStore(){if(!state.patterns[state.activePattern])storeActivePattern();const p=state.patterns[state.activePattern];if(!p.automation)p.automation={};return p.automation}
+    function normVals(values,n,def){const out=[];for(let i=0;i<n;i++)out.push(values&&values.length?clamp(values[Math.min(i,values.length-1)],0,1):def);return out}
+    function getLane(trackId,key){const lanes=autoRead()[trackId];return lanes?lanes[key]||null:null}
+    function ensureLane(trackId,key){
+      const store=autoStore();if(!store[trackId])store[trackId]={};
+      let lane=store[trackId][key];
+      if(!lane){const track=state.tracks.find(t=>t.id===trackId);lane={values:Array.from({length:state.stepCount},()=>AUTO_PARAMS[key].neutral(track)),on:true};store[trackId][key]=lane}
+      return lane;
+    }
+    function pruneAutomation(trackId){const store=autoStore();if(store[trackId])delete store[trackId]}
+    function laneActiveCount(){let n=0;const auto=autoRead();for(const tid of Object.keys(auto))for(const key of Object.keys(auto[tid]||{}))if(auto[tid][key]&&auto[tid][key].on)n++;return n}
+    function applyAutomation(index,when){
+      const auto=autoRead();if(!engine.ctx||!Object.keys(auto).length)return;
+      const soloed=state.tracks.some(t=>t.solo),n=state.stepCount;
+      state.tracks.forEach(track=>{
+        const lanes=auto[track.id];if(!lanes)return;
+        const ch=engine.channels.get(track.id);if(!ch)return;
+        const audible=!track.mute&&(!soloed||track.solo);
+        for(const key of Object.keys(AUTO_PARAMS)){
+          const lane=lanes[key];if(!lane||!lane.on)continue;
+          const def=AUTO_PARAMS[key],v=normVals(lane.values,n,def.neutral(track))[index%n];
+          const target=(key==="gain"&&!audible)?0:def.toVal(v,track);
+          ch[def.node][def.attr].setTargetAtTime(target,when,.012);
+        }
+      });
+    }
+    const autoUi={trackId:null,param:"gain"};
+    const autoDraw={on:false,last:null,lastVal:0};
+    function saveAutoUi(){try{localStorage.setItem("n8loops.auto.v1",JSON.stringify({param:autoUi.param}))}catch{}}
+    function loadAutoUi(){try{const d=JSON.parse(localStorage.getItem("n8loops.auto.v1"));if(d&&AUTO_PARAMS[d.param])autoUi.param=d.param}catch{}}
+    function autoSelTrack(){return state.tracks.find(t=>t.id===autoUi.trackId)||state.tracks[0]}
+    function openAutomation(){
+      loadAutoUi();
+      const fallback=state.tracks.find(t=>t.id===state.selectedTrack)||state.tracks[0];
+      if(!autoUi.trackId||!state.tracks.some(t=>t.id===autoUi.trackId))autoUi.trackId=fallback.id;
+      renderAuto();
+      $("#automation-dialog").showModal();
+    }
+    function renderAuto(){
+      const track=autoSelTrack();if(track)autoUi.trackId=track.id;
+      $("#auto-pattern-label").textContent="PATTERN "+state.activePattern;
+      const sel=$("#auto-track");sel.innerHTML="";
+      state.tracks.forEach(t=>{const o=document.createElement("option");o.value=t.id;o.textContent=t.name;if(t.id===autoUi.trackId)o.selected=true;sel.append(o)});
+      const tabs=$("#auto-param-tabs");tabs.innerHTML="";
+      Object.keys(AUTO_PARAMS).forEach(key=>{
+        const def=AUTO_PARAMS[key],lane=getLane(autoUi.trackId,key);
+        const b=document.createElement("button");b.className="btn auto-tab"+(key===autoUi.param?" cyan":"");
+        b.setAttribute("role","tab");
+        b.innerHTML='<span class="auto-dot" style="background:'+(lane?(lane.on?def.color:"#555"):"transparent")+'"></span>'+def.short;
+        b.title=def.label;b.addEventListener("click",()=>{autoUi.param=key;saveAutoUi();renderAuto()});tabs.append(b);
+      });
+      drawAutoLane();syncAutoControls();
+    }
+    function syncAutoControls(){
+      const lane=getLane(autoUi.trackId,autoUi.param),def=AUTO_PARAMS[autoUi.param];
+      const has=!!lane;
+      $("#auto-toggle").textContent=lane&&lane.on?"TURN OFF":"TURN ON";
+      ["#auto-toggle","#auto-delete"].forEach(id=>{$(id).disabled=!has});
+      const list=$("#auto-lane-list");list.innerHTML="";
+      const lanes=autoRead()[autoUi.trackId]||{};
+      Object.keys(AUTO_PARAMS).forEach(key=>{
+        const l=lanes[key];if(!l)return;const d=AUTO_PARAMS[key];
+        const chip=document.createElement("button");chip.className="auto-chip"+(key===autoUi.param?" sel":"");
+        chip.innerHTML='<span class="auto-dot" style="background:'+(l.on?d.color:"#555")+'"></span>'+d.short+" "+(l.on?"ON":"OFF")+' <span class="auto-x">✕</span>';
+        chip.title=d.label+" lane — click to edit, ✕ deletes";
+        chip.addEventListener("click",e=>{
+          if(e.target.classList.contains("auto-x")){pushUndo();delete autoStore()[autoUi.trackId][key];toast(d.label+" lane deleted.");scheduleAutosave();renderAuto()}
+          else{autoUi.param=key;saveAutoUi();renderAuto()}
+        });
+        list.append(chip);
+      });
+      if(!list.children.length)list.innerHTML='<span style="color:var(--muted);font:8px var(--mono)">NO LANES ON THIS TRACK YET</span>';
+      syncAutoReadout();
+    }
+    function syncAutoReadout(step=null,v=null){
+      const lane=getLane(autoUi.trackId,autoUi.param),def=AUTO_PARAMS[autoUi.param],n=state.stepCount;
+      const trackName=($("#auto-track").selectedOptions[0]||{}).textContent||"";
+      $("#auto-readout").textContent=lane
+        ?(step==null?def.label+" · "+trackName+" · "+(lane.on?"ON":"OFF"):def.label+" · STEP "+(step+1)+"/"+n+" · "+def.fmt(v)+(lane.on?"":" · OFF"))
+        :def.label+" · "+trackName+" · NO LANE — DRAW OR PRESS ADD LANE";
+    }
+    function drawAutoLane(hover=null){
+      const c=$("#auto-canvas");if(!c)return;const ctx=c.getContext("2d"),W=c.width,H=c.height,n=state.stepCount;
+      const def=AUTO_PARAMS[autoUi.param],track=autoSelTrack();
+      ctx.clearRect(0,0,W,H);
+      ctx.strokeStyle="rgba(255,255,255,.08)";ctx.lineWidth=1;
+      for(let s=0;s<=n;s+=4){const x=s/n*W;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+      for(let g=0;g<=4;g++){const y=g/4*H;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+      const lane=getLane(autoUi.trackId,autoUi.param);
+      if(!lane){ctx.fillStyle="rgba(255,255,255,.35)";ctx.font="11px monospace";ctx.textAlign="center";ctx.fillText("NO LANE — DRAW ON THE GRID OR PRESS ADD LANE",W/2,H/2);return}
+      const vals=normVals(lane.values,n,def.neutral(track));
+      const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,def.color+"55");grad.addColorStop(1,def.color+"05");
+      ctx.beginPath();ctx.moveTo(0,H);
+      for(let i=0;i<n;i++)ctx.lineTo((i+.5)/n*W,(1-vals[i])*H);
+      ctx.lineTo(W,H);ctx.closePath();ctx.fillStyle=grad;ctx.fill();
+      ctx.beginPath();for(let i=0;i<n;i++){const x=(i+.5)/n*W,y=(1-vals[i])*H;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}
+      ctx.strokeStyle=def.color;ctx.lineWidth=2;ctx.shadowColor=def.color;ctx.shadowBlur=8;ctx.stroke();ctx.shadowBlur=0;
+      ctx.fillStyle=def.color;for(let i=0;i<n;i++){const x=(i+.5)/n*W,y=(1-vals[i])*H;ctx.beginPath();ctx.arc(x,y,2.4,0,7);ctx.fill()}
+      if(hover!=null&&hover<n){const hx=(hover+.5)/n*W;ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(hx,0);ctx.lineTo(hx,H);ctx.stroke();ctx.fillStyle="#fff";ctx.font="10px monospace";ctx.textAlign="left";ctx.fillText("STEP "+(hover+1)+" · "+def.fmt(vals[hover]),Math.min(hx+6,W-110),14)}
+      if(!lane.on){ctx.fillStyle="rgba(0,0,0,.55)";ctx.fillRect(0,0,W,H);ctx.fillStyle="#fff";ctx.font="700 12px monospace";ctx.textAlign="center";ctx.fillText("LANE OFF",W/2,H/2)}
+    }
+    function autoCanvasPos(e){const c=$("#auto-canvas"),r=c.getBoundingClientRect();return{x:clamp((e.clientX-r.left)/r.width,0,1),y:clamp((e.clientY-r.top)/r.height,0,1)}}
+    function autoDrawPoint(e){
+      const p=autoCanvasPos(e),n=state.stepCount;
+      const step=Math.min(n-1,Math.floor(p.x*n)),val=1-p.y;
+      const lane=ensureLane(autoUi.trackId,autoUi.param),def=AUTO_PARAMS[autoUi.param];
+      const vals=normVals(lane.values,n,def.neutral(autoSelTrack()));
+      if(autoDraw.last!=null&&autoDraw.last!==step){
+        const a=Math.min(autoDraw.last,step),b=Math.max(autoDraw.last,step),from=a===autoDraw.last?autoDraw.lastVal:val,to=a===autoDraw.last?val:autoDraw.lastVal;
+        for(let i=a;i<=b;i++){const t=b===a?1:(i-a)/(b-a);vals[i]=clamp(from+(to-from)*t,0,1)}
+      }else vals[step]=clamp(val,0,1);
+      autoDraw.last=step;autoDraw.lastVal=clamp(val,0,1);lane.values=vals;
+      drawAutoLane(step);syncAutoReadout(step,vals[step]);
+    }
+    function autoShape(fn,label){
+      pushUndo();const lane=ensureLane(autoUi.trackId,autoUi.param);
+      const def=AUTO_PARAMS[autoUi.param],n=state.stepCount,track=autoSelTrack();
+      lane.values=fn(n,def,track);scheduleAutosave();renderAuto();toast(def.label+" "+label+".","good");
+    }
+    function autoShapeFns(){
+      return{
+        flat:(n,def,track)=>Array.from({length:n},()=>def.neutral(track)),
+        rampup:(n)=>Array.from({length:n},(_,i)=>n>1?i/(n-1):1),
+        rampdn:(n)=>Array.from({length:n},(_,i)=>n>1?1-i/(n-1):1),
+        sine:(n)=>Array.from({length:n},(_,i)=>.5+.5*Math.sin(2*Math.PI*2*i/n)),
+        random:(n)=>{const raw=Array.from({length:n},()=>Math.random());return raw.map((v,i)=>clamp(((raw[(i-1+n)%n]||0)+v*2+(raw[(i+1)%n]||0))/4,0,1))}
+      };
+    }
     function bind(){
       $("#play-btn").addEventListener("click",togglePlay);$("#stop-btn").addEventListener("click",stopTransport);
       $("#record-btn").addEventListener("click",async()=>{await engine.init();state.recording=!state.recording;updateTransport();if(state.recording&&!state.tracks.some(t=>t.arm)){state.tracks[0].arm=true;state.selectedTrack=state.tracks[0].id;renderTracks()}});
@@ -3004,6 +3297,7 @@
       $("#save-btn").addEventListener("click",()=>{ProjectStore.autosave();toast("Project saved locally.","good")});$("#projects-btn").addEventListener("click",()=>{renderProjectList();$("#project-name").value=state.projectName;$("#projects-dialog").showModal()});
       $("#save-project").addEventListener("click",()=>ProjectStore.saveVersion());$("#export-project").addEventListener("click",exportProject);$("#import-project").addEventListener("click",()=>$("#project-file").click());
       $("#project-file").addEventListener("change",e=>{importProject(e.target.files[0]);e.target.value=""});$("#bounce-btn").addEventListener("click",bounce);
+      $("#stems-btn").addEventListener("click",openStems);$("#stems-render-all").addEventListener("click",renderAllStems);
       $("#help-btn").addEventListener("click",()=>$("#help-dialog").showModal());$$("[data-close]").forEach(b=>b.addEventListener("click",()=>b.closest("dialog").close()));
       /* Feature 1: keyboard shortcut cheatsheet (Ctrl+/) */
       const KEYBOARD_SHORTCUTS=[
@@ -3022,6 +3316,8 @@
         {keys:["Shift","1–4"],desc:"Save the full project into quick-save slot 1–4",cat:"Project"},
         {keys:["Ctrl/Cmd","1–4"],desc:"Load the project from quick-save slot 1–4",cat:"Project"},
         {keys:["Ctrl/Cmd","E"],desc:"Bounce / export WAV",cat:"Project"},
+        {keys:["Shift","E"],desc:"Export stems — each track rendered as a separate WAV",cat:"Project"},
+        {keys:["Shift","N"],desc:"Open project templates — start from a house, hip-hop, ambient or techno starter",cat:"Project"},
         {keys:["Ctrl/Cmd","Z"],desc:"Undo pattern edit",cat:"Edit"},
         {keys:["Ctrl/Cmd","Shift","Z"],desc:"Redo pattern edit (or Ctrl/Cmd+Y)",cat:"Edit"},
         {keys:["Ctrl/Cmd","Shift","P"],desc:"Open the synth preset manager",cat:"Synth"},
@@ -3031,6 +3327,9 @@
         {keys:["Shift","W"],desc:"Open swing templates \u2014 apply shuffle, swing or straight grooves",cat:"Edit"},
         {keys:["Shift","C"],desc:"Open the chord generator \u2014 one-click chord stabs from root note + chord type",cat:"Edit"},
         {keys:["Shift","X"],desc:"Open the reorderable FX chain \u2014 distortion, chorus, delay, reverb in any order",cat:"Mix"},
+        {keys:["Shift","A"],desc:"Open automation lanes — draw per-step volume, cutoff, pan, delay & reverb motion",cat:"Mix"},
+        {keys:["P"],desc:"Toggle library preview one-shot / loop at the current BPM",cat:"Library"},
+        {keys:["Shift","H"],desc:"Toggle hover-to-preview in the sound browser",cat:"Library"},
         {keys:["Ctrl/Cmd","/"],desc:"Open this shortcut cheatsheet",cat:"Help"}
       ];
       function renderShortcutCheatsheet(){
@@ -3216,7 +3515,7 @@
       document.addEventListener("keydown",e=>{
         if(e.target.matches("input,select")||e.repeat)return;const key=e.key.toLowerCase(),index=PAD_KEYS.indexOf(key),modified=e.ctrlKey||e.metaKey||e.altKey||e.shiftKey;
         if(index>=0&&!modified){e.preventDefault();playPad(index)}if(e.code==="Space"){e.preventDefault();togglePlay()}if(key==="r"&&e.shiftKey){e.preventDefault();$("#record-btn").click()}if(key==="m"&&!modified){e.preventDefault();$("#metronome-btn").click()}if(key==="m"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openMetroDialog()}if(key==="t"&&!modified){e.preventDefault();tapTempo()}
-        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}if(key==="c"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openChordGenerator()}if(e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();saveQuickSlot(Number(e.code.slice(5)))}if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();loadQuickSlot(Number(e.code.slice(5)))}if(key==="x"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openFxChain()}
+        if((e.ctrlKey||e.metaKey)&&key==="z"&&!e.shiftKey){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&(key==="y"||(key==="z"&&e.shiftKey))){e.preventDefault();redo()}if((e.ctrlKey||e.metaKey)&&key==="s"){e.preventDefault();$("#save-btn").click()}if((e.ctrlKey||e.metaKey)&&key==="e"){e.preventDefault();bounce()}if((e.ctrlKey||e.metaKey)&&(key==="/"||key==="?")){e.preventDefault();openShortcutCheatsheet()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&key==="p"){e.preventDefault();openPresets()}if(key==="v"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();const b=$("#viz-mode-btn");if(b)b.click()}if(key==="s"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSpectrumAnalyzer()}if(key==="g"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSongArranger()}if(key==="w"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openSwingTemplates()}if(key==="c"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openChordGenerator()}if(e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();saveQuickSlot(Number(e.code.slice(5)))}if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&/^Digit[1-4]$/.test(e.code)){e.preventDefault();loadQuickSlot(Number(e.code.slice(5)))}if(key==="x"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openFxChain()}if(key==="a"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openAutomation()}if(key==="p"&&!modified){e.preventDefault();togglePreviewMode()}if(key==="h"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();toggleHoverPreview()}if(key==="e"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openStems()}if(key==="n"&&e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openProjectTemplates()}
         if(e.key==="ArrowUp"){state.patch.octave=clamp(state.patch.octave+1,1,6);syncAllUI();renderPads()}if(e.key==="ArrowDown"){state.patch.octave=clamp(state.patch.octave-1,1,6);syncAllUI();renderPads()}
       });
       /* Feature 6: song arranger — chain pattern slots into a play-in-order song arrangement */
@@ -3403,7 +3702,120 @@
 
       /* Feature 12: FX chain wiring */
       $("#fxchain-btn").addEventListener("click",openFxChain);
+      /* Feature 13: automation lanes wiring */
+      $("#auto-btn").addEventListener("click",openAutomation);
+      $("#auto-track").addEventListener("change",e=>{autoUi.trackId=e.target.value;renderAuto()});
+      const autoCanvas=$("#auto-canvas");
+      autoCanvas.addEventListener("pointerdown",e=>{e.preventDefault();try{autoCanvas.setPointerCapture(e.pointerId)}catch{};pushUndo();ensureLane(autoUi.trackId,autoUi.param);autoDraw.on=true;autoDraw.last=null;autoDrawPoint(e)});
+      autoCanvas.addEventListener("pointermove",e=>{
+        if(autoDraw.on){autoDrawPoint(e);return}
+        const p=autoCanvasPos(e),n=state.stepCount,step=Math.min(n-1,Math.floor(p.x*n));
+        const lane=getLane(autoUi.trackId,autoUi.param);
+        if(lane){const def=AUTO_PARAMS[autoUi.param],vals=normVals(lane.values,n,def.neutral(autoSelTrack()));drawAutoLane(step);syncAutoReadout(step,vals[step])}
+      });
+      autoCanvas.addEventListener("pointerup",()=>{if(!autoDraw.on)return;autoDraw.on=false;scheduleAutosave();renderAuto();toast("Automation lane updated.","good")});
+      autoCanvas.addEventListener("pointercancel",()=>{if(!autoDraw.on)return;autoDraw.on=false;scheduleAutosave();renderAuto()});
+      $("#auto-add").addEventListener("click",()=>{pushUndo();ensureLane(autoUi.trackId,autoUi.param);scheduleAutosave();renderAuto();toast(AUTO_PARAMS[autoUi.param].label+" lane added — draw on the grid.","good")});
+      const autoFns=autoShapeFns();
+      $("#auto-flat").addEventListener("click",()=>autoShape(autoFns.flat,"set flat"));
+      $("#auto-rampup").addEventListener("click",()=>autoShape(autoFns.rampup,"ramp up applied"));
+      $("#auto-rampdn").addEventListener("click",()=>autoShape(autoFns.rampdn,"ramp down applied"));
+      $("#auto-sine").addEventListener("click",()=>autoShape(autoFns.sine,"sine wave applied"));
+      $("#auto-random").addEventListener("click",()=>autoShape(autoFns.random,"random walk applied"));
+      $("#auto-toggle").addEventListener("click",()=>{const lane=getLane(autoUi.trackId,autoUi.param);if(!lane)return;pushUndo();lane.on=!lane.on;scheduleAutosave();renderAuto();toast(AUTO_PARAMS[autoUi.param].label+" lane "+(lane.on?"enabled.":"bypassed."))});
+      $("#auto-delete").addEventListener("click",()=>{const lane=getLane(autoUi.trackId,autoUi.param);if(!lane)return;pushUndo();delete autoStore()[autoUi.trackId][autoUi.param];scheduleAutosave();renderAuto();toast(AUTO_PARAMS[autoUi.param].label+" lane deleted.")});
+
       $("#fxchain-reset").addEventListener("click",()=>{setFxChain({order:FXCHAIN_DEFAULTS.order.slice(),on:Object.assign({},FXCHAIN_DEFAULTS.on),mix:Object.assign({},FXCHAIN_DEFAULTS.mix)});renderFxChain();toast("FX chain reset to defaults","good")});
+      
+      /* Feature 16: project templates — genre starter templates (house, hip-hop, ambient, techno) */
+      const LAST_TPL_KEY="n8loops.lasttemplate.v1";
+      const tplSlot=(name,stepCount,parts)=>({name,stepCount,tracks:parts.map((p,i)=>songTrack(p[0],p[1],p[2],p[3],i,p[4]||{}))});
+      const PROJECT_TEMPLATES=[
+        {id:"house",name:"Warehouse Four",icon:"🏠",genre:"HOUSE",bpm:124,swing:0,projectName:"Warehouse Four",
+         desc:"Four-on-the-floor house: driving kicks, offbeat hats, rolling bass and organ stabs.",
+         master:{thump:.82,punch:.7,drive:.16,delay:.18,reverb:.16},
+         slots:{
+           A:tplSlot("Main Room",32,[["FOUR FLOOR","clubkick",36,[0,4,8,12,16,20,24,28]],["CLAP","clubclap",38,[4,12,20,28]],["OFF HATS","openhat",46,[2,6,10,14,18,22,26,30]],["TOP HATS","traphat",42,[0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]],["ROLL BASS","bouncebass",31,[0,4,8,12,16,20,24,28],{notes:{0:31,4:34,8:29,12:36,16:31,20:32,24:29,28:34}}],["ORGAN STAB","organstab",60,[2,6,10,14,18,22,26,30],{notes:{2:60,6:65,10:67,14:63,18:60,22:65,26:70,30:67}}],["PERC","rim",56,[7,15,23,31],{ghosts:[7,15,23,31]}]]),
+           B:tplSlot("Filter Rise",32,[["FOUR FLOOR","clubkick",36,[0,4,8,12,16,20,24,28]],["CLAP","clubclap",38,[4,12,20,28]],["TOP HATS","traphat",42,[0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]],["ROLL BASS","bouncebass",31,[0,4,8,12,16,20,24,28]],["NOISE RISE","noise",48,[16,24]],["SNAP","snaproll",54,[30]]]),
+           C:tplSlot("Breakdown",32,[["AIR PAD","pad",48,[0]],["GLASS KEYS","keys",60,[0,8,16,24],{notes:{0:60,8:65,16:67,24:63}}],["WORDLESS VOX","chant",55,[4,12,20,28]],["DEEP SUB","sub808",29,[0,16]],["VINYL","vinyl",48,[0,16]]]),
+           D:tplSlot("Dub Out",16,[["FOUR FLOOR","clubkick",36,[0,4,8,12]],["CLAP","clubclap",38,[4,12]],["OFF HATS","openhat",46,[2,6,10,14]],["ROLL BASS","bouncebass",31,[0,4,8,12],{notes:{0:31,4:34,8:29,12:36}}],["ORGAN STAB","organstab",60,[2,6,10,14]]])
+         }},
+        {id:"hiphop",name:"Block Party Boom",icon:"🎤",genre:"HIP-HOP",bpm:92,swing:.18,projectName:"Block Party Boom",
+         desc:"Boombap hip-hop: dusty kicks, crate snares, swinging hats and deep 808s.",
+         master:{thump:.78,punch:.6,drive:.18,delay:.14,reverb:.12},
+         slots:{
+           A:tplSlot("Boom Bap",16,[["DUST KICK","trapkick",36,[0,6,10,14]],["CRATE SNARE","snare",38,[4,12]],["LOOSE HATS","hat",42,[0,2,4,6,8,10,12,14]],["DEEP 808","sub808",33,[0,3,6,10,13],{notes:{0:33,3:36,6:31,10:34,13:29}}],["VINYL","vinyl",48,[0,8]],["TRAP BELL","bell",60,[2,6,10,14],{notes:{2:60,6:63,10:67,14:65}}]]),
+           B:tplSlot("Switch Up",16,[["DUST KICK","trapkick",36,[0,3,6,10,14]],["RIM","rim",48,[4,11,12],{ghosts:[4,11]}],["LOOSE HATS","hat",42,[0,2,4,6,8,10,12,14,15]],["DEEP 808","sub808",33,[0,5,8,13],{notes:{0:33,5:36,8:31,13:38}}],["TRAP BELL","bell",60,[2,6,10,14],{notes:{2:62,6:65,10:69,14:67}}]]),
+           C:tplSlot("Half Time",16,[["DUST KICK","trapkick",36,[0]],["CRATE SNARE","snare",38,[8]],["DEEP 808","sub808",31,[0,8],{notes:{0:31,8:29}}],["CHOIR","choir",60,[4,12]],["VINYL","vinyl",48,[0,8]]]),
+           D:tplSlot("Cuts",16,[["SCRATCH","scratch",48,[4,12]],["VOCAL","vocal",55,[6,14]],["DUST KICK","trapkick",36,[0,10]],["LOOSE HATS","hat",42,[0,4,8,12]],["DEEP 808","sub808",33,[0]]])
+         }},
+        {id:"ambient",name:"Slow Bloom",icon:"🌊",genre:"AMBIENT",bpm:76,swing:0,projectName:"Slow Bloom",
+         desc:"Cinematic ambient: swelling pads, sparse bells, sub drones and vinyl dust.",
+         master:{thump:.6,punch:.35,drive:.06,delay:.3,reverb:.38},
+         slots:{
+           A:tplSlot("Drift",32,[["AIR PAD","pad",48,[0]],["SUB SWELL","sub808",36,[0,16],{notes:{0:36,16:34}}],["BELL","bell",72,[8,24]],["VINYL","vinyl",48,[0,16]],["NOISE","noise",40,[24]]]),
+           B:tplSlot("Bloom",32,[["GLASS KEYS","keys",60,[0,8,16,24],{notes:{0:60,8:65,16:67,24:63}}],["CHOIR","choir",60,[4,20]],["AIR PAD","pad",48,[0]],["BELL","bell",76,[12,28]]]),
+           C:tplSlot("Void",32,[["NOISE","noise",40,[0,16]],["IMPACT","impact",48,[16]],["DEEP SUB","sub808",29,[0,24]],["WHISTLE","whistle",84,[8,24]]]),
+           D:tplSlot("Return",32,[["AIR PAD","pad",48,[0]],["GLASS KEYS","keys",60,[0,8,16,24],{notes:{0:60,8:63,16:65,24:67}}],["SUB SWELL","sub808",36,[0,16],{notes:{0:36,16:34}}],["VINYL","vinyl",48,[0,16]]])
+         }},
+        {id:"techno",name:"Acid Warehouse",icon:"🏭",genre:"TECHNO",bpm:132,swing:0,projectName:"Acid Warehouse",
+         desc:"Peak-time techno: pounding kicks, rumble bass, 16th hats and acid squelch.",
+         master:{thump:.9,punch:.72,drive:.24,delay:.12,reverb:.14},
+         slots:{
+           A:tplSlot("Main Drive",32,[["FOUR FLOOR","clubkick",36,[0,4,8,12,16,20,24,28]],["RUMBLE","bouncebass",29,[0,4,8,12,16,20,24,28],{notes:{0:29,4:29,8:32,12:29,16:29,20:32,24:27,28:29}}],["16TH HATS","traphat",42,[...Array(32).keys()]],["CLAP","clubclap",38,[4,12,20,28]],["ACID","acid",60,[6,14,22,30],{notes:{6:60,14:63,22:67,30:65}}]]),
+           B:tplSlot("Acid Cut",32,[["FOUR FLOOR","clubkick",36,[0,4,8,12,16,20,24,28]],["ACID","acid",60,[2,6,10,14,18,22,26,30],{notes:{2:60,6:62,10:65,14:67,18:65,22:63,26:62,30:60}}],["16TH HATS","traphat",42,[...Array(32).keys()]],["RIM","rim",52,[5,13,21,29],{ghosts:[5,13,21,29]}]]),
+           C:tplSlot("Break",32,[["AIR PAD","pad",48,[0]],["NOISE RISE","noise",48,[0,16]],["SIREN","siren",72,[24]],["OPEN HAT","openhat",46,[8,24]]]),
+           D:tplSlot("Peak Time",32,[["FOUR FLOOR","clubkick",36,[0,4,8,12,16,20,24,28]],["RUMBLE","bouncebass",29,[0,4,8,12,16,20,24,28]],["16TH HATS","traphat",42,[...Array(32).keys()]],["CLAP","clubclap",38,[4,12,20,28]],["ACID","acid",60,[6,14,22,30]],["PERC","rim",56,[7,15,23,31]]])
+         }}
+      ];
+      function lastTemplate(){try{return localStorage.getItem(LAST_TPL_KEY)}catch{return null}}
+      function renderTemplateCards(){
+        const wrap=$("#tpl-list");wrap.replaceChildren();const last=lastTemplate();
+        PROJECT_TEMPLATES.forEach(tpl=>{
+          const b=document.createElement("button");b.type="button";b.className="swing-card";b.dataset.tpl=tpl.id;
+          b.setAttribute("aria-label",`${tpl.name} ${tpl.genre} project template, ${tpl.bpm} BPM`);
+          const head=document.createElement("span");head.className="tpl-name";
+          const icon=document.createElement("span");icon.className="tpl-icon";icon.textContent=tpl.icon;
+          const nm=document.createElement("span");nm.textContent=tpl.name;
+          head.append(icon,nm);
+          if(last===tpl.id){const cur=document.createElement("span");cur.className="tpl-cur";cur.textContent="LAST USED";head.append(cur)}
+          const meta=document.createElement("span");meta.className="tpl-meta";
+          meta.innerHTML=`<b>${tpl.bpm} BPM</b><span>${Math.round(tpl.swing*100)}% SWING</span><span>${tpl.slots.A.stepCount} STEPS</span>`;
+          const desc=document.createElement("span");desc.className="tpl-desc";desc.textContent=tpl.desc;
+          const lineup=document.createElement("span");lineup.className="tpl-slots";
+          ["A","B","C","D"].forEach(slot=>{const row=document.createElement("span");const tag=document.createElement("b");tag.textContent=slot;row.append(tag,document.createTextNode(tpl.slots[slot].name));lineup.append(row)});
+          b.append(head,meta,desc,lineup);
+          b.addEventListener("click",()=>applyProjectTemplate(tpl.id));
+          wrap.append(b)
+        })
+      }
+      function applyProjectTemplate(id){
+        const tpl=PROJECT_TEMPLATES.find(t=>t.id===id);if(!tpl)return;
+        if(state.playing)sequencer.stop();
+        pushUndo();
+        state.patterns={};
+        ["A","B","C","D"].forEach(slot=>{const s=tpl.slots[slot];state.patterns[slot]={name:s.name,stepCount:s.stepCount,tracks:clone(s.tracks),automation:{}}});
+        state.activePattern="A";state.stepPage=0;state.bpm=tpl.bpm;state.swing=tpl.swing;state.stepCount=tpl.slots.A.stepCount;
+        state.patternName=tpl.slots.A.name;state.projectName=tpl.projectName;
+        state.master={...state.master,...tpl.master};
+        state.tracks=clone(state.patterns.A.tracks);
+        state.selectedTrack=state.tracks[0]?.id||null;state.tracks.forEach(t=>t.arm=false);
+        state.ui.song={enabled:false,loop:true,sequence:[{slot:"A",repeats:2},{slot:"B",repeats:2}]};
+        $("#project-name").value=state.projectName;
+        syncAllUI();engine.syncTracks();engine.updateMaster();renderAll();if(typeof syncSongUI==="function")syncSongUI();
+        try{localStorage.setItem(LAST_TPL_KEY,id)}catch{}
+        $("#tpl-status").textContent=`"${tpl.projectName}" loaded — slots A–D replaced`;
+        $("#templates-dialog").close();scheduleAutosave();
+        toast(`"${tpl.projectName}" loaded — all 4 pattern slots replaced.`,"good");
+        setStatus(`${tpl.projectName} ready — slots A-D loaded`)
+      }
+      function openProjectTemplates(){
+        renderTemplateCards();
+        $("#tpl-status").textContent="Pick a starter";
+        const dlg=$("#templates-dialog");if(!dlg.open)dlg.showModal()
+      }
+      $("#templates-btn").addEventListener("click",openProjectTemplates);
+
       addEventListener("beforeunload",()=>ProjectStore.autosave())
     }
 
@@ -3771,13 +4183,45 @@
     function updateFavoriteButton(){const button=$("#sound-favorite");if(!button)return;const on=selectedLibrarySound&&favoriteIds.has(soundId(selectedLibrarySound));button.textContent=on?"★":"☆";button.classList.toggle("active",!!on);button.setAttribute("aria-label",on?"Remove selected sound from favorites":"Favorite selected sound")}
     function selectLibrarySound(sound,preview=false){if(!sound)return;selectedLibrarySound=normalizeSound(sound);const id=soundId(selectedLibrarySound);$("#inspector-name").textContent=selectedLibrarySound.label.toUpperCase();$("#inspector-meta").textContent=`${soundCategory(selectedLibrarySound).toUpperCase()} · ${INSTRUMENTS[selectedLibrarySound.instrument]||selectedLibrarySound.sub} · ${selectedLibrarySound.energy}`;updateFavoriteButton();$$('.sound-chip').forEach(chip=>chip.classList.toggle("selected",chip.dataset.soundId===id));if(preview)previewLibrarySound(selectedLibrarySound)}
     function toggleFavorite(sound=selectedLibrarySound){if(!sound)return;const id=soundId(sound);favoriteIds.has(id)?favoriteIds.delete(id):favoriteIds.add(id);saveFavorites();updateFavoriteButton();if(libraryFilter==="favorites")renderPackDock();else $$('.sound-chip').forEach(chip=>{const star=$(".sound-fav",chip);if(star&&chip.dataset.soundId===id){star.textContent=favoriteIds.has(id)?"★":"☆";star.classList.toggle("on",favoriteIds.has(id))}});toast(favoriteIds.has(id)?`${sound.label} saved to Favorites.`:`${sound.label} removed from Favorites.`,"good")}
-    async function previewLibrarySound(sound=selectedLibrarySound){if(!sound)return;try{await engine.init();const mode=$("#audition-mode")?.value||"clean",level=Number($("#audition-level")?.value||.78),settings={clean:[16000,0,.05,.04],punch:[9800,0,.025,.02],space:[14500,0,.28,.34],lofi:[3200,0,.08,.07]}[mode];const ch=engine.preview,now=engine.ctx.currentTime;ch.filter.frequency.setTargetAtTime(settings[0],now,.012);ch.pan.pan.setTargetAtTime(settings[1],now,.012);ch.gain.gain.setTargetAtTime(level*(mode==="punch"?1:.9),now,.01);ch.delaySend.gain.setTargetAtTime(settings[2],now,.012);ch.reverbSend.gain.setTargetAtTime(settings[3],now,.012);engine.trigger(sound,level,null,ch.input);const wave=$("#sound-wave");wave.classList.add("playing");setTimeout(()=>wave.classList.remove("playing"),Math.max(420,(sound.duration||.25)*1000));const chip=$$('.sound-chip').find(node=>node.dataset.soundId===soundId(sound));chip?.classList.add("previewing");setTimeout(()=>chip?.classList.remove("previewing"),380);setStatus(`${sound.label} · ${mode} audition`)}catch(error){toast(error.message,"error")}}
+    /* Feature 14: sample preview — one-shot / loop audition + hover-to-preview */
+    const PREVIEW_MODE_KEY="n8loops.previewmode.v1",HOVER_PREVIEW_KEY="n8loops.hoverpreview.v1";
+    function previewMode(){try{return localStorage.getItem(PREVIEW_MODE_KEY)==="loop"?"loop":"one-shot"}catch(e){return"one-shot"}}
+    function setPreviewMode(m){try{localStorage.setItem(PREVIEW_MODE_KEY,m)}catch(e){}}
+    function hoverPreviewOn(){try{return localStorage.getItem(HOVER_PREVIEW_KEY)==="1"}catch(e){return false}}
+    function setHoverPreview(on){try{localStorage.setItem(HOVER_PREVIEW_KEY,on?"1":"0")}catch(e){}}
+    function syncPreviewToggles(){const pm=$("#preview-mode"),hb=$("#hover-preview-btn");if(!pm||!hb)return;const loop=previewMode()==="loop";pm.classList.toggle("active",loop);pm.setAttribute("aria-pressed",String(loop));pm.textContent=loop?"\u25c9 LOOP":"\u25c9 ONE-SHOT";const hov=hoverPreviewOn();hb.classList.toggle("active",hov);hb.setAttribute("aria-pressed",String(hov))}
+    function togglePreviewMode(){setPreviewMode(previewMode()==="loop"?"one-shot":"loop");syncPreviewToggles();toast(previewMode()==="loop"?"Loop preview: plays the sound's suggested loop at the current BPM.":"One-shot preview: single hit per audition.","good")}
+    function toggleHoverPreview(){setHoverPreview(!hoverPreviewOn());syncPreviewToggles();toast(hoverPreviewOn()?"Hover preview on: hold the pointer over a library chip to audition it.":"Hover preview off.","good")}
+    async function previewLibrarySound(sound=selectedLibrarySound){
+      if(!sound)return;
+      try{
+        await engine.init();
+        const mode=$("#audition-mode")?.value||"clean",level=Number($("#audition-level")?.value||.78),settings={clean:[16000,0,.05,.04],punch:[9800,0,.025,.02],space:[14500,0,.28,.34],lofi:[3200,0,.08,.07]}[mode];
+        const ch=engine.preview,now=engine.ctx.currentTime;
+        ch.filter.frequency.setTargetAtTime(settings[0],now,.012);ch.pan.pan.setTargetAtTime(settings[1],now,.012);ch.gain.gain.setTargetAtTime(level*(mode==="punch"?1:.9),now,.01);ch.delaySend.gain.setTargetAtTime(settings[2],now,.012);ch.reverbSend.gain.setTargetAtTime(settings[3],now,.012);
+        let animMs,statusText;
+        if(previewMode()==="loop"){
+          const bpm=Math.max(30,state.bpm||120),stepDur=60/bpm/4;
+          const steps=(Array.isArray(sound.loop)&&sound.loop.length?sound.loop:[0]).map(s=>Math.max(0,Math.min(15,Math.round(s)))).sort((a,b)=>a-b);
+          steps.forEach(s=>engine.trigger(sound,level,now+.03+s*stepDur,ch.input));
+          animMs=Math.min(4000,Math.max(420,16*stepDur*1000));
+          statusText=`${sound.label} \u00b7 ${mode} loop \u00b7 ${steps.length} hit${steps.length===1?"":"s"} @ ${Math.round(bpm)} BPM`;
+        }else{
+          engine.trigger(sound,level,null,ch.input);
+          animMs=Math.max(420,(sound.duration||.25)*1000);
+          statusText=`${sound.label} \u00b7 ${mode} audition`;
+        }
+        const wave=$("#sound-wave");wave.classList.add("playing");setTimeout(()=>wave.classList.remove("playing"),animMs);
+        const chip=$$('.sound-chip').find(node=>node.dataset.soundId===soundId(sound));chip?.classList.add("previewing");setTimeout(()=>chip?.classList.remove("previewing"),Math.min(animMs,1200));
+        setStatus(statusText);
+      }catch(error){toast(error.message,"error")}
+    }
     function updateSoundFilters(){$$('[data-sound-filter]').forEach(button=>{const active=button.dataset.soundFilter===libraryFilter;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active))})}
 
     renderPackDock=function(){
       const select=$("#pack-select"),dock=$("#pack-dock"),search=$("#sound-search");if(!select||!dock)return;if(!select.options.length){const all=document.createElement("option");all.value="all";all.textContent="ALL SOUNDS + FX";select.append(all);Object.entries(BALTIMORE_PACKS).forEach(([key,pack])=>{const option=document.createElement("option");option.value=key;option.textContent=pack.name.toUpperCase();select.append(option)})}
       const query=(search?.value||"").trim().toLowerCase(),packKey=select.value||"all",sourceSounds=libraryFilter==="favorites"?allUniqueSounds():(packKey==="all"?allUniqueSounds():(BALTIMORE_PACKS[packKey]?.sounds||[]).map(normalizeSound));currentVisibleSounds=sourceSounds.filter(sound=>{const category=soundCategory(sound),favorite=favoriteIds.has(soundId(sound)),matchesFilter=libraryFilter==="all"||libraryFilter==="favorites"&&favorite||libraryFilter===category,matchesQuery=!query||`${sound.label} ${sound.sub} ${sound.instrument} ${category} ${(sound.tags||[]).join(" ")}`.toLowerCase().includes(query);return matchesFilter&&matchesQuery});dock.replaceChildren();
-      currentVisibleSounds.forEach((sound,index)=>{sound.color=sound.color||activePalette()[index%activePalette().length];const id=soundId(sound),category=soundCategory(sound),chip=document.createElement("button");chip.className=`sound-chip ${query?"match":""} ${selectedLibrarySound&&soundId(selectedLibrarySound)===id?"selected":""}`;chip.style.setProperty("--chip-color",sound.color);chip.dataset.soundId=id;chip.innerHTML='<i draggable="true"></i><span class="sound-label"></span><span class="sound-type"></span><span class="sound-fav" role="button" tabindex="0" aria-label="Toggle favorite"></span>';$(".sound-label",chip).textContent=sound.label;$(".sound-type",chip).textContent=category==="music"?"MUS":category.slice(0,3).toUpperCase();const star=$(".sound-fav",chip),isFavorite=favoriteIds.has(id);star.textContent=isFavorite?"★":"☆";star.classList.toggle("on",isFavorite);chip.dataset.description=`${sound.label} · ${category} · ${sound.energy} energy. Click to select and audition; drag its colored grip to a track or pad; double-click to load its suggested loop.`;chip.addEventListener("click",event=>{if(event.target.closest("i,.sound-fav"))return;selectLibrarySound(sound,true)});chip.addEventListener("dblclick",event=>{if(event.target.closest(".sound-fav"))return;selectLibrarySound(sound,false);assignSoundToTrack(selectedOrFirstTrack(),sound,true)});star.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();selectLibrarySound(sound,false);toggleFavorite(sound)});star.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();event.stopPropagation();selectLibrarySound(sound,false);toggleFavorite(sound)}});const handle=$("i",chip);handle.addEventListener("dragstart",event=>{putSoundTransfer(event,sound);chip.classList.add("drop-source")});handle.addEventListener("dragend",()=>chip.classList.remove("drop-source"));installUniversalTouchDrag(handle,sound);dock.append(chip)});
+      currentVisibleSounds.forEach((sound,index)=>{sound.color=sound.color||activePalette()[index%activePalette().length];const id=soundId(sound),category=soundCategory(sound),chip=document.createElement("button");chip.className=`sound-chip ${query?"match":""} ${selectedLibrarySound&&soundId(selectedLibrarySound)===id?"selected":""}`;chip.style.setProperty("--chip-color",sound.color);chip.dataset.soundId=id;chip.innerHTML='<i draggable="true"></i><span class="sound-label"></span><span class="sound-type"></span><span class="sound-fav" role="button" tabindex="0" aria-label="Toggle favorite"></span>';$(".sound-label",chip).textContent=sound.label;$(".sound-type",chip).textContent=category==="music"?"MUS":category.slice(0,3).toUpperCase();const star=$(".sound-fav",chip),isFavorite=favoriteIds.has(id);star.textContent=isFavorite?"★":"☆";star.classList.toggle("on",isFavorite);chip.dataset.description=`${sound.label} · ${category} · ${sound.energy} energy. Click to select and audition; drag its colored grip to a track or pad; double-click to load its suggested loop.`;chip.addEventListener("click",event=>{if(event.target.closest("i,.sound-fav"))return;selectLibrarySound(sound,true)});let hoverT14=null;chip.addEventListener("mouseenter",()=>{if(!hoverPreviewOn()||hoverT14)return;hoverT14=setTimeout(()=>{hoverT14=null;selectLibrarySound(sound,true)},300)});chip.addEventListener("mouseleave",()=>{if(hoverT14){clearTimeout(hoverT14);hoverT14=null}});chip.addEventListener("dblclick",event=>{if(event.target.closest(".sound-fav"))return;selectLibrarySound(sound,false);assignSoundToTrack(selectedOrFirstTrack(),sound,true)});star.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();selectLibrarySound(sound,false);toggleFavorite(sound)});star.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();event.stopPropagation();selectLibrarySound(sound,false);toggleFavorite(sound)}});const handle=$("i",chip);handle.addEventListener("dragstart",event=>{putSoundTransfer(event,sound);chip.classList.add("drop-source")});handle.addEventListener("dragend",()=>chip.classList.remove("drop-source"));installUniversalTouchDrag(handle,sound);dock.append(chip)});
       $("#sound-result-count").textContent=`${currentVisibleSounds.length} SOUND${currentVisibleSounds.length===1?"":"S"}`;if(currentVisibleSounds.length&&(!selectedLibrarySound||!currentVisibleSounds.some(sound=>soundId(sound)===soundId(selectedLibrarySound))))selectLibrarySound(currentVisibleSounds[0],false);if(!currentVisibleSounds.length){const empty=document.createElement("span");empty.style.cssText="padding:8px;color:var(--muted);font:8px var(--mono)";empty.textContent="NO MATCHES · TRY ANOTHER FILTER";dock.append(empty)}const source=libraryFilter==="favorites"?"Your saved sound collection":packKey==="all"?"All original studio voices and advanced effects":BALTIMORE_PACKS[packKey]?.source||"Original synthesis";$("#bmore-library .module-title small").textContent=`${source} · ${currentVisibleSounds.length} results · click preview · drag to tracks or pads`;updateSoundFilters();wireDescriptions(dock)
     };
 
@@ -3801,14 +4245,14 @@
     function initBaltimoreEdition(){
       addPanelControls();renderBaltimoreCovers();renderPackDock();renderLayoutManager();setupGlobalTooltip();applyBmoreLayout();applyWorkflowState();wireDescriptions();
       $("#pack-select").addEventListener("change",renderPackDock);$("#sound-search").addEventListener("input",renderPackDock);$("#covers-toggle").addEventListener("click",()=>{$("#bmore-library")?.classList.remove("hidden-module","collapsed");state.ui.hiddenModules=(state.ui.hiddenModules||[]).filter(id=>id!=="bmore-library");state.ui.mobilePanel="library";applyLayoutPrefs();$("#bmore-library")?.scrollIntoView({behavior:"smooth",block:"start"})});$("#source-notes-btn").addEventListener("click",()=>$("#source-dialog").showModal());
-      $$('[data-sound-filter]').forEach(button=>button.addEventListener("click",()=>{libraryFilter=button.dataset.soundFilter;renderPackDock()}));$("#sound-favorite").addEventListener("click",()=>toggleFavorite());$("#sound-preview").addEventListener("click",()=>previewLibrarySound());$("#sound-load").addEventListener("click",()=>{if(selectedLibrarySound)assignSoundToTrack(selectedOrFirstTrack(),selectedLibrarySound,true)});$("#surprise-sound").addEventListener("click",()=>{if(!currentVisibleSounds.length)return;const sound=currentVisibleSounds[Math.floor(Math.random()*currentVisibleSounds.length)];selectLibrarySound(sound,true);$$('.sound-chip').find(chip=>chip.dataset.soundId===soundId(sound))?.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"})});$("#audition-level").addEventListener("input",event=>$("#audition-level-out").textContent=`${Math.round(Number(event.target.value)*100)}%`);
+      $$('[data-sound-filter]').forEach(button=>button.addEventListener("click",()=>{libraryFilter=button.dataset.soundFilter;renderPackDock()}));$("#sound-favorite").addEventListener("click",()=>toggleFavorite());$("#sound-preview").addEventListener("click",()=>previewLibrarySound());$("#preview-mode").addEventListener("click",togglePreviewMode);$("#hover-preview-btn").addEventListener("click",toggleHoverPreview);syncPreviewToggles();$("#sound-load").addEventListener("click",()=>{if(selectedLibrarySound)assignSoundToTrack(selectedOrFirstTrack(),selectedLibrarySound,true)});$("#surprise-sound").addEventListener("click",()=>{if(!currentVisibleSounds.length)return;const sound=currentVisibleSounds[Math.floor(Math.random()*currentVisibleSounds.length)];selectLibrarySound(sound,true);$$('.sound-chip').find(chip=>chip.dataset.soundId===soundId(sound))?.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"})});$("#audition-level").addEventListener("input",event=>$("#audition-level-out").textContent=`${Math.round(Number(event.target.value)*100)}%`);
       $("#layout-manager-btn").addEventListener("click",()=>{renderLayoutManager();$("#layout-drawer").hidden=false});$("#layout-close").addEventListener("click",()=>$("#layout-drawer").hidden=true);$("#reset-layout").addEventListener("click",()=>{state.ui.hiddenModules=[];state.ui.moduleSizes={};$$(".user-resizable").forEach(panel=>{panel.style.width="";panel.style.height=""});applyLayoutPrefs();renderLayoutManager();scheduleAutosave();toast("Panel layout reset.","good")});
       $$("#mobile-dock button").forEach(button=>button.addEventListener("click",()=>{state.ui.mobilePanel=button.dataset.mobilePanel;applyLayoutPrefs();scheduleAutosave()}));
       ["undo-btn","redo-btn","duplicate-pattern","clear-pattern","randomize-pattern","add-track","clear-steps","humanize","fill-hats","double-pattern","copy-track","paste-track","mirror-track","euclid-track","rotate-left","rotate-right"].forEach(id=>{const el=$("#"+id);if(el&&!el.getAttribute("aria-label"))el.setAttribute("aria-label",el.title||el.textContent.trim())});
       $("#pad-auto-track").addEventListener("click",()=>{state.ui.autoTrackPads=!state.ui.autoTrackPads;applyWorkflowState();scheduleAutosave();toast(state.ui.autoTrackPads?"Auto Track will create or reuse a lane for each recorded pad sound.":"Pad recording will use only the manually armed track.","good")});
       $("#reset-pad-bank").addEventListener("click",resetCurrentPadBank);$("#synth-controls-toggle").addEventListener("click",()=>{state.ui.synthControls=!state.ui.synthControls;applyWorkflowState();scheduleAutosave()});
       $("#step-paint-mode").addEventListener("click",()=>{state.ui.stepPaint={draw:"accent",accent:"erase",erase:"draw"}[state.ui.stepPaint||"draw"];applyWorkflowState();scheduleAutosave()});
-      Object.assign(ELEMENT_DESCRIPTIONS,{"pad-auto-track":"When recording, automatically creates or reuses a loop-constructor track that matches the pad sound.","reset-pad-bank":"Clears custom assignments from the current synth-pad bank.","synth-controls-toggle":"Shows or hides detailed synthesizer controls to save screen space.","step-paint-mode":"Cycles Draw, Accent, and Erase tools for painting sequencer steps by dragging.","sound-search":"Searches all built-in packs and studio sounds by name, type, tag, or instrument.","sound-filter-bar":"Filters the sound library into drums, bass, musical voices, effects, or your saved favorites.","sound-inspector":"Shows the selected sound, its type and energy, audition character, preview level, favorite state, and one-click track loading.","audition-mode":"Changes only the library preview path: clean, punchy, spacious, or filtered lo-fi.","surprise-sound":"Selects and previews a random sound from the current filtered results."});
+      Object.assign(ELEMENT_DESCRIPTIONS,{"pad-auto-track":"When recording, automatically creates or reuses a loop-constructor track that matches the pad sound.","reset-pad-bank":"Clears custom assignments from the current synth-pad bank.","synth-controls-toggle":"Shows or hides detailed synthesizer controls to save screen space.","step-paint-mode":"Cycles Draw, Accent, and Erase tools for painting sequencer steps by dragging.","sound-search":"Searches all built-in packs and studio sounds by name, type, tag, or instrument.","sound-filter-bar":"Filters the sound library into drums, bass, musical voices, effects, or your saved favorites.","sound-inspector":"Shows the selected sound, its type and energy, audition character, preview level, favorite state, and one-click track loading.","audition-mode":"Changes only the library preview path: clean, punchy, spacious, or filtered lo-fi.","surprise-sound":"Selects and previews a random sound from the current filtered results.","preview-mode":"Toggles the library audition between a single one-shot hit and the sound's suggested loop at the current BPM.","hover-preview-btn":"When on, hovering a library chip for a moment auditions it automatically."});
       state.ui.density=state.ui.density||"compact";applyWorkflowState();applyLayoutPrefs();renderBanks();renderPads();renderTracks();renderMixer();wireDescriptions()
     }
 
